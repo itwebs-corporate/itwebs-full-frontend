@@ -1,0 +1,12 @@
+.block {
+  position: fixed;
+  width: 80svw;
+  height: 80svw;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
