@@ -1,12 +1,11 @@
 'use client';
-import { ThemeProvider } from 'next-themes';
 import { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 
 export default function Provider({ children }: { children: ReactNode }) {
   return (
     <>
-      <ThemeProvider attribute="class">{children}</ThemeProvider>;
+      {children}
       <Toaster
         className="shadow shadow-neutral-400"
         closeButton

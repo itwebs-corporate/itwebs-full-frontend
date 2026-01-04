@@ -1,0 +1,17 @@
+@layer utilities {
+  .shadow-default {
+    @apply shadow shadow-neutral-400;
+  }
+  .p-container {
+    @apply px-3.5 sm:px-15;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .stackList {
+    @apply flex flex-col items-center justify-center;
+  }
+  .form {
+    @apply flex w-full flex-col gap-y-4 border bg-transparent p-6 shadow-sm;
+  }
+}
