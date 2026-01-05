@@ -1,25 +1,27 @@
-'use client';
 import Link from 'next/link';
-import { useState } from 'react';
 
 import styles from './header.module.css';
 
 import { Button } from '@/components/ui/button';
 
+import { SCREEN_1C_ID } from '@/constants/header-constants';
 import { MAIL, TEL, TELEGRAM } from '@/constants/links-constants';
 
 import MobileMenu1CScreen from './mobie-menu-1c-screen';
 import MobileMenuMainScreen from './mobile-menu-main-screen';
 
 export default function MobileMenu() {
-  const [screen, setScreen] = useState<'main' | '1c'>('main');
   return (
     <div className={styles.mobileMenu}>
-      {screen === 'main' ? (
-        <MobileMenuMainScreen setScreen={setScreen} />
-      ) : (
-        <MobileMenu1CScreen setScreen={setScreen} />
-      )}
+      {/* screen variants: */}
+      <input className={styles.menuMobileScreenToggle} id={SCREEN_1C_ID} type="checkbox" />
+      <div className={styles.screenMain}>
+        <MobileMenuMainScreen />
+      </div>
+      <div className={styles.screen1c}>
+        <MobileMenu1CScreen />
+      </div>
+      {/* mobile menu footer: */}
       <div className="bg-background h-[163px] w-full flex-1 rounded-t-[12px] pt-[24px] pr-[14px] pb-[30px] pl-[28px] shadow shadow-neutral-400">
         <Button className="mb-[13px] w-full">
           <Link href={TEL}>+ 375 (25) 991-93-79</Link>

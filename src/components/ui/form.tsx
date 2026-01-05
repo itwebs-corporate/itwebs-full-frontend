@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/fields/input';
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
 
-const zodSchema = z.object({
+const zodContactSchema = z.object({
   name: z.string().min(1, 'Введите имя!'),
   emailOrTel: z.string().min(1, 'Введите email или телефон!'),
   taskType: z.string().min(1, 'Выберите тип задачи!'),
@@ -19,7 +19,7 @@ const zodSchema = z.object({
   }),
 });
 
-type FormTypes = z.infer<typeof zodSchema>;
+type ContactFormValues = z.infer<typeof zodContactSchema>;
 
 export default function Form() {
   const {
@@ -29,7 +29,7 @@ export default function Form() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(zodSchema),
+    resolver: zodResolver(zodContactSchema),
     defaultValues: {
       name: '',
       emailOrTel: '',
@@ -38,7 +38,7 @@ export default function Form() {
     },
   });
 
-  const onSubmit: SubmitHandler<FormTypes> = (data) => {
+  const onSubmit: SubmitHandler<ContactFormValues> = (data) => {
     console.log(data);
     toast.success('Ваша заявка успешно принята!');
     reset();

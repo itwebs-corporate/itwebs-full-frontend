@@ -1,30 +1,26 @@
-'use state';
 import Link from 'next/link';
 
 import { Media } from '@/components/ui/media';
 
+import { SCREEN_1C_ID } from '@/constants/header-constants';
+
 import { MOBILE_MENU_1C_SERVICES } from './header-config';
 
-export default function MobileMenu1CScreen({
-  setScreen,
-}: {
-  setScreen: (arg: 'main' | '1c') => void;
-}) {
+export default function MobileMenu1CScreen() {
   return (
     <>
       <div className="flex items-center justify-between pt-[14px] pr-[14px] pl-[28px]">
         <span className="font-second-family text-foreground2 text-[20px] font-bold">1с Услуги</span>
-        <button
-          className="text-primary font-second-family flex items-center gap-1.5 text-[16px] font-bold"
-          onClick={() => setScreen('main')}
-          type="button"
+        <label
+          className="text-primary font-second-family z-50 flex cursor-pointer items-center gap-1.5 text-[16px] font-bold"
+          htmlFor={SCREEN_1C_ID}
         >
           <Media
             className="h-[14px] w-[7px]"
             image={{ src: '/links/arrow-left.svg', alt: 'arrow-left' }}
           />
           Назад
-        </button>
+        </label>
       </div>
       <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
         {MOBILE_MENU_1C_SERVICES.map((el) => (

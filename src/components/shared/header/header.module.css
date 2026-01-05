@@ -52,3 +52,31 @@
     @apply flex;
   }
 }
+
+/* это для экранов mobileMenu */
+.menuMobileScreenToggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.screenMain {
+  display: block;
+}
+.screen1c {
+  display: none;
+}
+
+.menuMobileScreenToggle:checked ~ .screenMain {
+  display: none;
+}
+.menuMobileScreenToggle:checked ~ .screen1c {
+  display: block;
+}

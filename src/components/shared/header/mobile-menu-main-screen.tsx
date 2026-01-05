@@ -1,18 +1,16 @@
-'use state';
+'use client';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Activity, Fragment, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
+import { SCREEN_1C_ID } from '@/constants/header-constants';
+
 import { HEADER_NAV, MOBILE_MENU_SERVICES } from './header-config';
 
-export default function MobileMenuMainScreen({
-  setScreen,
-}: {
-  setScreen: (arg: 'main' | '1c') => void;
-}) {
+export default function MobileMenuMainScreen() {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (
     <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
@@ -36,8 +34,6 @@ export default function MobileMenuMainScreen({
 
                 {isServices && (
                   <button
-                    aria-controls="mobile-services"
-                    aria-expanded={isOpenServices}
                     className="shrink-0"
                     onClick={() => setIsOpenServices((v) => !v)}
                     type="button"
@@ -52,13 +48,7 @@ export default function MobileMenuMainScreen({
                   </button>
                 )}
                 {is1CServices && (
-                  <button
-                    aria-controls="mobile-services"
-                    aria-expanded={isOpenServices}
-                    className="shrink-0"
-                    onClick={() => setScreen('1c')}
-                    type="button"
-                  >
+                  <label className="z-50 shrink-0 cursor-pointer" htmlFor={SCREEN_1C_ID}>
                     <Media
                       className="h-[13px] w-[13px]"
                       image={{
@@ -66,11 +56,11 @@ export default function MobileMenuMainScreen({
                         alt: 'arrow',
                       }}
                     />
-                  </button>
+                  </label>
                 )}
               </div>
             </li>
-            {isServices && isOpenServices && (
+            <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex flex-col gap-4 pl-2">
                 {MOBILE_MENU_SERVICES.map((service) => (
                   <li
@@ -81,7 +71,7 @@ export default function MobileMenuMainScreen({
                   </li>
                 ))}
               </ul>
-            )}
+            </Activity>
           </Fragment>
         );
       })}

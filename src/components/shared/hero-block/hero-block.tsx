@@ -8,8 +8,8 @@ import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import HeroBlockPath from './hero-block-path';
 import HeroBlockTrack from './hero-block-track';
+import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 
 type HeroBlockProps = {
   heading: string;
@@ -19,7 +19,7 @@ type HeroBlockProps = {
 export default function HeroBlock({ heading, description }: HeroBlockProps) {
   return (
     <Section className="relative bg-[url(/hero/bg-hero.png)]">
-      <HeroBlockPath />{' '}
+      <BreadcrumbWithCustomSeparator />
       <div className="flex-center relative">
         <Typography className="z-10" variant="h1">
           {heading}

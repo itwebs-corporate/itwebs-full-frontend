@@ -2,6 +2,9 @@
   .shadow-default {
     @apply shadow shadow-neutral-400;
   }
+  .py-container {
+    @apply py-[clamp(86px,6vw,124px)];
+  }
   .p-container {
     @apply px-3.5 sm:px-15;
   }

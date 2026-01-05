@@ -5,13 +5,10 @@ import Typography from '@/components/ui/typography/typography';
 
 import HowWeWorkBlockCard from './how-we-work-block-card';
 import { WORK_STEPS_CONFIG } from './how-we-work-config';
-
+// TODO: изменить фоновую картинку
 export default function HowWeWorkBlock() {
   return (
-    <Section
-      className="bg-primary xxs:py-[124px] relative z-10 rounded-[48px] py-[86px]"
-      fullScreen={false}
-    >
+    <Section className="bg-primary py-container relative z-10 rounded-[48px]" fullScreen={false}>
       <Image alt="bg" className="z-0 opacity-10" fill src="/how-we-work-background.svg" />
       <Typography className="text-white" variant="h2">
         <b className="opacity-80">Как</b> мы работаем
