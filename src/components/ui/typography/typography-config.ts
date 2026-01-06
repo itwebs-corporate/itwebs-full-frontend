@@ -1,47 +1,16 @@
 import { cva } from 'class-variance-authority';
 
-export const typographyVariants = cva('antialiased leading-normal tracking-normal', {
+export const typographyVariants = cva('antialiased tracking-normal', {
   variants: {
-    color: {
-      default: 'text-foreground',
-      primary: 'text-primary',
-      secondary: 'text-secondary',
-      muted: 'text-muted',
-    },
-    isHover: { true: 'transition-colors hover:opacity-80' },
-    weight: {
-      regular: 'font-normal',
-      medium: 'font-medium',
-      semibold: 'font-semibold',
-      bold: 'font-bold',
-    },
-    size: {
-      xl: 'text-4xl md:text-5xl tracking-tight',
-      lg: 'text-2xl md:text-3xl tracking-tight',
-      md: 'text-base ',
-      sm: 'text-sm leading-relaxed',
-    },
-    truncate: {
-      none: '',
-      one: 'truncate',
-      two: 'line-clamp-2',
-      three: 'line-clamp-3',
-    },
-    align: {
-      center: 'text-center',
-      left: 'text-left',
-      right: 'text-right',
-      justify: 'text-justify',
-      start: 'text-start',
-      end: 'text-end',
+    variant: {
+      h1: 'font-family font-extrabold leading-[100%] text-[clamp(36px,8vw,201px)] uppercase text-center',
+      h2: 'font-family font-bold leading-[100%] text-[clamp(24px,4.5vw,72px)] text-[#383838] text-center',
+      h3: 'font-family font-bold leading-[100%] text-[clamp(20px,2.6vw,32px)] text-[#151515]',
+      p1: 'font-second-family leading-[140%] text-[clamp(14px,1.6vw,24px)] text-center',
+      p2: 'font-second-family leading-[140%] text-[#383838]/80 text-[clamp(14px,1.1vw,16px)]',
     },
   },
   defaultVariants: {
-    color: 'default',
-    isHover: false,
-    weight: 'regular',
-    size: 'md',
-    truncate: 'none',
-    align: 'justify',
+    variant: 'p2',
   },
 });
