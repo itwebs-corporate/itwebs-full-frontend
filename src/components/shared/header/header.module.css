@@ -1,0 +1,82 @@
+@reference "../../../app/globals.css";
+
+.menuToggle {
+  @apply absolute h-px w-px overflow-hidden opacity-0;
+}
+
+.openMenuIcon {
+  @apply opacity-100;
+}
+.closeMenuIcon {
+  @apply text-foreground bg-primary opacity-0;
+}
+.headerLinkMobileMenu {
+  @apply hidden;
+}
+.headerLinkImage {
+  @apply text-white;
+}
+.burgerMenuToggle {
+  @apply bg-white;
+}
+.mobileMenu {
+  @apply hidden;
+}
+@media (max-width: 360px) {
+  .mobileMenu {
+    @apply fixed top-15.5 left-0 z-30 flex h-0 w-dvw flex-col overflow-hidden bg-white;
+    transition: 1s;
+  }
+  .menuToggle:checked ~ .mobileMenu {
+    height: 100svh;
+  }
+  .menuToggle:checked ~ header .openMenuIcon {
+    opacity: 0;
+  }
+  .menuToggle:checked ~ header .closeMenuIcon {
+    opacity: 1;
+  }
+  .menuToggle:checked ~ header {
+    @apply border-b-2 border-[#f8faff] bg-white;
+  }
+  .menuToggle:checked ~ header .headerLink {
+    @apply hidden;
+  }
+  .menuToggle:checked ~ header .headerLinkImage {
+    @apply text-primary;
+  }
+  .menuToggle:checked ~ header .burgerMenuToggle {
+    @apply bg-primary;
+  }
+  .menuToggle:checked ~ header .headerLinkMobileMenu {
+    @apply flex;
+  }
+}
+
+/* это для экранов mobileMenu */
+.menuMobileScreenToggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.screenMain {
+  display: block;
+}
+.screen1c {
+  display: none;
+}
+
+.menuMobileScreenToggle:checked ~ .screenMain {
+  display: none;
+}
+.menuMobileScreenToggle:checked ~ .screen1c {
+  display: block;
+}

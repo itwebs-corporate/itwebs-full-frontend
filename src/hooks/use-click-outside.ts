@@ -1,21 +1,45 @@
-import { RefObject, useEffect } from 'react';
+import { type RefObject, useEffect, useRef } from 'react';
 
-export const useClickOutside = (
-  ref: RefObject<HTMLElement | null>,
-  handleOnClickOutside: (event: MouseEvent | TouchEvent) => void
-) => {
+type Handler = (event: MouseEvent | TouchEvent) => void;
+type IgnoreRefs = Array<RefObject<HTMLElement | null>>;
+
+export function useClickOutside<T extends HTMLElement>(
+  handler: Handler,
+  ignoreRefs: IgnoreRefs = []
+) {
+  const ref = useRef<T | null>(null);
+  const handlerRef = useRef(handler);
+  const ignoreRefsRef = useRef(ignoreRefs);
+
   useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
+  useEffect(() => {
+    ignoreRefsRef.current = ignoreRefs;
+  }, [ignoreRefs]);
+
+  useEffect(() => {
+    const controller = new AbortController();
     const listener = (event: MouseEvent | TouchEvent) => {
-      if (!ref.current || ref.current.contains(event.target as Node)) {
-        return;
+      const target = event.target as Node | null;
+
+      if (!target) return;
+      if (!ref.current) return;
+      // игнор в основном контейнере
+      if (ref.current.contains(target)) return;
+      // игнор контейнеров который были переданы как ignoreRefs
+      for (const refElement of ignoreRefsRef.current) {
+        if (refElement.current?.contains(target)) return;
       }
-      handleOnClickOutside(event);
+      handlerRef.current(event);
     };
-    document.addEventListener('mousedown', listener);
-    document.addEventListener('touchstart', listener);
+    // document.addEventListener('pointerdown', listener, { signal: controller.signal });
+    document.addEventListener('mousedown', listener, { signal: controller.signal });
+    document.addEventListener('touchstart', listener, { signal: controller.signal });
+
     return () => {
-      document.removeEventListener('mousedown', listener);
-      document.removeEventListener('touchstart', listener);
+      controller.abort();
     };
-  }, [ref, handleOnClickOutside]);
-};
+  }, []);
+  return { ref };
+}

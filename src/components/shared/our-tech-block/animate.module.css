@@ -1,0 +1,13 @@
+.marqueeTrack {
+  will-change: transform;
+  animation: marquee-right 25s linear infinite;
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
