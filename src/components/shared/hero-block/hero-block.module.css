@@ -1,6 +1,6 @@
 .marqueeTrack {
   will-change: transform;
-  animation: marquee-right 15s linear infinite;
+  animation: marquee-right 20s linear infinite;
 }
 
 @keyframes marquee-right {

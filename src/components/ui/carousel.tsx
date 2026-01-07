@@ -1,12 +1,12 @@
 'use client';
 
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
 import { Button } from './button';
+import { Media } from './media';
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -164,7 +164,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
 function CarouselPrevious({
   className,
   variant = 'outline',
-  size = 'icon',
+  // size = 'icon',
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -172,7 +172,7 @@ function CarouselPrevious({
   return (
     <Button
       className={cn(
-        'absolute size-8 rounded-full',
+        'xxs:flex absolute hidden h-[64px] w-[64px] shrink-0 rounded-full bg-white',
         orientation === 'horizontal'
           ? 'top-1/2 -left-12 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -181,11 +181,14 @@ function CarouselPrevious({
       data-slot="carousel-previous"
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      size={size}
+      // size={size}
       variant={variant}
       {...props}
     >
-      <ArrowLeft />
+      <Media
+        className="h-[20px] w-[15px]"
+        image={{ src: '/arrow/arrow-left.svg', alt: 'arrow-left' }}
+      />
       <span className="sr-only">Previous slide</span>
     </Button>
   );
@@ -194,7 +197,7 @@ function CarouselPrevious({
 function CarouselNext({
   className,
   variant = 'outline',
-  size = 'icon',
+  // size = 'icon',
   ...props
 }: React.ComponentProps<typeof Button>) {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
@@ -202,7 +205,7 @@ function CarouselNext({
   return (
     <Button
       className={cn(
-        'absolute size-8 rounded-full',
+        'xxs:flex absolute hidden h-[64px] w-[64px] shrink-0 rounded-full bg-white',
         orientation === 'horizontal'
           ? 'top-1/2 -right-12 -translate-y-1/2'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -211,11 +214,14 @@ function CarouselNext({
       data-slot="carousel-next"
       disabled={!canScrollNext}
       onClick={scrollNext}
-      size={size}
+      // size={size}
       variant={variant}
       {...props}
     >
-      <ArrowRight />
+      <Media
+        className="h-[20px] w-[15px]"
+        image={{ src: '/arrow/arrow-right.svg', alt: 'arrow-right' }}
+      />
       <span className="sr-only">Next slide</span>
     </Button>
   );

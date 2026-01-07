@@ -7,19 +7,21 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
+import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
+
 import { HEADER_LINKS, HEADER_MOBILE_LINKS, HEADER_NAV } from './header-config';
 
 export default function Navigation() {
   return (
     <header
       className={cn(
-        'p-container font-second-family bg-primary/80 fixed top-0 z-50 flex w-full items-center justify-between pt-[13px] pb-[10px] font-bold',
-        'xxs:pt-[36px] text-[clamp(14px,1.2vw,16px)]'
+        'p-container font-second-family bg-primary/80 fixed top-0 z-50 flex w-full items-center justify-between pb-[10px] font-bold',
+        'pt-[clamp(13px,2.2vw,36px)] text-[clamp(14px,1.2vw,16px)]'
       )}
     >
       <Link className="bg-background rounded-full" href="/">
         <Media
-          className="xxs:h-[45px] xxs:w-[106px] xxs:px-5.5 xxs:py-2 relative mx-[14px] my-[5px] h-[29px] w-[68px]"
+          className="xxs:px-5.5 xxs:py-2 relative mx-[14px] my-[5px] h-[clamp(29px,2.6vw,45px)] w-[clamp(68px,6.2vw,106px)]"
           image={{ src: '/logo/logo.svg', alt: 'logo' }}
         />
       </Link>
@@ -32,19 +34,19 @@ export default function Navigation() {
           </li>
         ))}
       </ul>
-      <div className="flex-center xxs:gap-5 gap-2">
+      <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
         {HEADER_LINKS.map((el) => (
           <Link
             className={cn(
-              'flex-center xxs:h-15 xxs:w-15 h-9.5 w-9.5 rounded-full border bg-white/10',
+              'flex-center h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border bg-white/10',
               styles.headerLink
             )}
             href={el.link}
             key={el.link}
           >
             <Media
-              className="xxs:h-6.5 xxs:w-6.5 relative h-4.5 w-4.5"
+              className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
               image={{ src: el.icon, alt: el.link }}
             />
           </Link>
@@ -53,14 +55,14 @@ export default function Navigation() {
         {HEADER_MOBILE_LINKS.map((el) => (
           <Link
             className={cn(
-              'flex-center xxs:h-15 xxs:w-15 bg-primary/10 h-9.5 w-9.5 rounded-full border',
+              'flex-center bg-primary/10 h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border',
               styles.headerLinkMobileMenu
             )}
             href={el.link}
             key={el.link}
           >
             <Media
-              className="xxs:h-6.5 xxs:w-6.5 relative h-4.5 w-4.5"
+              className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
               image={{ src: el.icon, alt: 'links' }}
             />
           </Link>
@@ -71,7 +73,7 @@ export default function Navigation() {
             'xxs:hidden flex h-9.5 w-9.5 cursor-pointer items-center justify-center rounded-full',
             styles.burgerMenuToggle
           )}
-          htmlFor="mobileMenuToggle"
+          htmlFor={MOBILE_MENU_TOGGLE_ID}
         >
           <div className="relative h-3.5 w-3.5">
             <Image alt="links" className={styles.openMenuIcon} fill src="/links/burger.svg" />
