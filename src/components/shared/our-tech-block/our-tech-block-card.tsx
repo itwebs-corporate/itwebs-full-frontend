@@ -6,7 +6,7 @@ import Typography from '@/components/ui/typography/typography';
 import { OurServicesCard } from './our-tech-config';
 export default function OurTechBlockCard({ item }: { item: OurServicesCard }) {
   return (
-    <div className="xxs:flex z-10 hidden h-[clamp(260px,28vw,380px)] w-[clamp(280px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white/15 p-[24px]">
+    <div className="z-10 hidden h-[clamp(260px,28vw,380px)] w-[clamp(280px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white/15 p-[24px] sm:flex">
       <div className="flex max-h-[55px] flex-nowrap items-center">
         <Typography className="text-white lowercase" variant="h3">
           {item.title}

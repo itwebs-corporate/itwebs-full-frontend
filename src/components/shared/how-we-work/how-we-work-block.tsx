@@ -14,7 +14,7 @@ export default function HowWeWorkBlock() {
       <Typography className="z-20 text-white" variant="h2">
         <b className="opacity-80">Как</b> мы работаем
       </Typography>
-      <div className="xxs:grid-cols-[1fr_1fr_1fr_1fr] mt-[clamp(32px,3vw,46px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)]">
+      <div className="mt-[clamp(32px,3vw,46px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-[1fr_1fr_1fr_1fr]">
         {WORK_STEPS_CONFIG.map((item) => (
           <HowWeWorkBlockCard item={item} key={item.id} />
         ))}

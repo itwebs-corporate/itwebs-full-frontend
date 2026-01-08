@@ -22,7 +22,7 @@
 .mobileMenu {
   @apply hidden;
 }
-@media (max-width: 360px) {
+@media (max-width: 768px) {
   .mobileMenu {
     @apply fixed top-15.5 left-0 z-30 flex h-0 w-dvw flex-col overflow-hidden bg-white;
     transition: 1s;

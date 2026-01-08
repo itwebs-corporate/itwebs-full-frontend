@@ -1,4 +1,4 @@
 export default {
-  './src/**/*.{js,jsx,ts,tsx}': ['pnpm lint:fix', 'pnpm format', 'git add .'],
-  '**/*.{json,css,scss,md,webmanifest}': ['pnpm format', 'git add .'],
+  './src/**/*.{js,jsx,ts,tsx}': ['pnpm lint:fix', 'pnpm format'],
+  '**/*.{json,css,scss,md,webmanifest}': ['pnpm format'],
 };

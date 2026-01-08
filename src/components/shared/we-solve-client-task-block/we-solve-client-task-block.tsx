@@ -12,7 +12,7 @@ export default function WeSolveClientTaskBlock() {
   return (
     <Section className="bg-background gap-[clamp(32px,2.2vw,48px)]" fullScreen={false}>
       <Typography variant="h2">
-        <b className="text-primary">Мы решаем</b> задачи <br className="xxs:hidden inline" />
+        <b className="text-primary">Мы решаем</b> задачи <br className="inline sm:hidden" />
         клиентов
       </Typography>
 

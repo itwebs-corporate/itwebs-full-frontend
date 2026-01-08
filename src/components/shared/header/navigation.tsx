@@ -21,11 +21,11 @@ export default function Navigation() {
     >
       <Link className="bg-background rounded-full" href="/">
         <Media
-          className="xxs:px-5.5 xxs:py-2 relative mx-[14px] my-[5px] h-[clamp(29px,2.6vw,45px)] w-[clamp(68px,6.2vw,106px)]"
+          className="relative mx-[14px] my-[5px] h-[clamp(29px,2.6vw,45px)] w-[clamp(68px,6.2vw,106px)] sm:px-5.5 sm:py-2"
           image={{ src: '/logo/logo.svg', alt: 'logo' }}
         />
       </Link>
-      <ul className="xxs:flex hidden items-center gap-6">
+      <ul className="hidden items-center gap-6 sm:flex">
         {HEADER_NAV.map((el) => (
           <li key={el.title}>
             <Link className="hover:text-foreground/70 transition-colors" href={el.link}>
@@ -70,7 +70,7 @@ export default function Navigation() {
         {/* burger: */}
         <label
           className={cn(
-            'xxs:hidden flex h-9.5 w-9.5 cursor-pointer items-center justify-center rounded-full',
+            'flex h-9.5 w-9.5 cursor-pointer items-center justify-center rounded-full sm:hidden',
             styles.burgerMenuToggle
           )}
           htmlFor={MOBILE_MENU_TOGGLE_ID}

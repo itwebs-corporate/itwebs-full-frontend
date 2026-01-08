@@ -8,9 +8,12 @@ import { OurServicesMobileCard } from './our-tech-config';
 
 export default function OurTechMobileCard({ item }: { item: OurServicesMobileCard }) {
   return (
-    <div className="xxs:hidden z-10 flex h-[293px] w-[332px] flex-col justify-between rounded-[12px] bg-white/15 pt-[20px] pr-[18px] pb-[16px] pl-[14px]">
+    <div className="z-10 flex h-[293px] w-[332px] flex-col justify-between rounded-[12px] bg-white/15 pt-[20px] pr-[18px] pb-[16px] pl-[14px] sm:hidden">
       <div className="flex flex-col gap-4">
-        <Typography className="text-left text-white lowercase" variant="h2">
+        <Typography
+          className="text-left text-[clamp(24px,3.5vw,72px)] text-white lowercase"
+          variant="h2"
+        >
           {item.title}
         </Typography>
         <Typography className="text-foreground/80" variant="p2">
