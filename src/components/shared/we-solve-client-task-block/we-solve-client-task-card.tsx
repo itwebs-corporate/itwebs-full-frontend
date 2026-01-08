@@ -11,9 +11,6 @@ import { Case } from './cases-config';
 
 export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const toggleOpen = () => {
-    setIsOpen((prev) => !prev);
-  };
   return (
     <div className="xxs:flex-row text-foreground2 flex w-full flex-col rounded-[clamp(12px,2vw,24px)]">
       <div className="flex-center shrink-0 rounded-[clamp(12px,2vw,24px)] bg-[#F7F7F7] p-[14px]">
@@ -66,7 +63,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
 
         <Button
           className="xxs:h-[60px] xxs:max-w-[283px] h-[46px] w-full max-w-[272px]"
-          onClick={toggleOpen}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? 'Скрыть' : 'Показать полностью'}
         </Button>
