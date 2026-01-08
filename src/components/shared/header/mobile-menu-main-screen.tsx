@@ -6,10 +6,15 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
-import { SCREEN_1C_ID } from '@/constants/header-constants';
+import { MOBILE_MENU_TOGGLE_ID, SCREEN_1C_ID } from '@/constants/header-constants';
 
 import { HEADER_NAV, MOBILE_MENU_SERVICES } from './header-config';
-
+function closeMobileMenu() {
+  const menuToggle = document.getElementById(MOBILE_MENU_TOGGLE_ID) as HTMLInputElement;
+  if (menuToggle) menuToggle.checked = false;
+  const screen1c = document.getElementById(SCREEN_1C_ID) as HTMLInputElement;
+  if (screen1c) screen1c.checked = false;
+}
 export default function MobileMenuMainScreen() {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (
@@ -27,8 +32,8 @@ export default function MobileMenuMainScreen() {
                   : 'bg-background text-primary'
               )}
             >
-              <div className="flex items-center justify-between gap-3">
-                <Link className="flex-1" href={el.link}>
+              <div className="flex cursor-pointer items-center justify-between gap-3">
+                <Link className="block" href={el.link} onClick={closeMobileMenu}>
                   {el.title}
                 </Link>
 

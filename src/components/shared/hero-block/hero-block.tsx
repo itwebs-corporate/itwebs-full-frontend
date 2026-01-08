@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './hero-block.module.css';
 
@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
+
+import { PAGES_CONFIG } from '@/config/pages-config';
 
 import HeroBlockTrack from './hero-block-track';
 import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
@@ -18,13 +20,13 @@ type HeroBlockProps = {
 
 export default function HeroBlock({ heading, description }: HeroBlockProps) {
   return (
-    <Section className="relative bg-[url(/hero/bg-hero.png)]">
+    <Section className="relative bg-[url(/hero/bg-hero.png)] pt-[106px]">
       <BreadcrumbWithCustomSeparator />
       <div className="flex-center relative">
         <Typography className="z-10" variant="h1">
           {heading}
         </Typography>
-        <Image
+        {/* <Image
           alt="sharp"
           className="xxs:block absolute -top-5 -left-10 z-20 hidden"
           height={124}
@@ -41,11 +43,11 @@ export default function HeroBlock({ heading, description }: HeroBlockProps) {
 
         <Image
           alt="arrow1"
-          className="absolute bottom-0 left-0 z-20"
+          className="xxs:block absolute bottom-0 left-0 z-20 hidden"
           height={231}
           src="/hero/arrow-right.svg"
           width={304}
-        />
+        /> */}
         {/* <Image
           className="rigth-0 absolute right-0 bottom-0 z-20"
           src="/hero/arrow-left-start.svg"
@@ -61,12 +63,20 @@ export default function HeroBlock({ heading, description }: HeroBlockProps) {
           alt="arrow2-end"
         /> */}
       </div>
-      {description && <Typography variant="p1">{description}</Typography>}
-      <div className="xxs:flex-row xxs:gap-5 mt-[48px] flex flex-col gap-[14px]">
-        <Button variant="secondary">Консультация 1С</Button>
-        <Button variant="gray">Наши кейсы</Button>
+      {description && (
+        <Typography className="xxs:pt-[36px] pt-[14px]" variant="p1">
+          {description}
+        </Typography>
+      )}
+      <div className="xxs:flex-row xxs:gap-5 mt-[48px] flex flex-col gap-[14px] pb-[clamp(115px,10vw,208px)]">
+        <Button asChild variant="secondary">
+          <Link href={PAGES_CONFIG.SERVICES_1C}>Консультация 1С</Link>
+        </Button>
+        <Button asChild variant="gray">
+          <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
+        </Button>
       </div>
-      <div className="bg-secondary xxs:h-[60px] text-foreground2 font-family xxs:text-[20px] absolute bottom-0 flex h-[42px] w-full items-center overflow-hidden text-[14px] font-bold whitespace-nowrap uppercase">
+      <div className="bg-secondary text-foreground2 font-family xxs:h-[60px] xxs:text-[20px] absolute bottom-0 flex h-[42px] w-full items-center overflow-hidden text-[14px] font-bold whitespace-nowrap uppercase">
         <div className={cn(styles.marqueeTrack, 'flex w-max')}>
           <HeroBlockTrack />
           <HeroBlockTrack />
