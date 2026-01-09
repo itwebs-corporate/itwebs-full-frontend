@@ -10,8 +10,9 @@ export const BackButton = () => {
       onClick={() => {
         router.back();
       }}
+      variant="gray"
     >
-      Back
+      Вернуться обратно
     </Button>
   );
 };
