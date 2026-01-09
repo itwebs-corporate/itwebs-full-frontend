@@ -16,7 +16,7 @@ import { OUR_SERVICES_DEFAULT, OUR_SERVICES_MOBILE_DEFAULT } from './our-tech-co
 import OurTechMobileCard from './our-tech-mobile-card';
 export default function OurTechBlock() {
   return (
-    <Section className="bg-primary py-container rounded-[clamp(24px,4vw,48px)]" fullScreen={false}>
+    <Section className="bg-primary py-container rounded-[clamp(24px,4vw,48px)]">
       <Typography className="text-foreground mb-[clamp(24px,4vw,46px)]" variant="h2">
         <b className="opacity-80">Какие технологии</b> мы используем
       </Typography>
