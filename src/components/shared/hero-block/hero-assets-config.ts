@@ -45,13 +45,12 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
       className:
-        'absolute left-[clamp(24px,8vw,408px)] top-[50%] hidden sm:block z-20 w-[125px] h-[129px]',
+        'absolute left-[28vw] top-[45%] hidden sm:block z-20 w-[clamp(72px,8vw,125px)] h-[clamp(74px,8.3vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className:
-        'absolute right-[clamp(24px,9vw,461px)] top-[35%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className: 'absolute right-[30vw] top-[30%] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
