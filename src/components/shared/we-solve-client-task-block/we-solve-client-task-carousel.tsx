@@ -12,7 +12,7 @@ import WeSolveClientTaskCard from './we-solve-client-task-card';
 export function WeSolceClientTaskCarousel() {
   return (
     <div className="w-full">
-      <div className="xxs:px-0 px-4">
+      <div className="px-4 sm:px-0">
         <Carousel
           className="w-full"
           opts={{
@@ -22,7 +22,7 @@ export function WeSolceClientTaskCarousel() {
         >
           <CarouselContent>
             {CASES_CONFIG.map((item, index) => (
-              <CarouselItem className="xxs:basis-full basis-[88%]" key={index}>
+              <CarouselItem className="basis-[88%] sm:basis-full" key={index}>
                 <WeSolveClientTaskCard item={item} />
               </CarouselItem>
             ))}

@@ -1,13 +1,14 @@
+import { PAGES_CONFIG } from '@/config/pages-config';
 import { INSTAGRAM, TELEGRAM } from '@/constants/links-constants';
 
 export const HEADER_NAV = [
-  { title: 'Главная', link: '/' },
-  { title: '1с услуги', link: '/1c-services' },
-  { title: 'Услуги', link: '/services' },
-  { title: 'О компании', link: '/about' },
-  { title: 'Кейсы', link: '/case' },
-  { title: 'Блог', link: '/blog' },
-  { title: 'Контакты', link: '/contact' },
+  { title: 'Главная', link: PAGES_CONFIG.HOME },
+  { title: '1с услуги', link: PAGES_CONFIG.SERVICES_1C },
+  { title: 'Услуги', link: PAGES_CONFIG.SERVICES },
+  { title: 'О компании', link: PAGES_CONFIG.ABOUT },
+  { title: 'Кейсы', link: PAGES_CONFIG.CASES },
+  { title: 'Блог', link: PAGES_CONFIG.BLOG },
+  { title: 'Контакты', link: PAGES_CONFIG.CONTACTS },
 ];
 
 export const HEADER_LINKS = [

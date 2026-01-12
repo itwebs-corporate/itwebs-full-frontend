@@ -14,9 +14,9 @@ import {
 const RUSSIAN_NAME: Record<string, string> = {
   services: 'Услуги',
   about: 'О компании',
-  case: 'Кейсы',
+  cases: 'Кейсы',
   blog: 'Блог',
-  '1c-services': '1с услуги',
+  'services-1c': '1с услуги',
   contacts: 'Контакты',
 };
 export function BreadcrumbWithCustomSeparator() {

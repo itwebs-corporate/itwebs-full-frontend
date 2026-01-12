@@ -9,9 +9,6 @@ import Typography from '@/components/ui/typography/typography';
 
 export default function SeoTextBlock() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const toggleOpen = () => {
-    setIsOpen((prev) => !prev);
-  };
   return (
     <Section align="start" className="gap-[clamp(24px,1.6vw,32px)]" fullScreen={false}>
       <Typography variant="h2">
@@ -38,7 +35,9 @@ export default function SeoTextBlock() {
         Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
         software like Aldus PageMaker including versions of Lorem Ipsum.
       </Typography>
-      <Button onClick={toggleOpen}>{isOpen ? 'Скрыть' : 'Показать полностью'}</Button>
+      <Button onClick={() => setIsOpen((prev) => !prev)}>
+        {isOpen ? 'Скрыть' : 'Показать полностью'}
+      </Button>
     </Section>
   );
 }

@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 
 export const SectionVariants = cva('w-full', {
   variants: {
-    fullScreen: { true: 'xxs:min-h-screen xxs:max-h-screen xxs:min-h-dvh h-auto' },
+    fullScreen: { true: 'sm:min-h-screen sm:max-h-screen sm:min-h-dvh h-auto' },
     direction: { row: 'flex-row', col: 'flex-col' },
     justify: {
       start: 'justify-start',
