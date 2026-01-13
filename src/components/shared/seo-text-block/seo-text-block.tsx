@@ -10,7 +10,11 @@ import Typography from '@/components/ui/typography/typography';
 export default function SeoTextBlock() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <Section align="start" className="gap-[clamp(24px,1.6vw,32px)]" fullScreen={false}>
+    <Section
+      align="start"
+      className="mb-[clamp(86px,6vw,124px)] gap-[clamp(24px,1.6vw,32px)]"
+      fullScreen={false}
+    >
       <Typography variant="h2">
         <b className="text-primary">СЕО</b> текст
       </Typography>
