@@ -8,7 +8,7 @@ import { ServiceCard } from '@/config/services-mock-config';
 
 export default function AllNeedForYourTaskMobileCard({ card }: { card: ServiceCard }) {
   return (
-    <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(320px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]">
+    <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]">
       <div className="flex flex-col gap-4">
         <Typography className="text-left lowercase" variant="h3">
           {card.title}

@@ -45,22 +45,25 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
       className:
-        'absolute left-[28vw] top-[45%] hidden sm:block z-20 w-[clamp(72px,8vw,125px)] h-[clamp(74px,8.3vw,129px)]',
+        'absolute left-[clamp(10vw,20vw,28vw)] z-0 top-[clamp(55%,45%,45%)] hidden sm:block z-20 w-[clamp(72px,8vw,125px)] h-[clamp(74px,8.3vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[30vw] top-[30%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className:
+        'absolute right-[clamp(10vw,24vw,30vw)] top-[clamp(40%,35%,30%)] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[20px] top-[173px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className:
+        'absolute left-[5vw] xxs:left-[10vw] xs:left-[23vw] top-[70%] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[18px] top-[103px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[5vw] xxs:right-[15vw] xs:right-[25vw] top-[48%] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
