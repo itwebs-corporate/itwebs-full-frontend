@@ -30,7 +30,7 @@ export function BreadcrumbWithCustomSeparator() {
     return { href, label, isLast: idx === segments.length - 1 };
   });
   return (
-    <Breadcrumb>
+    <Breadcrumb className="pb-[32px]">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

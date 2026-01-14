@@ -20,12 +20,14 @@ function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.V
 
 function SelectTrigger({
   className,
+  classNameWrapperImage,
+  classNameImage,
   size = 'default',
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: 'sm' | 'default';
-}) {
+} & { classNameWrapperImage?: string; classNameImage?: string }) {
   return (
     <SelectPrimitive.Trigger
       className={cn(
@@ -38,8 +40,8 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <div className="flex-center rounded-full bg-white">
-          <ChevronDownIcon className="size-6 text-[#1734bd]" />
+        <div className={cn('flex-center rounded-full bg-white', classNameWrapperImage)}>
+          <ChevronDownIcon className={cn('size-6 text-[#1734bd]', classNameImage)} />
         </div>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
