@@ -3,6 +3,7 @@ import Link from 'next/link';
 import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import QuestionsBlock from '@/components/shared/questions-block/questions-block';
+import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
 import { PAGES_CONFIG } from '@/config/pages-config';
@@ -20,6 +21,7 @@ export default function Services1CPage() {
         </Button>
       </HeroBlock>
       <OurClientsBlock />
+      <WhatWeTasksSolveBlock />
       <QuestionsBlock />
     </>
   );
