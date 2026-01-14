@@ -3,10 +3,11 @@ import Typography from '@/components/ui/typography/typography';
 
 import { CardTypes } from '@/shared/types/global-types';
 
+import { OUR_CLIENTS_CONFIG } from './our-clients-config';
 import Card from '../../ui/card';
 
 // TODO: поменять название блока - так как не понятно
-export default function OurClientsBlock({ data }: { data: CardTypes[] }) {
+export default function OurClientsBlock({ data = OUR_CLIENTS_CONFIG }: { data?: CardTypes[] }) {
   return (
     <Section className="bg-background" fullScreen={false}>
       <Typography variant="h2">
