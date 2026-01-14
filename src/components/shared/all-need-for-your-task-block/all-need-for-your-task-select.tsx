@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import {
@@ -29,8 +28,8 @@ export default function AllNeedForYourTaskSelect() {
       </SelectTrigger>
       <SelectContent align="start" position="popper" side="bottom">
         {SERVICES_TABS.map((item) => (
-          <SelectItem key={item.slug} value={item.title}>
-            <Link href={item.slug}>{item.title}</Link>
+          <SelectItem key={item.slug} value={item.slug}>
+            {item.title}
           </SelectItem>
         ))}
       </SelectContent>
