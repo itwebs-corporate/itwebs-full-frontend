@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import QuestionsBlock from '@/components/shared/questions-block/questions-block';
 import { Button } from '@/components/ui/button';
@@ -18,6 +19,7 @@ export default function Services1CPage() {
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>
         </Button>
       </HeroBlock>
+      <OurClientsBlock />
       <QuestionsBlock />
     </>
   );

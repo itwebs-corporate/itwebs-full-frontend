@@ -1,9 +1,8 @@
 import Link from 'next/link';
 
+import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
-import OurClientsBlock from '@/components/shared/our-clients-block/our-clients-block';
-import { OUR_CLIENTS_CONFIG } from '@/components/shared/our-clients-block/our-clients-config';
 import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
 import SeoTextBlock from '@/components/shared/seo-text-block/seo-text-block';
 import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
@@ -26,7 +25,7 @@ export default function HomePage() {
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>
       </HeroBlock>
-      <OurClientsBlock data={OUR_CLIENTS_CONFIG} />
+      <OurClientsBlock />
       <OurTechBlock />
       <WeSolveClientTaskBlock />
       <HowWeWorkBlock />
