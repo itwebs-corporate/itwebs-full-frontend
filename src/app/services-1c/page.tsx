@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
+import HowWeWork1cBlock from '@/components/shared/how-we-work-1c/how-we-work-1c-block';
 import QuestionsBlock from '@/components/shared/questions-block/questions-block';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,7 @@ export default function Services1CPage() {
       </HeroBlock>
       <OurClientsBlock />
       <WhatWeTasksSolveBlock />
+      <HowWeWork1cBlock />
       <QuestionsBlock />
     </>
   );
