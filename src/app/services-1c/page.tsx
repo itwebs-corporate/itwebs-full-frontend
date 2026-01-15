@@ -13,7 +13,13 @@ export default function Services1CPage() {
     <>
       <HeroBlock
         description="Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps."
-        heading="Программирование системы 1С Бухгалтерия"
+        heading={
+          <>
+            Программирование
+            <br />
+            системы 1С Бухгалтерия
+          </>
+        }
       >
         <Button variant="secondary">Записаться</Button>
         <Button asChild variant="gray">

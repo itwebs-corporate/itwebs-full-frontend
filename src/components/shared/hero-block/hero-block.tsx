@@ -7,13 +7,12 @@ import { cn } from '@/lib/utils';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import HeroAssets from './hero-assets';
 import HeroBlockTrack from './hero-block-track';
 import HeroHeading from './hero-heading';
 import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 
 type HeroBlockProps = {
-  heading: string;
+  heading: string | ReactNode;
   description?: string;
   fullScreen?: boolean;
   children?: ReactNode;
@@ -31,7 +30,6 @@ export default function HeroBlock({
       fullScreen={fullScreen}
     >
       <BreadcrumbWithCustomSeparator />
-      <HeroAssets />
       <HeroHeading>{heading}</HeroHeading>
       {description && (
         <Typography className="pt-[clamp(14px,5vw,36px)]" variant="p1">

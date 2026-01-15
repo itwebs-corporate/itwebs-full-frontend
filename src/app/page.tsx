@@ -16,7 +16,13 @@ export default function HomePage() {
     <>
       <HeroBlock
         description="Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps"
-        heading="Студия веб-разработки ITWEBS."
+        heading={
+          <>
+            Студия веб-
+            <br />
+            разработки ITWEBS.
+          </>
+        }
       >
         <Button asChild variant="secondary">
           <Link href={PAGES_CONFIG.SERVICES_1C}>Консультация 1С</Link>
