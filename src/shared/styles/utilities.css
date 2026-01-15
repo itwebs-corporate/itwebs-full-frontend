@@ -17,4 +17,11 @@
   .form {
     @apply flex w-full flex-col gap-y-4 border bg-transparent p-6 shadow-sm;
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

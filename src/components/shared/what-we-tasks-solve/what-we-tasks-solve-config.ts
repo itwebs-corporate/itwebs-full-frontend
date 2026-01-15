@@ -1,4 +1,4 @@
-type TasksSolveCard = {
+export type TasksSolveCard = {
   id: number;
   title: string;
   description: string;
