@@ -9,7 +9,7 @@ import Card from '../../ui/card';
 // TODO: поменять название блока - так как не понятно
 export default function OurClientsBlock({ data = OUR_CLIENTS_CONFIG }: { data?: CardTypes[] }) {
   return (
-    <Section className="bg-background" fullScreen={false}>
+    <Section className="bg-background">
       <Typography variant="h2">
         <b className="text-primary">Для кого</b> мы работаем
       </Typography>

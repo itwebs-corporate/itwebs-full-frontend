@@ -7,7 +7,7 @@ import { WHY_CHOOSE_CONFIG } from './why-choose-block-config';
 
 export default function WhyChooseBlock() {
   return (
-    <Section className="bg-background relative" fullScreen={false}>
+    <Section className="bg-background relative">
       <div className="absolute top-1/2 left-1/3 z-20 hidden -translate-x-1/4 translate-y-[40%] xl:block">
         <Media
           className="pointer-events-none h-[65px] w-[65px]"

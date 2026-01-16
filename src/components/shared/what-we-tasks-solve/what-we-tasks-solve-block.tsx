@@ -6,10 +6,7 @@ import ClientWrapper from './client-wrapper';
 
 export default function WhatWeTasksSolveBlock() {
   return (
-    <Section
-      className="bg-primary relative gap-[24px] rounded-[24px] py-[clamp(86px,6vw,124px)] sm:gap-[48px]"
-      fullScreen={false}
-    >
+    <Section className="bg-primary relative gap-[24px] rounded-[24px] py-[clamp(86px,6vw,124px)] sm:gap-[48px]">
       <Typography className="text-white" variant="h2">
         <b className="opacity-80">Какие</b> задачи мы решаем
       </Typography>

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export default function AboutPage() {
   return (
-    <HeroBlock fullScreen={false} heading="Немного о ITWEBS">
+    <HeroBlock heading="Немного о ITWEBS">
       <Button variant="secondary">Обсудить задачу</Button>
     </HeroBlock>
   );

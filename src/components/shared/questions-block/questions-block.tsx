@@ -10,10 +10,7 @@ import Typography from '@/components/ui/typography/typography';
 import { MOCK_ACCORDION } from './questions-config';
 export default function QuestionsBlock() {
   return (
-    <Section
-      className="bg-primary gap-[clamp(24px,4vw,48px)] rounded-[24px] pt-[clamp(86px,7vw,124px)] pb-[clamp(86px,10vw,148px)]"
-      fullScreen={false}
-    >
+    <Section className="bg-primary gap-[clamp(24px,4vw,48px)] rounded-[24px] pt-[clamp(86px,7vw,124px)] pb-[clamp(86px,10vw,148px)]">
       <Typography className="text-white" variant="h2">
         <b className="opacity-80">Вопросы</b> которые <br className="block sm:hidden" /> часто
         задают

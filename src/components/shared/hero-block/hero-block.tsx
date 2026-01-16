@@ -21,7 +21,7 @@ type HeroBlockProps = {
 export default function HeroBlock({
   heading,
   description,
-  fullScreen = true,
+  fullScreen = false,
   children,
 }: HeroBlockProps) {
   return (
