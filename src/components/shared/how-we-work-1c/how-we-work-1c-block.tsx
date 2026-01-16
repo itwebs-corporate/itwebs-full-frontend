@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -11,15 +11,16 @@ import { HOW_WE_WORK_1C_CARDS } from './how-we-work-1c-config';
 import HowWeWorkBlockCard from '../how-we-work/how-we-work-block-card';
 
 export default function HowWeWork1cBlock() {
-  const [currentCard, setCurrentCard] = useState<number>(0);
-  const prevCard = () => {
-    if (currentCard < 0) return;
-    setCurrentCard((v) => v - 1);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const handlerScroll = (direction: 'prev' | 'next') => {
+    const el = ref.current;
+    if (!el) return;
+    const step = Math.round(el.clientWidth * 0.9);
+    const shift = direction === 'next' ? step : -step;
+    el.scrollBy({ left: shift, behavior: 'smooth' });
   };
-  const nextCard = () => {
-    if (currentCard === HOW_WE_WORK_1C_CARDS.length) return;
-    setCurrentCard((v) => v + 1);
-  };
+
   return (
     <Section className="gap-[48px]">
       <Typography variant="h2">
@@ -28,17 +29,20 @@ export default function HowWeWork1cBlock() {
       <div className="relative w-full">
         <div
           className="border-primary absolute top-1/2 left-[-32px] z-20 hidden h-[64px] w-[64px] items-center justify-center rounded-full border bg-white sm:flex"
-          onClick={prevCard}
+          onClick={() => handlerScroll('prev')}
         >
           <Image alt="arrow" height={20} src="/arrow/arrow-left.svg" width={24} />
         </div>
         <div
           className="border-primary absolute top-1/2 right-[-32px] z-20 hidden h-[64px] w-[64px] items-center justify-center rounded-full border bg-white sm:flex"
-          onClick={nextCard}
+          onClick={() => handlerScroll('next')}
         >
           <Image alt="arrow" height={20} src="/arrow/arrow-right.svg" width={24} />
         </div>
-        <div className="no-scrollbar flex w-full max-w-full min-w-0 justify-start overflow-x-auto overflow-y-hidden sm:justify-center sm:pb-2">
+        <div
+          className="no-scrollbar flex w-full max-w-full min-w-0 justify-center overflow-x-auto overflow-y-hidden sm:justify-start sm:pb-2"
+          ref={ref}
+        >
           <ul className="flex w-max flex-col flex-nowrap gap-[clamp(8px,1.5vw,20px)] sm:flex-row">
             {HOW_WE_WORK_1C_CARDS.map((item, index) => (
               <HowWeWorkBlockCard
