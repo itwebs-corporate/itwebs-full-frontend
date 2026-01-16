@@ -6,12 +6,12 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/sharp.svg',
       alt: 'Sharp',
-      className: 'absolute left-[4%] top-[22%] hidden sm:block z-20 w-[109px] h-[124px]',
+      className: 'absolute left-[13vw] top-[-4vh] hidden sm:block z-20 w-[109px] h-[124px]',
     },
     {
       src: '/hero/stars-group.svg',
       alt: 'Group-star',
-      className: 'absolute right-[5%] top-[15%] hidden sm:block z-20 w-[161px] h-[128px]',
+      className: 'absolute right-[11vw] top-[-6vh] hidden sm:block z-20 w-[161px] h-[128px] z-10',
     },
     {
       src: '/hero/arrow-zig-zag.svg',
