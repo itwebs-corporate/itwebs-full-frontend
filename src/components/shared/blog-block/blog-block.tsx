@@ -3,37 +3,60 @@ import { useMemo, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { Media } from '@/components/ui/media';
 import Section from '@/components/ui/section/section';
 
 import BlogCard from './blog-card';
 import BlogCardMobile from './blog-card-mobile';
 import { BLOG_CONFIG } from './blog-config';
-// TODO: подправить Hero assets
-// TODO: сделать пагинацию, сделать карточки адаптивными, сделать так чтобы карточки не выходили за пределы контейнера
-// TODO: написать Серёге
-const LIST_SIZE = 9;
-
+import BlogPaginationArrow from './blog-pagination-arrow';
+// TODO: иногда пагинация ломается
 export default function BlogBlock() {
-  const [list, setList] = useState(0);
-  const totalLists = Math.max(1, Math.ceil(BLOG_CONFIG.length / LIST_SIZE));
-  const canPrev = list > 0;
-  const canNext = list < totalLists - 1;
+  const [page, setPage] = useState(0);
+  const PAGE_SIZE = 12;
+  // const is3XL = useMediaQuery('(min-width: 1920px)');
+  // const isMobile = useMediaQuery('(min-width: 768px))
+  // const PAGE_SIZE = useMemo(() => {
+  // if(is3XL) return 12
+  // if(isMobile) return 6
+  // return 9
+  // }, [is3Xl, isMobile]);
 
+  const totalPage = Math.max(1, Math.ceil(BLOG_CONFIG.length / PAGE_SIZE));
+  const canPrev = page > 0;
+  const canNext = page < totalPage - 1;
   const data = useMemo(() => {
-    const start = list * LIST_SIZE;
-    const end = start + LIST_SIZE;
+    const start = page * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
     return BLOG_CONFIG.slice(start, end);
-  }, [list]);
+  }, [page, PAGE_SIZE]);
 
-  const goToList = (nextList: number) => {
-    const clamped = Math.min(Math.max(nextList, 0), totalLists - 1);
-    setList(clamped);
+  const goToPage = (nextPage: number) => {
+    const clamped = Math.min(Math.max(nextPage, 0), totalPage - 1);
+    setPage(clamped);
   };
+  const pagesToRender = useMemo(() => {
+    if (totalPage <= 7) {
+      return Array.from({ length: totalPage }, (_, i) => i); // все страницы
+    }
+    const first = 0;
+    const second = 1;
+    const last = totalPage - 1;
+    const beforeLast = totalPage - 2;
+    // если мы рядом с началом — показываем первые 4, троеточие, последние 2
+    if (page <= 2) {
+      return [0, 1, 2, 3, 'dots', beforeLast, last] as const;
+    }
+    // если мы рядом с концом — показываем первые 2, троеточие, последние 4
+    if (page >= totalPage - 3) {
+      return [first, second, 'dots', totalPage - 4, totalPage - 3, beforeLast, last] as const;
+    }
+    // середина — первые 2, троеточие, текущая, троеточие, последние 2
+    return [first, second, 'dots', page, 'dots', beforeLast, last] as const;
+  }, [page, totalPage]);
 
   return (
-    <Section className="gap-[32px]">
-      <ul className="grid grid-cols-1 gap-[clamp(14px,2vw,20px)] sm:grid-cols-3 2xl:grid-cols-4">
+    <Section className="gap-[32px]" fullScreen={false}>
+      <ul className="3xl:grid-cols-4 grid grid-cols-1 gap-[clamp(14px,2vw,20px)] sm:grid-cols-2 2xl:grid-cols-3">
         {data.map((card, index) => {
           return index === 0 ? (
             <BlogCardMobile card={card} key={card.id} />
@@ -42,56 +65,38 @@ export default function BlogBlock() {
           );
         })}
       </ul>
-      <div className="flex w-full items-center justify-between">
+      <div className="3xl:max-w-[1800px] flex w-full max-w-[332px] items-center justify-between sm:max-w-[1000px] 2xl:max-w-[1350px]">
         <div className="flex">
-          {Array.from({ length: Math.ceil(BLOG_CONFIG.length / LIST_SIZE) }, (_, i) => i).map(
-            (item, index) => {
-              const isActiveList = list === index;
+          {pagesToRender.map((item, index) => {
+            if (item === 'dots') {
               return (
-                <button
-                  className={cn(
-                    'flex-center font-second-family h-[clamp(32px,3vw,42px)] w-[clamp(32px,3vw,42px)] rounded-full text-[16px]',
-                    isActiveList ? 'bg-primary text-white' : 'text-foreground3 bg-transparent'
-                  )}
-                  key={item}
-                  onClick={() => goToList(index)}
-                  type="button"
+                <span
+                  className="flex-center font-second-family text-foreground3 h-[clamp(32px,3vw,42px)] w-[clamp(32px,3vw,42px)] rounded-full text-[16px]"
+                  key={`dots-${index}`}
                 >
-                  {item + 1}
-                </button>
+                  …
+                </span>
               );
             }
-          )}
+            const isActivePage = page === index;
+            return (
+              <button
+                className={cn(
+                  'flex-center font-second-family h-[clamp(32px,3vw,42px)] w-[clamp(32px,3vw,42px)] rounded-full text-[16px]',
+                  isActivePage ? 'bg-primary text-white' : 'text-foreground3 bg-transparent'
+                )}
+                key={`page-${item}`}
+                onClick={() => goToPage(item)}
+                type="button"
+              >
+                {item + 1}
+              </button>
+            );
+          })}
         </div>
         <div className="flex">
-          <button
-            className={cn(
-              'flex-center h-[42px] w-[42px] rounded-full border border-[#dce2fe] bg-white transition-all',
-              canPrev ? 'hover:opacity-80' : 'cursor-not-allowed opacity-40'
-            )}
-            disabled={!canPrev}
-            onClick={() => goToList(list - 1)}
-            type="button"
-          >
-            <Media
-              className="flex-center h-[24px] w-[12px]"
-              image={{ src: '/arrow/arrow-left-without-stick.svg', alt: 'arrow-left' }}
-            />
-          </button>
-          <button
-            className={cn(
-              'flex-center h-[42px] w-[42px] rounded-full border border-[#dce2fe] bg-white transition-all',
-              canNext ? 'hover:opacity-80' : 'cursor-not-allowed opacity-40'
-            )}
-            disabled={!canNext}
-            onClick={() => goToList(list + 1)}
-            type="button"
-          >
-            <Media
-              className="flex-center h-[24px] w-[12px]"
-              image={{ src: '/arrow/arrow-right-without-stick.svg', alt: 'arrow-right' }}
-            />
-          </button>
+          <BlogPaginationArrow disabled={!canPrev} goToPage={goToPage} isLeft={true} page={page} />
+          <BlogPaginationArrow disabled={!canNext} goToPage={goToPage} isLeft={false} page={page} />
         </div>
       </div>
     </Section>

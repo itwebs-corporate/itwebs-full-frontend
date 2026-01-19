@@ -20,7 +20,7 @@ export const BLOG_CONFIG: BlogCard[] = Array.from({ length: 30 }, (_, i) => {
     id: `1c-${n}`,
     title: BASE_TITLE,
     description: BASE_DESCRIPTION,
-    href: `/services/1c/programming-${n}`,
+    href: `/blog/programming-${n}`,
     image: { src: '/default/card-rect.png', alt: 'preview' },
   };
 });
