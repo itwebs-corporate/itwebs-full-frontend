@@ -14,10 +14,7 @@ import FooterTrack from './footer-track';
 
 export default function Footer() {
   return (
-    <Section
-      className="bg-foreground3 mt-[clamp(86px,6vw,124px)] flex flex-col rounded-t-[24px]"
-      fullScreen={false}
-    >
+    <Section className="bg-foreground3 flex flex-col rounded-t-[24px]">
       <Typography className="mt-[86px] text-[clamp(24px,2vw,48px)]" variant="h1">
         Берём IT-задачи на себя — понятно и надёжно
       </Typography>

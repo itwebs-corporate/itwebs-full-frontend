@@ -15,7 +15,7 @@ export default async function ServicesPage({ searchParams }: Props) {
   const cards = SERVICES_CARDS[key as CardsKey] ?? SERVICES_CARDS['services-1c'];
   return (
     <>
-      <HeroBlock fullScreen={false} heading="Услуги ITWEBS" />
+      <HeroBlock heading="Услуги ITWEBS" />
       <AllNeedForYourTaskBlock cards={cards} searchParams={key} />
     </>
   );

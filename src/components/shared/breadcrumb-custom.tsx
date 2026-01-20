@@ -38,7 +38,7 @@ export function BreadcrumbWithCustomSeparator({
     return { href, label, isLast: idx === segments.length - 1 };
   });
   return (
-    <Breadcrumb className={cn('pb-[32px]', className)}>
+    <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
