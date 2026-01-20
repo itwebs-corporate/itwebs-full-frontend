@@ -9,7 +9,7 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
         <Media
           className="sm:h-[290px] sm:w-[890px]"
           image={{
-            src: article.image.src ?? '/public/default/card-article.png',
+            src: '/public/default/card-article.png',
             alt: article.image?.alt,
           }}
         />
