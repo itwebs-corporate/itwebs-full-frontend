@@ -19,7 +19,7 @@ export default function AllNeedForYourTaskBlock({
 }) {
   const activeTab = searchParams;
   return (
-    <Section fullScreen={false}>
+    <Section>
       <Typography variant="h2">
         Всё, что нужно <br className="block sm:hidden" /> для
         <b className="text-primary"> вашей задачи</b>

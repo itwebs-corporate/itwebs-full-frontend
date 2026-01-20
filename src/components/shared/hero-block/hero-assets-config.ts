@@ -6,12 +6,12 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/sharp.svg',
       alt: 'Sharp',
-      className: 'absolute left-[4%] top-[22%] hidden sm:block z-20 w-[109px] h-[124px]',
+      className: 'absolute left-[13vw] top-[-4vh] hidden sm:block z-20 w-[109px] h-[124px]',
     },
     {
       src: '/hero/stars-group.svg',
       alt: 'Group-star',
-      className: 'absolute right-[5%] top-[15%] hidden sm:block z-20 w-[161px] h-[128px]',
+      className: 'absolute right-[11vw] top-[-6vh] hidden sm:block z-20 w-[161px] h-[128px] z-10',
     },
     {
       src: '/hero/arrow-zig-zag.svg',
@@ -71,22 +71,26 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/sharp.svg',
       alt: 'Sharp',
-      className: 'absolute left-[4%] top-[22%] hidden sm:block z-20 w-[109px] h-[124px]',
+      className:
+        'absolute left-[0%] md:left-[0.5%] 1xl:left-[1%] 2xl:left-[3.5%] 3xl:left-[4.5%] top-[-36%] lg:top-[-34%] xl:top-[-30%] 2xl:top-[-25%] 3xl:top-[-22%] hidden sm:block z-20 w-[clamp(72px,8vw,109px)] h-[clamp(82px,9vw,124px)]',
     },
     {
       src: '/hero/stars-group.svg',
       alt: 'Group-star',
-      className: 'absolute right-[5%] top-[15%] hidden sm:block z-20 w-[161px] h-[128px]',
+      className:
+        'absolute right-[-5vw] top-[-35%] md:right-[-3vw] md:top-[-30%] 2xl:right-[-1vw] 2xl:top-[-23%] hidden sm:block z-20 w-[clamp(96px,10vw,161px)] h-[clamp(76px,8vw,128px)]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[20px] top-[83px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className:
+        'absolute left-[0vw] xs:left-[2vw] top-[-6vh] xs:top-[-3vh] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[18px] top-[103px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[-1vw] xs:right-[1vw]  top-[-4vh] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 

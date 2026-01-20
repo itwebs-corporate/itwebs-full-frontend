@@ -8,7 +8,7 @@ import { WORK_STEPS_CONFIG } from './how-we-work-config';
 
 export default function HowWeWorkBlock() {
   return (
-    <Section className="bg-primary py-container relative z-10 rounded-[48px]" fullScreen={false}>
+    <Section className="bg-primary py-container relative z-10 rounded-[48px]">
       <Image alt="bg" className="z-0 opacity-10" fill src="/how-we-work-background.svg" />
       <div className="absolute top-0 z-10 h-full w-full bg-linear-to-b from-[#183FF6]/0 to-[#183FF6]" />
       <Typography className="z-20 text-white" variant="h2">

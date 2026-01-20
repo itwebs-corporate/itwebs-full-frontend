@@ -10,7 +10,7 @@ import { WeSolceClientTaskCarousel } from './we-solve-client-task-carousel';
 
 export default function WeSolveClientTaskBlock() {
   return (
-    <Section className="bg-background gap-[clamp(32px,2.2vw,48px)]" fullScreen={false}>
+    <Section className="bg-background gap-[clamp(32px,2.2vw,48px)]">
       <Typography variant="h2">
         <b className="text-primary">Мы решаем</b> задачи <br className="inline sm:hidden" />
         клиентов
