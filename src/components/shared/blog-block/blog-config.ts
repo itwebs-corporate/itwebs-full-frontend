@@ -4,7 +4,7 @@ export type BlogCard = {
   description: string;
   href?: string;
   image?: {
-    src: string;
+    src: string | undefined;
     alt: string;
   };
 };
@@ -21,6 +21,6 @@ export const BLOG_CONFIG: BlogCard[] = Array.from({ length: 30 }, (_, i) => {
     title: BASE_TITLE,
     description: BASE_DESCRIPTION,
     href: `/blog/programming-${n}`,
-    image: { src: '/default/card-rect.png', alt: 'preview' },
+    image: { src: undefined, alt: 'preview' },
   };
 });

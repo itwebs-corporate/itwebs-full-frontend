@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { cn } from '@/lib/utils';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,7 +21,13 @@ const RUSSIAN_NAME: Record<string, string> = {
   'services-1c': '1с услуги',
   contacts: 'Контакты',
 };
-export function BreadcrumbWithCustomSeparator() {
+export function BreadcrumbWithCustomSeparator({
+  nestedRoute,
+  className,
+}: {
+  nestedRoute?: string;
+  className?: string;
+}) {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length === 0) return null;
@@ -30,7 +38,7 @@ export function BreadcrumbWithCustomSeparator() {
     return { href, label, isLast: idx === segments.length - 1 };
   });
   return (
-    <Breadcrumb className="pb-[32px]">
+    <Breadcrumb className={cn('pb-[32px]', className)}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
@@ -53,6 +61,9 @@ export function BreadcrumbWithCustomSeparator() {
             </BreadcrumbItem>
           </span>
         ))}
+        <BreadcrumbItem>
+          {nestedRoute && <BreadcrumbPage>{nestedRoute}</BreadcrumbPage>}
+        </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
   );

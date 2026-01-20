@@ -11,7 +11,7 @@ export default function BlogCardMobile({ card }: { card: TBlogCard }) {
       {card.image && (
         <Media
           className="h-[clamp(129,20vw,165px)] w-[clamp(304px,55vw,387px)]"
-          image={{ src: card.image.src, alt: card.image.alt }}
+          image={{ src: card.image.src ?? '/default/card-rect.png', alt: card.image.alt }}
         />
       )}
       <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
