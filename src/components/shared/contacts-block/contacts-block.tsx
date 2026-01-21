@@ -11,16 +11,19 @@ export default function ContactsBlock() {
       <Typography variant="h2">
         <b className="text-primary">Наши</b> контактные данные
       </Typography>
-      <ul className="font-second-family 3xl:grid-cols-3 grid grid-cols-1 gap-[clamp(14px,2vw,20px)] xl:grid-cols-2">
-        {CONTACT_CARDS.map((card) => (
-          <ContactsCard card={card} key={card.id} />
-        ))}
-      </ul>
-      <ul className="flex flex-wrap gap-x-[16px] gap-y-[32px] sm:gap-[20px]">
-        {LINKS_CONFIG.map((item) => (
-          <ContactsLinkCard item={item} key={item.id} />
-        ))}
-      </ul>
+      <div className="flex flex-col gap-[32px] sm:gap-[20px]">
+        <ul className="font-second-family order-2 flex flex-wrap justify-center gap-[clamp(14px,2vw,20px)] sm:order-1">
+          {CONTACT_CARDS.map((card) => (
+            <ContactsCard card={card} key={card.id} />
+          ))}
+        </ul>
+        <ul className="order-1 flex flex-wrap justify-center gap-x-[16px] gap-y-[32px] sm:order-2 sm:gap-[20px]">
+          {LINKS_CONFIG.map((item) => (
+            <ContactsLinkCard item={item} key={item.id} />
+          ))}
+          <li aria-hidden className="w-[clamp(158px,32vw,344px)] sm:hidden" />
+        </ul>
+      </div>
     </Section>
   );
 }

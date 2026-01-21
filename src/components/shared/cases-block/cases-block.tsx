@@ -11,7 +11,7 @@ export default function CasesBlock() {
         <b className="text-primary">Как мы</b> решаем <br className="block sm:hidden" /> задачи
         клиентов
       </Typography>
-      <ul className="flex flex-col gap-[clamp(14px,6vw,48px)]">
+      <ul className="flex max-w-[1800px] flex-col gap-[clamp(14px,6vw,48px)]">
         {CASES_CONFIG.map((card) => (
           <WeSolveClientTaskCard item={card} key={card.id} />
         ))}
