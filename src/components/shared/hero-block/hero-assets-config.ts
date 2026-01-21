@@ -139,22 +139,23 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-10vw] top-[0] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className: 'absolute right-[-8vw] top-[-9vh] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[40px] top-[200px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className: 'absolute left-[-8vw] top-[4vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[45px] top-[118px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className: 'absolute right-[-9vw] top-[-6vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
@@ -162,22 +163,23 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-10vw] top-[0] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className: 'absolute right-[-8vw] top-[-9vh] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[12px] top-[195px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className: 'absolute left-[-8vw] top-[4vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[9px] top-[131px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className: 'absolute right-[-9vw] top-[-6vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 };

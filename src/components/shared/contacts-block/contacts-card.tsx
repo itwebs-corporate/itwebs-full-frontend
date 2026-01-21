@@ -27,7 +27,7 @@ export default function ContactsCard({ card }: { card: ContactCard }) {
                 {subCard.value}
               </Link>
             ) : (
-              <div className="text-foreground text-[16px] leading-[140%] font-bold">
+              <div className="text-foreground3 text-[16px] leading-[140%] font-bold">
                 {subCard.value}
               </div>
             )}
