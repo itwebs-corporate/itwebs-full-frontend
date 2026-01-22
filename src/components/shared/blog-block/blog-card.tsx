@@ -1,16 +1,23 @@
 import Link from 'next/link';
 
+import { cn } from '@/lib/utils';
+
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
 import { BlogCard as TBlogCard } from './blog-config';
 
-export default function BlogCard({ card }: { card: TBlogCard }) {
+export default function BlogCard({ card, className }: { card: TBlogCard; className?: string }) {
   return (
-    <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]">
+    <div
+      className={cn(
+        'z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
+        className
+      )}
+    >
       {card.image && (
         <Media
-          className="block h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:hidden"
+          className="block h-[clamp(129px,20vw,165px)] w-full min-w-[clamp(304px,55vw,387px)] sm:hidden"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}
@@ -39,7 +46,7 @@ export default function BlogCard({ card }: { card: TBlogCard }) {
 
       {card.image && (
         <Media
-          className="hidden h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:block"
+          className="hidden h-[clamp(129px,20vw,165px)] w-full min-w-[clamp(304px,55vw,387px)] sm:block"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}
