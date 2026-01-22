@@ -29,7 +29,7 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
         />
       </div>
 
-      <div className="relative mx-auto mt-[24px] w-full max-w-[clamp(332px,80vw,890px)] sm:mt-0">
+      <div className="relative mx-auto mt-[24px] w-full max-w-[clamp(332px,70vw,890px)] sm:mt-0">
         <ArticleAside article={article} sectionRefs={sectionRefs} />
         {/* Article card: */}
         <div className="mt-[24px] w-full max-w-[clamp(332px,80vw,890px)] rounded-[20px] bg-white">

@@ -32,8 +32,9 @@ export default function ArticleAside({
       block: 'start',
     });
   };
+  // TODO: подправить top position
   return (
-    <aside className="z-20 mt-[24px] rounded-[20px] bg-white px-[clamp(18px,2.5vw,24px)] pt-[20px] pb-[clamp(20px,2vw,24px)] sm:fixed sm:top-[clamp(96px,10vw,140px)] sm:left-1/2 sm:mt-0 sm:w-[332px] sm:translate-x-[calc(445px+24px)]">
+    <aside className="shadow-default z-20 mt-[24px] w-[332px] rounded-[20px] bg-white px-[clamp(18px,2.5vw,24px)] pt-[20px] pb-[clamp(20px,2vw,24px)] sm:fixed sm:top-[11.5vw] sm:left-1/2 sm:mt-0 sm:w-[284px] sm:translate-x-[calc(445px+24px)]">
       <Typography variant="h4">Разделы</Typography>
 
       <ul className="mt-[16px] flex w-full flex-col gap-[clamp(16px,2vw,18px)]">

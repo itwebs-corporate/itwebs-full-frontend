@@ -7,6 +7,8 @@ export const typographyVariants = cva('antialiased tracking-normal', {
       h2: 'font-family font-bold leading-[100%]! text-[clamp(24px,4.5vw,72px)] text-[#383838] text-center',
       h3: 'font-family font-bold leading-[100%]! text-[clamp(20px,2.6vw,32px)] text-[#151515]',
       h4: 'font-family font-bold leading-[100%]! text-[clamp(16px,2.6vw,24px)] text-[#151515]',
+      'p-big':
+        'font-family font-bold text-[#383838] sm:text-[48px] text-[16px] leading-[120%] text-center',
       p1: 'font-second-family leading-[140%] text-[clamp(14px,1.6vw,24px)] text-center',
       p2: 'font-second-family leading-[140%] text-[#383838]/80 text-[clamp(14px,1.1vw,16px)]',
     },
