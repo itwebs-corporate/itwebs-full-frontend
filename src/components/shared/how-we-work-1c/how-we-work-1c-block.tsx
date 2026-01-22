@@ -24,7 +24,7 @@ export default function HowWeWork1cBlock() {
   return (
     <Section className="gap-[48px]">
       <Typography variant="h2">
-        <b className="text-primary">Как</b> мы работаем
+        <b className="text-primary">Как</b> мы работаем в этом напровлении
       </Typography>
       <div className="relative w-full">
         <div

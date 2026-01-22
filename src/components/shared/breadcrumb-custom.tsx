@@ -24,9 +24,11 @@ const RUSSIAN_NAME: Record<string, string> = {
 export function BreadcrumbWithCustomSeparator({
   nestedRoute,
   className,
+  color,
 }: {
   nestedRoute?: string;
   className?: string;
+  color?: string;
 }) {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
@@ -40,7 +42,7 @@ export function BreadcrumbWithCustomSeparator({
   return (
     <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
       <BreadcrumbList>
-        <BreadcrumbItem>
+        <BreadcrumbItem className={color}>
           <BreadcrumbLink asChild>
             <Link href="/">Главная</Link>
           </BreadcrumbLink>
@@ -48,9 +50,9 @@ export function BreadcrumbWithCustomSeparator({
 
         {crumbs.map((c) => (
           <span className="inline-flex items-center gap-2" key={c.href}>
-            <BreadcrumbSeparator>/</BreadcrumbSeparator>
+            <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
 
-            <BreadcrumbItem>
+            <BreadcrumbItem className={color}>
               {c.isLast ? (
                 <BreadcrumbPage>{c.label}</BreadcrumbPage>
               ) : (
@@ -62,7 +64,7 @@ export function BreadcrumbWithCustomSeparator({
           </span>
         ))}
         <BreadcrumbItem>
-          {nestedRoute && <BreadcrumbPage>{nestedRoute}</BreadcrumbPage>}
+          {nestedRoute && <BreadcrumbPage className={color}>{nestedRoute}</BreadcrumbPage>}
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

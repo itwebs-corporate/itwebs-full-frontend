@@ -15,8 +15,7 @@ export default function BlogBlock() {
   const [page, setPage] = useState(0);
 
   const is3XL = useMediaQuery('(min-width: 1920px)');
-  const isMobile = useMediaQuery('(min-width: 768px)');
-
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const PAGE_SIZE = useMemo(() => {
     if (is3XL) return 12;
     if (isMobile) return 6;
@@ -80,7 +79,7 @@ export default function BlogBlock() {
                 </span>
               );
             }
-            const isActivePage = page === index;
+            const isActivePage = page === item;
             return (
               <button
                 className={cn(

@@ -10,7 +10,7 @@ export default function BlogCard({ card }: { card: TBlogCard }) {
     <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]">
       {card.image && (
         <Media
-          className="block h-[clamp(129,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:hidden"
+          className="block h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:hidden"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}
@@ -39,7 +39,7 @@ export default function BlogCard({ card }: { card: TBlogCard }) {
 
       {card.image && (
         <Media
-          className="hidden h-[clamp(129,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:block"
+          className="hidden h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:block"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}

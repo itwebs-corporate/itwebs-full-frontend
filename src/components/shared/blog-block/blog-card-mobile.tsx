@@ -10,7 +10,7 @@ export default function BlogCardMobile({ card }: { card: TBlogCard }) {
     <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[14px] sm:p-[24px]">
       {card.image && (
         <Media
-          className="h-[clamp(129,20vw,165px)] w-[clamp(304px,55vw,387px)]"
+          className="h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)]"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}
