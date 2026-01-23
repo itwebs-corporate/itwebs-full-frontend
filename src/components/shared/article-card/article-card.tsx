@@ -29,90 +29,92 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
         />
       </div>
 
-      <div className="relative mx-auto mt-[24px] w-full max-w-[clamp(332px,70vw,890px)] sm:mt-0">
-        <ArticleAside article={article} sectionRefs={sectionRefs} />
-        {/* Article card: */}
-        <div className="mt-[24px] w-full max-w-[clamp(332px,80vw,890px)] rounded-[20px] bg-white">
-          <Media
-            className="h-[108px] w-full max-w-[clamp(332px,80vw,890px)] sm:h-[290px]"
-            image={{
-              src: article.imageArticle.src,
-              alt: article.imageArticle.alt,
-            }}
-          />
-          <div className="flex flex-col gap-[clamp(24px,2.5vw,36px)] px-[clamp(14px,2.5vw,24px)] pt-[clamp(14px,3vw,36px)] pb-[clamp(24px,2vw,32px)]">
-            <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
-              <Typography
-                className="text-foreground3 scroll-mt-[120px]"
-                ref={(el) => {
-                  sectionRefs.current.title = el;
-                }}
-                variant="h3"
-              >
-                {article.title}
-              </Typography>
-              <Typography variant="p2">{article.textArticle}</Typography>
-            </div>
-            <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
-              <Typography
-                className="scroll-mt-[120px]"
-                ref={(el) => {
-                  sectionRefs.current.subtitle = el;
-                }}
-                variant="h4"
-              >
-                {article.subTitle}
-              </Typography>
-              <Typography variant="p2">{article.textSubArticle}</Typography>
-            </div>
+      <div className="relative mx-auto mt-[24px] w-full sm:mt-0">
+        <div className="mx-auto flex w-full max-w-[1198px] flex-col-reverse gap-[24px] sm:grid sm:grid-cols-[minmax(0,890px)_284px] sm:items-start">
+          {/* Article card: */}
+          <div className="w-full max-w-[clamp(332px,80vw,890px)] rounded-[20px] bg-white">
             <Media
-              className="h-[clamp(105px,20vw,290px)] w-full max-w-[clamp(304px,90vw,842px)]"
+              className="h-[108px] w-full max-w-[clamp(332px,80vw,890px)] sm:h-[290px]"
               image={{
-                src: article.imageArticleSection.src,
-                alt: article.imageArticleSection.alt,
+                src: article.imageArticle.src,
+                alt: article.imageArticle.alt,
               }}
             />
-            <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
-              <Typography
-                className="scroll-mt-[120px]"
-                ref={(el) => {
-                  sectionRefs.current.stage1 = el;
-                }}
-                variant="h4"
-              >
-                {article.stageWork}
-              </Typography>
-              <Typography variant="p2">{article.textStageWork}</Typography>
-            </div>
-            <div className="flex flex-col gap-[clamp(12px,2vw,20px)] sm:flex-row">
+            <div className="flex flex-col gap-[clamp(24px,2.5vw,36px)] px-[clamp(14px,2.5vw,24px)] pt-[clamp(14px,3vw,36px)] pb-[clamp(24px,2vw,32px)]">
+              <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
+                <Typography
+                  className="text-foreground3 scroll-mt-[120px]"
+                  ref={(el) => {
+                    sectionRefs.current.title = el;
+                  }}
+                  variant="h3"
+                >
+                  {article.title}
+                </Typography>
+                <Typography variant="p2">{article.textArticle}</Typography>
+              </div>
+              <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
+                <Typography
+                  className="scroll-mt-[120px]"
+                  ref={(el) => {
+                    sectionRefs.current.subtitle = el;
+                  }}
+                  variant="h4"
+                >
+                  {article.subTitle}
+                </Typography>
+                <Typography variant="p2">{article.textSubArticle}</Typography>
+              </div>
               <Media
-                className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
+                className="h-[clamp(105px,20vw,290px)] w-full max-w-[clamp(304px,90vw,842px)]"
                 image={{
-                  src: article.imageArticleStageWork.src,
-                  alt: article.imageArticleStageWork.alt,
+                  src: article.imageArticleSection.src,
+                  alt: article.imageArticleSection.alt,
                 }}
               />
-              <Media
-                className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
-                image={{
-                  src: article.imageArticleStageWork.src,
-                  alt: article.imageArticleStageWork.alt,
-                }}
-              />
-            </div>
-            <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
-              <Typography
-                className="scroll-mt-[120px]"
-                ref={(el) => {
-                  sectionRefs.current.stage2 = el;
-                }}
-                variant="h4"
-              >
-                {article.stageWork}
-              </Typography>
-              <Typography variant="p2">{article.textStageWorkSecond}</Typography>
+              <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
+                <Typography
+                  className="scroll-mt-[120px]"
+                  ref={(el) => {
+                    sectionRefs.current.stage1 = el;
+                  }}
+                  variant="h4"
+                >
+                  {article.stageWork}
+                </Typography>
+                <Typography variant="p2">{article.textStageWork}</Typography>
+              </div>
+              <div className="flex flex-col gap-[clamp(12px,2vw,20px)] sm:flex-row">
+                <Media
+                  className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
+                  image={{
+                    src: article.imageArticleStageWork.src,
+                    alt: article.imageArticleStageWork.alt,
+                  }}
+                />
+                <Media
+                  className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
+                  image={{
+                    src: article.imageArticleStageWork.src,
+                    alt: article.imageArticleStageWork.alt,
+                  }}
+                />
+              </div>
+              <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
+                <Typography
+                  className="scroll-mt-[120px]"
+                  ref={(el) => {
+                    sectionRefs.current.stage2 = el;
+                  }}
+                  variant="h4"
+                >
+                  {article.stageWork}
+                </Typography>
+                <Typography variant="p2">{article.textStageWorkSecond}</Typography>
+              </div>
             </div>
           </div>
+          <ArticleAside article={article} sectionRefs={sectionRefs} />
         </div>
       </div>
     </Section>
