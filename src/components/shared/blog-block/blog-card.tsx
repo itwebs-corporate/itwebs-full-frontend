@@ -11,7 +11,7 @@ export default function BlogCard({ card, className }: { card: TBlogCard; classNa
   return (
     <div
       className={cn(
-        'z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
+        'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
         className
       )}
     >
@@ -30,11 +30,11 @@ export default function BlogCard({ card, className }: { card: TBlogCard; classNa
           href={card.href || '/'}
         >
           <Media
-            className="hidden h-[24px] w-[24px] sm:block"
+            className="hidden h-[15px] w-[20px] sm:block"
             image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
           />
           <Media
-            className="block h-[24px] w-[24px] sm:hidden"
+            className="block h-[15px] w-[20px] sm:hidden"
             image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: 'arrow' }}
           />
         </Link>

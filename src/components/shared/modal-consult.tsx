@@ -10,11 +10,11 @@ import {
 import { Button } from '../ui/button';
 import Form from '../ui/form';
 
-export default function ModalRecords() {
+export default function ModalConsult({ triggerTitle = 'Записаться' }: { triggerTitle?: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Записаться</Button>
+        <Button variant="secondary">{triggerTitle}</Button>
       </DialogTrigger>
       <DialogContent className="bg-primary">
         <DialogHeader>

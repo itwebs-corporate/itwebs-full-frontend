@@ -23,7 +23,7 @@ export default function BlogCardMobile({ card }: { card: TBlogCard }) {
           href={card.href || '/'}
         >
           <Media
-            className="h-[24px] w-[24px]"
+            className="h-[15px] w-[20px]"
             image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: 'arrow' }}
           />
         </Link>

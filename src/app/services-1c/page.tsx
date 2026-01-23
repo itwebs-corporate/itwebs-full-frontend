@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWork1cBlock from '@/components/shared/how-we-work-1c/how-we-work-1c-block';
-import ModalRecords from '@/components/shared/modal-records';
+import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions-block/questions-block';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
@@ -24,12 +24,12 @@ export default function Services1CPage() {
           </>
         }
       >
-        <ModalRecords />
+        <ModalConsult />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>
         </Button>
       </HeroBlock>
-      <OurClientsBlock />
+      <ForWhoWeWorkBlock />
       <WhatWeTasksSolveBlock />
       <HowWeWork1cBlock />
       <QuestionsBlock />
