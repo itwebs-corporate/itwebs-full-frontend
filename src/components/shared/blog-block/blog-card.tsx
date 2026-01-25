@@ -17,7 +17,7 @@ export default function BlogCard({ card, className }: { card: TBlogCard; classNa
     >
       {card.image && (
         <Media
-          className="block h-[clamp(129px,20vw,165px)] w-[clamp(304px,55vw,387px)] sm:hidden"
+          className="block h-[clamp(129px,20vw,165px)] w-full max-w-full sm:hidden"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}
@@ -46,7 +46,7 @@ export default function BlogCard({ card, className }: { card: TBlogCard; classNa
 
       {card.image && (
         <Media
-          className="hidden h-[clamp(129px,20vw,165px)] w-full min-w-[clamp(304px,55vw,387px)] sm:block"
+          className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full sm:block"
           image={{ src: card.image.src, alt: card.image.alt }}
         />
       )}

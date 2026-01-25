@@ -11,7 +11,7 @@ import BlogCardMobile from './blog-card-mobile';
 import { BLOG_CONFIG } from './blog-config';
 import BlogPagination from './blog-pagination';
 
-// TODO: 1) добавить дискриптор фото на article, сделать фиксированный aside, на BlogCard картинка вылазиет за контейнер, изменять размеры карточек в карусели blogPage
+// TODO: изменять размеры карточек в карусели blogPage
 export default function BlogBlock() {
   const [page, setPage] = useState(0);
 

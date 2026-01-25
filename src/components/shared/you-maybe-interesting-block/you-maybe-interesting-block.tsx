@@ -14,11 +14,9 @@ export default function YouMaybeInterestingBlock() {
 
   return (
     <Section className="gap-[24px] pb-[clamp(86px,10vw,148px)] sm:gap-[36px]">
-      <div className="flex w-full max-w-[1194px] justify-start">
-        <Typography variant="h2">
-          <b className="text-primary">Вам</b> может быть интересно
-        </Typography>
-      </div>
+      <Typography className="flex w-full max-w-[1194px] px-4" variant="h2">
+        <b className="text-primary">Вам</b> может быть интересно
+      </Typography>
       <ul
         className="no-scrollbar flex w-full max-w-[1194px] cursor-grab snap-x snap-mandatory scroll-px-4 justify-start gap-[4px] overflow-x-scroll overflow-y-hidden px-4 select-none active:cursor-grabbing sm:cursor-auto sm:scroll-px-0 sm:gap-[20px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
         onClickCapture={(e) => {

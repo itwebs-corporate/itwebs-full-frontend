@@ -65,13 +65,18 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
                 </Typography>
                 <Typography variant="p2">{article.textSubArticle}</Typography>
               </div>
-              <Media
-                className="h-[clamp(105px,20vw,290px)] w-full max-w-[clamp(304px,90vw,842px)]"
-                image={{
-                  src: article.imageArticleSection.src,
-                  alt: article.imageArticleSection.alt,
-                }}
-              />
+              <div className="relative">
+                <Media
+                  className="h-[clamp(105px,20vw,290px)] w-full max-w-[clamp(304px,90vw,842px)]"
+                  image={{
+                    src: article.imageArticleSection.src,
+                    alt: article.imageArticleSection.alt,
+                  }}
+                />
+                <div className="flex-center font-second-family absolute bottom-[14px] left-[14px] max-h-[35px] rounded-full bg-white px-[12px] py-[8px] text-[12px] sm:px-[24px] sm:py-[12px] sm:text-[16px]">
+                  {article.image?.alt}
+                </div>
+              </div>
               <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
                 <Typography
                   className="scroll-mt-[120px]"
@@ -85,20 +90,31 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
                 <Typography variant="p2">{article.textStageWork}</Typography>
               </div>
               <div className="flex flex-col gap-[clamp(12px,2vw,20px)] sm:flex-row">
-                <Media
-                  className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
-                  image={{
-                    src: article.imageArticleStageWork.src,
-                    alt: article.imageArticleStageWork.alt,
-                  }}
-                />
-                <Media
-                  className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
-                  image={{
-                    src: article.imageArticleStageWork.src,
-                    alt: article.imageArticleStageWork.alt,
-                  }}
-                />
+                <div className="relative">
+                  <Media
+                    className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
+                    image={{
+                      src: article.imageArticleStageWork.src,
+                      alt: article.imageArticleStageWork.alt,
+                    }}
+                  />
+                  <div className="flex-center font-second-family absolute bottom-[14px] left-[14px] max-h-[clamp(28px,3.2vw,35px)] rounded-full bg-white px-[clamp(12px,2vw,24px)] py-[clamp(8px,1.2vw,12px)] text-[clamp(12px,1.3vw,16px)] leading-[100%] whitespace-nowrap">
+                    {article.image?.alt}
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <Media
+                    className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
+                    image={{
+                      src: article.imageArticleStageWork.src,
+                      alt: article.imageArticleStageWork.alt,
+                    }}
+                  />
+                  <div className="flex-center font-second-family absolute bottom-[14px] left-[14px] max-h-[clamp(28px,3.2vw,35px)] rounded-full bg-white px-[clamp(12px,2vw,24px)] py-[clamp(8px,1.2vw,12px)] text-[clamp(12px,1.3vw,16px)] leading-[100%] whitespace-nowrap">
+                    {article.image?.alt}
+                  </div>
+                </div>
               </div>
               <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
                 <Typography

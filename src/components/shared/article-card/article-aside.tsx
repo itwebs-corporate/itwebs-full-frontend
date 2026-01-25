@@ -1,3 +1,4 @@
+'use client';
 import { RefObject, useMemo } from 'react';
 
 import Typography from '@/components/ui/typography/typography';
@@ -5,6 +6,7 @@ import Typography from '@/components/ui/typography/typography';
 import { BlogCard } from '../blog-block/blog-config';
 
 type SectionId = 'title' | 'subtitle' | 'stage1' | 'stage2';
+
 export default function ArticleAside({
   article,
   sectionRefs,
