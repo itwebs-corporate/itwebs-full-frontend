@@ -45,25 +45,25 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
       className:
-        'absolute left-[clamp(10vw,20vw,28vw)] z-0 top-[clamp(55%,45%,45%)] hidden sm:block z-20 w-[clamp(72px,8vw,125px)] h-[clamp(74px,8.3vw,129px)]',
+        'absolute left-[-9vw] top-[1vw] 2xl:left-[-6vw] 2xl:top-[2.5vw] 3xl:left-[-5vw] 3xl:top-[2.2vw] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
       className:
-        'absolute right-[clamp(10vw,24vw,30vw)] top-[clamp(40%,35%,30%)] hidden sm:block z-20 w-[85px] h-[112px]',
+        'absolute right-[-8vw] top-[-8vw] md:right-[-7vw] md:top-[-6vw] xl:right-[-6vw] xl:top-[-5vw] 2xl:right-[-4vw] 2xl:top-[-3vw] 3xl:right-[-3.5vw] 3xl:top-[-2.5vw] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
       className:
-        'absolute left-[5vw] xxs:left-[10vw] xs:left-[23vw] top-[70%] sm:hidden block z-20 w-[38px] h-[38px]',
+        'absolute left-[-19] top-[11vw] xxs:left-[-6vw] xxs:top-[9vw] xs:left-[-4vw] xs:top-[7vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
       className:
-        'absolute right-[5vw] xxs:right-[15vw] xs:right-[25vw] top-[48%] sm:hidden block z-20 w-[43px] h-[58px]',
+        'absolute right-[-8vw] top-[-13vw] xxs:right-[-8vw] xxs:top-[-9vw] xs:right-[-6vw] xs:top-[-5.5vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
@@ -98,22 +98,26 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-9vw] top-[1vw] 2xl:left-[-6vw] 2xl:top-[2.5vw] 3xl:left-[-5vw] 3xl:top-[2.2vw] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className:
+        'absolute right-[-8vw] top-[-8vw] md:right-[-7vw] md:top-[-6vw] xl:right-[-6vw] xl:top-[-5vw] 2xl:right-[-4vw] 2xl:top-[-3vw] 3xl:right-[-3.5vw] 3xl:top-[-2.5vw] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[44px] top-[214px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className:
+        'absolute left-[-19] top-[11vw] xxs:left-[-6vw] xxs:top-[9vw] xs:left-[-4vw] xs:top-[7vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[45px] top-[118px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[-8vw] top-[-13vw] xxs:right-[-8vw] xxs:top-[-9vw] xs:right-[-6vw] xs:top-[-5.5vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
@@ -121,17 +125,20 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-9vw] top-[1vw] 2xl:left-[-6vw] 2xl:top-[2.5vw] 3xl:left-[-5vw] 3xl:top-[2.2vw] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className:
+        'absolute right-[-8vw] top-[-8vw] md:right-[-7vw] md:top-[-6vw] xl:right-[-6vw] xl:top-[-5vw] 2xl:right-[-4vw] 2xl:top-[-3vw] 3xl:right-[-3.5vw] 3xl:top-[-2.5vw] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[9px] top-[131px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[-8vw] top-[-13vw] xxs:right-[-8vw] xxs:top-[-9vw] xs:right-[-6vw] xs:top-[-5.5vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
@@ -139,22 +146,26 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-9vw] top-[1vw] 2xl:left-[-6vw] 2xl:top-[2.5vw] 3xl:left-[-5vw] 3xl:top-[2.2vw] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className:
+        'absolute right-[-8vw] top-[-8vw] md:right-[-7vw] md:top-[-6vw] xl:right-[-6vw] xl:top-[-5vw] 2xl:right-[-4vw] 2xl:top-[-3vw] 3xl:right-[-3.5vw] 3xl:top-[-2.5vw] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[40px] top-[200px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className:
+        'absolute left-[-19] top-[11vw] xxs:left-[-6vw] xxs:top-[9vw] xs:left-[-4vw] xs:top-[7vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[45px] top-[118px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[-8vw] top-[-13vw] xxs:right-[-8vw] xxs:top-[-9vw] xs:right-[-6vw] xs:top-[-5.5vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 
@@ -162,22 +173,26 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
     {
       src: '/hero/services/two-stars.svg',
       alt: 'two-stars',
-      className: 'absolute left-[5%] top-[45%] hidden sm:block z-20 w-[125px] h-[129px]',
+      className:
+        'absolute left-[-9vw] top-[1vw] 2xl:left-[-6vw] 2xl:top-[2.5vw] 3xl:left-[-5vw] 3xl:top-[2.2vw] hidden sm:block z-20 w-[clamp(80px,10vw,125px)] h-[clamp(83px,10vw,129px)]',
     },
     {
       src: '/hero/services/two-stars-but-one-empty.svg',
       alt: 'two-stars-but-one-empty',
-      className: 'absolute right-[5%] top-[45%] hidden sm:block z-20 w-[85px] h-[112px]',
+      className:
+        'absolute right-[-8vw] top-[-8vw] md:right-[-7vw] md:top-[-6vw] xl:right-[-6vw] xl:top-[-5vw] 2xl:right-[-4vw] 2xl:top-[-3vw] 3xl:right-[-3.5vw] 3xl:top-[-2.5vw] hidden sm:block z-20 w-[85px] h-[112px]',
     },
     {
       src: '/hero/mobile/empty-star.svg',
       alt: 'empty-star',
-      className: 'absolute left-[12px] top-[195px] sm:hidden block z-20 w-[38px] h-[38px]',
+      className:
+        'absolute left-[-19] top-[11vw] xxs:left-[-6vw] xxs:top-[9vw] xs:left-[-4vw] xs:top-[7vw] sm:hidden block z-20 w-[38px] h-[38px]',
     },
     {
       src: '/hero/mobile/group-star.svg',
       alt: 'group-star',
-      className: 'absolute right-[9px] top-[131px] sm:hidden block z-20 w-[43px] h-[58px]',
+      className:
+        'absolute right-[-8vw] top-[-13vw] xxs:right-[-8vw] xxs:top-[-9vw] xs:right-[-6vw] xs:top-[-5.5vw] sm:hidden block z-20 w-[43px] h-[58px]',
     },
   ],
 };
