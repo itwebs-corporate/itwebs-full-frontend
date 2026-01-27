@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import OurClientsBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
 import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
@@ -32,7 +32,7 @@ export default function HomePage() {
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>
       </HeroBlock>
-      <OurClientsBlock />
+      <ForWhoWeWorkBlock />
       <OurTechBlock />
       <WeSolveClientTaskBlock />
       <HowWeWorkBlock />

@@ -4,6 +4,8 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+import { cn } from '@/lib/utils';
+
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/fields/input';
@@ -21,7 +23,7 @@ const zodContactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof zodContactSchema>;
 
-export default function Form() {
+export default function Form({ className }: { className?: string }) {
   const {
     register,
     handleSubmit,
@@ -49,7 +51,7 @@ export default function Form() {
       className="bg-primary xxs:p-8 xxs:mt-[32px] mt-[24px] rounded-[24px] px-[14px] pt-8 pb-6"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col items-center gap-[14px] lg:flex-row lg:gap-4">
+      <div className={cn('flex flex-col items-center gap-[14px] lg:flex-row lg:gap-4', className)}>
         <div className="relative w-full min-w-[275px]">
           <Input nameRegister="name" placeholder="Ваше имя" register={register} />
           {errors.name && (

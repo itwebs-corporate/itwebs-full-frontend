@@ -1,9 +1,19 @@
-import Image, { type ImageProps } from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import { cn } from '@/lib/utils';
+
+type MediaImage = {
+  src: string | StaticImageData;
+  alt: string;
+  className?: string;
+  priority?: boolean;
+  sizes?: string;
+  quality?: number;
+};
+
 type MediaProps = {
   className: string;
-  image: ImageProps;
+  image: MediaImage;
 };
 export function Media({ className, image }: MediaProps) {
   return (
