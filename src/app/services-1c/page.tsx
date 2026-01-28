@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
@@ -9,6 +10,20 @@ import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-
 import { Button } from '@/components/ui/button';
 
 import { PAGES_CONFIG } from '@/config/pages-config';
+import { SITE_IMAGES } from '@/constants/seo-constants';
+
+export const metadata: Metadata = {
+  title: '1c услуги',
+  description:
+    'Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps.',
+  openGraph: {
+    title: `1с услуги`,
+    description:
+      'Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps.',
+    images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
+  },
+  robots: { index: true, follow: true },
+};
 
 export default function Services1CPage() {
   return (
