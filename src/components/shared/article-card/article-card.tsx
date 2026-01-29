@@ -89,7 +89,7 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
                 </Typography>
                 <Typography variant="p2">{article.textStageWork}</Typography>
               </div>
-              <div className="flex flex-wrap justify-center gap-[clamp(12px,2vw,20px)]">
+              <div className="flex flex-col gap-[clamp(12px,2vw,20px)] sm:flex-row">
                 <div className="relative">
                   <Media
                     className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"
