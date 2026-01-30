@@ -46,7 +46,7 @@ export default function MobileMenuMainScreen() {
                     <Media
                       className="h-[13px] w-[13px]"
                       image={{
-                        src: isOpenServices ? '/arrow/arrow-down.svg' : '/links/arrow-right.svg',
+                        src: isOpenServices ? '/links/arrow-down.svg' : '/links/arrow-right.svg',
                         alt: 'arrow',
                       }}
                     />
