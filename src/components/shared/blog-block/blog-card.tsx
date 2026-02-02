@@ -40,7 +40,7 @@ export default function BlogCard({ card, className }: { card: TBlogCard; classNa
         </Link>
       </div>
 
-      <Typography className="leading-[140%] opacity-80" variant="p2">
+      <Typography className="leading-[140%] opacity-80 sm:mt-1" variant="p2">
         {card.description}
       </Typography>
 

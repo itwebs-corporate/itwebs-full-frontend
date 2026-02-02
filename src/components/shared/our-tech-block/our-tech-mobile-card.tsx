@@ -42,7 +42,7 @@ export default function OurTechMobileCard({ item }: { item: OurServicesMobileCar
         >
           <Media
             className="h-[24px] w-[24px]"
-            image={{ src: '/arrow/arrow-up-right-blue-mobile.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-right.svg', alt: 'arrow' }}
           />
         </Link>
       </div>

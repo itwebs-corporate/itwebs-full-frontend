@@ -9,7 +9,7 @@ import { Media } from '@/components/ui/media';
 
 import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
 
-import NavigationPage from './navigation-page';
+import NavigationByPages from './navigation-page';
 import { HEADER_LINKS, HEADER_MOBILE_LINKS } from '../header-config';
 
 export default function Navigation() {
@@ -17,7 +17,7 @@ export default function Navigation() {
     <header
       className={cn(
         'p-container font-second-family bg-primary/80 fixed top-0 z-50 flex w-full items-center justify-between pb-[10px] font-bold',
-        'pt-[clamp(13px,2.2vw,36px)] text-[clamp(14px,1.2vw,16px)]'
+        'pt-[clamp(13px,2.2vw,36px)] text-[clamp(12px,1.5vw,16px)]'
       )}
     >
       <Link className="bg-background rounded-full" href="/">
@@ -27,7 +27,7 @@ export default function Navigation() {
         />
       </Link>
       {/*  */}
-      <NavigationPage />
+      <NavigationByPages />
       {/*  */}
       <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
