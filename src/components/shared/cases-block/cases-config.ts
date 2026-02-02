@@ -3,7 +3,7 @@ import { Case } from '../we-solve-client-task-block/cases-config';
 export const CASES_CONFIG: Case[] = [
   {
     id: 'case-1',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'Корпоративный сайт с интеграцией 1С',
     description: 'Разработка корпоративного сайта с каталогом услуг и синхронизацией данных с 1С.',
     task: 'Обеспечить отображение актуальных данных из 1С и удобное администрирование контента.',
@@ -12,7 +12,7 @@ export const CASES_CONFIG: Case[] = [
   },
   {
     id: 'case-2',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'Интернет-магазин с учётом остатков из 1С',
     description: 'Создание e-commerce платформы с автоматическим обновлением товаров и остатков.',
     task: 'Синхронизировать товары, цены и остатки между сайтом и 1С в реальном времени.',
@@ -21,7 +21,7 @@ export const CASES_CONFIG: Case[] = [
   },
   {
     id: 'case-3',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'Личный кабинет клиента',
     description:
       'Разработка личного кабинета для клиентов с отображением заказов и документов из 1С.',
@@ -31,7 +31,7 @@ export const CASES_CONFIG: Case[] = [
   },
   {
     id: 'case-4',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'B2B-портал для партнёров',
     description: 'Создание B2B-портала с индивидуальными условиями и прайсами из 1С.',
     task: 'Отобразить персональные цены и условия для разных групп партнёров.',
@@ -39,7 +39,7 @@ export const CASES_CONFIG: Case[] = [
   },
   {
     id: 'case-5',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'CRM-интерфейс поверх 1С',
     description: 'Разработка веб-интерфейса для работы с данными 1С в браузере.',
     task: 'Упростить работу менеджеров с заказами и клиентами без входа в 1С.',
@@ -47,7 +47,7 @@ export const CASES_CONFIG: Case[] = [
   },
   {
     id: 'case-6',
-    img: '/cases-default.png',
+    img: '/default/cases-default.png',
     title: 'Автоматизация бизнес-процессов',
     description: 'Веб-приложение для автоматизации заявок и внутренних процессов компании.',
     task: 'Сократить ручной ввод данных и количество ошибок при работе с 1С.',
