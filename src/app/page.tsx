@@ -19,9 +19,8 @@ export default function HomePage() {
         fullScreen
         heading={
           <>
-            Студия веб-
-            <br />
-            разработки ITWEBS.
+            Компания веб-
+            <br />р<span className="relative z-10">a</span>зработки ITWEBS.
           </>
         }
       >

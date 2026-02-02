@@ -12,7 +12,7 @@ import HeroHeading from './hero-heading';
 import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 
 type HeroBlockProps = {
-  heading: string | ReactNode;
+  heading: ReactNode;
   description?: string;
   fullScreen?: boolean;
   children?: ReactNode;

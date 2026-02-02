@@ -15,8 +15,8 @@ export default function HeroHeading({ children }: { children: ReactNode }) {
   return (
     <Typography
       className={cn(
-        'relative z-10',
-        isHomePage ? 'text-[clamp(36px,10vw,201px)]' : 'text-[clamp(36px,6vw,124px)]',
+        'relative isolate',
+        isHomePage ? 'text-[clamp(36px,9vw,201px)]' : 'text-[clamp(36px,6vw,124px)]',
         is1SSerivesePage && 'text-[clamp(24px,6vw,124px)]'
       )}
       variant="h1"
