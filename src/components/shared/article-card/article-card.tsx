@@ -22,9 +22,9 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
   return (
     <Section className="text-foreground3! sm:mt-[182px]">
       <div className="bg-primary block h-[120px] w-screen sm:hidden" />
-      <div className="absolute top-[76px] left-[14px] w-full max-w-[clamp(332px,80vw,890px)] overflow-hidden overflow-x-hidden whitespace-nowrap sm:static">
+      <div className="absolute top-[76px] left-[14px] w-full max-w-[clamp(332px,80vw,890px)] sm:static">
         <BreadcrumbWithCustomSeparator
-          color="text-white sm:text-foreground3 "
+          color="text-white sm:text-foreground3"
           nestedRoute={article?.title}
         />
       </div>
@@ -89,7 +89,7 @@ export default function ArticleCard({ article }: { article: BlogCard }) {
                 </Typography>
                 <Typography variant="p2">{article.textStageWork}</Typography>
               </div>
-              <div className="flex flex-col gap-[clamp(12px,2vw,20px)] sm:flex-row">
+              <div className="flex flex-wrap gap-[clamp(12px,2vw,20px)]">
                 <div className="relative">
                   <Media
                     className="h-[clamp(214px,30vw,290px)] w-[clamp(304px,45vw,411px)]"

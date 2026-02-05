@@ -11,11 +11,41 @@ export default function ClientWrapper() {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const ref = useRef<HTMLUListElement | null>(null);
 
-  const drag = useRef({ down: false, x: 0, left: 0, moved: false });
+  const drag = useRef({
+    down: false,
+    moved: false,
+    startX: 0,
+    startLeft: 0,
+    pointerId: -1,
+  });
+
+  const snapToClosest = () => {
+    const el = ref.current;
+    if (!el) return;
+
+    const items = Array.from(el.querySelectorAll<HTMLElement>('li[data-snap-item="true"]'));
+    if (!items.length) return;
+
+    const current = el.scrollLeft;
+
+    let bestLeft = 0;
+    let bestDist = Number.POSITIVE_INFINITY;
+
+    for (const it of items) {
+      const left = it.offsetLeft;
+      const d = Math.abs(left - current);
+      if (d < bestDist) {
+        bestDist = d;
+        bestLeft = left;
+      }
+    }
+
+    el.scrollTo({ left: bestLeft, behavior: 'smooth' });
+  };
 
   return (
     <ul
-      className="no-scrollbar flex w-full cursor-grab snap-x snap-mandatory scroll-px-4 gap-[8px] overflow-x-scroll overflow-y-hidden px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:scroll-px-0 sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
+      className="no-scrollbar flex w-full cursor-grab touch-pan-x snap-x snap-mandatory scroll-px-4 gap-[8px] overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:snap-none sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
       onClickCapture={(e) => {
         if (drag.current.moved) {
           e.preventDefault();
@@ -35,36 +65,66 @@ export default function ClientWrapper() {
         const el = ref.current;
         if (!el) return;
 
-        e.preventDefault();
-        el.setPointerCapture(e.pointerId);
-
-        el.style.scrollSnapType = 'none';
-        el.style.scrollBehavior = 'auto';
-
         drag.current.down = true;
         drag.current.moved = false;
-        drag.current.x = e.clientX;
-        drag.current.left = el.scrollLeft;
+        drag.current.startX = e.clientX;
+        drag.current.startLeft = el.scrollLeft;
+        drag.current.pointerId = e.pointerId;
+        el.style.scrollBehavior = 'auto';
+        el.style.scrollSnapType = 'none';
+
+        el.setPointerCapture(e.pointerId);
       }}
       onPointerMove={(e) => {
         if (!drag.current.down) return;
         const el = ref.current;
         if (!el) return;
 
-        const dx = e.clientX - drag.current.x;
-        if (Math.abs(dx) > 3) drag.current.moved = true;
+        const dx = e.clientX - drag.current.startX;
 
-        el.scrollLeft = drag.current.left - dx;
+        if (!drag.current.moved) {
+          if (Math.abs(dx) < 4) return;
+          drag.current.moved = true;
+        }
+
+        e.preventDefault();
+        el.scrollLeft = drag.current.startLeft - dx;
+      }}
+      onPointerUp={(e) => {
+        if (e.pointerType !== 'mouse') return;
+        const el = ref.current;
+        if (!el) return;
+
+        drag.current.down = false;
+
+        const pid = drag.current.pointerId;
+        if (pid !== -1 && el.hasPointerCapture(pid)) {
+          el.releasePointerCapture(pid);
+        }
+        drag.current.pointerId = -1;
+
+        el.style.scrollSnapType = '';
+        el.style.scrollBehavior = 'smooth';
+
+        if (drag.current.moved) snapToClosest();
+
+        window.setTimeout(() => {
+          const node = ref.current;
+          if (!node) return;
+          node.style.scrollBehavior = '';
+        }, 250);
       }}
       ref={ref}
     >
-      {WHAT_WE_TASKS_SOLVE_CARDS.map((item) =>
-        isMobile ? (
-          <WhatWeTasksSolveMobileCard item={item} key={item.id} />
-        ) : (
-          <WhatWeTasksSolveCard item={item} key={item.id} />
-        )
-      )}
+      {WHAT_WE_TASKS_SOLVE_CARDS.map((item) => (
+        <li className="shrink-0 snap-start" data-snap-item="true" key={item.id}>
+          {isMobile ? (
+            <WhatWeTasksSolveMobileCard item={item} />
+          ) : (
+            <WhatWeTasksSolveCard item={item} />
+          )}
+        </li>
+      ))}
     </ul>
   );
 }

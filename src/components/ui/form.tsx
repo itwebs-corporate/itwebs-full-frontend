@@ -55,7 +55,7 @@ export default function Form({ className }: { className?: string }) {
         <div className="relative w-full min-w-[275px]">
           <Input nameRegister="name" placeholder="Ваше имя" register={register} />
           {errors.name && (
-            <p className="text-destructive absolute -bottom-[18px] left-[15px] text-sm">
+            <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
               {errors.name.message}
             </p>
           )}
@@ -64,7 +64,7 @@ export default function Form({ className }: { className?: string }) {
         <div className="relative w-full min-w-[275px]">
           <Input nameRegister="emailOrTel" placeholder="Email / Телефон" register={register} />
           {errors.emailOrTel && (
-            <p className="text-destructive absolute -bottom-[18px] left-[15px] text-sm">
+            <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
               {errors.emailOrTel.message}
             </p>
           )}
@@ -91,7 +91,7 @@ export default function Form({ className }: { className?: string }) {
             )}
           />
           {errors.taskType && (
-            <p className="text-destructive absolute -bottom-[18px] left-[15px] text-sm">
+            <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
               {errors.taskType.message}
             </p>
           )}
@@ -101,7 +101,7 @@ export default function Form({ className }: { className?: string }) {
           {isSubmitting ? 'Отправляется...' : 'Отправить'}
         </Button>
       </div>
-      <div className="relative mt-[18px] flex justify-center gap-2">
+      <div className="mt-[18px] flex justify-center gap-2">
         <Controller
           control={control}
           name="policy"
@@ -113,12 +113,17 @@ export default function Form({ className }: { className?: string }) {
             />
           )}
         />
-        <label className="font-second-family text-[16px] leading-[100%]" htmlFor="checkboxPolicy">
+        <label
+          className="font-second-family relative text-[16px] leading-[100%]"
+          htmlFor="checkboxPolicy"
+        >
           Я соглашаюсь с политикой обработки персональных данных
+          {errors.policy && (
+            <p className="text-destructive mb-[-2px] text-[12px] sm:text-sm">
+              {errors.policy.message}
+            </p>
+          )}
         </label>
-        {errors.policy && (
-          <p className="text-destructive absolute top-3 text-sm">{errors.policy.message}</p>
-        )}
       </div>
     </form>
   );

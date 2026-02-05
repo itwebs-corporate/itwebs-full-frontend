@@ -12,7 +12,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>) {
   return (
     <ol
       className={cn(
-        'text-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5',
+        'text-foreground flex min-w-0 flex-nowrap items-center gap-1.5 overflow-hidden text-sm whitespace-nowrap sm:gap-2.5',
         className
       )}
       data-slot="breadcrumb-list"
@@ -57,7 +57,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
     <span
       aria-current="page"
       aria-disabled="true"
-      className={cn('text-foreground font-normal', className)}
+      className={cn('text-foreground min-w-0 flex-1 truncate font-normal', className)}
       data-slot="breadcrumb-page"
       role="link"
       {...props}

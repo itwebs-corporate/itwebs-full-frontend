@@ -3,28 +3,28 @@ import { CardTypes } from '@/shared/types/global-types';
 export const OUR_CLIENTS_CONFIG: CardTypes[] = [
   {
     id: 1,
-    icon: '/our-clients/expert.png',
+    icon: '/emoji/women.png',
     title: 'Малый и средний бизнес',
     description:
       'Помогаем запускать и развивать онлайн-проекты и личные бренды. Берём техническую часть на себя, чтобы вы могли сосредоточиться на бизнесе.',
   },
   {
     id: 2,
-    icon: '/our-clients/business-house.png',
+    icon: '/emoji/business-center.png',
     title: 'Малый и средний бизнес',
     description:
       'Разрабатываем и поддерживаем сайты и сервисы для бизнеса. Обеспечиваем стабильную работу и быстро реагируем на задачи.',
   },
   {
     id: 3,
-    icon: '/our-clients/online-shop.png',
+    icon: '/emoji/shopping-packet.png',
     title: 'Онлайн-проекты и магазины',
     description:
       'Создаём, дорабатываем и интегрируем решения под ваши процессы. Делаем так, чтобы проект работал удобно и без сбоев.',
   },
   {
     id: 4,
-    icon: '/our-clients/heart.png',
+    icon: '/emoji/heart.png',
     title: 'Тем, кому важна надёжность',
     description:
       'Подходим к работе внимательно и ответственно. Вы получаете поддержку, спокойствие и уверенность в результате.',

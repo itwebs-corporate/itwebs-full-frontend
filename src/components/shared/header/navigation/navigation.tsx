@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import styles from './header.module.css';
+import styles from '../header.module.css';
 
 import { cn } from '@/lib/utils';
 
@@ -9,14 +9,15 @@ import { Media } from '@/components/ui/media';
 
 import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
 
-import { HEADER_LINKS, HEADER_MOBILE_LINKS, HEADER_NAV } from './header-config';
+import NavigationByPages from './navigation-page';
+import { HEADER_LINKS, HEADER_MOBILE_LINKS } from '../header-config';
 
 export default function Navigation() {
   return (
     <header
       className={cn(
         'p-container font-second-family bg-primary/80 fixed top-0 z-50 flex w-full items-center justify-between pb-[10px] font-bold',
-        'pt-[clamp(13px,2.2vw,36px)] text-[clamp(14px,1.2vw,16px)]'
+        'pt-[clamp(13px,2.2vw,36px)] text-[clamp(12px,1.5vw,16px)]'
       )}
     >
       <Link className="bg-background rounded-full" href="/">
@@ -25,15 +26,9 @@ export default function Navigation() {
           image={{ src: '/logo/logo.svg', alt: 'logo' }}
         />
       </Link>
-      <ul className="hidden items-center gap-6 sm:flex">
-        {HEADER_NAV.map((el) => (
-          <li key={el.title}>
-            <Link className="hover:text-foreground/70 transition-colors" href={el.link}>
-              {el.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {/*  */}
+      <NavigationByPages />
+      {/*  */}
       <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
         {HEADER_LINKS.map((el) => (

@@ -9,9 +9,12 @@ import { HERO_ASSETS_CONFIG } from './hero-assets-config';
 
 export default function HeroAssets() {
   const pathname = usePathname();
+  const assets = HERO_ASSETS_CONFIG[pathname];
+  if (!assets?.length) return null;
+
   return (
     <div className="pointer-events-none absolute inset-0">
-      {(HERO_ASSETS_CONFIG[pathname] ?? HERO_ASSETS_CONFIG['/services']).map((item) => (
+      {assets.map((item) => (
         <div className={cn(item.className)} key={item.alt}>
           <Image alt={item.alt} fill src={item.src} />
         </div>

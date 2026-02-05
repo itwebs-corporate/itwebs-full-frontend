@@ -15,7 +15,10 @@ export default function OurTechBlockCard({ item }: { item: OurServicesCard }) {
           className="bg-secondary flex-center h-[42px] w-[42px] shrink-0 rounded-full"
           href={item.link}
         >
-          <Media className="h-[24px] w-[24px]" image={{ src: '/tech/arrow.svg', alt: 'arrow' }} />
+          <Media
+            className="h-[24px] w-[24px]"
+            image={{ src: '/arrow/arrow-up-right-blue.svg', alt: 'arrow' }}
+          />
         </Link>
       </div>
 
