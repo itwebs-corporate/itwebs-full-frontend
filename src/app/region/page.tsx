@@ -3,19 +3,20 @@ import Link from 'next/link';
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
-import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
-import SeoTextBlock from '@/components/shared/seo-text-block/seo-text-block';
+import QuestionsBlock from '@/components/shared/questions-block/questions-block';
+import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
 import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
-import WhyChooseBlock from '@/components/shared/why-choose-block/why-choose-block';
+import WhatWeTaskSolveRegionBlock from '@/components/shared/what-we-tasks-solve/what-we-task-solve-region-block';
+import WhyChooseUsRegionBlock from '@/components/shared/why-choose-block/why-choose-us-region-block';
 import { Button } from '@/components/ui/button';
 
 import { PAGES_CONFIG } from '@/config/pages-config';
 
-export default function HomePage() {
+export default function RegionPage() {
   return (
     <>
       <HeroBlock
-        description="Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps"
+        description="Помогаем вашему бизнесу расти и развиваться быстреев в (регион): сайты, CRM-системы, веб-приложения, SEO, telegram-apps."
         fullScreen
         heading={
           <>
@@ -32,11 +33,16 @@ export default function HomePage() {
         </Button>
       </HeroBlock>
       <ForWhoWeWorkBlock />
-      <OurTechBlock />
+      <WhatWeTaskSolveRegionBlock />
+      <ServicesWeProvide isRegion />
+      <WhyChooseUsRegionBlock />
       <WeSolveClientTaskBlock />
       <HowWeWorkBlock />
-      <WhyChooseBlock />
-      <SeoTextBlock />
+      <QuestionsBlock
+        className="bg-background"
+        headStyleFirst="text-foreground2"
+        headStyleSecond="text-primary"
+      />
     </>
   );
 }

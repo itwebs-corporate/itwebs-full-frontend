@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils';
+
 import {
   Accordion,
   AccordionContent,
@@ -8,12 +10,26 @@ import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
 import { MOCK_ACCORDION } from './questions-config';
-export default function QuestionsBlock() {
+export default function QuestionsBlock({
+  className,
+  headStyleFirst,
+  headStyleSecond,
+}: {
+  className?: string;
+  headStyleFirst?: string;
+  headStyleSecond?: string;
+}) {
   return (
-    <Section className="bg-primary gap-[clamp(24px,4vw,48px)] rounded-[24px] pt-[clamp(86px,7vw,124px)] pb-[clamp(86px,10vw,148px)]">
-      <Typography className="text-white" variant="h2">
-        <b className="opacity-80">Вопросы</b> которые <br className="block sm:hidden" /> часто
-        задают
+    <Section
+      className={cn(
+        'bg-primary gap-[clamp(24px,4vw,48px)] rounded-[24px] pb-[clamp(86px,10vw,148px)]',
+        className,
+        !className && 'pt-[clamp(86px,7vw,124px)]'
+      )}
+    >
+      <Typography className={cn(headStyleFirst ?? 'text-white')} variant="h2">
+        <b className={cn(headStyleSecond ?? 'opacity-80')}>Вопросы</b> которые
+        <br className="block sm:hidden" /> часто задают
       </Typography>
       <Accordion className="flex flex-col gap-[clamp(8px,2vw,24px)]" type="multiple">
         {MOCK_ACCORDION.map((item) => (

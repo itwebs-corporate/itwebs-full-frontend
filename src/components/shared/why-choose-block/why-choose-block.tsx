@@ -24,7 +24,7 @@ export default function WhyChooseBlock() {
         <div className="flex min-h-[clamp(271px,20vw,508px)] w-full flex-col rounded-[clamp(12px,2vw,24px)] rounded-tl-none bg-white p-[clamp(16px,2vw,20px)] sm:col-span-2 xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1">
           <Media
             className="-mt-5 -ml-5 h-[clamp(131px,18vw,370px)] w-[clamp(121px,16vw,344px)] shrink-0"
-            image={{ src: '/why-choose/goal.png', alt: 'goal' }}
+            image={{ src: '/emoji/main-goal.png', alt: 'goal' }}
           />
 
           <Typography variant="h3">Думаем как клиент</Typography>

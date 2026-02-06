@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/our-clients-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWork1cBlock from '@/components/shared/how-we-work-1c/how-we-work-1c-block';
 import ModalConsult from '@/components/shared/modal-consult';

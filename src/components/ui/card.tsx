@@ -13,12 +13,12 @@ export default function Card({ item, cardStyles }: CardProps) {
   return (
     <div
       className={cn(
-        'shadow-default z-10 flex min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col rounded-[clamp(12px,2vw,24px)] bg-white p-5',
+        'z-10 flex min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col rounded-[clamp(12px,2vw,24px)] bg-white p-5',
         cardStyles
       )}
     >
       {item.icon ? (
-        <div className="flex-center bg-background shadow-default mb-5 h-[clamp(42px,6vw,86px)] w-[clamp(42px,6vw,86px)] rounded-full">
+        <div className="flex-center bg-background mb-5 h-[clamp(42px,6vw,86px)] w-[clamp(42px,6vw,86px)] rounded-full">
           <Media
             className="h-[clamp(26px,3.5vw,48px)] w-[clamp(26px,3.5vw,48px)]"
             image={{ src: item.icon, alt: item.title }}

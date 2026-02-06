@@ -3,7 +3,7 @@ import Typography from '@/components/ui/typography/typography';
 
 import { CardTypes } from '@/shared/types/global-types';
 
-import { OUR_CLIENTS_CONFIG } from './our-clients-config';
+import { OUR_CLIENTS_CONFIG } from './for-who-we-work-config';
 import Card from '../../ui/card';
 
 export default function ForWhoWeWorkBlock({ data = OUR_CLIENTS_CONFIG }: { data?: CardTypes[] }) {
