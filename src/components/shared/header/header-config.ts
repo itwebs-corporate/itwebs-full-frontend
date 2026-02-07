@@ -20,14 +20,6 @@ export const HEADER_MOBILE_LINKS = [
   { link: INSTAGRAM, icon: '/links/instagram-mobile-menu.svg' },
 ];
 
-export const MOBILE_MENU_SERVICES = [
-  '1c услуги',
-  'Веб разработка',
-  'Мобильная разработка',
-  'Сервера и поддержка',
-  'CRM',
-  'Цифровизация и автоматизация',
-];
 export const MOBILE_MENU_1C_SERVICES = [
   'Программирование системы 1С Бухгалтерия',
   'Программирование системы 1С Бухгалтерия',

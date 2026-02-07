@@ -6,9 +6,10 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
+import { SERVICES_SECTIONS } from '@/config/services-sections';
 import { MOBILE_MENU_TOGGLE_ID, SCREEN_1C_ID } from '@/constants/header-constants';
 
-import { HEADER_NAV, MOBILE_MENU_SERVICES } from './header-config';
+import { HEADER_NAV } from './header-config';
 function closeMobileMenu() {
   const menuToggle = document.getElementById(MOBILE_MENU_TOGGLE_ID) as HTMLInputElement;
   if (menuToggle) menuToggle.checked = false;
@@ -67,13 +68,14 @@ export default function MobileMenuMainScreen() {
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex flex-col gap-4 pl-2">
-                {MOBILE_MENU_SERVICES.map((service) => (
-                  <li
+                {SERVICES_SECTIONS.map((service) => (
+                  <Link
                     className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
-                    key={service}
+                    href={service.link}
+                    key={service.title}
                   >
-                    {service}
-                  </li>
+                    {service.title}
+                  </Link>
                 ))}
               </ul>
             </Activity>

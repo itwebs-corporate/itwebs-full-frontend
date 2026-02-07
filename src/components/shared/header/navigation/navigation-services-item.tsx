@@ -22,7 +22,7 @@ export default function NavigationServicesItem({
   return (
     <div
       className={cn(
-        'border-primary absolute top-[calc(100%+12px)] left-0 z-50 rounded-[12px] border-2 bg-white',
+        'border-primary absolute left-0 z-50 rounded-[12px] border-2 bg-white',
         'transition-[width,padding] duration-200 ease-out',
         isWide ? 'p-[32px]' : 'w-[320px] p-[16px]'
       )}
