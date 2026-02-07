@@ -26,10 +26,10 @@ export default function ServicesWeProvide({ isRegion = false }: { isRegion?: boo
 
       <div className="3xl:grid-cols-4 mt-[clamp(24px,3vw,48px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
         {OUR_SERVICES_DEFAULT.map((item) => (
-          <ServicesWeProvideCard isRegion item={item} key={item.title} />
+          <ServicesWeProvideCard isRegion={isRegion} item={item} key={item.title} />
         ))}
         {OUR_SERVICES_MOBILE_DEFAULT.map((item) => (
-          <ServicesWeProvideMobileCard isRegion item={item} key={item.title} />
+          <ServicesWeProvideMobileCard isRegion={isRegion} item={item} key={item.title} />
         ))}
       </div>
       <Button asChild variant={isRegion ? 'outline' : 'gray'}>

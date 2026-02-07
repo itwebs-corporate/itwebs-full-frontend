@@ -6,6 +6,7 @@ import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
 import { OurServicesCard } from './services-we-provide-config';
+
 export default function ServicesWeProvideCard({
   item,
   isRegion = false,
@@ -13,7 +14,6 @@ export default function ServicesWeProvideCard({
   item: OurServicesCard;
   isRegion?: boolean;
 }) {
-  console.log(isRegion);
   return (
     <div
       className={cn(
