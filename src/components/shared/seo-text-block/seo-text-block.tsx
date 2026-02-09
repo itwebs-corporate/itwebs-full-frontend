@@ -12,7 +12,7 @@ export default function SeoTextBlock() {
   return (
     <Section align="start" className="mb-[clamp(86px,6vw,124px)] gap-[clamp(24px,1.6vw,32px)]">
       <Typography variant="h2">
-        <b className="text-primary">СЕО</b> текст
+        <b className="text-primary">Ваш</b> единый IT партнер
       </Typography>
       <Typography
         className={cn(
@@ -21,19 +21,16 @@ export default function SeoTextBlock() {
         )}
         variant="p2"
       >
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-        galley of type and scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-        passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-        an unknown printer took a galley of type and scrambled it to make a type specimen book. It
-        has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-        software like Aldus PageMaker including versions of Lorem Ipsum.
+        Наша главная ценность — не просто выполнить проект, а стать для клиента долгосрочным и
+        надежным партнером в цифровой трансформации. Мы часто начинаем с решения одной задачи, будь
+        то <b>заказать разработку сайта</b> или <b>заказать разработку мобильного приложения</b>.
+        Клиенты ценят наш глубокий подход, профессионализм и стремление вникнуть в суть их бизнеса,
+        что естественным образом ведет к расширению сотрудничества. Универсальность нашей экспертизы
+        позволяет закрывать все IT-потребности компании в одном месте. После успешного запуска сайта
+        или приложения клиенты обращаются к нам для его развития: заказывают комплексное
+        <b>SEO продвижение</b> и глубинную <b>SEO оптимизацию</b> для роста трафика и конверсий.
+        Наша <b>разработка интернет-магазина</b> логично дополняется последующей{' '}
+        <b>заказной интеграцией CRM системы</b> для автоматизации продаж и повышения лояльности.
       </Typography>
       <Button onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? 'Скрыть' : 'Показать полностью'}
