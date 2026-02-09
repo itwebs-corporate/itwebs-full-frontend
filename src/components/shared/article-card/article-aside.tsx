@@ -3,7 +3,7 @@ import { RefObject, useMemo } from 'react';
 
 import Typography from '@/components/ui/typography/typography';
 
-import { BlogCard } from '../blog-block/blog-config';
+import { BlogPostDto } from '@/shared/types/post-dto-types';
 
 type SectionId = 'title' | 'subtitle' | 'stage1' | 'stage2';
 
@@ -11,18 +11,18 @@ export default function ArticleAside({
   article,
   sectionRefs,
 }: {
-  article: BlogCard;
+  article: BlogPostDto;
   sectionRefs: RefObject<Record<SectionId, HTMLElement | null>>;
 }) {
   const sections = useMemo(
     () =>
       [
-        { id: 'title', title: article.title },
-        { id: 'subtitle', title: article.subTitle },
-        { id: 'stage1', title: article.stageWork },
+        { id: 'title', title: article.name },
+        { id: 'subtitle', title: article.content },
+        { id: 'stage1', title: article.services },
         { id: 'stage2', title: 'Этапы работы 2' },
       ] as const,
-    [article.title, article.subTitle, article.stageWork]
+    [article]
   );
 
   const scrollToElement = (id: SectionId) => {
@@ -45,7 +45,7 @@ export default function ArticleAside({
             key={s.id}
             onClick={() => scrollToElement(s.id)}
           >
-            {index + 1}. {s.title}
+            {index + 1}.{/* {s.title} */}
           </li>
         ))}
       </ul>

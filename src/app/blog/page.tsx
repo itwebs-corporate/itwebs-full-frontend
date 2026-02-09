@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import BlogBlock from '@/components/shared/blog-block/blog-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 
+import { fetchAllPosts } from '@/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 export const metadata: Metadata = {
@@ -16,11 +17,12 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await fetchAllPosts();
   return (
     <>
       <HeroBlock heading="Полезные материалы" />
-      <BlogBlock />
+      <BlogBlock posts={posts} />
     </>
   );
 }

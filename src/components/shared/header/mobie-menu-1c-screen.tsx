@@ -6,7 +6,8 @@ import { SCREEN_1C_ID } from '@/constants/header-constants';
 
 import { MOBILE_MENU_1C_SERVICES } from './header-config';
 
-export default function MobileMenu1CScreen() {
+export default async function MobileMenu1CScreen() {
+  // TODO: нужно получить только услуги 1c и вывести их
   return (
     <>
       <div className="flex items-center justify-between pt-[14px] pr-[14px] pl-[28px]">

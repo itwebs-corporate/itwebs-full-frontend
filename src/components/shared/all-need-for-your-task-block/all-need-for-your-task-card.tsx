@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-import { ServiceCard } from '@/config/services-mock-config';
+import { Service } from '@/shared/types/service-dto-types';
 
-export default function AllNeedForYourTaskCard({ card }: { card: ServiceCard }) {
+export default function AllNeedForYourTaskCard({ card }: { card: Service }) {
   return (
     <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[24px]">
       <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
@@ -14,7 +14,7 @@ export default function AllNeedForYourTaskCard({ card }: { card: ServiceCard }) 
         </Typography>
         <Link
           className="bg-secondary flex-center h-[42px] w-[42px] shrink-0 rounded-full"
-          href={card.href}
+          href={card.link}
         >
           <Media
             className="h-[24px] w-[24px]"

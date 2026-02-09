@@ -5,8 +5,10 @@ import HeroBlock from '@/components/shared/hero-block/hero-block';
 import ModalConsult from '@/components/shared/modal-consult';
 import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
 import ProcessWithoutStress from '@/components/shared/process-without-stress/process-without-stress';
+import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
 import WeInNumbers from '@/components/shared/we-in-numbers/we-in-numbers';
 import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
+import Section from '@/components/ui/section/section';
 
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
@@ -30,7 +32,10 @@ export default function AboutPage() {
       <AboutTextBlock />
       <WeInNumbers />
       <WeSolveClientTaskBlock />
-      <OurTechBlock />
+      <Section className="bg-primary py-container rounded-[clamp(24px,4vw,48px)]">
+        <OurTechBlock />
+        <ServicesWeProvide />
+      </Section>
       <ProcessWithoutStress />
     </>
   );

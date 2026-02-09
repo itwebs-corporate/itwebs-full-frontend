@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-import { Case } from './cases-config';
+import { Case } from '@/shared/types/service-dto-types';
 
 export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,14 +16,17 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
       <div className="flex-center shrink-0 rounded-[clamp(12px,2vw,24px)] bg-[#F7F7F7] p-[14px]">
         <Media
           className="h-[clamp(142px,14vw,370px)] w-[clamp(284px,28vw,730px)]"
-          image={{ src: item.img, alt: item.title }}
+          image={{
+            src: item.image ?? '/default/cases-default.png',
+            alt: item.name ?? 'case image',
+          }}
         />
       </div>
 
       <div className="flex flex-col justify-between gap-[clamp(16px,1.5vw,32px)] rounded-[clamp(12px,2vw,24px)] bg-white px-[14px] py-[24px] sm:p-[32px] sm:pr-[36px]">
         <div className="flex flex-col gap-[10px] sm:gap-[16px]">
           <Typography className="text-foreground2 text-[clamp(24px,2.5vw,48px)]" variant="h3">
-            {item.title}
+            {item.name}
           </Typography>
           <Typography className="opacity-80" variant="p2">
             {item.description}
@@ -56,7 +59,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
               className={cn(isOpen ? 'line-clamp-none' : 'line-clamp-2', 'opacity-80')}
               variant="p2"
             >
-              {item.solve}
+              {item.decision}
             </Typography>
           </div>
         </div>

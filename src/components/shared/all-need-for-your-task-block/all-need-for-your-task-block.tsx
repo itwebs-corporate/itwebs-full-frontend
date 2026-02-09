@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { ServiceCard } from '@/config/services-mock-config';
+import { Service } from '@/shared/types/service-dto-types';
 
 import AllNeedForYourTaskCard from './all-need-for-your-task-card';
 import AllNeedForYourTaskMobileCard from './all-need-for-your-task-mobile-card';
@@ -15,7 +15,7 @@ export default function AllNeedForYourTaskBlock({
   cards,
 }: {
   searchParams?: string;
-  cards: ServiceCard[];
+  cards: Service[];
 }) {
   const activeTab = searchParams;
   return (

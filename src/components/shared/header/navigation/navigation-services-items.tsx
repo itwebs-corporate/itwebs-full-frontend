@@ -21,13 +21,15 @@ export default function NavigationServicesItems({
   headerGroups: HeaderGroups;
 }) {
   const isWide = Boolean(activeServiceItem);
-
   return (
     <div
       className={cn(
-        'border-primary absolute left-0 z-50 rounded-[12px] border-2 bg-white',
+        'border-primary absolute z-50 rounded-[12px] border-2 bg-white',
         'transition-[width,padding] duration-200 ease-out',
-        isWide ? 'p-[32px]' : 'p-[16px]'
+        isWide
+          ? // TODO: докрутить стили ->
+            'left-1/2 w-max max-w-[calc(100vw-30vw)] -translate-x-1/2 p-[32px]'
+          : 'left-0 p-[16px]'
       )}
       onClick={(e) => e.stopPropagation()}
     >
@@ -53,7 +55,7 @@ export default function NavigationServicesItems({
       )}
 
       {isWide && activeServiceItem && (
-        <div className="flex gap-[24px]">
+        <div className="flex min-w-0 gap-[24px]">
           <ul className="pr-[16px]">
             {headerGroups.map((tab) => {
               const active = tab.groupLink === activeServiceItem;
@@ -80,7 +82,7 @@ export default function NavigationServicesItems({
               );
             })}
           </ul>
-          {/*TODO: уходит за пределы правого бока и растягивается по вертикали!  */}
+          {/*TODO: уходит за пределы правого бока   */}
           <ul className="flex flex-wrap gap-[2px]">
             {headerGroups
               .find((item) => item.groupLink === activeServiceItem)

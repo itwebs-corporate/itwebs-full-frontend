@@ -6,7 +6,6 @@ import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
 import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
 import SeoTextBlock from '@/components/shared/seo-text-block/seo-text-block';
 import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
-import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
 import WhyChooseBlock from '@/components/shared/why-choose-block/why-choose-block';
 import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
@@ -38,7 +37,7 @@ export default function HomePage() {
         <OurTechBlock />
         <ServicesWeProvide />
       </Section>
-      <WeSolveClientTaskBlock />
+      {/* <WeSolveClientTaskBlock /> */}
       <HowWeWorkBlock />
       <WhyChooseBlock />
       <SeoTextBlock />

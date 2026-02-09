@@ -5,15 +5,9 @@ import { cn } from '@/lib/utils';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-import { BlogCard as TBlogCard } from './blog-config';
+import { Post } from '@/shared/types/post-dto-types';
 
-export default function BlogCardMobile({
-  card,
-  className,
-}: {
-  card: TBlogCard;
-  className?: string;
-}) {
+export default function BlogCardMobile({ card, className }: { card: Post; className?: string }) {
   return (
     <div
       className={cn(
@@ -24,16 +18,16 @@ export default function BlogCardMobile({
       {card.image && (
         <Media
           className="h-[clamp(129px,20vw,165px)] w-full max-w-full"
-          image={{ src: card.image.src, alt: card.image.alt }}
+          image={{ src: card.image ?? '/default/card-rect.png', alt: card.name }}
         />
       )}
       <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
         <Typography className="lowercase" variant="h3">
-          {card.title}
+          {card.name}
         </Typography>
         <Link
           className="flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
-          href={card.href || '/'}
+          href={card.link || '/'}
         >
           <Media
             className="h-[15px] w-[20px]"

@@ -6,10 +6,12 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-import { CASES_CONFIG } from './cases-config';
+import { fetchAllCases } from '@/api/server';
+
 import WeSolveClientTaskCard from './we-solve-client-task-card';
 
-export function WeSolceClientTaskCarousel() {
+export async function WeSolceClientTaskCarousel() {
+  const cases = await fetchAllCases();
   return (
     <div className="w-full">
       <div className="px-4 sm:px-0">
@@ -21,8 +23,8 @@ export function WeSolceClientTaskCarousel() {
           }}
         >
           <CarouselContent>
-            {CASES_CONFIG.map((item, index) => (
-              <CarouselItem className="basis-[88%] sm:basis-full" key={index}>
+            {cases.map((item) => (
+              <CarouselItem className="basis-[88%] sm:basis-full" key={item.id}>
                 <WeSolveClientTaskCard item={item} />
               </CarouselItem>
             ))}

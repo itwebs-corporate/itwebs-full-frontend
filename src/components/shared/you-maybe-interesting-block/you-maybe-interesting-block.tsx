@@ -2,13 +2,14 @@
 
 import { useRef } from 'react';
 
-import BlogCard from '@/components/shared/blog-block/blog-card';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { BLOG_CONFIG } from '../blog-block/blog-config';
+import { BlogPostDto } from '@/shared/types/post-dto-types';
 
-export default function YouMaybeInterestingBlock() {
+import YouMaybeInterestingCard from './you-maybe-interesting-card';
+
+export default function YouMaybeInterestingBlock({ post }: { post: BlogPostDto }) {
   const ref = useRef<HTMLUListElement | null>(null);
   const drag = useRef({ down: false, x: 0, left: 0, moved: false });
 
@@ -61,11 +62,11 @@ export default function YouMaybeInterestingBlock() {
         }}
         ref={ref}
       >
-        {BLOG_CONFIG.slice(0, 2).map((item) => (
-          <BlogCard
+        {post.similar.map((item) => (
+          <YouMaybeInterestingCard
             card={item}
             className="h-[clamp(282px,40vw,394px)] w-full max-w-[clamp(332px,60vw,587px)]"
-            key={item.id}
+            key={item.title}
           />
         ))}
       </ul>
