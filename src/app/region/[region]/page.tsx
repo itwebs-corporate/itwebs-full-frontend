@@ -12,11 +12,17 @@ import { Button } from '@/components/ui/button';
 
 import { PAGES_CONFIG } from '@/config/pages-config';
 
-export default function RegionPage() {
+type Props = {
+  params: Promise<{ region: string }>;
+};
+
+export default async function RegionPage({ params }: Props) {
+  const region = (await params).region ?? 'Минске';
+
   return (
     <>
       <HeroBlock
-        description="Помогаем вашему бизнесу расти и развиваться быстреев в (регион): сайты, CRM-системы, веб-приложения, SEO, telegram-apps."
+        description={`Помогаем вашему бизнесу расти и развиваться быстреев в ${region}: сайты, CRM-системы, веб-приложения, SEO, telegram-apps.`}
         fullScreen
         heading={
           <>
