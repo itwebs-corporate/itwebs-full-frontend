@@ -6,10 +6,17 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 import { ServiceTabSlug } from '@/config/services-mock-config';
+import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
-import NavigationServicesItem from './navigation-services-item';
+import NavigationServicesItems from './navigation-services-items';
 
-export default function NavigationServices({ title }: { title: string }) {
+export default function NavigationServices({
+  title,
+  headerGroups,
+}: {
+  title: string;
+  headerGroups: HeaderGroups;
+}) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   const [activeServiceItem, setActiveServiceItem] = useState<ServiceTabSlug | null>(null);
 
@@ -31,9 +38,10 @@ export default function NavigationServices({ title }: { title: string }) {
       </Link>
 
       {isOpenServices && (
-        <NavigationServicesItem
+        <NavigationServicesItems
           activeServiceItem={activeServiceItem}
           close={close}
+          headerGroups={headerGroups}
           setActiveServiceItem={setActiveServiceItem}
         />
       )}

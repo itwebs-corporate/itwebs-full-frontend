@@ -73,6 +73,7 @@ export default function MobileMenuMainScreen() {
                     className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
                     href={service.link}
                     key={service.title}
+                    onClick={closeMobileMenu}
                   >
                     {service.title}
                   </Link>
