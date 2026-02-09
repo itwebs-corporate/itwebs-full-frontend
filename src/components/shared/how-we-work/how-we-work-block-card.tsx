@@ -1,15 +1,17 @@
+import { Icon } from '@iconify/react';
+
 import { cn } from '@/lib/utils';
 
 import Typography from '@/components/ui/typography/typography';
 
-import { CardTypes } from '@/shared/types/global-types';
+import { ServiceWay } from '@/shared/types/service-dto-types';
 
 export default function HowWeWorkBlockCard({
   item,
   className,
   classNameNumber,
 }: {
-  item: CardTypes;
+  item: ServiceWay;
   className?: string;
   classNameNumber?: string;
 }) {
@@ -26,11 +28,15 @@ export default function HowWeWorkBlockCard({
           classNameNumber
         )}
       >
-        0{item.id}
+        {item.iconName ? (
+          <Icon className="h-[32px] w-[32px]" icon={item.iconName} />
+        ) : (
+          `0${item.id}`
+        )}
       </div>
 
       <div className="flex flex-col">
-        <Typography variant="h3">{item.title}</Typography>
+        <Typography variant="h3">{item.name}</Typography>
         <Typography className="mt-[clamp(12px,1vw,16px)]" variant="p2">
           {item.description}
         </Typography>

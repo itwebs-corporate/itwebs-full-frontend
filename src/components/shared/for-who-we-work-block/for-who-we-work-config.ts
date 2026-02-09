@@ -1,4 +1,4 @@
-import { CardTypes } from '@/shared/types/global-types';
+import { CardTypes } from '@/shared/types/card-types';
 
 export const OUR_CLIENTS_CONFIG: CardTypes[] = [
   {

@@ -1,7 +1,7 @@
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { CardTypes } from '@/shared/types/global-types';
+import { CardTypes } from '@/shared/types/card-types';
 
 import { OUR_CLIENTS_CONFIG } from './for-who-we-work-config';
 import Card from '../../ui/card';

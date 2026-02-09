@@ -7,10 +7,12 @@ import { cn } from '@/lib/utils';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
+import { ServiceWay } from '@/shared/types/service-dto-types';
+
 import { HOW_WE_WORK_1C_CARDS } from './how-we-work-1c-config';
 import HowWeWorkBlockCard from '../how-we-work/how-we-work-block-card';
 
-export default function HowWeWork1cBlock() {
+export default function HowWeWork1cBlock({ ways = HOW_WE_WORK_1C_CARDS }: { ways?: ServiceWay[] }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handlerScroll = (direction: 'prev' | 'next') => {
@@ -44,7 +46,7 @@ export default function HowWeWork1cBlock() {
           ref={ref}
         >
           <ul className="flex w-max flex-col flex-nowrap gap-[clamp(8px,1.5vw,20px)] sm:flex-row">
-            {HOW_WE_WORK_1C_CARDS.map((item, index) => (
+            {ways.map((item, index) => (
               <HowWeWorkBlockCard
                 className={cn(
                   'h-[240px] w-[332px] shrink-0 sm:h-[359px] sm:w-[435px]',

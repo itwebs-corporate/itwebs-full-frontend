@@ -21,7 +21,7 @@ export default function ServicesWeProvideCard({
         isRegion ? 'bg-white' : 'bg-white/15'
       )}
     >
-      <div className="flex max-h-[55px] flex-nowrap items-center">
+      <div className="flex max-h-[55px] flex-nowrap items-center justify-between">
         <Typography
           className={cn(isRegion ? 'text-foreground3!' : 'text-white', 'lowercase')}
           variant="h3"

@@ -48,7 +48,7 @@ export default function ServicesWeProvideMobileCard({
         <Button
           asChild
           className={cn(
-            isRegion ? '' : 'border-secondary text-secondaryborder bg-[#3a5cf7]',
+            !isRegion && 'border-secondary text-secondary border bg-[#3a5cf7]',
             'max-w-[260px]'
           )}
           variant={isRegion ? 'outline' : 'default'}
