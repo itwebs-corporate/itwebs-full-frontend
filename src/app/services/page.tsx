@@ -24,13 +24,12 @@ type Props = {
 export default async function ServicesPage({ searchParams }: Props) {
   const sp = await searchParams;
   const key = sp?.q;
-  console.log('search params', key);
-
-  const allCards = await fetchAllServices();
+  const allServices = await fetchAllServices();
+  // TODO: services/all -> услуга отличается от услуги в services/group/{group}
   return (
     <>
       <HeroBlock heading="Услуги ITWEBS" />
-      <AllNeedForYourTaskBlock cards={allCards} searchParams={key} />
+      <AllNeedForYourTaskBlock cards={allServices} searchParams={key} />
     </>
   );
 }

@@ -1,11 +1,12 @@
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { Case } from '@/shared/types/service-dto-types';
+import { fetchAllCases } from '@/api/server';
 
 import WeSolveClientTaskCard from '../we-solve-client-task-block/we-solve-client-task-card';
 
-export default function CasesBlock({ cases }: { cases: Case[] }) {
+export default async function CasesBlock() {
+  const cases = await fetchAllCases();
   return (
     <Section className="mb-[clamp(86px,9vw,146px)] gap-[clamp(32px,5vw,64px)]">
       <Typography variant="h2">

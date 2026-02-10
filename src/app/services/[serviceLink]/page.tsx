@@ -21,10 +21,7 @@ export default async function ServiceLinkPage({ params }: Props) {
   const ways = service.ways;
   return (
     <>
-      <HeroBlock
-        // description="Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps."
-        heading={service.name}
-      >
+      <HeroBlock description={service.h2} heading={service.h1}>
         <ModalConsult />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>

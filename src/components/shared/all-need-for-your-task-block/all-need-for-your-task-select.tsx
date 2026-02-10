@@ -9,8 +9,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-import { SERVICES_TABS } from '@/config/services-mock-config';
-export default function AllNeedForYourTaskSelect() {
+import { FilterGroup } from '@/shared/types/service-dto-types';
+
+export default function AllNeedForYourTaskSelect({ filters }: { filters: FilterGroup[] }) {
   const router = useRouter();
 
   return (
@@ -27,9 +28,9 @@ export default function AllNeedForYourTaskSelect() {
         <SelectValue placeholder="1с услуги" />
       </SelectTrigger>
       <SelectContent align="start" position="popper" side="bottom">
-        {SERVICES_TABS.map((item) => (
-          <SelectItem key={item.slug} value={item.slug}>
-            {item.title}
+        {filters.map((item) => (
+          <SelectItem key={item.id} value={item.link}>
+            {item.name}
           </SelectItem>
         ))}
       </SelectContent>

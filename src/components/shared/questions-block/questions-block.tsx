@@ -37,7 +37,7 @@ export default function QuestionsBlock({
       <Accordion className="flex flex-col gap-[clamp(8px,2vw,24px)]" type="multiple">
         {faqs.map((item) => (
           <AccordionItem
-            className="w-[clamp(332px,85vw,1194px)] rounded-[clamp(12px,2vw,24px)] bg-white"
+            className="w-[clamp(332px,85vw,1194px)] rounded-[clamp(12px,2vw,24px)] bg-white py-[8px]"
             key={item.id}
             value={`item-${item.id}`}
           >

@@ -39,7 +39,7 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <div className="flex-center border-primary h-[28px] w-[28px] rounded-full border sm:h-[42px] sm:w-[42px]">
+        <div className="flex-center border-primary h-[28px] w-[28px] shrink-0 rounded-full border sm:h-[42px] sm:w-[42px]">
           <ChevronDownIcon className="text-primary pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
         </div>
       </AccordionPrimitive.Trigger>

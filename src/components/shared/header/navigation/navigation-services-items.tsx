@@ -26,10 +26,7 @@ export default function NavigationServicesItems({
       className={cn(
         'border-primary absolute z-50 rounded-[12px] border-2 bg-white',
         'transition-[width,padding] duration-200 ease-out',
-        isWide
-          ? // TODO: докрутить стили ->
-            'left-1/2 w-max max-w-[calc(100vw-30vw)] -translate-x-1/2 p-[32px]'
-          : 'left-0 p-[16px]'
+        isWide ? 'left-1/2 w-[calc(100vw-25vw)] -translate-x-[43%] p-[32px]' : 'left-0 p-[16px]'
       )}
       onClick={(e) => e.stopPropagation()}
     >
@@ -55,15 +52,15 @@ export default function NavigationServicesItems({
       )}
 
       {isWide && activeServiceItem && (
-        <div className="flex min-w-0 gap-[24px]">
-          <ul className="pr-[16px]">
+        <div className="flex min-w-0 gap-[clamp(12px,3vw,24px)]">
+          <ul className="pr-[clamp(0px,2vw,16px)]">
             {headerGroups.map((tab) => {
               const active = tab.groupLink === activeServiceItem;
 
               return (
                 <li
                   className={cn(
-                    'mb-[6px] flex items-center justify-between gap-[32px] rounded-[12px] p-[14px] text-base',
+                    'mb-[6px] flex items-center justify-between gap-[clamp(16px,4vw,32px)] rounded-[12px] p-[clamp(7px,2vw,14px)] text-[clamp(14px,2vw,16px)]',
                     active ? 'bg-primary text-white' : 'text-foreground2 bg-background'
                   )}
                   key={tab.groupLink}
@@ -82,8 +79,8 @@ export default function NavigationServicesItems({
               );
             })}
           </ul>
-          {/*TODO: уходит за пределы правого бока   */}
-          <ul className="flex flex-wrap gap-[2px]">
+          {/* TODO:  сделать так чтобы li не накладывались друг на друга  */}
+          <ul className="grid grid-cols-4 gap-[20px] overflow-x-auto">
             {headerGroups
               .find((item) => item.groupLink === activeServiceItem)
               ?.services.map((card) => (
@@ -93,7 +90,7 @@ export default function NavigationServicesItems({
                       'block',
                       'text-[#606060] transition-colors hover:text-[#606060]/70'
                     )}
-                    href={card.link}
+                    href={`/services/${card.link}`}
                     onClick={close}
                   >
                     {card.name}

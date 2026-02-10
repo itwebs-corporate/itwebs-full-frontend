@@ -19,14 +19,6 @@ export type FilterGroup = {
   link: string;
 };
 
-export type ServicesGroup = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  link: string;
-};
-
 export type ServiceFaq = {
   id: number;
   question: string;

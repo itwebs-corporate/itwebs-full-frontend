@@ -33,12 +33,12 @@ export default function AllNeedForYourTaskMobileCard({ card }: { card: Service }
             className="max-h-[42px] w-full max-w-[clamp(260px,20vw,337px)]"
             variant="outline"
           >
-            <Link href={card.link}> Подробнее</Link>
+            <Link href={`/services/${card.link}`}> Подробнее</Link>
           </Button>
 
           <Link
             className="bg-primary flex-center h-[42px] w-[42px] shrink-0 rounded-full"
-            href={card.link}
+            href={`/services/${card.link}`}
           >
             <Media
               className="h-[24px] w-[24px]"

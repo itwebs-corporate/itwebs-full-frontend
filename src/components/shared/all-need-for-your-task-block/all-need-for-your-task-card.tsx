@@ -14,7 +14,7 @@ export default function AllNeedForYourTaskCard({ card }: { card: Service }) {
         </Typography>
         <Link
           className="bg-secondary flex-center h-[42px] w-[42px] shrink-0 rounded-full"
-          href={card.link}
+          href={`/services/${card.link}`}
         >
           <Media
             className="h-[24px] w-[24px]"

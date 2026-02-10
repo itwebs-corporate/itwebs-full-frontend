@@ -2,14 +2,15 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
-import { fetchFilterGroups } from '@/api/server';
+import { FilterGroup } from '@/shared/types/service-dto-types';
 
-export default async function AllNeedForYourTaskTabs({
+export default function AllNeedForYourTaskTabs({
   activeTab,
+  filters,
 }: {
   activeTab: string | undefined;
+  filters: FilterGroup[];
 }) {
-  const filters = await fetchFilterGroups();
   return (
     <ul className="my-[clamp(24px,4vw,48px)] hidden h-auto w-full flex-wrap justify-center gap-[clamp(12px,2vw,16px)] gap-y-10 sm:flex">
       {filters.map((item) => (

@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import CasesBlock from '@/components/shared/cases-block/cases-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 
-import { fetchAllCases } from '@/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 export const metadata: Metadata = {
@@ -17,12 +16,11 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 };
-export default async function CasesPage() {
-  const cases = await fetchAllCases();
+export default function CasesPage() {
   return (
     <>
       <HeroBlock heading="Наши кейсы" />
-      <CasesBlock cases={cases} />
+      <CasesBlock />
     </>
   );
 }
