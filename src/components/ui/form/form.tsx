@@ -7,19 +7,10 @@ import { z } from 'zod';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/fields/input';
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
-
-const zodContactSchema = z.object({
-  name: z.string().min(1, 'Введите имя!'),
-  emailOrTel: z.string().min(1, 'Введите email или телефон!'),
-  taskType: z.string().min(1, 'Выберите тип задачи!'),
-  policy: z.boolean().refine((v) => v === true, {
-    message: 'Необходимо принять политику обработки персональных данных!',
-  }),
-});
+import { SELECT_ITEMS, zodContactSchema } from './form-config';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../select';
 
 type ContactFormValues = z.infer<typeof zodContactSchema>;
 
@@ -47,10 +38,7 @@ export default function Form({ className }: { className?: string }) {
   };
 
   return (
-    <form
-      className="bg-primary xxs:p-8 xxs:mt-[32px] mt-[24px] rounded-[24px] px-[14px] pt-8 pb-6"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={cn('flex flex-col items-center gap-[14px] lg:flex-row lg:gap-4', className)}>
         <div className="relative w-full min-w-[275px]">
           <Input nameRegister="name" placeholder="Ваше имя" register={register} />
@@ -82,10 +70,11 @@ export default function Form({ className }: { className?: string }) {
                   />
                 </SelectTrigger>
                 <SelectContent align="start" position="popper" side="bottom">
-                  <SelectItem value="Настроить 1С">Настроить 1С</SelectItem>
-                  <SelectItem value="Сайт под ключ">Сайт под ключ</SelectItem>
-                  <SelectItem value="SEO оптимизация">SEO оптимизация</SelectItem>
-                  <SelectItem value="Редизайн сайта">Редизайн сайта</SelectItem>
+                  {SELECT_ITEMS?.map((item) => (
+                    <SelectItem key={item} value={item}>
+                      {item}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             )}
@@ -100,30 +89,6 @@ export default function Form({ className }: { className?: string }) {
         <Button className="max-h-[48px]" disabled={isSubmitting} type="submit" variant="secondary">
           {isSubmitting ? 'Отправляется...' : 'Отправить'}
         </Button>
-      </div>
-      <div className="mt-[18px] flex justify-center gap-2">
-        <Controller
-          control={control}
-          name="policy"
-          render={({ field }) => (
-            <Checkbox
-              checked={field.value}
-              id="checkboxPolicy"
-              onCheckedChange={(v) => field.onChange(v === true)}
-            />
-          )}
-        />
-        <label
-          className="font-second-family relative text-[16px] leading-[100%]"
-          htmlFor="checkboxPolicy"
-        >
-          Я соглашаюсь с политикой обработки персональных данных
-          {errors.policy && (
-            <p className="text-destructive mb-[-2px] text-[12px] sm:text-sm">
-              {errors.policy.message}
-            </p>
-          )}
-        </label>
       </div>
     </form>
   );

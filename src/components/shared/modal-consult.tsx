@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dialog';
 
 import { Button } from '../ui/button';
-import Form from '../ui/form';
+import FormForModals from '../ui/form/form-for-modal';
 
 export default function ModalConsult({ triggerTitle = 'Записаться' }: { triggerTitle?: string }) {
   return (
@@ -16,14 +16,16 @@ export default function ModalConsult({ triggerTitle = 'Записаться' }: 
       <DialogTrigger asChild>
         <Button variant="secondary">{triggerTitle}</Button>
       </DialogTrigger>
-      <DialogContent className="bg-primary">
-        <DialogHeader>
-          <DialogTitle>Запись на консультацию</DialogTitle>
-          <DialogDescription className="text-white/70">
-            Обсудим ваши задачи и найдём лучшее решение
+      <DialogContent className="bg-background py-[64px] sm:py-[84px]">
+        <DialogHeader className="flex flex-col gap-[14px] sm:gap-[20px]">
+          <DialogTitle className="font-family text-foreground3 text-center text-[24px] leading-[100%] font-bold uppercase sm:text-[32px]">
+            <b className="text-primary">Берём IT-задачи на себя</b> понятно и надёжно
+          </DialogTitle>
+          <DialogDescription className="text-foreground3/80 font-second-family text-center text-[16px]">
+            Ответим в течение 15 минут
           </DialogDescription>
         </DialogHeader>
-        <Form className="xxs:mt-[-32px] mt-[-24px] flex flex-col!" />
+        <FormForModals className="mt-[24px] flex flex-col! sm:mt-[32px]" />
       </DialogContent>
     </Dialog>
   );
