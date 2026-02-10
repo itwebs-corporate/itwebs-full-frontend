@@ -1,17 +1,13 @@
-import { Icon } from '@iconify/react';
-
 import { cn } from '@/lib/utils';
 
-import Typography from '@/components/ui/typography/typography';
+import { ServiceWay } from '@/shared/types/service-dto-types';
 
-import { CardTypes } from '@/shared/types/card-types';
-
-export default function HowWeWorkBlockCard({
+export default function HowWeWorkBlock1cCard({
   item,
   className,
   classNameNumber,
 }: {
-  item: CardTypes;
+  item: ServiceWay;
   className?: string;
   classNameNumber?: string;
 }) {
@@ -22,7 +18,7 @@ export default function HowWeWorkBlockCard({
         className
       )}
     >
-      <div
+      {/* <div
         className={cn(
           'bg-primary font-family flex-center mb-[clamp(36px,5vw,64px)] h-[64px] w-[64px] rounded-[12px] text-[32px]',
           classNameNumber
@@ -36,7 +32,7 @@ export default function HowWeWorkBlockCard({
         <Typography className="mt-[clamp(12px,1vw,16px)]" variant="p2">
           {item.description}
         </Typography>
-      </div>
+      </div> */}
     </div>
   );
 }

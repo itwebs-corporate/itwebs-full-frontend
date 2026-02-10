@@ -5,13 +5,13 @@ import { cn } from '@/lib/utils';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-import { OurServicesCard } from './services-we-provide-config';
+import { Service } from '@/shared/types/service-dto-types';
 
 export default function ServicesWeProvideCard({
   item,
   isRegion = false,
 }: {
-  item: OurServicesCard;
+  item: Service;
   isRegion?: boolean;
 }) {
   return (

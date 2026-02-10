@@ -21,12 +21,14 @@ export default function NavigationServicesItems({
   headerGroups: HeaderGroups;
 }) {
   const isWide = Boolean(activeServiceItem);
+
   return (
     <div
       className={cn(
-        'border-primary absolute z-50 rounded-[12px] border-2 bg-white',
-        'transition-[width,padding] duration-200 ease-out',
-        isWide ? 'left-1/2 w-[calc(100vw-25vw)] -translate-x-[43%] p-[32px]' : 'left-0 p-[16px]'
+        'border-primary absolute z-50 rounded-[12px] border-2 bg-white transition-[width,padding] duration-200 ease-out',
+        isWide
+          ? 'left-1/10 w-[calc(100vw-25vw)] -translate-x-[43%] p-[clamp(16px,4vw,32px)]'
+          : 'left-0 p-[16px]'
       )}
       onClick={(e) => e.stopPropagation()}
     >
@@ -34,10 +36,7 @@ export default function NavigationServicesItems({
         <ul className="flex flex-col gap-[12px]">
           {headerGroups.map((tab) => (
             <li
-              className={cn(
-                'text-foreground2 font-second-family flex w-full items-center justify-between gap-[32px] rounded-[10px] px-[10px] py-[8px] text-left text-[16px] font-normal',
-                'hover:bg-neutral-100'
-              )}
+              className="text-foreground2 font-second-family flex w-full items-center justify-between gap-[32px] rounded-[10px] px-[10px] py-[8px] text-left text-[16px] font-normal hover:bg-neutral-100"
               key={tab.groupName}
               onClick={() => setActiveServiceItem(tab.groupLink)}
             >
@@ -60,14 +59,13 @@ export default function NavigationServicesItems({
               return (
                 <li
                   className={cn(
-                    'mb-[6px] flex items-center justify-between gap-[clamp(16px,4vw,32px)] rounded-[12px] p-[clamp(7px,2vw,14px)] text-[clamp(14px,2vw,16px)]',
+                    'mb-[6px] flex items-center justify-between gap-[clamp(16px,4vw,32px)] rounded-[12px] p-[clamp(7px,2vw,14px)] text-[clamp(10px,2vw,16px)]',
                     active ? 'bg-primary text-white' : 'text-foreground2 bg-background'
                   )}
                   key={tab.groupLink}
                   onClick={() => setActiveServiceItem(tab.groupLink)}
                 >
                   {tab.groupName}
-
                   <Media
                     className="h-[13px] w-[13px]"
                     image={{
@@ -79,25 +77,24 @@ export default function NavigationServicesItems({
               );
             })}
           </ul>
-          {/* TODO:  сделать так чтобы li не накладывались друг на друга  */}
-          <ul className="grid grid-cols-4 gap-[20px] overflow-x-auto">
-            {headerGroups
-              .find((item) => item.groupLink === activeServiceItem)
-              ?.services.map((card) => (
-                <li className="min-w-0" key={card.name}>
-                  <Link
-                    className={cn(
-                      'block',
-                      'text-[#606060] transition-colors hover:text-[#606060]/70'
-                    )}
-                    href={`/services/${card.link}`}
-                    onClick={close}
-                  >
-                    {card.name}
-                  </Link>
-                </li>
-              ))}
-          </ul>
+
+          <div className="min-w-0 flex-1 overflow-x-auto pb-2">
+            <ul className="grid w-max grid-cols-4 gap-[20px] [&>li]:w-[220px]">
+              {headerGroups
+                .find((item) => item.groupLink === activeServiceItem)
+                ?.services.map((card) => (
+                  <li className="min-w-0" key={card.name}>
+                    <Link
+                      className="block w-full min-w-0 overflow-hidden wrap-break-word! whitespace-normal! text-[#606060] transition-colors hover:text-[#606060]/70"
+                      href={`/services/${card.link}`}
+                      onClick={close}
+                    >
+                      {card.name}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
       )}
     </div>

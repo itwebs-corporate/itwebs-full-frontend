@@ -6,13 +6,21 @@ import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
+import { fetchAllServices } from '@/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
 import ServicesWeProvideCard from './services-we-provide-card';
-import { OUR_SERVICES_DEFAULT, OUR_SERVICES_MOBILE_DEFAULT } from './services-we-provide-config';
 import ServicesWeProvideMobileCard from './services-we-provide-mobile-card';
 
-export default function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
+export default async function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
+  const services = await fetchAllServices();
+  const namesForFilter = [
+    'Разработка интернет-магазина',
+    'Разработка мобильного приложения (ios + android)',
+    'Разработка многостраничных сайтов',
+    'Интеграция, настройка и подключение Битрикс24',
+  ];
+  const filterServices = services.filter((item) => namesForFilter.includes(item.title));
   return (
     <Section
       className={cn(
@@ -25,10 +33,10 @@ export default function ServicesWeProvide({ isRegion = false }: { isRegion?: boo
       </Typography>
 
       <div className="3xl:grid-cols-4 mt-[clamp(24px,3vw,48px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
-        {OUR_SERVICES_DEFAULT.map((item) => (
+        {filterServices.map((item) => (
           <ServicesWeProvideCard isRegion={isRegion} item={item} key={item.title} />
         ))}
-        {OUR_SERVICES_MOBILE_DEFAULT.map((item) => (
+        {filterServices.map((item) => (
           <ServicesWeProvideMobileCard isRegion={isRegion} item={item} key={item.title} />
         ))}
       </div>
