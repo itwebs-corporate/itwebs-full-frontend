@@ -25,7 +25,9 @@ export function BreadcrumbWithCustomSeparator({
   nestedRoute,
   className,
   color,
+  lastBreadcrumb,
 }: {
+  lastBreadcrumb?: string;
   nestedRoute?: string;
   className?: string;
   color?: string;
@@ -64,7 +66,9 @@ export function BreadcrumbWithCustomSeparator({
           </span>
         ))}
         <BreadcrumbItem>
-          {nestedRoute && <BreadcrumbPage className={color}>{nestedRoute}</BreadcrumbPage>}
+          {(nestedRoute || lastBreadcrumb) && (
+            <BreadcrumbPage className={color}>{nestedRoute ?? lastBreadcrumb}</BreadcrumbPage>
+          )}
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

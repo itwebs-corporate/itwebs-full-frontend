@@ -18,17 +18,17 @@ export default function HowWeWorkBlockCard({
   return (
     <div
       className={cn(
-        'z-10 flex min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col rounded-[clamp(12px,2vw,24px)] bg-white p-5',
+        'z-10 flex w-full max-w-[clamp(320px,90vw,435px)] flex-col rounded-[clamp(12px,2vw,24px)] bg-white p-5',
         className
       )}
     >
       <div
         className={cn(
-          'bg-primary font-family flex-center mb-[clamp(36px,5vw,64px)] h-[64px] w-[64px] rounded-[12px] text-[32px]',
+          'bg-primary font-family flex-center mb-[clamp(36px,5vw,64px)] size-[64px] rounded-[12px] text-[32px]',
           classNameNumber
         )}
       >
-        {item.icon ? <Icon className="h-[32px] w-[32px]" icon={item.icon} /> : `0${item.id}`}
+        {item.icon ? <Icon className="size-[32px]" icon={item.icon} /> : `0${item.id}`}
       </div>
 
       <div className="flex flex-col">

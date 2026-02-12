@@ -15,6 +15,7 @@ type HeroBlockProps = {
   heading: ReactNode;
   description?: string;
   fullScreen?: boolean;
+  lastBreadcrumb?: string;
   children?: ReactNode;
 };
 
@@ -22,6 +23,7 @@ export default function HeroBlock({
   heading,
   description,
   fullScreen = false,
+  lastBreadcrumb,
   children,
 }: HeroBlockProps) {
   return (
@@ -29,7 +31,7 @@ export default function HeroBlock({
       className="relative bg-[url(/hero/bg-hero.png)] pt-[186px] pb-[clamp(115px,10vw,208px)]"
       fullScreen={fullScreen}
     >
-      <BreadcrumbWithCustomSeparator />
+      <BreadcrumbWithCustomSeparator lastBreadcrumb={lastBreadcrumb} />
       <HeroHeading>{heading}</HeroHeading>
       {description && (
         <Typography className="pt-[clamp(14px,5vw,36px)]" variant="p1">
