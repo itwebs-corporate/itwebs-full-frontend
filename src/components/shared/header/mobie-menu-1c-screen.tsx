@@ -2,12 +2,12 @@ import Link from 'next/link';
 
 import { Media } from '@/components/ui/media';
 
+import { fetchHeaderGroups } from '@/app/api/server';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 
-import { MOBILE_MENU_1C_SERVICES } from './header-config';
-
 export default async function MobileMenu1CScreen() {
-  // TODO: нужно получить только услуги 1c и вывести их
+  const services = await fetchHeaderGroups();
+  const services1C = services.find((item) => item.groupLink === '1c');
   return (
     <>
       <div className="flex items-center justify-between pt-[14px] pr-[14px] pl-[28px]">
@@ -24,14 +24,14 @@ export default async function MobileMenu1CScreen() {
         </label>
       </div>
       <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
-        {MOBILE_MENU_1C_SERVICES.map((el, i) => (
+        {services1C?.services.map((el) => (
           <li
             className="font-second-family bg-background text-primary rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors"
-            key={i}
+            key={el.name}
           >
             <div className="flex items-center justify-between gap-3">
-              <Link className="flex-1" href={el}>
-                {el}
+              <Link className="flex-1" href={el.link}>
+                {el.name}
               </Link>
             </div>
           </li>

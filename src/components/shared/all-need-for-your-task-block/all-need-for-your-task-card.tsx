@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
+import { ServiceCardUI } from '@/lib/separation-type-for-card';
+
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-import { Service } from '@/shared/types/service-dto-types';
-
-export default function AllNeedForYourTaskCard({ card }: { card: Service }) {
+export default function AllNeedForYourTaskCard({ card }: { card: ServiceCardUI }) {
   return (
-    <div className="z-10 flex h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[24px]">
+    <div className="z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[24px] bg-white p-[24px]">
       <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
         <Typography className="lowercase" variant="h3">
           {card.title}
@@ -24,7 +24,7 @@ export default function AllNeedForYourTaskCard({ card }: { card: Service }) {
       </div>
 
       <Typography className="leading-[140%] opacity-80" variant="p2">
-        {card.description}
+        {card.desc}
       </Typography>
     </div>
   );

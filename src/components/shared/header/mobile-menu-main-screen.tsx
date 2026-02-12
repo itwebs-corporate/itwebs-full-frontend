@@ -6,17 +6,18 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
-import { SERVICES_SECTIONS } from '@/config/services-sections';
 import { MOBILE_MENU_TOGGLE_ID, SCREEN_1C_ID } from '@/constants/header-constants';
+import { FilterGroup } from '@/shared/types/service-dto-types';
 
 import { HEADER_NAV } from './header-config';
+
 function closeMobileMenu() {
   const menuToggle = document.getElementById(MOBILE_MENU_TOGGLE_ID) as HTMLInputElement;
   if (menuToggle) menuToggle.checked = false;
   const screen1c = document.getElementById(SCREEN_1C_ID) as HTMLInputElement;
   if (screen1c) screen1c.checked = false;
 }
-export default function MobileMenuMainScreen() {
+export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: FilterGroup[] }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (
     <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
@@ -68,14 +69,14 @@ export default function MobileMenuMainScreen() {
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex flex-col gap-4 pl-2">
-                {SERVICES_SECTIONS.map((service) => (
+                {filterGroup.map((service) => (
                   <Link
                     className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
-                    href={service.link}
-                    key={service.title}
+                    href={`/services?q=${service.link}`}
+                    key={service.id}
                     onClick={closeMobileMenu}
                   >
-                    {service.title}
+                    {service.name}
                   </Link>
                 ))}
               </ul>

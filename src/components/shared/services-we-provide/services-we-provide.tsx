@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { fetchAllServices } from '@/api/server';
+import { fetchAllServices } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
 import ServicesWeProvideCard from './services-we-provide-card';
@@ -32,7 +32,7 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
         <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Услуги</b> которые мы оказываем
       </Typography>
 
-      <div className="3xl:grid-cols-4 mt-[clamp(24px,3vw,48px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
+      <div className="3xl:grid-cols-4 mt-[clamp(24px,3vw,48px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)]! sm:grid-cols-2">
         {filterServices.map((item) => (
           <ServicesWeProvideCard isRegion={isRegion} item={item} key={item.title} />
         ))}

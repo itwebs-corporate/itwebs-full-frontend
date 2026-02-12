@@ -1,7 +1,7 @@
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { fetchAllCases } from '@/api/server';
+import { fetchAllCases } from '@/app/api/server';
 
 import WeSolveClientTaskCard from '../we-solve-client-task-block/we-solve-client-task-card';
 

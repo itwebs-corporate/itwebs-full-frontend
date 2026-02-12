@@ -17,11 +17,11 @@ export default function ServicesWeProvideCard({
   return (
     <div
       className={cn(
-        'z-10 hidden h-[clamp(260px,28vw,380px)] w-[clamp(280px,30vw,435px)] flex-col justify-between rounded-[24px] p-[24px] sm:flex',
+        'z-10 hidden h-[clamp(260px,28vw,380px)] w-full max-w-[435px] min-w-[280px] shrink-0 flex-col justify-between rounded-[24px] px-[clamp(14px,2.2vw,24px)] py-[clamp(20px,2.6vw,24px)] sm:flex',
         isRegion ? 'bg-white' : 'bg-white/15'
       )}
     >
-      <div className="flex max-h-[55px] flex-nowrap items-center justify-between">
+      <div className="flex flex-nowrap items-center justify-between">
         <Typography
           className={cn(isRegion ? 'text-foreground3!' : 'text-white', 'lowercase')}
           variant="h3"
@@ -29,11 +29,11 @@ export default function ServicesWeProvideCard({
           {item.title}
         </Typography>
         <Link
-          className={cn('bg-secondary', 'flex-center h-[42px] w-[42px] shrink-0 rounded-full')}
+          className={cn('bg-secondary', 'flex-center size-[42px] shrink-0 rounded-full')}
           href={item.link}
         >
           <Media
-            className="h-[24px] w-[24px]"
+            className="size-[24px]"
             image={{
               src: isRegion ? '/arrow/arrow-up-right-black.svg' : '/arrow/arrow-up-right-blue.svg',
               alt: 'arrow',

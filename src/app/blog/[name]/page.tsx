@@ -1,6 +1,6 @@
 import YouMaybeInterestingBlock from '@/components/shared/you-maybe-interesting-block/you-maybe-interesting-block';
 
-import { fetchPostByLink } from '@/api/server';
+import { fetchPostByLink } from '@/app/api/server';
 
 import ArticleCard from '../../../components/shared/article-card/article-card';
 

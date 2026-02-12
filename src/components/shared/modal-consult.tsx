@@ -16,10 +16,14 @@ export default function ModalConsult({ triggerTitle = 'Записаться' }: 
       <DialogTrigger asChild>
         <Button variant="secondary">{triggerTitle}</Button>
       </DialogTrigger>
-      <DialogContent className="bg-background py-[64px] sm:py-[84px]">
+      <DialogContent
+        className="bg-background px-[clamp(14px,6vw,86px)] py-[clamp(64px,5vw,84px)]"
+        outsideClose
+      >
         <DialogHeader className="flex flex-col gap-[14px] sm:gap-[20px]">
-          <DialogTitle className="font-family text-foreground3 text-center text-[24px] leading-[100%] font-bold uppercase sm:text-[32px]">
-            <b className="text-primary">Берём IT-задачи на себя</b> понятно и надёжно
+          <DialogTitle className="font-family text-foreground3 text-center text-[clamp(24px,3vw,32px)] leading-[100%] font-bold uppercase">
+            <b className="text-primary whitespace-nowrap">Берём IT-задачи на себя</b> понятно и
+            надёжно
           </DialogTitle>
           <DialogDescription className="text-foreground3/80 font-second-family text-center text-[16px]">
             Ответим в течение 15 минут

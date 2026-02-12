@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
-import { type ServiceTabSlug } from '@/config/services-mock-config';
 import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
 export default function NavigationServicesItems({
@@ -15,8 +14,8 @@ export default function NavigationServicesItems({
   close,
   headerGroups,
 }: {
-  activeServiceItem: ServiceTabSlug | null;
-  setActiveServiceItem: (v: ServiceTabSlug | null) => void;
+  activeServiceItem: string | null;
+  setActiveServiceItem: (v: string | null) => void;
   close: () => void;
   headerGroups: HeaderGroups;
 }) {
@@ -27,7 +26,7 @@ export default function NavigationServicesItems({
       className={cn(
         'border-primary absolute z-50 rounded-[12px] border-2 bg-white transition-[width,padding] duration-200 ease-out',
         isWide
-          ? 'left-1/10 w-[calc(100vw-25vw)] -translate-x-[43%] p-[clamp(16px,4vw,32px)]'
+          ? 'left-1/10 w-[calc(100vw-15vw)] -translate-x-[38%] p-[clamp(10px,5vw,32px)]'
           : 'left-0 p-[16px]'
       )}
       onClick={(e) => e.stopPropagation()}
@@ -51,7 +50,7 @@ export default function NavigationServicesItems({
       )}
 
       {isWide && activeServiceItem && (
-        <div className="flex min-w-0 gap-[clamp(12px,3vw,24px)]">
+        <div className="flex min-w-0 gap-[clamp(10px,3vw,24px)]">
           <ul className="pr-[clamp(0px,2vw,16px)]">
             {headerGroups.map((tab) => {
               const active = tab.groupLink === activeServiceItem;
@@ -59,7 +58,7 @@ export default function NavigationServicesItems({
               return (
                 <li
                   className={cn(
-                    'mb-[6px] flex items-center justify-between gap-[clamp(16px,4vw,32px)] rounded-[12px] p-[clamp(7px,2vw,14px)] text-[clamp(10px,2vw,16px)]',
+                    'mb-[6px] flex items-center justify-between gap-[clamp(5px,4vw,32px)] rounded-[12px] p-[clamp(5px,2vw,14px)] text-[clamp(10px,2.5vw,16px)]',
                     active ? 'bg-primary text-white' : 'text-foreground2 bg-background'
                   )}
                   key={tab.groupLink}
@@ -67,7 +66,7 @@ export default function NavigationServicesItems({
                 >
                   {tab.groupName}
                   <Media
-                    className="h-[13px] w-[13px]"
+                    className="size-[13px]"
                     image={{
                       src: active ? '/arrow/right-white.svg' : '/arrow/arrow-up-blue.svg',
                       alt: active ? 'arrow-right-white' : 'arrow-up-blue',

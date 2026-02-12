@@ -4,6 +4,7 @@ import 'server-only';
 import type { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 import type { BlogPostDto, Post } from '@/shared/types/post-dto-types';
 import type { Case, FilterGroup, Service, ServiceDto } from '@/shared/types/service-dto-types';
+import { ServiceGroupDto } from '@/shared/types/service-group-dto-types';
 
 const BACKEND_URL = process.env.BACKEND_URL;
 if (!BACKEND_URL) throw new Error('BACKEND ERROR: BACKEND_URL is not set');
@@ -52,7 +53,7 @@ export async function fetchServicesByGroup(group: string) {
 
   if (!res.ok) throw new Error(`Backend error: ${res.status} for ${url}`);
 
-  return (await res.json()) as Service[];
+  return (await res.json()) as ServiceGroupDto[];
 }
 
 export async function fetchAllCases() {

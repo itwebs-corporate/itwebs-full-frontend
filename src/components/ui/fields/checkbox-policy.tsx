@@ -1,22 +1,30 @@
-import { Control, Controller, FieldErrors } from 'react-hook-form';
+import Link from 'next/link';
+import { Control, Controller, FieldValues, Path } from 'react-hook-form';
+
+import { cn } from '@/lib/utils';
+
+import { PAGES_CONFIG } from '@/config/pages-config';
 
 import { Checkbox } from '../checkbox';
 
-type FormValues = {
-  policy: boolean;
+type CheckboxPolicyProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: Path<T>;
+  errorMessage?: string;
+  classTextName?: string;
 };
-export default function CheckboxPolicy({
+
+export default function CheckboxPolicy<T extends FieldValues>({
+  name,
   control,
-  errors,
-}: {
-  control: Control<FormValues>;
-  errors: FieldErrors<FormValues>;
-}) {
+  errorMessage,
+  classTextName,
+}: CheckboxPolicyProps<T>) {
   return (
     <div className="mt-[18px] flex justify-center gap-2">
       <Controller
         control={control}
-        name="policy"
+        name={name}
         render={({ field }) => (
           <Checkbox
             checked={field.value}
@@ -26,14 +34,15 @@ export default function CheckboxPolicy({
         )}
       />
       <label
-        className="font-second-family relative text-[16px] leading-[100%]"
+        className={cn('font-second-family relative text-[16px] leading-[100%]', classTextName)}
         htmlFor="checkboxPolicy"
       >
-        Я соглашаюсь с политикой обработки персональных данных
-        {errors.policy && (
-          <p className="text-destructive mb-[-2px] text-[12px] sm:text-sm">
-            {errors.policy.message}
-          </p>
+        Я соглашаюсь с{' '}
+        <Link className="underline underline-offset-2" href={PAGES_CONFIG.POLICY}>
+          политикой обработки персональных данных
+        </Link>
+        {errorMessage && (
+          <p className="text-destructive mb-[-2px] text-[12px] sm:text-sm">{errorMessage}</p>
         )}
       </label>
     </div>

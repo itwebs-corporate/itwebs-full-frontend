@@ -4,19 +4,21 @@ import styles from './header.module.css';
 
 import { Button } from '@/components/ui/button';
 
+import { fetchFilterGroups } from '@/app/api/server';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 import { MAIL, TEL, TELEGRAM } from '@/constants/links-constants';
 
 import MobileMenu1CScreen from './mobie-menu-1c-screen';
 import MobileMenuMainScreen from './mobile-menu-main-screen';
 
-export default function MobileMenu() {
+export default async function MobileMenu() {
+  const filterGroup = await fetchFilterGroups();
   return (
     <div className={styles.mobileMenu}>
       {/* screen variants: */}
       <input className={styles.menuMobileScreenToggle} id={SCREEN_1C_ID} type="checkbox" />
       <div className={styles.screenMain}>
-        <MobileMenuMainScreen />
+        <MobileMenuMainScreen filterGroup={filterGroup} />
       </div>
       <div className={styles.screen1c}>
         <MobileMenu1CScreen />

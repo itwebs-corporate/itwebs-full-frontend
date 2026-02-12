@@ -19,12 +19,3 @@ export const HEADER_MOBILE_LINKS = [
   { link: TELEGRAM, icon: '/links/telegram-mobile-menu.svg' },
   { link: INSTAGRAM, icon: '/links/instagram-mobile-menu.svg' },
 ];
-
-export const MOBILE_MENU_1C_SERVICES = [
-  'Программирование системы 1С Бухгалтерия',
-  'Программирование системы 1С Бухгалтерия',
-  'Программирование системы 1С Бухгалтерия',
-  'Программирование системы 1С Бухгалтерия',
-  'Программирование системы 1С Бухгалтерия',
-  'Программирование системы 1С Бухгалтерия',
-];

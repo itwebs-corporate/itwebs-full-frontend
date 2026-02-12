@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { fetchHeaderGroups } from '@/api/server';
+import { fetchHeaderGroups } from '@/app/api/server';
 
 import NavigationServices from './navigation-services';
 import { HEADER_NAV } from '../header-config';

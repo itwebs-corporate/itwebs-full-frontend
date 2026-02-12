@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task-block/all-need-for-your-task-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 
-import { fetchAllServices } from '@/api/server';
+import { fetchAllServices } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 export const metadata: Metadata = {
@@ -25,7 +25,6 @@ export default async function ServicesPage({ searchParams }: Props) {
   const sp = await searchParams;
   const key = sp?.q;
   const allServices = await fetchAllServices();
-  // TODO: services/all -> услуга отличается от услуги в services/group/{group}
   return (
     <>
       <HeroBlock heading="Услуги ITWEBS" />

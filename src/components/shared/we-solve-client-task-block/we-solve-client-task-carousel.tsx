@@ -6,7 +6,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-import { fetchAllCases } from '@/api/server';
+import { fetchAllCases } from '@/app/api/server';
 
 import WeSolveClientTaskCard from './we-solve-client-task-card';
 

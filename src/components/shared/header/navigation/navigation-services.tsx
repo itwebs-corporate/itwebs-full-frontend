@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-import { ServiceTabSlug } from '@/config/services-mock-config';
 import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
 import NavigationServicesItems from './navigation-services-items';
@@ -18,7 +17,7 @@ export default function NavigationServices({
   headerGroups: HeaderGroups;
 }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
-  const [activeServiceItem, setActiveServiceItem] = useState<ServiceTabSlug | null>(null);
+  const [activeServiceItem, setActiveServiceItem] = useState<string | null>(null);
 
   const close = () => {
     setIsOpenServices(false);

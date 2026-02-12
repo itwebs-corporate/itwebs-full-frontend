@@ -41,7 +41,12 @@ function SelectTrigger({
       {children}
       <SelectPrimitive.Icon asChild>
         <div className={cn('flex-center rounded-full bg-white', classNameWrapperImage)}>
-          <ChevronDownIcon className={cn('size-6 text-[#1734bd]', classNameImage)} />
+          <ChevronDownIcon
+            className={cn(
+              'size-6 text-[#1734bd] transition-transform duration-200 group-data-[state=open]:rotate-180',
+              classNameImage
+            )}
+          />
         </div>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>

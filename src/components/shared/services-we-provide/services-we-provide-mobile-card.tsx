@@ -18,7 +18,7 @@ export default function ServicesWeProvideMobileCard({
   return (
     <div
       className={cn(
-        'z-10 flex h-[293px] w-[332px] flex-col justify-between rounded-[12px] pt-[20px] pr-[18px] pb-[16px] pl-[14px] sm:hidden',
+        'z-10 flex min-h-[293px] max-w-[332px] flex-col justify-between rounded-[12px] pt-[20px] pr-[18px] pb-[16px] pl-[14px] sm:hidden',
         isRegion ? 'bg-white' : 'bg-white/15'
       )}
     >
@@ -40,7 +40,7 @@ export default function ServicesWeProvideMobileCard({
         <Typography className="text-foreground/80" variant="p2">
           Стоимось от:
         </Typography>
-        <Typography className="text-foreground text-left text-[26px]" variant="h2">
+        <Typography className="text-foreground mb-2 text-left text-[26px]" variant="h2">
           {item.price} ₽
         </Typography>
       </div>

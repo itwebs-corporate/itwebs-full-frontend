@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero-block/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
+import ModalConsult from '@/components/shared/modal-consult';
 import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
 import SeoTextBlock from '@/components/shared/seo-text-block/seo-text-block';
 import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
@@ -25,9 +26,7 @@ export default function HomePage() {
           </>
         }
       >
-        <Button asChild variant="secondary">
-          <Link href={PAGES_CONFIG.SERVICES_1C}>Консультация 1С</Link>
-        </Button>
+        <ModalConsult triggerTitle="Консультация 1С" />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>

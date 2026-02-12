@@ -8,7 +8,7 @@ import QuestionsBlock from '@/components/shared/questions-block/questions-block'
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
-import { fetchServicesByLink } from '@/api/server';
+import { fetchServicesByLink } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
 type Props = {

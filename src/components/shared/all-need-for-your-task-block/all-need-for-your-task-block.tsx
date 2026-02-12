@@ -1,10 +1,13 @@
 import { Fragment } from 'react';
 
+import { separationTypeForCard } from '@/lib/separation-type-for-card';
+
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { fetchFilterGroups, fetchServicesByGroup } from '@/api/server';
+import { fetchFilterGroups, fetchServicesByGroup } from '@/app/api/server';
 import { Service } from '@/shared/types/service-dto-types';
+import { ServiceGroupDto } from '@/shared/types/service-group-dto-types';
 
 import AllNeedForYourTaskCard from './all-need-for-your-task-card';
 import AllNeedForYourTaskMobileCard from './all-need-for-your-task-mobile-card';
@@ -20,7 +23,12 @@ export default async function AllNeedForYourTaskBlock({
 }) {
   const activeTab = searchParams;
   const filters = await fetchFilterGroups();
-  const filterServices = searchParams ? await fetchServicesByGroup(searchParams) : cards;
+
+  const filterServices: (Service | ServiceGroupDto)[] = searchParams
+    ? await fetchServicesByGroup(searchParams)
+    : cards;
+  const uiCards = filterServices.map(separationTypeForCard);
+
   return (
     <Section className="mb-[clamp(86px,8vw,124px)]">
       <Typography variant="h2">
@@ -30,9 +38,9 @@ export default async function AllNeedForYourTaskBlock({
       <AllNeedForYourTaskTabs activeTab={activeTab} filters={filters} />
       <AllNeedForYourTaskSelect filters={filters} />
       <div className="3xl:grid-cols-4 grid grid-cols-1 gap-5 sm:grid-cols-2 2xl:grid-cols-3">
-        {filterServices.map((card, index) => {
+        {uiCards.map((card, index) => {
           return index === 0 ? (
-            <AllNeedForYourTaskMobileCard card={card} key={card.id} />
+            <AllNeedForYourTaskMobileCard card={card} isFirstCard key={card.id} />
           ) : (
             <Fragment key={card.id}>
               <div className="hidden sm:block">
