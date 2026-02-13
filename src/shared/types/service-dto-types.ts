@@ -6,6 +6,7 @@ export type Case = {
   decision: string;
   image: string;
 };
+
 export type Service = {
   id: number;
   title: string;
@@ -41,7 +42,7 @@ export type ServiceDto = {
   price: string;
   metaTitle: string;
   metaDescription: string;
-  decisions: string[];
+  decisions: { id: number; title: string; description: string }[];
   ways: ServiceWay[];
   faqs: ServiceFaq[];
 };

@@ -52,7 +52,7 @@ export default async function ServiceLinkPage({ params }: Props) {
 
   const faqs = service.faqs;
   const ways = service.ways;
-
+  const desicions = service.decisions;
   return (
     <>
       <HeroBlock description={service.h2} heading={service.h1} lastBreadcrumb={service.name}>
@@ -63,7 +63,7 @@ export default async function ServiceLinkPage({ params }: Props) {
       </HeroBlock>
 
       <ForWhoWeWorkBlock data={ways} />
-      <WhatWeTasksSolveBlock />
+      <WhatWeTasksSolveBlock desicions={desicions} />
       <HowWeWork1cBlock />
       {faqs && <QuestionsBlock faqs={faqs} />}
     </>

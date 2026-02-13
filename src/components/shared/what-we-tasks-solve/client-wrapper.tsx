@@ -3,11 +3,14 @@
 import { useRef } from 'react';
 
 import WhatWeTasksSolveCard from './what-we-tasks-solve-card';
-import { WHAT_WE_TASKS_SOLVE_CARDS } from './what-we-tasks-solve-config';
 import WhatWeTasksSolveMobileCard from './what-we-tasks-solve-mobile-card';
 import { useMediaQuery } from '../../../hooks/use-media-query';
 
-export default function ClientWrapper() {
+export default function ClientWrapper({
+  desicions,
+}: {
+  desicions: { id: number; title: string; description: string }[];
+}) {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const ref = useRef<HTMLUListElement | null>(null);
 
@@ -116,15 +119,18 @@ export default function ClientWrapper() {
       }}
       ref={ref}
     >
-      {WHAT_WE_TASKS_SOLVE_CARDS.map((item) => (
-        <li className="shrink-0 snap-start" data-snap-item="true" key={item.id}>
-          {isMobile ? (
-            <WhatWeTasksSolveMobileCard item={item} />
-          ) : (
-            <WhatWeTasksSolveCard item={item} />
-          )}
-        </li>
-      ))}
+      {desicions.map((item, i) => {
+        const index = i + 1;
+        return (
+          <li className="shrink-0 snap-start" data-snap-item="true" key={item.id}>
+            {isMobile ? (
+              <WhatWeTasksSolveMobileCard index={index} item={item} />
+            ) : (
+              <WhatWeTasksSolveCard index={index} item={item} />
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }

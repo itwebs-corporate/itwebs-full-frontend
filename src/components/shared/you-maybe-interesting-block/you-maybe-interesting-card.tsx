@@ -28,7 +28,7 @@ export default function YouMaybeInterestingCard({
         />
       )}
       <div className="flex flex-nowrap items-center justify-between gap-[10px]">
-        <Typography className="lowercase" variant="h3">
+        <Typography className="line-clamp-2 lowercase sm:line-clamp-none" variant="h3">
           {card.title}
         </Typography>
         <Link
@@ -46,7 +46,10 @@ export default function YouMaybeInterestingCard({
         </Link>
       </div>
 
-      <Typography className="leading-[140%] opacity-80 sm:mt-1" variant="p2">
+      <Typography
+        className="line-clamp-2 leading-[140%] opacity-80 sm:mt-1 sm:line-clamp-none"
+        variant="p2"
+      >
         {card.description}
       </Typography>
 
