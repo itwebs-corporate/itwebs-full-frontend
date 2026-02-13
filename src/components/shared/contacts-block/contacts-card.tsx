@@ -6,7 +6,7 @@ import { ContactCard } from './contacts-config';
 
 export default function ContactsCard({ card }: { card: ContactCard }) {
   return (
-    <li className="flex h-[404px] w-[clamp(332px,50vw,587px)] flex-col justify-between rounded-[24px] bg-white px-[clamp(14px,3vw,32px)] py-[32px]! sm:h-[382px]">
+    <li className="flex w-[clamp(332px,50vw,587px)] flex-col justify-between rounded-[24px] bg-white px-[clamp(14px,3vw,32px)] py-[32px]!">
       <div className="font-family text-foreground3 text-[42px] leading-[100%] font-bold">
         {card.title}
       </div>
