@@ -9,9 +9,11 @@ import {
 import { fetchAllCases } from '@/app/api/server';
 
 import WeSolveClientTaskCard from './we-solve-client-task-card';
+import { CASES_MOCK } from '../cases-block/case-mock-config';
 
 export async function WeSolceClientTaskCarousel() {
   const cases = await fetchAllCases();
+  const result = cases.length > 0 ? cases : CASES_MOCK;
   return (
     <div className="w-full">
       <div className="px-4 sm:px-0">
@@ -23,7 +25,7 @@ export async function WeSolceClientTaskCarousel() {
           }}
         >
           <CarouselContent>
-            {cases.map((item) => (
+            {result.map((item) => (
               <CarouselItem className="basis-[88%] sm:basis-full" key={item.id}>
                 <WeSolveClientTaskCard item={item} />
               </CarouselItem>
