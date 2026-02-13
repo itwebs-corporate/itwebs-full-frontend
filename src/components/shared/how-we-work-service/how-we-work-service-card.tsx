@@ -1,16 +1,14 @@
-import { Icon } from '@iconify/react';
-
 import { cn } from '@/lib/utils';
 
 import Typography from '@/components/ui/typography/typography';
 
-import { ServiceWay } from '@/shared/types/service-dto-types';
+import { HowWeWorkServiceCardType } from './how-we-work-service-config';
 
 export default function HowWeWorkServiceCard({
   item,
   className,
 }: {
-  item: ServiceWay;
+  item: HowWeWorkServiceCardType;
   className?: string;
 }) {
   return (
@@ -26,7 +24,7 @@ export default function HowWeWorkServiceCard({
           '!size-16 !min-h-16 !min-w-16'
         )}
       >
-        {item.iconName && <Icon className="!size-8" icon={item.iconName} />}
+        0{item.id}
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col">

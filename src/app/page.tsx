@@ -32,7 +32,7 @@ export default function HomePage() {
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>
       </HeroBlock>
-      <ForWhoWeWorkBlock />
+      <ForWhoWeWorkBlock isShowMedia />
       <Section className="bg-primary py-container rounded-[clamp(24px,4vw,48px)]">
         <OurTechBlock />
         <ServicesWeProvide />

@@ -9,7 +9,7 @@ import { HERO_ASSETS_CONFIG } from './hero-assets-config';
 
 export default function HeroAssets() {
   const pathname = usePathname();
-  const assets = HERO_ASSETS_CONFIG[pathname];
+  const assets = HERO_ASSETS_CONFIG[pathname] ?? HERO_ASSETS_CONFIG['/default'];
   if (!assets?.length) return null;
 
   return (

@@ -15,7 +15,7 @@ import { PAGES_CONFIG } from '@/config/pages-config';
 type Props = {
   params: Promise<{ region: string }>;
 };
-// TODO: какие здесь будут faqs?
+
 export default async function RegionPage({ params }: Props) {
   const region = (await params).region ?? 'Минске';
 

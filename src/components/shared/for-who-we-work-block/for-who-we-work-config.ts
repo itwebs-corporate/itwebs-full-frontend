@@ -1,31 +1,31 @@
-import { CardTypes } from '@/shared/types/card-types';
+import { ServiceWay } from '@/shared/types/service-dto-types';
 
-export const OUR_CLIENTS_CONFIG: CardTypes[] = [
+export const FOR_WE_WORK_CONFIG: ServiceWay[] = [
   {
     id: 1,
-    icon: '/emoji/women.png',
-    title: 'Малый и средний бизнес',
+    iconName: '/emoji/women.png',
+    name: 'Малый и средний бизнес',
     description:
       'Помогаем запускать и развивать онлайн-проекты и личные бренды. Берём техническую часть на себя, чтобы вы могли сосредоточиться на бизнесе.',
   },
   {
     id: 2,
-    icon: '/emoji/business-center.png',
-    title: 'Малый и средний бизнес',
+    iconName: '/emoji/business-center.png',
+    name: 'Малый и средний бизнес',
     description:
       'Разрабатываем и поддерживаем сайты и сервисы для бизнеса. Обеспечиваем стабильную работу и быстро реагируем на задачи.',
   },
   {
     id: 3,
-    icon: '/emoji/shopping-packet.png',
-    title: 'Онлайн-проекты и магазины',
+    iconName: '/emoji/shopping-packet.png',
+    name: 'Онлайн-проекты и магазины',
     description:
       'Создаём, дорабатываем и интегрируем решения под ваши процессы. Делаем так, чтобы проект работал удобно и без сбоев.',
   },
   {
     id: 4,
-    icon: '/emoji/heart.png',
-    title: 'Тем, кому важна надёжность',
+    iconName: '/emoji/heart.png',
+    name: 'Тем, кому важна надёжность',
     description:
       'Подходим к работе внимательно и ответственно. Вы получаете поддержку, спокойствие и уверенность в результате.',
   },

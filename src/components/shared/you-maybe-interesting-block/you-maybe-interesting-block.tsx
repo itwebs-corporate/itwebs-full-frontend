@@ -5,17 +5,17 @@ import { useRef } from 'react';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import { BlogPostDto } from '@/shared/types/post-dto-types';
+import { BlogPostSimilarDto } from '@/shared/types/post-dto-types';
 
 import YouMaybeInterestingCard from './you-maybe-interesting-card';
 
-export default function YouMaybeInterestingBlock({ post }: { post: BlogPostDto }) {
+export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPostSimilarDto[] }) {
   const ref = useRef<HTMLUListElement | null>(null);
   const drag = useRef({ down: false, x: 0, left: 0, moved: false });
 
   return (
     <Section className="gap-[24px] pb-[clamp(86px,10vw,148px)] sm:gap-[36px]">
-      <Typography className="flex w-full max-w-[1194px] px-4" variant="h2">
+      <Typography className="flex w-full max-w-[1194px] flex-nowrap gap-2 px-4" variant="h2">
         <b className="text-primary">Вам</b> может быть интересно
       </Typography>
       <ul
@@ -62,7 +62,7 @@ export default function YouMaybeInterestingBlock({ post }: { post: BlogPostDto }
         }}
         ref={ref}
       >
-        {post.similar.map((item) => (
+        {similar.map((item) => (
           <YouMaybeInterestingCard
             card={item}
             className="h-[clamp(282px,40vw,394px)] w-full max-w-[clamp(332px,60vw,587px)]"

@@ -18,7 +18,7 @@ type MediaProps = {
 export function Media({ className, image }: MediaProps) {
   return (
     <div className={cn('relative overflow-hidden', className)}>
-      <Image {...image} className={cn('', image.className)} fill />
+      <Image {...image} className={cn(image.className)} fill />
     </div>
   );
 }

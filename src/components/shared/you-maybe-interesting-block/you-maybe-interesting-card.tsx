@@ -24,16 +24,16 @@ export default function YouMaybeInterestingCard({
       {card.image && (
         <Media
           className="block h-[clamp(129px,20vw,165px)] w-full max-w-full sm:hidden"
-          image={{ src: card.image ?? '/default/card-rect.png', alt: card.title }}
+          image={{ src: '/default/card-rect.png', alt: card.title }}
         />
       )}
-      <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
+      <div className="flex flex-nowrap items-center justify-between gap-[10px]">
         <Typography className="lowercase" variant="h3">
           {card.title}
         </Typography>
         <Link
-          className="sm:bg-secondary flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
-          href={card.link || '/'}
+          className="sm:bg-secondary flex-center bg-primary size-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
+          href={card.link}
         >
           <Media
             className="hidden h-[15px] w-[20px] sm:block"
@@ -53,7 +53,7 @@ export default function YouMaybeInterestingCard({
       {card.image && (
         <Media
           className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full sm:block"
-          image={{ src: card.image, alt: card.title }}
+          image={{ src: '/default/card-rect.png', alt: card.title }}
         />
       )}
     </div>

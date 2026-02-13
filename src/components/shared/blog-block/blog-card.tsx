@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
+import { PAGES_CONFIG } from '@/config/pages-config';
 import { Post } from '@/shared/types/post-dto-types';
 
 export default function BlogCard({ card, className }: { card: Post; className?: string }) {
@@ -18,16 +19,16 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
       {card.image && (
         <Media
           className="block h-[clamp(129px,20vw,165px)] w-full max-w-full sm:hidden"
-          image={{ src: card.image ?? '/default/card-rect.png', alt: card.name }}
+          image={{ src: '/default/card-rect.png', alt: card.name }}
         />
       )}
       <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px]">
-        <Typography className="lowercase" variant="h3">
+        <Typography className="line-clamp-3 lowercase" variant="h3">
           {card.name}
         </Typography>
         <Link
           className="sm:bg-secondary flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
-          href={card.link || '/'}
+          href={`${PAGES_CONFIG.BLOG}/${card.link}`}
         >
           <Media
             className="hidden h-[15px] w-[20px] sm:block"
@@ -40,14 +41,14 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
         </Link>
       </div>
 
-      <Typography className="leading-[140%] opacity-80 sm:mt-1" variant="p2">
+      <Typography className="line-clamp-3 leading-[140%] opacity-80 sm:mt-1" variant="p2">
         {card.description}
       </Typography>
 
       {card.image && (
         <Media
           className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full sm:block"
-          image={{ src: card.image, alt: card.name }}
+          image={{ src: '/default/card-rect.png', alt: card.name }}
         />
       )}
     </div>
