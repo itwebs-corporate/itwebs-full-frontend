@@ -6,7 +6,7 @@ import { fetchHeaderGroups } from '@/app/api/server';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 
 export default async function MobileMenu1CScreen() {
-  const services = await fetchHeaderGroups();
+  const services = (await fetchHeaderGroups()) ?? [];
   const services1C = services.find((item) => item.groupLink === '1c');
   return (
     <>

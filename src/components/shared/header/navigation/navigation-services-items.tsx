@@ -17,7 +17,7 @@ export default function NavigationServicesItems({
   activeServiceItem: string | null;
   setActiveServiceItem: (v: string | null) => void;
   close: () => void;
-  headerGroups: HeaderGroups;
+  headerGroups: HeaderGroups | [];
 }) {
   const isWide = Boolean(activeServiceItem);
 

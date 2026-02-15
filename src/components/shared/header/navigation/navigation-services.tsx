@@ -14,7 +14,7 @@ export default function NavigationServices({
   headerGroups,
 }: {
   title: string;
-  headerGroups: HeaderGroups;
+  headerGroups: HeaderGroups | [];
 }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   const [activeServiceItem, setActiveServiceItem] = useState<string | null>(null);
@@ -36,7 +36,7 @@ export default function NavigationServices({
         {title}
       </Link>
 
-      {isOpenServices && (
+      {isOpenServices && headerGroups.length > 0 && (
         <NavigationServicesItems
           activeServiceItem={activeServiceItem}
           close={close}
