@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 
 import { separationTypeForCard } from '@/lib/separation-type-for-card';
+import { cn } from '@/lib/utils';
 
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
@@ -37,21 +38,33 @@ export default async function AllNeedForYourTaskBlock({
       </Typography>
       <AllNeedForYourTaskTabs activeTab={activeTab} filters={filters} />
       <AllNeedForYourTaskSelect filters={filters} />
-      <div className="3xl:grid-cols-4 grid grid-cols-1 gap-5 sm:grid-cols-2 2xl:grid-cols-3">
-        {uiCards.map((card, index) => {
-          return index === 0 ? (
-            <AllNeedForYourTaskMobileCard card={card} isFirstCard key={card.id} />
-          ) : (
-            <Fragment key={card.id}>
-              <div className="hidden sm:block">
-                <AllNeedForYourTaskCard card={card} />
-              </div>
-              <div className="block sm:hidden">
-                <AllNeedForYourTaskMobileCard card={card} />
-              </div>
-            </Fragment>
-          );
-        })}
+      <div
+        className={cn(
+          uiCards.length
+            ? '3xl:grid-cols-4 grid grid-cols-1 gap-5 sm:grid-cols-2 2xl:grid-cols-3'
+            : 'flex-center w-full'
+        )}
+      >
+        {uiCards.length > 0 ? (
+          uiCards.map((card, index) => {
+            return index === 0 ? (
+              <AllNeedForYourTaskMobileCard card={card} isFirstCard key={card.id} />
+            ) : (
+              <Fragment key={card.id}>
+                <div className="hidden sm:block">
+                  <AllNeedForYourTaskCard card={card} />
+                </div>
+                <div className="block sm:hidden">
+                  <AllNeedForYourTaskMobileCard card={card} />
+                </div>
+              </Fragment>
+            );
+          })
+        ) : (
+          <span className="text-foreground3/80 w-full max-w-[800px] rounded-full border border-dashed border-gray-400 py-5 text-center opacity-50">
+            Услуги не найдены
+          </span>
+        )}
       </div>
     </Section>
   );

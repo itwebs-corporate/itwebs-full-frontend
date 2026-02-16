@@ -6,8 +6,9 @@ import { fetchHeaderGroups } from '@/app/api/server';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 
 export default async function MobileMenu1CScreen() {
-  const services = (await fetchHeaderGroups()) ?? [];
-  const services1C = services.find((item) => item.groupLink === '1c');
+  const res = (await fetchHeaderGroups()) ?? [];
+  const group1C = res.find((item) => item.groupLink === '1c');
+  const services1C = group1C?.services;
   return (
     <>
       <div className="flex items-center justify-between pt-[14px] pr-[14px] pl-[28px]">
@@ -24,18 +25,24 @@ export default async function MobileMenu1CScreen() {
         </label>
       </div>
       <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
-        {services1C?.services.map((el) => (
-          <li
-            className="font-second-family bg-background text-primary rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors"
-            key={el.name}
-          >
-            <div className="flex items-center justify-between gap-3">
-              <Link className="flex-1" href={el.link}>
-                {el.name}
-              </Link>
-            </div>
+        {services1C ? (
+          services1C.map((el) => (
+            <li
+              className="font-second-family bg-background text-primary rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors"
+              key={el.name}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <Link className="flex-1" href={el.link}>
+                  {el.name}
+                </Link>
+              </div>
+            </li>
+          ))
+        ) : (
+          <li className="text-foreground3/50 rounded-full border border-dashed border-gray-400 p-2 text-center text-base">
+            1с услуги не найдены
           </li>
-        ))}
+        )}
       </ul>
     </>
   );

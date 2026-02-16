@@ -34,15 +34,21 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   : 'bg-background text-primary'
               )}
             >
-              <div className="flex cursor-pointer items-center justify-between gap-3">
-                <Link className="block" href={el.link} onClick={closeMobileMenu}>
-                  {el.title}
-                </Link>
+              <Link
+                className="flex cursor-pointer items-center justify-between gap-3"
+                href={el.link}
+                onClick={closeMobileMenu}
+              >
+                <div className="block">{el.title}</div>
 
                 {isServices && (
                   <button
-                    className="shrink-0"
-                    onClick={() => setIsOpenServices((v) => !v)}
+                    className="z-10 shrink-0"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setIsOpenServices((v) => !v);
+                    }}
                     type="button"
                   >
                     <Media
@@ -65,20 +71,26 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                     />
                   </label>
                 )}
-              </div>
+              </Link>
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex flex-col gap-4 pl-2">
-                {filterGroup.map((service) => (
-                  <Link
-                    className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
-                    href={`/services?q=${service.link}`}
-                    key={service.id}
-                    onClick={closeMobileMenu}
-                  >
-                    {service.name}
-                  </Link>
-                ))}
+                {filterGroup.length > 0 ? (
+                  filterGroup.map((service) => (
+                    <Link
+                      className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
+                      href={`/services?q=${service.link}`}
+                      key={service.id}
+                      onClick={closeMobileMenu}
+                    >
+                      {service.name}
+                    </Link>
+                  ))
+                ) : (
+                  <li className="text-foreground3/50 rounded-full border border-dashed border-gray-400 p-2 text-center text-base">
+                    Услуги не найдены
+                  </li>
+                )}
               </ul>
             </Activity>
           </Fragment>
