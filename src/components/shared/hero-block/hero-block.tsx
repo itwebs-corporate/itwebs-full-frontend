@@ -16,6 +16,7 @@ type HeroBlockProps = {
   description?: string;
   fullScreen?: boolean;
   lastBreadcrumb?: string;
+  disabledAssets?: boolean;
   children?: ReactNode;
 };
 
@@ -24,6 +25,7 @@ export default function HeroBlock({
   description,
   fullScreen = false,
   lastBreadcrumb,
+  disabledAssets = false,
   children,
 }: HeroBlockProps) {
   return (
@@ -32,7 +34,7 @@ export default function HeroBlock({
       fullScreen={fullScreen}
     >
       <BreadcrumbWithCustomSeparator lastBreadcrumb={lastBreadcrumb} />
-      <HeroHeading>{heading}</HeroHeading>
+      <HeroHeading disabled={disabledAssets}>{heading}</HeroHeading>
       {description && (
         <Typography className="pt-[clamp(14px,5vw,36px)]" variant="p1">
           {description}

@@ -8,6 +8,7 @@ export default function NotFound() {
   return (
     <HeroBlock
       description="Страница не найдена. Возможно, вы ошиблись в адресе или страница была удалена."
+      disabledAssets
       heading="404"
     >
       <Button asChild variant="secondary">

@@ -8,7 +8,13 @@ import Typography from '@/components/ui/typography/typography';
 
 import HeroAssets from './hero-assets';
 
-export default function HeroHeading({ children }: { children: ReactNode }) {
+export default function HeroHeading({
+  children,
+  disabled,
+}: {
+  children: ReactNode;
+  disabled?: boolean;
+}) {
   const pathanme = usePathname();
   const isHomePage = pathanme === '/';
   const is1SSerivesePage = pathanme === '/services-1c';
@@ -21,7 +27,7 @@ export default function HeroHeading({ children }: { children: ReactNode }) {
       )}
       variant="h1"
     >
-      <HeroAssets />
+      <HeroAssets disabled={disabled} />
       {children}
     </Typography>
   );

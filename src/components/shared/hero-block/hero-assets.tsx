@@ -7,8 +7,10 @@ import { cn } from '@/lib/utils';
 
 import { HERO_ASSETS_CONFIG } from './hero-assets-config';
 
-export default function HeroAssets() {
+export default function HeroAssets({ disabled }: { disabled?: boolean }) {
   const pathname = usePathname();
+
+  if (disabled) return null;
   const assets = HERO_ASSETS_CONFIG[pathname] ?? HERO_ASSETS_CONFIG['/default'];
   if (!assets?.length) return null;
 

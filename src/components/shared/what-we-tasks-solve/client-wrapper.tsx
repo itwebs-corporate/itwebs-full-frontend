@@ -122,7 +122,7 @@ export default function ClientWrapper({
       {desicions.map((item, i) => {
         const index = i + 1;
         return (
-          <li className="shrink-0 snap-start" data-snap-item="true" key={item.id}>
+          <li className="shrink-0 snap-start" data-snap-item="true" key={`${item.id}-${index}`}>
             {isMobile ? (
               <WhatWeTasksSolveMobileCard index={index} item={item} />
             ) : (
