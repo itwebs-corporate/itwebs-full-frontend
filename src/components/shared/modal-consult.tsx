@@ -1,3 +1,6 @@
+'use client';
+import { useState } from 'react';
+
 import {
   Dialog,
   DialogContent,
@@ -11,8 +14,9 @@ import { Button } from '../ui/button';
 import FormForModals from '../ui/form/form-for-modal';
 
 export default function ModalConsult({ triggerTitle = 'Записаться' }: { triggerTitle?: string }) {
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <Dialog>
+    <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
         <Button variant="secondary">{triggerTitle}</Button>
       </DialogTrigger>
@@ -29,7 +33,10 @@ export default function ModalConsult({ triggerTitle = 'Записаться' }: 
             Ответим в течение 15 минут
           </DialogDescription>
         </DialogHeader>
-        <FormForModals className="mt-[24px] flex flex-col! sm:mt-[32px]" />
+        <FormForModals
+          className="mt-[24px] flex flex-col! sm:mt-[32px]"
+          closeModal={() => setOpen(false)}
+        />
       </DialogContent>
     </Dialog>
   );

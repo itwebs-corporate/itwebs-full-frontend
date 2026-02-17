@@ -40,9 +40,13 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
           <ServicesWeProvideMobileCard isRegion={isRegion} item={item} key={item.title} />
         ))}
       </div>
-      <Button asChild variant={isRegion ? 'outline' : 'gray'}>
-        <Link href={PAGES_CONFIG.SERVICES}>Все услуги</Link>
-      </Button>
+      {filterServices.length > 0 ? (
+        <Button asChild variant={isRegion ? 'outline' : 'gray'}>
+          <Link href={PAGES_CONFIG.SERVICES}>Все услуги</Link>
+        </Button>
+      ) : (
+        <li>Услуги не найдены</li>
+      )}
     </Section>
   );
 }

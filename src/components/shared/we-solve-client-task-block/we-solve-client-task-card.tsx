@@ -1,6 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
+import { hasMoreTwoLines } from '@/lib/has-more-two-lines';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
@@ -8,9 +9,26 @@ import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
 import { Case } from '@/shared/types/service-dto-types';
-
+// TODO: у меня только в одном item текста много кнопка в итоге появляется у всех
+// TODO: нет плавности при раскрытии и скрытии
 export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [canToggle, setCanToggle] = useState<boolean>(false);
+
+  const taskRef = useRef<HTMLParagraphElement | null>(null);
+  const decisionRef = useRef<HTMLParagraphElement | null>(null);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const overflow = hasMoreTwoLines(taskRef.current) || hasMoreTwoLines(decisionRef.current);
+      setCanToggle(overflow);
+      if (!overflow) setIsOpen(false);
+    };
+
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [item.task, item.decision]);
   return (
     <div className="text-foreground2 flex w-full flex-col rounded-[clamp(12px,2vw,24px)] sm:flex-row">
       <div className="flex-center shrink-0 rounded-[clamp(12px,2vw,24px)] bg-[#F7F7F7] p-[14px]">
@@ -28,11 +46,11 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
           <Typography className="text-foreground2 text-[clamp(24px,2.5vw,48px)]" variant="h3">
             {item.name}
           </Typography>
-          <Typography className="opacity-80" variant="p2">
+          <Typography className="[overflow-wrap:anywhere] opacity-80" variant="p2">
             {item.description}
           </Typography>
         </div>
-        <div className="flex flex-col gap-[16px] sm:flex-row sm:gap-[32px]">
+        <div className="grid grid-cols-1 gap-[16px] sm:grid-cols-2 sm:gap-[32px]">
           <div className="flex flex-col">
             <Typography
               className="text-foreground2 mb-[clamp(8px,0.6vw,12px)] text-[clamp(16px,1.25vw,24px)]"
@@ -41,7 +59,11 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
               Задача
             </Typography>
             <Typography
-              className={cn(isOpen ? 'line-clamp-none' : 'line-clamp-2', 'opacity-80')}
+              className={cn(
+                isOpen ? 'line-clamp-none' : 'line-clamp-2',
+                '[overflow-wrap:anywhere] opacity-80'
+              )}
+              ref={taskRef}
               variant="p2"
             >
               {item.task}
@@ -56,7 +78,11 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
               Решение
             </Typography>
             <Typography
-              className={cn(isOpen ? 'line-clamp-none' : 'line-clamp-2', 'opacity-80')}
+              className={cn(
+                isOpen ? 'line-clamp-none' : 'line-clamp-2',
+                '[overflow-wrap:anywhere] opacity-80'
+              )}
+              ref={decisionRef}
               variant="p2"
             >
               {item.decision}
@@ -64,12 +90,14 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
           </div>
         </div>
 
-        <Button
-          className="h-[46px] w-full max-w-[272px] sm:h-[60px] sm:max-w-[283px]"
-          onClick={() => setIsOpen((prev) => !prev)}
-        >
-          {isOpen ? 'Скрыть' : 'Показать полностью'}
-        </Button>
+        {canToggle && (
+          <Button
+            className="h-[46px] w-full max-w-[272px] sm:h-[60px] sm:max-w-[283px]"
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            {isOpen ? 'Скрыть' : 'Показать полностью'}
+          </Button>
+        )}
       </div>
     </div>
   );

@@ -61,7 +61,11 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   </button>
                 )}
                 {is1CServices && (
-                  <label className="z-50 shrink-0 cursor-pointer" htmlFor={SCREEN_1C_ID}>
+                  <label
+                    className="z-50 shrink-0 cursor-pointer"
+                    htmlFor={SCREEN_1C_ID}
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <Media
                       className="h-[13px] w-[13px]"
                       image={{

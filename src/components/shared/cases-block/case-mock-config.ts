@@ -13,7 +13,7 @@ export const CASES_MOCK: Case[] = [
     name: 'Ребрендинг и редизайн корпоративного сайта',
     description:
       'Обновили визуальную систему и структуру сайта: сделали понятную навигацию, усилили доверие через кейсы и отзывы, привели типографику и отступы к единой дизайн-системе.',
-    task: 'Собрать единый визуальный язык, повысить конверсию с посадочных страниц и ускорить загрузку на мобильных.',
+    task: 'sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssСобрать единый визуальный язык, повысить конверсию с посадочных страниц и ускорить загрузку на мобильных.',
     decision:
       'Внедрили дизайн-систему (токены, компоненты), переработали IA/UX, оптимизировали изображения и шрифты, настроили SEO-базу и микроразметку.',
     image: '/default/article-section.png',

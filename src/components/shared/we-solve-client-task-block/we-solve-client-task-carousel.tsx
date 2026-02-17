@@ -26,7 +26,10 @@ export async function WeSolceClientTaskCarousel() {
         >
           <CarouselContent>
             {result.map((item) => (
-              <CarouselItem className="basis-[88%] sm:basis-full" key={item.id}>
+              <CarouselItem
+                className="sm:max-full max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
+                key={item.id}
+              >
                 <WeSolveClientTaskCard item={item} />
               </CarouselItem>
             ))}

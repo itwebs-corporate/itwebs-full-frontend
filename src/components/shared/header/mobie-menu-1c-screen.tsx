@@ -31,11 +31,9 @@ export default async function MobileMenu1CScreen() {
               className="font-second-family bg-background text-primary rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors"
               key={el.name}
             >
-              <div className="flex items-center justify-between gap-3">
-                <Link className="flex-1" href={el.link}>
-                  {el.name}
-                </Link>
-              </div>
+              <Link className="block w-full" href={`/services/${el.link}`}>
+                {el.name}
+              </Link>
             </li>
           ))
         ) : (

@@ -19,7 +19,13 @@ import SelectTask from '../fields/select-task';
 
 type ContactFormValues = z.infer<typeof zodContactSchema>;
 
-export default function FormForModals({ className }: { className?: string }) {
+export default function FormForModals({
+  closeModal,
+  className,
+}: {
+  closeModal: () => void;
+  className?: string;
+}) {
   const pathname = usePathname();
 
   const {
@@ -53,6 +59,7 @@ export default function FormForModals({ className }: { className?: string }) {
 
       await postClientRequest(payload);
       toast.success('Вы успешно оставили заявку!');
+      closeModal();
       reset();
     } catch (e) {
       toast.error('Не удалось оставить заявку. Попробуйте ещё раз.');
