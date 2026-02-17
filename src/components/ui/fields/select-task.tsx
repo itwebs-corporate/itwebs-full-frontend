@@ -7,7 +7,7 @@ import { SELECT_ITEMS } from '../form/form-config';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../select';
 
 const selectVariants = cva(
-  'min-h-[48px] w-full min-w-[275px] rounded-full border-none py-4 pl-5 text-[16px] ',
+  'min-h-[48px] w-full min-w-0 rounded-full border-none py-4 pl-5 text-[16px] ',
   {
     variants: {
       variant: {
@@ -42,20 +42,28 @@ export default function SelectTask<T extends FieldValues>({
   variant,
 }: SelectTaskProps<T>) {
   return (
-    <div className="relative w-full min-w-[275px]">
+    <div className="relative w-full max-w-full min-w-0">
       <Controller
         control={control}
         name={name}
         render={({ field }) => (
           <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger
-              className={cn(selectVariants({ variant }))}
+              className={cn(selectVariants({ variant }), 'min-w-0')}
               classNameImage={classNameImage}
               classNameWrapperImage={classNameWrapperImage}
             >
-              <SelectValue className="text-base text-[16px]" placeholder="Тип задачи" />
+              <SelectValue
+                className="block min-w-0! flex-1 truncate text-base text-[16px]"
+                placeholder="Тип задачи"
+              />
             </SelectTrigger>
-            <SelectContent align="start" position="popper" side="bottom">
+            <SelectContent
+              align="start"
+              className="max-w-[var(--radix-select-trigger-width)]"
+              position="popper"
+              side="bottom"
+            >
               {SELECT_ITEMS?.map((item) => (
                 <SelectItem className={classNameItem} key={item} value={item}>
                   {item}

@@ -68,10 +68,13 @@ export default function FormForModals({
 
   return (
     <form
-      className={cn('flex flex-col items-center gap-[14px] lg:flex-row lg:gap-4', className)}
+      className={cn(
+        'flex flex-col items-center gap-[14px] lg:flex-row lg:items-start lg:gap-4',
+        className
+      )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="relative w-full min-w-[275px]">
+      <div className="relative w-full min-w-0">
         <Input nameRegister="name" placeholder="Ваше имя" register={register} />
         {errors.name && (
           <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
@@ -80,7 +83,7 @@ export default function FormForModals({
         )}
       </div>
 
-      <div className="relative w-full min-w-[275px]">
+      <div className="relative w-full min-w-0">
         <Input nameRegister="emailOrTel" placeholder="Email / Телефон" register={register} />
         {errors.emailOrTel && (
           <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">

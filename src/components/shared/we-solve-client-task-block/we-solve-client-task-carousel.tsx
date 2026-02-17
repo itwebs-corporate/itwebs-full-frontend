@@ -24,10 +24,10 @@ export async function WeSolceClientTaskCarousel() {
             containScroll: 'trimSnaps',
           }}
         >
-          <CarouselContent>
+          <CarouselContent className="items-stretch">
             {result.map((item) => (
               <CarouselItem
-                className="sm:max-full max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
+                className="sm:max-full flex max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
                 key={item.id}
               >
                 <WeSolveClientTaskCard item={item} />

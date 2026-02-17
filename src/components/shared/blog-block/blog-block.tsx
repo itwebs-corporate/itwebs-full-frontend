@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
+import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/hooks/use-media-query';
 
 import Section from '@/components/ui/section/section';
@@ -34,16 +35,28 @@ export default function BlogBlock({ posts }: { posts: Post[] }) {
 
   return (
     <Section className="gap-[32px] pb-[clamp(86px,6vw,124px)]">
-      <ul className="3xl:grid-cols-4 grid grid-cols-1 gap-[clamp(14px,2vw,20px)] sm:grid-cols-2 2xl:grid-cols-3">
-        {data.map((card, index) => {
-          return index === 0 ? (
-            <BlogCardMobile card={card} key={card.name} />
-          ) : (
-            <BlogCard card={card} key={card.name} />
-          );
-        })}
+      <ul
+        className={cn(
+          data.length > 0
+            ? '3xl:grid-cols-4 grid grid-cols-1 gap-[clamp(14px,2vw,20px)] sm:grid-cols-2 2xl:grid-cols-3'
+            : ''
+        )}
+      >
+        {data.length > 0 ? (
+          data.map((card, index) => {
+            return index === 0 ? (
+              <BlogCardMobile card={card} key={card.name} />
+            ) : (
+              <BlogCard card={card} key={card.name} />
+            );
+          })
+        ) : (
+          <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+            Посты не найдены
+          </li>
+        )}
       </ul>
-      <BlogPagination page={page} setPage={setPage} totalPage={totalPage} />
+      {data.length > 0 && <BlogPagination page={page} setPage={setPage} totalPage={totalPage} />}
     </Section>
   );
 }

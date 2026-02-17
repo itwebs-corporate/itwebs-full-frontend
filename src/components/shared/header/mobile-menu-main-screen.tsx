@@ -2,21 +2,16 @@
 import Link from 'next/link';
 import { Activity, Fragment, useState } from 'react';
 
+import { closeMobileMenu } from '@/lib/close-mobile-menu';
 import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
-import { MOBILE_MENU_TOGGLE_ID, SCREEN_1C_ID } from '@/constants/header-constants';
+import { SCREEN_1C_ID } from '@/constants/header-constants';
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
 import { HEADER_NAV } from './header-config';
 
-function closeMobileMenu() {
-  const menuToggle = document.getElementById(MOBILE_MENU_TOGGLE_ID) as HTMLInputElement;
-  if (menuToggle) menuToggle.checked = false;
-  const screen1c = document.getElementById(SCREEN_1C_ID) as HTMLInputElement;
-  if (screen1c) screen1c.checked = false;
-}
 export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: FilterGroup[] }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (

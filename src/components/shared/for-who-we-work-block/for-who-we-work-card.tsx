@@ -33,7 +33,7 @@ export default function ForWeWorkCard({ item, cardStyles, isShowMedia = false }:
 
       <Typography variant="h3">{item.name}</Typography>
 
-      <div className="mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 overflow-y-auto">
+      <div className="mt-[clamp(12px,1vw,16px)]">
         <Typography variant="p2">{item.description}</Typography>
       </div>
     </div>

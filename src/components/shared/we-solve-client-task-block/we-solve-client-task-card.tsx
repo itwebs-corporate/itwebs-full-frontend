@@ -1,5 +1,5 @@
 'use client';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { hasMoreTwoLines } from '@/lib/has-more-two-lines';
 import { cn } from '@/lib/utils';
@@ -9,7 +9,6 @@ import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
 import { Case } from '@/shared/types/service-dto-types';
-// TODO: у меня только в одном item текста много кнопка в итоге появляется у всех
 // TODO: нет плавности при раскрытии и скрытии
 export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -18,17 +17,25 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const taskRef = useRef<HTMLParagraphElement | null>(null);
   const decisionRef = useRef<HTMLParagraphElement | null>(null);
 
-  useLayoutEffect(() => {
-    const measure = () => {
-      const overflow = hasMoreTwoLines(taskRef.current) || hasMoreTwoLines(decisionRef.current);
-      setCanToggle(overflow);
-      if (!overflow) setIsOpen(false);
-    };
+  useEffect(() => {
+    const el1 = taskRef.current;
+    const el2 = decisionRef.current;
 
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
+    if (!el1 || !el2) return;
+
+    const observer = new ResizeObserver(() => {
+      const overflow = hasMoreTwoLines(el1) || hasMoreTwoLines(el2);
+
+      setCanToggle(overflow);
+      setIsOpen((prev) => (overflow ? prev : false));
+    });
+
+    observer.observe(el1);
+    observer.observe(el2);
+
+    return () => observer.disconnect();
   }, [item.task, item.decision]);
+
   return (
     <div className="text-foreground2 flex w-full flex-col rounded-[clamp(12px,2vw,24px)] sm:flex-row">
       <div className="flex-center shrink-0 rounded-[clamp(12px,2vw,24px)] bg-[#F7F7F7] p-[14px]">
@@ -60,7 +67,8 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
             </Typography>
             <Typography
               className={cn(
-                isOpen ? 'line-clamp-none' : 'line-clamp-2',
+                'overflow-hidden transition-all',
+                isOpen ? 'max-h-[1000px]' : 'max-h-[3em]',
                 '[overflow-wrap:anywhere] opacity-80'
               )}
               ref={taskRef}
@@ -79,7 +87,8 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
             </Typography>
             <Typography
               className={cn(
-                isOpen ? 'line-clamp-none' : 'line-clamp-2',
+                'overflow-hidden transition-all',
+                isOpen ? 'max-h-[500px]' : 'max-h-[44px]',
                 '[overflow-wrap:anywhere] opacity-80'
               )}
               ref={decisionRef}

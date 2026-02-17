@@ -28,8 +28,12 @@ export default function NavigationServices({
     <div className="relative" onMouseEnter={() => setIsOpenServices(true)} onMouseLeave={close}>
       <Link
         className={cn(
-          'rounded-full px-[12px] py-[2px] transition-all',
-          isOpenServices ? 'text-primary bg-white' : 'bg-transparent text-white'
+          headerGroups.length > 0 && 'rounded-full px-[12px] py-[2px] transition-all',
+          headerGroups.length > 0
+            ? isOpenServices
+              ? 'text-primary bg-white'
+              : 'bg-transparent text-white'
+            : 'hover:text-foreground/70 whitespace-nowrap transition-colors'
         )}
         href="/services"
       >

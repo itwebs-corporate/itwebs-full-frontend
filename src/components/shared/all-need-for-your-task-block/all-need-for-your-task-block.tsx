@@ -22,6 +22,8 @@ export default async function AllNeedForYourTaskBlock({
   searchParams?: string;
   cards: Service[];
 }) {
+  // TODO: в taskTabs есть ошибка
+  // TODO: нужно проверить fallback
   const activeTab = searchParams;
   const filters = await fetchFilterGroups();
 
@@ -61,7 +63,7 @@ export default async function AllNeedForYourTaskBlock({
             );
           })
         ) : (
-          <span className="text-foreground3/80 w-full max-w-[800px] rounded-full border border-dashed border-gray-400 py-5 text-center opacity-50">
+          <span className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
             Услуги не найдены
           </span>
         )}

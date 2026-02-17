@@ -1,9 +1,9 @@
-import Link from 'next/link';
-
 import { Media } from '@/components/ui/media';
 
 import { fetchHeaderGroups } from '@/app/api/server';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
+
+import MobileMenu1CScreenLink from './mobile-menu-1c-screen-link';
 
 export default async function MobileMenu1CScreen() {
   const res = (await fetchHeaderGroups()) ?? [];
@@ -31,9 +31,7 @@ export default async function MobileMenu1CScreen() {
               className="font-second-family bg-background text-primary rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors"
               key={el.name}
             >
-              <Link className="block w-full" href={`/services/${el.link}`}>
-                {el.name}
-              </Link>
+              <MobileMenu1CScreenLink el={el} />
             </li>
           ))
         ) : (

@@ -16,9 +16,13 @@ export default async function CasesBlock() {
         клиентов
       </Typography>
       <ul className="flex max-w-[1800px] flex-col gap-[clamp(14px,6vw,48px)]">
-        {result.map((card) => (
-          <WeSolveClientTaskCard item={card} key={card.id} />
-        ))}
+        {result.length > 0 ? (
+          result.map((card) => <WeSolveClientTaskCard item={card} key={card.id} />)
+        ) : (
+          <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+            Кейсы не найдены
+          </li>
+        )}
       </ul>
     </Section>
   );
