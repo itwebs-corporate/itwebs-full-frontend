@@ -10,6 +10,7 @@ export default function NotFound() {
       description="Страница не найдена. Возможно, вы ошиблись в адресе или страница была удалена."
       disabledAssets
       heading="404"
+      isNotFound
     >
       <Button asChild variant="secondary">
         <Link href="/">Вернуться домой</Link>

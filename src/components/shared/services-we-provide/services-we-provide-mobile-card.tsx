@@ -53,7 +53,7 @@ export default function ServicesWeProvideMobileCard({
           )}
           variant={isRegion ? 'outline' : 'default'}
         >
-          <Link href={item.link}> Подробнее</Link>
+          <Link href={`/services/${item.link}`}> Подробнее</Link>
         </Button>
 
         <Link

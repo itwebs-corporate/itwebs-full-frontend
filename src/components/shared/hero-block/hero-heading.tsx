@@ -15,15 +15,15 @@ export default function HeroHeading({
   children: ReactNode;
   disabled?: boolean;
 }) {
-  const pathanme = usePathname();
-  const isHomePage = pathanme === '/';
-  const is1SSerivesePage = pathanme === '/services-1c';
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  const isServicesLink = pathname.startsWith('/services');
   return (
     <Typography
       className={cn(
         'relative isolate',
         isHomePage ? 'text-[clamp(36px,9vw,201px)]' : 'text-[clamp(36px,6vw,124px)]',
-        is1SSerivesePage && 'text-[clamp(24px,6vw,124px)]'
+        isServicesLink && 'text-[clamp(24px,6vw,124px)]'
       )}
       variant="h1"
     >

@@ -32,6 +32,7 @@ type SelectTaskProps<T extends FieldValues> = {
   classNameImage?: string;
   classNameWrapperImage?: string;
 };
+
 export default function SelectTask<T extends FieldValues>({
   control,
   name,
@@ -42,7 +43,7 @@ export default function SelectTask<T extends FieldValues>({
   variant,
 }: SelectTaskProps<T>) {
   return (
-    <div className="relative w-full max-w-full min-w-0">
+    <div className="relative w-full max-w-[275px] min-w-0 lg:max-w-none lg:min-w-0! lg:flex-1">
       <Controller
         control={control}
         name={name}
@@ -51,19 +52,20 @@ export default function SelectTask<T extends FieldValues>({
             <SelectTrigger
               className={cn(
                 selectVariants({ variant }),
-                'xxs:w-[304px] w-full max-w-full min-w-0 lg:w-[275px]'
+                'w-full max-w-full min-w-0! overflow-hidden'
               )}
               classNameImage={classNameImage}
               classNameWrapperImage={classNameWrapperImage}
             >
               <SelectValue
-                className="block min-w-0! flex-1 truncate text-base text-[16px]"
+                className="min-w-0! flex-1 truncate overflow-hidden text-[16px] [&>span]:block [&>span]:min-w-0! [&>span]:truncate"
                 placeholder="Тип задачи"
               />
             </SelectTrigger>
+
             <SelectContent
               align="start"
-              className="max-w-[var(--radix-select-trigger-width)]"
+              className="w-[var(--radix-select-trigger-width)] max-w-[var(--radix-select-trigger-width)]"
               position="popper"
               side="bottom"
             >
@@ -76,6 +78,7 @@ export default function SelectTask<T extends FieldValues>({
           </Select>
         )}
       />
+
       {errorMessage && (
         <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
           {errorMessage}

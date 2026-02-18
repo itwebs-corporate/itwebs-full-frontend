@@ -28,14 +28,24 @@ type Props = {
   className?: string;
   color?: string;
   lastBreadcrumb?: string;
+  isNotFound?: boolean;
 };
 
-export function BreadcrumbWithCustomSeparator({ className, color, lastBreadcrumb }: Props) {
+export function BreadcrumbWithCustomSeparator({
+  className,
+  color,
+  lastBreadcrumb,
+  isNotFound,
+}: Props) {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
   if (!segments.length) return null;
 
-  const baseSegments = lastBreadcrumb ? segments.slice(0, -1) : segments;
+  const baseSegments = isNotFound
+    ? segments.slice(0, -1)
+    : lastBreadcrumb
+      ? segments.slice(0, -1)
+      : segments;
 
   return (
     <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
@@ -67,11 +77,19 @@ export function BreadcrumbWithCustomSeparator({ className, color, lastBreadcrumb
           );
         })}
 
-        {lastBreadcrumb && (
+        {lastBreadcrumb && !isNotFound && (
           <>
             <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
             <BreadcrumbItem className={color}>
               <BreadcrumbPage className={color}>{lastBreadcrumb}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </>
+        )}
+        {isNotFound && (
+          <>
+            <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
+            <BreadcrumbItem className={color}>
+              <BreadcrumbPage className={color}>Страница не найдена</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

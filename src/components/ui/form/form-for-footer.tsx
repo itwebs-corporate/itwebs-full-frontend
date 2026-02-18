@@ -61,8 +61,13 @@ export default function FormForFooter({ className }: { className?: string }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={cn('flex flex-col items-center gap-[14px] lg:flex-row lg:gap-4', className)}>
-        <div className="relative w-full min-w-[275px]">
+      <div
+        className={cn(
+          'flex w-full max-w-full min-w-0 flex-col items-center gap-[14px] lg:flex-row lg:gap-4',
+          className
+        )}
+      >
+        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
           <Input nameRegister="name" placeholder="Ваше имя" register={register} variant="primary" />
           {errors.name && (
             <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
@@ -71,7 +76,7 @@ export default function FormForFooter({ className }: { className?: string }) {
           )}
         </div>
 
-        <div className="relative w-full min-w-[275px]">
+        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
           <Input
             nameRegister="emailOrTel"
             placeholder="Email / Телефон"
@@ -84,13 +89,21 @@ export default function FormForFooter({ className }: { className?: string }) {
             </p>
           )}
         </div>
-        <SelectTask
-          control={control}
-          errorMessage={errors.service?.message}
-          name="service"
-          variant="primary"
-        />
-        <Button className="max-h-[48px]" disabled={isSubmitting} type="submit" variant="secondary">
+        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
+          <SelectTask
+            control={control}
+            errorMessage={errors.service?.message}
+            name="service"
+            variant="primary"
+          />
+        </div>
+
+        <Button
+          className="max-h-[48px] shrink-0"
+          disabled={isSubmitting}
+          type="submit"
+          variant="secondary"
+        >
           {isSubmitting ? 'Отправляется...' : 'Отправить'}
         </Button>
       </div>

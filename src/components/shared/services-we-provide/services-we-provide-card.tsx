@@ -30,7 +30,7 @@ export default function ServicesWeProvideCard({
         </Typography>
         <Link
           className={cn('bg-secondary', 'flex-center size-[42px] shrink-0 rounded-full')}
-          href={item.link}
+          href={`/services/${item.link}`}
         >
           <Media
             className="size-[24px]"
