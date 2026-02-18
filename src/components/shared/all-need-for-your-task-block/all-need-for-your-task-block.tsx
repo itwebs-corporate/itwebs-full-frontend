@@ -22,7 +22,6 @@ export default async function AllNeedForYourTaskBlock({
   searchParams?: string;
   cards: Service[];
 }) {
-  // TODO: в taskTabs есть ошибка
   // TODO: нужно проверить fallback
   const activeTab = searchParams;
   const filters = await fetchFilterGroups();
@@ -39,7 +38,7 @@ export default async function AllNeedForYourTaskBlock({
         <b className="text-primary"> вашей задачи</b>
       </Typography>
       <AllNeedForYourTaskTabs activeTab={activeTab} filters={filters} />
-      <AllNeedForYourTaskSelect filters={filters} />
+      <AllNeedForYourTaskSelect activeTab={activeTab} filters={filters} />
       <div
         className={cn(
           uiCards.length

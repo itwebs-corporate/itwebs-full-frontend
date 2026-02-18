@@ -62,13 +62,19 @@ export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPos
         }}
         ref={ref}
       >
-        {similar.map((item) => (
-          <YouMaybeInterestingCard
-            card={item}
-            className="h-[clamp(282px,40vw,394px)] w-full max-w-[clamp(332px,60vw,587px)]"
-            key={item.title}
-          />
-        ))}
+        {similar.length > 0 ? (
+          similar.map((item) => (
+            <YouMaybeInterestingCard
+              card={item}
+              className="h-[clamp(282px,40vw,394px)] w-full max-w-[clamp(332px,60vw,587px)]"
+              key={item.title}
+            />
+          ))
+        ) : (
+          <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+            Пока что нет рекомендаций
+          </li>
+        )}
       </ul>
     </Section>
   );

@@ -18,7 +18,13 @@ export default function WhatWeTasksSolveBlock({
         className="1xl:flex absolute top-[56%] left-[48%] hidden h-[clamp(125px,7vw,225px)] w-[clamp(125px,7vw,225px)]"
         image={{ src: '/serives-1c-star.svg', alt: 'star' }}
       />
-      <ClientWrapper desicions={desicions} />
+      {desicions.length > 0 ? (
+        <ClientWrapper desicions={desicions} />
+      ) : (
+        <span className="w-[40vw] rounded-full border border-dashed border-white/50 p-4 text-center text-lg text-white/80">
+          Мы чуть позже добавим задачи, которые решаем
+        </span>
+      )}
     </Section>
   );
 }

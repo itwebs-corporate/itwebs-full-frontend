@@ -11,9 +11,15 @@ import {
 
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
-export default function AllNeedForYourTaskSelect({ filters }: { filters: FilterGroup[] }) {
+export default function AllNeedForYourTaskSelect({
+  filters,
+  activeTab,
+}: {
+  filters: FilterGroup[];
+  activeTab: string | undefined;
+}) {
   const router = useRouter();
-
+  const selectValue = filters.find((item) => item.link === activeTab)?.name;
   return (
     <Select
       onValueChange={(slug) => {
@@ -25,7 +31,7 @@ export default function AllNeedForYourTaskSelect({ filters }: { filters: FilterG
         classNameImage="text-white"
         classNameWrapperImage="w-[42px] h-[42px] bg-primary"
       >
-        <SelectValue placeholder="1с услуги" />
+        <SelectValue placeholder={selectValue ?? 'Выберите группу услуг'} />
       </SelectTrigger>
       <SelectContent align="start" position="popper" side="bottom">
         {filters.map((item) => (

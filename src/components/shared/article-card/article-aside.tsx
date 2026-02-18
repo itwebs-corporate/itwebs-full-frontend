@@ -6,7 +6,7 @@ import Typography from '@/components/ui/typography/typography';
 
 export default function ArticleAside({ html }: { html: string }) {
   const { sections } = useArticleParse(html);
-
+  if (sections.length < 1) return null;
   return (
     <aside className="z-20 mt-[24px] w-[332px] rounded-[20px] bg-white px-[clamp(18px,2.5vw,24px)] pt-[20px] pb-[clamp(20px,2vw,24px)] sm:sticky sm:top-[120px] sm:mt-0 sm:w-[284px]">
       <Typography variant="h4">Разделы</Typography>

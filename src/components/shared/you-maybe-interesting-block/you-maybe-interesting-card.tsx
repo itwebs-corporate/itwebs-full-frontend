@@ -17,7 +17,7 @@ export default function YouMaybeInterestingCard({
   return (
     <div
       className={cn(
-        'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
+        'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)]! shrink-0 flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
         className
       )}
     >
@@ -28,7 +28,10 @@ export default function YouMaybeInterestingCard({
         />
       )}
       <div className="flex flex-nowrap items-center justify-between gap-[10px]">
-        <Typography className="line-clamp-2 lowercase sm:line-clamp-none" variant="h3">
+        <Typography
+          className="line-clamp-2 lowercase sm:line-clamp-3 xl:line-clamp-none"
+          variant="h3"
+        >
           {card.title}
         </Typography>
         <Link
@@ -47,7 +50,7 @@ export default function YouMaybeInterestingCard({
       </div>
 
       <Typography
-        className="line-clamp-2 leading-[140%] opacity-80 sm:mt-1 sm:line-clamp-none"
+        className="line-clamp-2 leading-[140%] opacity-80 sm:mt-1 sm:line-clamp-3 xl:line-clamp-none"
         variant="p2"
       >
         {card.description}
@@ -55,7 +58,7 @@ export default function YouMaybeInterestingCard({
 
       {card.image && (
         <Media
-          className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full sm:block"
+          className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full shrink-0 sm:block"
           image={{ src: '/default/card-rect.png', alt: card.title }}
         />
       )}

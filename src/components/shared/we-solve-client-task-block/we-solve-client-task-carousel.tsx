@@ -25,14 +25,20 @@ export async function WeSolceClientTaskCarousel() {
           }}
         >
           <CarouselContent className="items-stretch">
-            {result.map((item) => (
-              <CarouselItem
-                className="sm:max-full flex max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
-                key={item.id}
-              >
-                <WeSolveClientTaskCard item={item} />
-              </CarouselItem>
-            ))}
+            {result.length > 0 ? (
+              result.map((item) => (
+                <CarouselItem
+                  className="sm:max-full flex max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
+                  key={item.id}
+                >
+                  <WeSolveClientTaskCard item={item} />
+                </CarouselItem>
+              ))
+            ) : (
+              <div className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+                Кейсы не найдены
+              </div>
+            )}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

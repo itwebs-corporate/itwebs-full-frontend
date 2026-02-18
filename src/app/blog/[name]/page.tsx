@@ -48,7 +48,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
-      {post && <ArticleCard article={post} />}
+      <ArticleCard article={post} />
       <YouMaybeInterestingBlock similar={post.similar} />
     </>
   );

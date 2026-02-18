@@ -19,11 +19,17 @@ export default function ForWhoWeWorkBlock({
         <b className="text-primary">Для кого</b> мы работаем
       </Typography>
 
-      <div className="3xl:grid-cols-4 mt-[clamp(32px,3vw,46px)] grid grid-cols-1 justify-center gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
-        {data.map((item) => (
-          <ForWeWorkCard isShowMedia={isShowMedia} item={item} key={item.id} />
-        ))}
-      </div>
+      {data.length > 0 ? (
+        <div className="3xl:grid-cols-4 mt-[clamp(32px,3vw,46px)] grid grid-cols-1 justify-center gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
+          {data.map((item) => (
+            <ForWeWorkCard isShowMedia={isShowMedia} item={item} key={item.id} />
+          ))}
+        </div>
+      ) : (
+        <span className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+          Здесь пока что пусто
+        </span>
+      )}
     </Section>
   );
 }

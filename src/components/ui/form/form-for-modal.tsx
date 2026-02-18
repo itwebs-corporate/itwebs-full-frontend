@@ -43,6 +43,7 @@ export default function FormForModals({
       policy: false,
     },
     mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {

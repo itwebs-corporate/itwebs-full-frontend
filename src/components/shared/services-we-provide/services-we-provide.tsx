@@ -45,7 +45,9 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
           <Link href={PAGES_CONFIG.SERVICES}>Все услуги</Link>
         </Button>
       ) : (
-        <li>Услуги не найдены</li>
+        <span className="w-[40vw] rounded-full border border-dashed border-white/50 p-4 text-center text-lg text-white/80">
+          Услуги не найдены
+        </span>
       )}
     </Section>
   );

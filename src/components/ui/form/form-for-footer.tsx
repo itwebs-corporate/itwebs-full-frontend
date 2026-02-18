@@ -36,6 +36,7 @@ export default function FormForFooter({ className }: { className?: string }) {
       policy: false,
     },
     mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
