@@ -50,7 +50,7 @@ export default function HowWeWork1cBlock({
             {data.map((item, index) => (
               <HowWeWorkServiceCard
                 className={cn(
-                  'h-[240px] w-[332px] shrink-0 sm:h-[359px] sm:w-[435px]',
+                  'min-h-[240px] w-[332px] shrink-0 sm:h-[359px] sm:w-[435px]',
                   (index + 1) % 2 === 0 ? 'bg-background border-4 border-white' : ''
                 )}
                 item={item}

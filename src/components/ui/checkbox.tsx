@@ -10,14 +10,26 @@ function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimiti
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        'peer border-input dark:bg-input/30 data-[state=checked]:text-primary dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border bg-white shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-white',
+        'font-inherit m-0 appearance-none border-solid bg-none p-0 leading-none text-inherit shadow-none',
+        'box-border inline-grid place-content-center select-none',
+
+        'peer border-input size-4 shrink-0 rounded-[4px] border bg-white shadow-xs transition-shadow outline-none',
+        'dark:bg-input/30',
+
+        'data-[state=checked]:border-primary data-[state=checked]:text-primary data-[state=checked]:bg-white',
+        'dark:data-[state=checked]:bg-primary',
+
+        'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+        'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
+        'disabled:cursor-not-allowed disabled:opacity-50',
+
         className
       )}
       data-slot="checkbox"
       {...props}
     >
       <CheckboxPrimitive.Indicator
-        className="grid place-content-center text-current transition-none"
+        className="grid place-content-center text-current"
         data-slot="checkbox-indicator"
       >
         <CheckIcon className="size-3.5" />

@@ -79,13 +79,13 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/sharp.svg',
       alt: 'Sharp',
       className:
-        'absolute left-[0%] md:left-[0.5%] 1xl:left-[1%] 2xl:left-[3.5%] 3xl:left-[4.5%] top-[-36%] lg:top-[-34%] xl:top-[-30%] 2xl:top-[-25%] 3xl:top-[-22%] hidden sm:block w-[clamp(72px,8vw,109px)] h-[clamp(82px,9vw,124px)]',
+        'absolute left-[3.5vw] top-[-3vw] md:left-[5vw] md:top-[-2.5vw] lg:left-[5.5vw] lg:top-[-2vw] 3xl:left-[6.5vw] 3xl:top-[-1vw] hidden sm:block w-[clamp(70px,5vw,109px)] h-[clamp(81px,6vw,124px)]',
     },
     {
       src: '/hero/stars-group.svg',
       alt: 'Group-star',
       className:
-        'absolute right-[-5vw] top-[-35%] md:right-[-3vw] md:top-[-30%] 2xl:right-[-1vw] 2xl:top-[-23%] hidden sm:block w-[clamp(96px,10vw,161px)] h-[clamp(76px,8vw,128px)]',
+        'absolute  right-[9vw] top-[-5.5vw] md:right-[10vw] md:top-[-3.5vw] lg:right-[11.5vw] lg:top-[-2vw] hidden sm:block  w-[clamp(113px,8vw,161px)] h-[clamp(90px,6.5vw,128px)]',
     },
     {
       src: '/hero/mobile/empty-star.svg',

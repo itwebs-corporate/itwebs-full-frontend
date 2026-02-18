@@ -22,7 +22,6 @@ export default async function AllNeedForYourTaskBlock({
   searchParams?: string;
   cards: Service[];
 }) {
-  // TODO: нужно проверить fallback
   const activeTab = searchParams;
   const filters = await fetchFilterGroups();
 

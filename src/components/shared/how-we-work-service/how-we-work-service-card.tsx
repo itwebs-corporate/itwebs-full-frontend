@@ -14,7 +14,7 @@ export default function HowWeWorkServiceCard({
   return (
     <div
       className={cn(
-        'z-10 flex h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col overflow-hidden rounded-[clamp(12px,2vw,24px)] bg-white p-5',
+        'z-10 flex min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col overflow-hidden rounded-[clamp(12px,2vw,24px)] bg-white p-5',
         className
       )}
     >
@@ -31,9 +31,7 @@ export default function HowWeWorkServiceCard({
         <Typography variant="h3">{item.name}</Typography>
 
         <Typography
-          className={cn(
-            'mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 overflow-y-auto pr-2 break-words'
-          )}
+          className={cn('mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 pr-2 break-words')}
           variant="p2"
         >
           {item.description}

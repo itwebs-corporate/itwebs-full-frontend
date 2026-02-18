@@ -11,11 +11,15 @@ const jsonInit: RequestInit = {
   next: { revalidate: 60 },
 };
 
-const BACKEND_URL = process.env.BACKEND_URL;
+const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, '');
+
+type FetchErr = { code?: string; cause?: { code?: string } };
 
 export async function fetchAllServices(): Promise<Service[]> {
+  const fn = 'fetchAllServices';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchAllServices)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return [];
   }
 
@@ -26,25 +30,31 @@ export async function fetchAllServices(): Promise<Service[]> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}: ${text}`);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return [];
     }
 
-    try {
-      return (await res.json()) as Service[];
-    } catch (e) {
-      console.error(`Invalid json:`, e);
-      return [];
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as Service[] | null;
+
+    return data ?? [];
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return [];
   }
 }
 
 export async function fetchServicesByLink(serviceLink: string): Promise<ServiceDto> {
+  const fn = 'fetchServicesByLink';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchServicesByLink)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return notFound();
   }
 
@@ -57,25 +67,31 @@ export async function fetchServicesByLink(serviceLink: string): Promise<ServiceD
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}:`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return notFound();
     }
 
-    try {
-      return (await res.json()) as ServiceDto;
-    } catch (e) {
-      console.error(`Invalid json:`, e);
-      return notFound();
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as ServiceDto | null;
+
+    return data ?? notFound();
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return notFound();
   }
 }
 
 export async function fetchFilterGroups(): Promise<FilterGroup[]> {
+  const fn = 'fetchFilterGroups';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchFilterGroups)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return [];
   }
 
@@ -86,25 +102,31 @@ export async function fetchFilterGroups(): Promise<FilterGroup[]> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return [];
     }
 
-    try {
-      return (await res.json()) as FilterGroup[];
-    } catch (e) {
-      console.error(`Invalid json:`, e);
-      return [];
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as FilterGroup[] | null;
+
+    return data ?? [];
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return [];
   }
 }
 
 export async function fetchHeaderGroups(): Promise<HeaderGroups | null> {
+  const fn = 'fetchHeaderGroups';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchHeaderGroups)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return null;
   }
 
@@ -115,25 +137,31 @@ export async function fetchHeaderGroups(): Promise<HeaderGroups | null> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}:`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return null;
     }
 
-    try {
-      return (await res.json()) as HeaderGroups;
-    } catch (e) {
-      console.error(`Invalid json: `, e);
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
       return null;
-    }
+    })) as HeaderGroups | null;
+
+    return data ?? null;
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return null;
   }
 }
 
 export async function fetchServicesByGroup(group: string): Promise<ServiceGroupDto[]> {
+  const fn = 'fetchServicesByGroup';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchServicesByGroup)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return [];
   }
 
@@ -144,25 +172,31 @@ export async function fetchServicesByGroup(group: string): Promise<ServiceGroupD
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return [];
     }
 
-    try {
-      return (await res.json()) as ServiceGroupDto[];
-    } catch (e) {
-      console.error(`Invalid json:`, e);
-      return [];
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as ServiceGroupDto[] | null;
+
+    return data ?? [];
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return [];
   }
 }
 
 export async function fetchAllCases(): Promise<Case[]> {
+  const fn = 'fetchAllCases';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchAllCases)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return [];
   }
 
@@ -173,25 +207,31 @@ export async function fetchAllCases(): Promise<Case[]> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return [];
     }
 
-    try {
-      return (await res.json()) as Case[];
-    } catch (e) {
-      console.error(`Invalid JSON:`, e);
-      return [];
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as Case[] | null;
+
+    return data ?? [];
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return [];
   }
 }
 
 export async function fetchAllPosts(): Promise<Post[]> {
+  const fn = 'fetchAllPosts';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set:  (fetchAllPosts)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return [];
   }
 
@@ -202,25 +242,31 @@ export async function fetchAllPosts(): Promise<Post[]> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}`, text);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return [];
     }
 
-    try {
-      return (await res.json()) as Post[];
-    } catch (e) {
-      console.error(`Invalid JSON:`, e);
-      return [];
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as Post[] | null;
+
+    return data ?? [];
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return [];
   }
 }
 
 export async function fetchPostByLink(postLink: string): Promise<BlogPostDto> {
+  const fn = 'fetchPostByLink';
+
   if (!BACKEND_URL) {
-    console.error('BACKEND_URL is not set: (fetchPostByLink)');
+    console.error(`[${fn}] BACKEND_URL is not set (code=NO_BACKEND_URL)`);
     return notFound();
   }
 
@@ -233,18 +279,22 @@ export async function fetchPostByLink(postLink: string): Promise<BlogPostDto> {
 
     if (!res.ok) {
       const text = await res.text().catch(() => '');
-      console.error(`Backend error - ${res.status}: ${text}`);
+      console.error(`[${fn}] Backend error (code=HTTP_${res.status}): ${url}`, text);
       return notFound();
     }
 
-    try {
-      return (await res.json()) as BlogPostDto;
-    } catch (e) {
-      console.error(`Invalid json:`, e);
-      return notFound();
-    }
+    const data = (await res.json().catch((e) => {
+      const err = e as FetchErr;
+      const code = err.cause?.code ?? err.code ?? 'INVALID_JSON';
+      console.error(`[${fn}] Invalid JSON (code=${code}): ${url}`, e);
+      return null;
+    })) as BlogPostDto | null;
+
+    return data ?? notFound();
   } catch (e) {
-    console.error(`Fetch failed:`, e);
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+    console.error(`[${fn}] Fetch failed (code=${code}): ${url}`, e);
     return notFound();
   }
 }

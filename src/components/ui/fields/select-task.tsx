@@ -49,7 +49,10 @@ export default function SelectTask<T extends FieldValues>({
         render={({ field }) => (
           <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger
-              className={cn(selectVariants({ variant }), 'min-w-0')}
+              className={cn(
+                selectVariants({ variant }),
+                'xxs:w-[304px] w-full max-w-full min-w-0 lg:w-[275px]'
+              )}
               classNameImage={classNameImage}
               classNameWrapperImage={classNameWrapperImage}
             >

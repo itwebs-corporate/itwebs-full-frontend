@@ -1,13 +1,34 @@
 import { NextResponse } from 'next/server';
 
 const BACKEND_URL = process.env.BACKEND_URL;
-if (!BACKEND_URL) throw new Error('BACKEND ERROR: BACKEND_URL is not set');
+
+type FetchErr = { code?: string; cause?: { code?: string } };
 
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
+  const targetPath = '/client/request';
 
-    const res = await fetch(`${BACKEND_URL}/client/request`, {
+  if (!BACKEND_URL) {
+    return NextResponse.json(
+      { message: 'Backend URL is not set', code: 'NO_BACKEND_URL' },
+      { status: 500 }
+    );
+  }
+
+  let body: unknown;
+
+  try {
+    body = await req.json();
+  } catch (e) {
+    return NextResponse.json(
+      { message: 'Invalid JSON body', code: 'INVALID_BODY_JSON' },
+      { status: 400 }
+    );
+  }
+
+  const backendUrl = `${BACKEND_URL}${targetPath}`;
+
+  try {
+    const res = await fetch(backendUrl, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -23,13 +44,16 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           message: 'Backend error',
+          code: `HTTP_${res.status}`,
           status: res.status,
-          backendUrl: `${BACKEND_URL}/client/request`,
+          backendUrl,
           body: text,
         },
         { status: res.status }
       );
     }
+
+    if (!text) return NextResponse.json({ ok: true }, { status: 200 });
 
     try {
       return NextResponse.json(JSON.parse(text), { status: 200 });
@@ -37,6 +61,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true, raw: text }, { status: 200 });
     }
   } catch (e) {
-    return NextResponse.json({ message: `Bad request - ${String(e)}` }, { status: 400 });
+    const err = e as FetchErr;
+    const code = err.cause?.code ?? err.code ?? 'UNKNOWN';
+
+    return NextResponse.json(
+      {
+        message: 'Backend fetch failed',
+        code: `NET_${code}`,
+        backendUrl,
+      },
+      { status: 502 }
+    );
   }
 }

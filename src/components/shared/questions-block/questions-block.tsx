@@ -42,7 +42,7 @@ export default function QuestionsBlock({
               key={item.id}
               value={`item-${item.id}`}
             >
-              <AccordionTrigger className="h-[clamp(55px,6vw,85px)] border-none px-[clamp(14px,2vw,24px)]">
+              <AccordionTrigger className="min-h-[clamp(55px,6vw,85px)] border-none px-[clamp(14px,2vw,24px)]">
                 <Typography variant="h3">{item.question}</Typography>
               </AccordionTrigger>
 

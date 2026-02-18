@@ -10,7 +10,7 @@ import ArticleAside from './article-aside';
 
 export default function ArticleCard({ article }: { article: BlogPostDto }) {
   return (
-    <Section className="text-foreground3! sm:mt-[182px]">
+    <Section className="text-foreground3! sm:mt-[clamp(60px,10vw,182px)]">
       <div className="bg-primary block h-[120px] w-screen sm:hidden" />
       <div className="absolute top-[76px] left-[14px] w-full max-w-[clamp(332px,80vw,890px)] sm:static">
         <BreadcrumbWithCustomSeparator
