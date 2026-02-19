@@ -75,7 +75,7 @@ export default function FormForModals({
       )}
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="relative w-full min-w-0">
+      <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <Input nameRegister="name" placeholder="Ваше имя" register={register} />
         {errors.name && (
           <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
@@ -84,7 +84,7 @@ export default function FormForModals({
         )}
       </div>
 
-      <div className="relative w-full min-w-0">
+      <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <Input nameRegister="emailOrTel" placeholder="Email / Телефон" register={register} />
         {errors.emailOrTel && (
           <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
@@ -92,15 +92,16 @@ export default function FormForModals({
           </p>
         )}
       </div>
-
-      <SelectTask
-        classNameImage="group-data-[state=open]:text-white"
-        classNameItem="focus:bg-primary focus:text-white"
-        classNameWrapperImage="bg-background text-white group-data-[state=open]:bg-primary transition-all"
-        control={control}
-        errorMessage={errors.service?.message}
-        name="service"
-      />
+      <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
+        <SelectTask
+          classNameImage="group-data-[state=open]:text-white"
+          classNameItem="focus:bg-primary focus:text-white"
+          classNameWrapperImage="bg-background text-white group-data-[state=open]:bg-primary transition-all"
+          control={control}
+          errorMessage={errors.service?.message}
+          name="service"
+        />
+      </div>
 
       <CheckboxPolicy
         classTextName="text-foreground3/35"

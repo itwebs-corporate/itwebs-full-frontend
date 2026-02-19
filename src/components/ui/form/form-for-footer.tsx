@@ -67,7 +67,7 @@ export default function FormForFooter({ className }: { className?: string }) {
           className
         )}
       >
-        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
+        <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-[275px] lg:min-w-0! lg:flex-1 lg:basis-0!">
           <Input nameRegister="name" placeholder="Ваше имя" register={register} variant="primary" />
           {errors.name && (
             <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
@@ -76,7 +76,7 @@ export default function FormForFooter({ className }: { className?: string }) {
           )}
         </div>
 
-        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
+        <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-[275px] lg:min-w-0! lg:flex-1 lg:basis-0!">
           <Input
             nameRegister="emailOrTel"
             placeholder="Email / Телефон"
@@ -89,7 +89,7 @@ export default function FormForFooter({ className }: { className?: string }) {
             </p>
           )}
         </div>
-        <div className="relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-none lg:min-w-0! lg:flex-1 lg:basis-0!">
+        <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-[275px] lg:min-w-0! lg:flex-1 lg:basis-0!">
           <SelectTask
             control={control}
             errorMessage={errors.service?.message}

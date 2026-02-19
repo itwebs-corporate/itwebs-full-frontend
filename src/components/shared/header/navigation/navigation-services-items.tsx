@@ -26,7 +26,7 @@ export default function NavigationServicesItems({
       className={cn(
         'border-primary absolute z-50 rounded-[12px] border-2 bg-white transition-[width,padding] duration-200 ease-out',
         isWide
-          ? 'left-1/10 w-[calc(100vw-15vw)] -translate-x-[38%] p-[clamp(10px,5vw,32px)]'
+          ? 'fixed top-[72px] left-1/2 w-[80vw] -translate-x-1/2 p-[clamp(10px,5vw,32px)]'
           : 'left-0 p-[16px]'
       )}
       onClick={(e) => e.stopPropagation()}
@@ -48,7 +48,7 @@ export default function NavigationServicesItems({
           ))}
         </ul>
       )}
-
+      {/* menu second step: */}
       {isWide && activeServiceItem && (
         <div className="flex min-w-0 gap-[clamp(10px,3vw,24px)]">
           <ul className="pr-[clamp(0px,2vw,16px)]">

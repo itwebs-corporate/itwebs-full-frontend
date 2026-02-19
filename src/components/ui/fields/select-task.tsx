@@ -43,7 +43,7 @@ export default function SelectTask<T extends FieldValues>({
   variant,
 }: SelectTaskProps<T>) {
   return (
-    <div className="relative w-full max-w-[275px] min-w-0 lg:max-w-none lg:min-w-0! lg:flex-1">
+    <div className="relative w-full min-w-0">
       <Controller
         control={control}
         name={name}
