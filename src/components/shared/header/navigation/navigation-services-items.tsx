@@ -48,7 +48,6 @@ export default function NavigationServicesItems({
           ))}
         </ul>
       )}
-      {/* TODO: сделать окно норм размером 1fr_1fr */}
       {/* menu second step: */}
       {isWide && activeServiceItem && (
         <div className="grid min-w-0 grid-cols-[1fr_1fr]! gap-[clamp(10px,3vw,24px)] 2xl:grid-cols-[1fr_2fr]">

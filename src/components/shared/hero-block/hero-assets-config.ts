@@ -19,19 +19,19 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/arrow-zig-zag.svg',
       alt: 'arrow-zig-zag',
       className:
-        'absolute left-[2.5vw] md:left-[3vw] top-[8vw] md:top-[9vw] lg:left-[3vw] lg:top-[11vw] hidden sm:block w-[clamp(120px,14vw,304px)] h-[clamp(162px,10vw,231px)]',
+        'absolute left-[10vw] top-[10vw] hidden sm:block w-[clamp(120px,14vw,304px)] h-[clamp(162px,10vw,231px)]',
     },
     {
       src: '/hero/arrow-left-start.svg',
       alt: 'arrow-left-start',
       className:
-        'absolute right-[45px] top-[8vw] hidden sm:block w-[clamp(79px,6vw,141px)] h-[clamp(118px,8.8vw,211px)]',
+        'absolute right-[45px] top-[8vw] sm:right-[10vw] hidden sm:block w-[clamp(79px,6vw,141px)] h-[clamp(118px,8.8vw,211px)]',
     },
     {
       src: '/hero/arrow-left-end.svg',
       alt: 'arrow-left-end',
       className:
-        'absolute right-[51px] top-[8vw] hidden sm:block z-[-1] w-[clamp(87px,6.4vw,155.1px)] h-[clamp(126px,9.6vw,225px)]',
+        'absolute right-[51px] top-[8vw] sm:right-[10.2vw] hidden sm:block z-[-1] w-[clamp(87px,6.4vw,155.1px)] h-[clamp(126px,9.6vw,225px)]',
     },
 
     {
