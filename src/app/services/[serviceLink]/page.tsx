@@ -55,7 +55,12 @@ export default async function ServiceLinkPage({ params }: Props) {
   const desicions = service.decisions ?? [];
   return (
     <>
-      <HeroBlock description={service.h2} heading={service.h1} lastBreadcrumb={service.name}>
+      <HeroBlock
+        description={service.h2}
+        fullScreen
+        heading={service.h1}
+        lastBreadcrumb={service.name}
+      >
         <ModalConsult />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>

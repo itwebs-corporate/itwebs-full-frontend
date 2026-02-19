@@ -14,7 +14,7 @@ export default function HowWeWorkServiceCard({
   return (
     <div
       className={cn(
-        'z-10 flex min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col overflow-hidden rounded-[clamp(12px,2vw,24px)] bg-white p-5',
+        'z-10 flex h-full min-h-[clamp(260px,20vw,292px)] w-full max-w-[clamp(320px,90vw,435px)] flex-col overflow-hidden rounded-[clamp(12px,2vw,24px)] bg-white p-5',
         className
       )}
     >

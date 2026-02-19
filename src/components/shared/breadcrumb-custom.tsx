@@ -49,10 +49,12 @@ export function BreadcrumbWithCustomSeparator({
 
   return (
     <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
-      <BreadcrumbList>
-        <BreadcrumbItem className={color}>
+      <BreadcrumbList className="max-w-[clamp(200px,60vw,780px)] min-w-0 flex-nowrap overflow-hidden">
+        <BreadcrumbItem className={cn('shrink-0', color)}>
           <BreadcrumbLink asChild>
-            <Link href="/">Главная</Link>
+            <Link className="shrink-0" href="/">
+              Главная
+            </Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
 
@@ -63,13 +65,16 @@ export function BreadcrumbWithCustomSeparator({
 
           return (
             <Fragment key={href}>
-              <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
-              <BreadcrumbItem className={color}>
+              <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
+
+              <BreadcrumbItem className={cn(isLast ? 'min-w-0 flex-1' : 'shrink-0', color)}>
                 {isLast ? (
-                  <BreadcrumbPage className={color}>{label}</BreadcrumbPage>
+                  <BreadcrumbPage className={cn('min-w-0 truncate', color)}>{label}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
-                    <Link href={href}>{label}</Link>
+                    <Link className="shrink-0" href={href}>
+                      {label}
+                    </Link>
                   </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
@@ -79,17 +84,22 @@ export function BreadcrumbWithCustomSeparator({
 
         {lastBreadcrumb && !isNotFound && (
           <>
-            <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
-            <BreadcrumbItem className={color}>
-              <BreadcrumbPage className={color}>{lastBreadcrumb}</BreadcrumbPage>
+            <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
+            <BreadcrumbItem className={cn('min-w-0 flex-1', color)}>
+              <BreadcrumbPage className={cn('min-w-0 truncate', color)}>
+                {lastBreadcrumb}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}
+
         {isNotFound && (
           <>
-            <BreadcrumbSeparator className={color}>/</BreadcrumbSeparator>
-            <BreadcrumbItem className={color}>
-              <BreadcrumbPage className={color}>Страница не найдена</BreadcrumbPage>
+            <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
+            <BreadcrumbItem className={cn('min-w-0 flex-1', color)}>
+              <BreadcrumbPage className={cn('min-w-0 truncate', color)}>
+                Страница не найдена
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}

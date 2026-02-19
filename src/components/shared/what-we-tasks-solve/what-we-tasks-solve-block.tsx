@@ -15,7 +15,7 @@ export default function WhatWeTasksSolveBlock({
         <b className="opacity-80">Какие</b> задачи мы решаем
       </Typography>
       <Media
-        className="1xl:flex absolute top-[56%] left-[48%] hidden h-[clamp(125px,7vw,225px)] w-[clamp(125px,7vw,225px)]"
+        className="1xl:flex absolute top-[56%] left-[55%] hidden h-[clamp(125px,7vw,225px)] w-[clamp(125px,7vw,225px)]"
         image={{ src: '/serives-1c-star.svg', alt: 'star' }}
       />
       {desicions.length > 0 ? (

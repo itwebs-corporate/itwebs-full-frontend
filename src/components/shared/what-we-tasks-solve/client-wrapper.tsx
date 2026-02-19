@@ -48,7 +48,7 @@ export default function ClientWrapper({
 
   return (
     <ul
-      className="no-scrollbar flex w-full cursor-grab touch-pan-x snap-x snap-mandatory scroll-px-4 gap-[8px] overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:snap-none sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
+      className="no-scrollbar flex w-full cursor-grab touch-pan-x snap-x snap-mandatory scroll-px-4 items-stretch gap-[8px] overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:snap-none sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
       onClickCapture={(e) => {
         if (drag.current.moved) {
           e.preventDefault();
