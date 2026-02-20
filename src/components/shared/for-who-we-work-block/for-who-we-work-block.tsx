@@ -20,7 +20,7 @@ export default function ForWhoWeWorkBlock({
       </Typography>
 
       {data.length > 0 ? (
-        <div className="3xl:grid-cols-4 mt-[clamp(32px,3vw,46px)] grid grid-cols-1 justify-center gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-2">
+        <div className="mt-[clamp(32px,3vw,46px)] flex flex-col flex-wrap items-center justify-center gap-[clamp(14px,1.5vw,20px)] sm:flex-row">
           {data.map((item) => (
             <ForWeWorkCard isShowMedia={isShowMedia} item={item} key={item.id} />
           ))}
