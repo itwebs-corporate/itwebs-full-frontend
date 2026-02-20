@@ -10,14 +10,12 @@ import { Checkbox } from '../checkbox';
 type CheckboxPolicyProps<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
-  errorMessage?: string;
   classTextName?: string;
 };
 
 export default function CheckboxPolicy<T extends FieldValues>({
   name,
   control,
-  errorMessage,
   classTextName,
 }: CheckboxPolicyProps<T>) {
   return (
@@ -41,9 +39,6 @@ export default function CheckboxPolicy<T extends FieldValues>({
         <Link className="underline underline-offset-2" href={PAGES_CONFIG.POLICY}>
           политикой обработки персональных данных
         </Link>
-        {errorMessage && (
-          <p className="text-destructive mb-[-2px] text-[12px] sm:text-sm">{errorMessage}</p>
-        )}
       </label>
     </div>
   );

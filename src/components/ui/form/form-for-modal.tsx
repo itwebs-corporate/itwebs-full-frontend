@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { usePathname } from 'next/navigation';
-import { type SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitErrorHandler, type SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
@@ -33,7 +33,7 @@ export default function FormForModals({
     handleSubmit,
     control,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(zodContactSchema),
     defaultValues: {
@@ -67,30 +67,25 @@ export default function FormForModals({
     }
   };
 
+  const onInvalid: SubmitErrorHandler<ContactFormValues> = (errs) => {
+    const first = Object.values(errs)[0];
+    const msg = first?.message ?? 'Проверьте поля формы';
+    toast.error(String(msg));
+  };
   return (
     <form
       className={cn(
         'flex flex-col items-center gap-[14px] lg:flex-row lg:items-start lg:gap-4',
         className
       )}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onInvalid)}
     >
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <Input nameRegister="name" placeholder="Ваше имя" register={register} />
-        {errors.name && (
-          <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
-            {errors.name.message}
-          </p>
-        )}
       </div>
 
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <Input nameRegister="emailOrTel" placeholder="Email / Телефон" register={register} />
-        {errors.emailOrTel && (
-          <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
-            {errors.emailOrTel.message}
-          </p>
-        )}
       </div>
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <SelectTask
@@ -98,17 +93,11 @@ export default function FormForModals({
           classNameItem="focus:bg-primary focus:text-white"
           classNameWrapperImage="bg-background text-white group-data-[state=open]:bg-primary transition-all"
           control={control}
-          errorMessage={errors.service?.message}
           name="service"
         />
       </div>
 
-      <CheckboxPolicy
-        classTextName="text-foreground3/35"
-        control={control}
-        errorMessage={errors.policy?.message}
-        name="policy"
-      />
+      <CheckboxPolicy classTextName="text-foreground3/35" control={control} name="policy" />
 
       <Button
         className="max-h-[48px] outline-white/25"

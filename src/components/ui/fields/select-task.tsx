@@ -26,7 +26,6 @@ const selectVariants = cva(
 type SelectTaskProps<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
-  errorMessage?: string;
   variant?: 'default' | 'primary';
   classNameItem?: string;
   classNameImage?: string;
@@ -36,7 +35,6 @@ type SelectTaskProps<T extends FieldValues> = {
 export default function SelectTask<T extends FieldValues>({
   control,
   name,
-  errorMessage,
   classNameItem,
   classNameImage,
   classNameWrapperImage,
@@ -78,12 +76,6 @@ export default function SelectTask<T extends FieldValues>({
           </Select>
         )}
       />
-
-      {errorMessage && (
-        <p className="text-destructive absolute bottom-[-16px] left-[15px] text-[12px] sm:bottom-[-18px] sm:text-sm">
-          {errorMessage}
-        </p>
-      )}
     </div>
   );
 }
