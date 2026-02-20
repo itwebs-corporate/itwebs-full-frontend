@@ -32,7 +32,7 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
         <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Услуги</b> которые мы оказываем
       </Typography>
 
-      <div className="3xl:grid-cols-4 mt-[clamp(24px,3vw,48px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)]! sm:grid-cols-2">
+      <div className="flex-center mt-[clamp(24px,3vw,48px)] flex-col flex-wrap gap-[clamp(14px,1.5vw,20px)]! sm:flex-row">
         {filterServices.map((item) => (
           <ServicesWeProvideCard isRegion={isRegion} item={item} key={item.title} />
         ))}
