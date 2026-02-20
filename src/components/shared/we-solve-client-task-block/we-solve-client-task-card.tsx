@@ -9,7 +9,7 @@ import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
 import { Case } from '@/shared/types/service-dto-types';
-// TODO: нет плавности при раскрытии и скрытии
+
 export default function WeSolveClientTaskCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [canToggle, setCanToggle] = useState<boolean>(false);
@@ -53,7 +53,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
           <Typography className="text-foreground2 text-[clamp(24px,2.5vw,48px)]" variant="h3">
             {item.name}
           </Typography>
-          <Typography className="[overflow-wrap:anywhere] opacity-80" variant="p2">
+          <Typography className="wrap:anywhere opacity-80" variant="p2">
             {item.description}
           </Typography>
         </div>
@@ -69,7 +69,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
               className={cn(
                 'overflow-hidden transition-all',
                 isOpen ? 'max-h-[1000px]' : 'max-h-[3em]',
-                '[overflow-wrap:anywhere] opacity-80'
+                'wrap:anywhere opacity-80'
               )}
               ref={taskRef}
               variant="p2"
@@ -89,7 +89,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
               className={cn(
                 'overflow-hidden transition-all',
                 isOpen ? 'max-h-[500px]' : 'max-h-[44px]',
-                '[overflow-wrap:anywhere] opacity-80'
+                'wrap:anywhere opacity-80'
               )}
               ref={decisionRef}
               variant="p2"

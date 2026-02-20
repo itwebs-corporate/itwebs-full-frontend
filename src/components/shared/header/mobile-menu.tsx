@@ -20,7 +20,6 @@ export default async function MobileMenu() {
       <div className={styles.screenMain}>
         <MobileMenuMainScreen filterGroup={filterGroup} />
       </div>
-      {/* TODO: ошибка гидрации из-за styles */}
       <div className={styles.screen1c}>
         <MobileMenu1CScreen />
       </div>

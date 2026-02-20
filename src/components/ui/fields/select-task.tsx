@@ -63,7 +63,7 @@ export default function SelectTask<T extends FieldValues>({
 
             <SelectContent
               align="start"
-              className="w-[var(--radix-select-trigger-width)] max-w-[var(--radix-select-trigger-width)]"
+              className="w-(--radix-select-trigger-width) max-w-(--radix-select-trigger-width)"
               position="popper"
               side="bottom"
             >
