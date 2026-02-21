@@ -20,7 +20,7 @@ export default function ArticleCard({ article }: { article: BlogPostDto }) {
       </div>
 
       <div className="relative mx-auto mt-[24px] w-full sm:mt-0">
-        <div className="mx-auto flex w-full max-w-[1198px] flex-col-reverse gap-[24px] sm:grid sm:grid-cols-[minmax(0,890px)_284px] sm:items-start">
+        <div className="mx-auto flex w-full max-w-[1198px] flex-col-reverse items-center gap-[24px] sm:grid sm:grid-cols-[minmax(0,890px)_284px] sm:items-start">
           {/* Article card: */}
           <div className="w-full max-w-[clamp(332px,80vw,890px)] rounded-[20px] bg-white">
             <Media

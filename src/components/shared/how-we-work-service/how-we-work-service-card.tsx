@@ -21,7 +21,7 @@ export default function HowWeWorkServiceCard({
       <div
         className={cn(
           'bg-primary font-family flex-center mb-[clamp(36px,5vw,64px)] shrink-0 rounded-[12px] text-[32px]',
-          '!size-16 !min-h-16 !min-w-16'
+          'size-16! min-h-16! min-w-16!'
         )}
       >
         0{item.id}
@@ -31,7 +31,7 @@ export default function HowWeWorkServiceCard({
         <Typography variant="h3">{item.name}</Typography>
 
         <Typography
-          className={cn('mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 pr-2 break-words')}
+          className={cn('mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 pr-2 wrap-break-word')}
           variant="p2"
         >
           {item.description}

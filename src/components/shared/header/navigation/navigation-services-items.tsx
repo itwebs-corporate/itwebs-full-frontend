@@ -50,7 +50,7 @@ export default function NavigationServicesItems({
       )}
       {/* menu second step: */}
       {isWide && activeServiceItem && (
-        <div className="grid min-w-0 grid-cols-[1fr_1fr]! gap-[clamp(10px,3vw,24px)] 2xl:grid-cols-[1fr_2fr]">
+        <div className="grid grid-cols-[260px_1fr] gap-[clamp(10px,3vw,24px)] overflow-hidden md:grid-cols-[1fr_3fr]!">
           <ul className="pr-[clamp(0px,2vw,16px)]">
             {headerGroups.map((tab) => {
               const active = tab.groupLink === activeServiceItem;
@@ -64,7 +64,7 @@ export default function NavigationServicesItems({
                   key={tab.groupLink}
                   onClick={() => setActiveServiceItem(tab.groupLink)}
                 >
-                  {tab.groupName}
+                  <span className="min-w-0 truncate">{tab.groupName}</span>
                   <Media
                     className="size-[13px]"
                     image={{
@@ -77,23 +77,21 @@ export default function NavigationServicesItems({
             })}
           </ul>
 
-          <div className="min-w-0 flex-1 overflow-x-auto pb-2">
-            <ul className="grid w-max grid-cols-4 gap-[20px] [&>li]:w-[220px]">
-              {headerGroups
-                .find((item) => item.groupLink === activeServiceItem)
-                ?.services.map((card) => (
-                  <li className="min-w-0" key={card.name}>
-                    <Link
-                      className="block w-full min-w-0 overflow-hidden wrap-break-word! whitespace-normal! text-[#606060] transition-colors hover:text-[#606060]/70"
-                      href={`/services/${card.link}`}
-                      onClick={close}
-                    >
-                      {card.name}
-                    </Link>
-                  </li>
-                ))}
-            </ul>
-          </div>
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-[20px]">
+            {headerGroups
+              .find((item) => item.groupLink === activeServiceItem)
+              ?.services.map((card) => (
+                <li className="min-w-0 truncate" key={card.name}>
+                  <Link
+                    className="block w-full min-w-0 overflow-hidden wrap-break-word! whitespace-normal! text-[#606060] transition-colors hover:text-[#606060]/70"
+                    href={`/services/${card.link}`}
+                    onClick={close}
+                  >
+                    {card.name}
+                  </Link>
+                </li>
+              ))}
+          </ul>
         </div>
       )}
     </div>

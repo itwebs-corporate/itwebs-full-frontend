@@ -10,7 +10,7 @@ import { Media } from '@/components/ui/media';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
-import { HEADER_NAV } from './header-config';
+import { HEADER_NAV } from '../header-config';
 
 export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: FilterGroup[] }) {
   const [isOpenServices, setIsOpenServices] = useState(false);

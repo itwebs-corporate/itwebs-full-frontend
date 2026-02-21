@@ -2,7 +2,7 @@ import styles from './header.module.css';
 
 import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
 
-import MobileMenu from './mobile-menu';
+import MobileMenu from './mobile-menu/mobile-menu';
 import Navigation from './navigation/navigation';
 
 export default function HeaderBlock() {

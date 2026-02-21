@@ -32,7 +32,7 @@ export default function HeroBlock({
 }: HeroBlockProps) {
   return (
     <Section
-      className="relative bg-[url(/hero/bg-hero.png)] pt-[186px] pb-[clamp(115px,10vw,208px)]"
+      className="relative bg-[url(/hero/bg-hero.png)] pt-[150px] pb-[clamp(115px,10vw,208px)]"
       fullScreen={fullScreen}
     >
       <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
