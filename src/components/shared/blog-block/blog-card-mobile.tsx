@@ -27,12 +27,14 @@ export default function BlogCardMobile({ card, className }: { card: Post; classN
           {card.name}
         </Typography>
         <Link
+          aria-label={`Открыть статью ${card.name}`}
           className="flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
           href={`${PAGES_CONFIG.BLOG}/${card.link}`}
         >
           <Media
+            ariaHidden
             className="h-[15px] w-[20px]"
-            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
           />
         </Link>
       </div>

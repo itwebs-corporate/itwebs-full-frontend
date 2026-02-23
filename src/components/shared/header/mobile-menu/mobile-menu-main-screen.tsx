@@ -38,6 +38,9 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
 
                 {isServices && (
                   <button
+                    aria-label={
+                      isOpenServices ? 'Свернуть список услуг' : 'Развернуть список услуг'
+                    }
                     className="z-10 shrink-0"
                     onClick={(e) => {
                       e.preventDefault();
@@ -47,10 +50,11 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                     type="button"
                   >
                     <Media
+                      ariaHidden
                       className="h-[13px] w-[13px]"
                       image={{
                         src: isOpenServices ? '/links/arrow-down.svg' : '/links/arrow-right.svg',
-                        alt: 'arrow',
+                        alt: '',
                       }}
                     />
                   </button>

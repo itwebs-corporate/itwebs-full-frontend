@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ReactNode } from 'react';
 
 import styles from './hero-block.module.css';
@@ -31,10 +32,18 @@ export default function HeroBlock({
   children,
 }: HeroBlockProps) {
   return (
-    <Section
-      className="relative bg-[url(/hero/bg-hero.png)] pt-[150px] pb-[clamp(115px,10vw,208px)]"
-      fullScreen={fullScreen}
-    >
+    <Section className="relative pt-[150px] pb-[clamp(115px,10vw,208px)]" fullScreen={fullScreen}>
+      <div className="absolute inset-0 -z-10">
+        <Image
+          alt=""
+          className="object-cover"
+          fill
+          placeholder="blur"
+          preload
+          sizes="100vw"
+          src="/hero/bg-hero.png"
+        />
+      </div>
       <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
       <HeroHeading disabled={disabledAssets}>{heading}</HeroHeading>
       {description && (

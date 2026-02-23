@@ -14,7 +14,7 @@ export default function ArticleAside({ html }: { html: string }) {
       <ul className="mt-[16px] flex w-full flex-col gap-[clamp(16px,2vw,18px)]">
         {sections.map((s, index) => (
           <li
-            className="text-foreground2/50 hover:text-foreground2/80 text-[14px] transition-all"
+            className="text-foreground2/50 hover:text-foreground2/80 font-third-family text-[14px] transition-all"
             key={s.id}
           >
             <a className="line-clamp-1! flex" href={`#${s.id}`}>

@@ -23,6 +23,7 @@ const inputVariants = cva(
 type InputProps<T extends FieldValues> = ComponentProps<'input'> & {
   register: UseFormRegister<T>;
   nameRegister: Path<T>;
+  id: string;
   variant?: 'default' | 'primary';
 };
 
@@ -32,16 +33,23 @@ function Input<T extends FieldValues>({
   register,
   nameRegister,
   variant,
+  id,
   ...props
 }: InputProps<T>) {
   return (
-    <input
-      {...register(nameRegister)}
-      className={cn(inputVariants({ variant, className }))}
-      data-slot="input"
-      type={type}
-      {...props}
-    />
+    <>
+      <label className="sr-only" htmlFor={id}>
+        {id}
+      </label>
+      <input
+        id={id}
+        {...register(nameRegister)}
+        className={cn(inputVariants({ variant, className }))}
+        data-slot="input"
+        type={type}
+        {...props}
+      />
+    </>
   );
 }
 

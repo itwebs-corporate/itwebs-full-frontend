@@ -70,11 +70,18 @@ export default function FormForFooter({ className }: { className?: string }) {
         )}
       >
         <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-[275px] lg:min-w-0! lg:flex-1 lg:basis-0!">
-          <Input nameRegister="name" placeholder="Ваше имя" register={register} variant="primary" />
+          <Input
+            id="Ваше имя"
+            nameRegister="name"
+            placeholder="Ваше имя"
+            register={register}
+            variant="primary"
+          />
         </div>
 
         <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:w-[275px] lg:max-w-[275px] lg:min-w-0! lg:flex-1 lg:basis-0!">
           <Input
+            id="Ваше почта или телефон"
             nameRegister="emailOrTel"
             placeholder="Email / Телефон"
             register={register}

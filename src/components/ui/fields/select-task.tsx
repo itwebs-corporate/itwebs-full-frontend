@@ -31,7 +31,6 @@ type SelectTaskProps<T extends FieldValues> = {
   classNameImage?: string;
   classNameWrapperImage?: string;
 };
-
 export default function SelectTask<T extends FieldValues>({
   control,
   name,
@@ -48,6 +47,7 @@ export default function SelectTask<T extends FieldValues>({
         render={({ field }) => (
           <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger
+              aria-label="Тип задачи"
               className={cn(
                 selectVariants({ variant }),
                 'w-full max-w-full min-w-0! overflow-hidden'

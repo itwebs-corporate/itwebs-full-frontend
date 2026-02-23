@@ -27,16 +27,19 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
           {card.name}
         </Typography>
         <Link
+          aria-label={`Открыть статью ${card.name}`}
           className="sm:bg-secondary flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
           href={`${PAGES_CONFIG.BLOG}/${card.link}`}
         >
           <Media
+            ariaHidden
             className="hidden h-[15px] w-[20px] sm:block"
-            image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-up-right-black.svg', alt: '' }}
           />
           <Media
+            ariaHidden
             className="block h-[15px] w-[20px] sm:hidden"
-            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
           />
         </Link>
       </div>

@@ -33,32 +33,40 @@ export default function Navigation() {
         {/* links: */}
         {HEADER_LINKS.map((el) => (
           <Link
+            aria-label={`Откроется в новой вкладке ${el.label}`}
             className={cn(
               'flex-center h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border bg-white/10',
               styles.headerLink
             )}
             href={el.link}
             key={el.link}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <Media
+              ariaHidden
               className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
-              image={{ src: el.icon, alt: el.link }}
+              image={{ src: el.icon, alt: '' }}
             />
           </Link>
         ))}
         {/* links by open mobile menu: */}
         {HEADER_MOBILE_LINKS.map((el) => (
           <Link
+            aria-label={`Откроется в новой вкладке ${el.label}`}
             className={cn(
               'flex-center bg-primary/10 h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border',
               styles.headerLinkMobileMenu
             )}
             href={el.link}
             key={el.link}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <Media
+              ariaHidden
               className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
-              image={{ src: el.icon, alt: 'links' }}
+              image={{ src: el.icon, alt: '' }}
             />
           </Link>
         ))}
@@ -70,10 +78,11 @@ export default function Navigation() {
           )}
           htmlFor={MOBILE_MENU_TOGGLE_ID}
         >
-          <div className="relative h-3.5 w-3.5">
-            <Image alt="links" className={styles.openMenuIcon} fill src="/links/burger.svg" />
+          <span className="sr-only">Мобильное меню</span>
+          <div aria-hidden="true" className="relative h-3.5 w-3.5">
+            <Image alt="" className={styles.openMenuIcon} fill src="/links/burger.svg" />
             <Image
-              alt="links"
+              alt=""
               className={styles.closeMenuIcon}
               color="blue"
               fill

@@ -81,11 +81,16 @@ export default function FormForModals({
       onSubmit={handleSubmit(onSubmit, onInvalid)}
     >
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
-        <Input nameRegister="name" placeholder="Ваше имя" register={register} />
+        <Input id="Ваше имя" nameRegister="name" placeholder="Ваше имя" register={register} />
       </div>
 
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
-        <Input nameRegister="emailOrTel" placeholder="Email / Телефон" register={register} />
+        <Input
+          id="Ваша почта или телефон"
+          nameRegister="emailOrTel"
+          placeholder="Email / Телефон"
+          register={register}
+        />
       </div>
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
         <SelectTask
