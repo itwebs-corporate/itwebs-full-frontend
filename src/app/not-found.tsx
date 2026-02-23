@@ -9,6 +9,7 @@ export default function NotFound() {
     <HeroBlock
       description="Страница не найдена. Возможно, вы ошиблись в адресе или страница была удалена."
       disabledAssets
+      fullScreen
       heading="404"
       isNotFound
     >

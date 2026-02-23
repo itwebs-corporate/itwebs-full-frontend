@@ -34,15 +34,7 @@ export default function HeroBlock({
   return (
     <Section className="relative pt-[150px] pb-[clamp(115px,10vw,208px)]" fullScreen={fullScreen}>
       <div className="absolute inset-0 -z-10">
-        <Image
-          alt=""
-          className="object-cover"
-          fill
-          placeholder="blur"
-          preload
-          sizes="100vw"
-          src="/hero/bg-hero.png"
-        />
+        <Image alt="" className="object-cover" fill preload sizes="100vw" src="/hero/bg-hero.png" />
       </div>
       <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
       <HeroHeading disabled={disabledAssets}>{heading}</HeroHeading>

@@ -8,7 +8,12 @@ import Navigation from './navigation/navigation';
 export default function HeaderBlock() {
   return (
     <div className="relative flex flex-col">
-      <input className={styles.menuToggle} id={MOBILE_MENU_TOGGLE_ID} type="checkbox" />
+      <input
+        aria-label="Мобильное меню"
+        className={styles.menuToggle}
+        id={MOBILE_MENU_TOGGLE_ID}
+        type="checkbox"
+      />
       <Navigation />
       <MobileMenu />
     </div>
