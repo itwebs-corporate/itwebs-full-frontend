@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import WhatWeTasksSolveCard from './what-we-tasks-solve-card';
 import WhatWeTasksSolveMobileCard from './what-we-tasks-solve-mobile-card';
@@ -22,29 +22,16 @@ export default function ClientWrapper({
     pointerId: -1,
   });
 
-  const snapToClosest = () => {
-    const el = ref.current;
-    if (!el) return;
+  const rafId = useRef<number | null>(null);
+  const pendingLeft = useRef<number | null>(null);
 
-    const items = Array.from(el.querySelectorAll<HTMLElement>('li[data-snap-item="true"]'));
-    if (!items.length) return;
-
-    const current = el.scrollLeft;
-
-    let bestLeft = 0;
-    let bestDist = Number.POSITIVE_INFINITY;
-
-    for (const it of items) {
-      const left = it.offsetLeft;
-      const d = Math.abs(left - current);
-      if (d < bestDist) {
-        bestDist = d;
-        bestLeft = left;
+  useEffect(() => {
+    return () => {
+      if (rafId.current !== null) {
+        window.cancelAnimationFrame(rafId.current);
       }
-    }
-
-    el.scrollTo({ left: bestLeft, behavior: 'smooth' });
-  };
+    };
+  }, []);
 
   return (
     <ul
@@ -62,6 +49,12 @@ export default function ClientWrapper({
         drag.current.down = false;
         el.style.scrollSnapType = '';
         el.style.scrollBehavior = '';
+
+        if (rafId.current !== null) {
+          window.cancelAnimationFrame(rafId.current);
+          rafId.current = null;
+        }
+        pendingLeft.current = null;
       }}
       onPointerDown={(e) => {
         if (e.pointerType !== 'mouse') return;
@@ -91,7 +84,23 @@ export default function ClientWrapper({
         }
 
         e.preventDefault();
-        el.scrollLeft = drag.current.startLeft - dx;
+
+        pendingLeft.current = drag.current.startLeft - dx;
+
+        if (rafId.current !== null) return;
+
+        rafId.current = window.requestAnimationFrame(() => {
+          const node = ref.current;
+          if (!node) {
+            rafId.current = null;
+            return;
+          }
+
+          if (pendingLeft.current !== null) {
+            node.scrollLeft = pendingLeft.current;
+          }
+          rafId.current = null;
+        });
       }}
       onPointerUp={(e) => {
         if (e.pointerType !== 'mouse') return;
@@ -106,10 +115,14 @@ export default function ClientWrapper({
         }
         drag.current.pointerId = -1;
 
+        if (rafId.current !== null) {
+          window.cancelAnimationFrame(rafId.current);
+          rafId.current = null;
+        }
+        pendingLeft.current = null;
+
         el.style.scrollSnapType = '';
         el.style.scrollBehavior = 'smooth';
-
-        if (drag.current.moved) snapToClosest();
 
         window.setTimeout(() => {
           const node = ref.current;

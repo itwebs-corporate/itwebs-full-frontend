@@ -23,17 +23,36 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
 
     if (!el1 || !el2) return;
 
-    const observer = new ResizeObserver(() => {
+    let rafId: number | null = null;
+
+    const recalcOverflow = () => {
       const overflow = hasMoreTwoLines(el1) || hasMoreTwoLines(el2);
 
       setCanToggle(overflow);
       setIsOpen((prev) => (overflow ? prev : false));
+    };
+
+    const observer = new ResizeObserver(() => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+
+      rafId = window.requestAnimationFrame(() => {
+        recalcOverflow();
+        rafId = null;
+      });
     });
 
     observer.observe(el1);
     observer.observe(el2);
+    recalcOverflow();
 
-    return () => observer.disconnect();
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+      observer.disconnect();
+    };
   }, [item.task, item.decision]);
 
   return (
@@ -53,7 +72,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
           <Typography className="text-foreground2 text-[clamp(24px,2.5vw,48px)]" variant="h3">
             {item.name}
           </Typography>
-          <Typography className="wrap:anywhere opacity-80" variant="p2">
+          <Typography className="wrap:anywhere" variant="p2">
             {item.description}
           </Typography>
         </div>

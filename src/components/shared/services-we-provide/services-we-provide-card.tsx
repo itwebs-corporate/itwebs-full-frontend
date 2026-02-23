@@ -29,14 +29,16 @@ export default function ServicesWeProvideCard({
           {item.title}
         </Typography>
         <Link
-          className={cn('bg-secondary', 'flex-center size-[42px] shrink-0 rounded-full')}
+          aria-label={`Переход на услугу: ${item.title}`}
+          className="bg-secondary flex-center size-[42px] shrink-0 rounded-full"
           href={`/services/${item.link}`}
         >
           <Media
+            ariaHidden
             className="size-[24px]"
             image={{
               src: isRegion ? '/arrow/arrow-up-right-black.svg' : '/arrow/arrow-up-right-blue.svg',
-              alt: 'arrow',
+              alt: '',
             }}
           />
         </Link>

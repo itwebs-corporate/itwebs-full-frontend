@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
@@ -12,6 +12,16 @@ import YouMaybeInterestingCard from './you-maybe-interesting-card';
 export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPostSimilarDto[] }) {
   const ref = useRef<HTMLUListElement | null>(null);
   const drag = useRef({ down: false, x: 0, left: 0, moved: false });
+  const rafId = useRef<number | null>(null);
+  const pendingLeft = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current !== null) {
+        window.cancelAnimationFrame(rafId.current);
+      }
+    };
+  }, []);
 
   return (
     <Section className="gap-[24px] pb-[clamp(86px,10vw,148px)] sm:gap-[36px]">
@@ -33,6 +43,12 @@ export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPos
           drag.current.down = false;
           el.style.scrollSnapType = '';
           el.style.scrollBehavior = '';
+
+          if (rafId.current !== null) {
+            window.cancelAnimationFrame(rafId.current);
+            rafId.current = null;
+          }
+          pendingLeft.current = null;
         }}
         onPointerDown={(e) => {
           if (e.pointerType !== 'mouse') return;
@@ -58,7 +74,22 @@ export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPos
           const dx = e.clientX - drag.current.x;
           if (Math.abs(dx) > 3) drag.current.moved = true;
 
-          el.scrollLeft = drag.current.left - dx;
+          pendingLeft.current = drag.current.left - dx;
+
+          if (rafId.current !== null) return;
+
+          rafId.current = window.requestAnimationFrame(() => {
+            const node = ref.current;
+            if (!node) {
+              rafId.current = null;
+              return;
+            }
+
+            if (pendingLeft.current !== null) {
+              node.scrollLeft = pendingLeft.current;
+            }
+            rafId.current = null;
+          });
         }}
         ref={ref}
       >

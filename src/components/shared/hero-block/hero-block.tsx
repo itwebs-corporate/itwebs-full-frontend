@@ -1,10 +1,6 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
 
-import styles from './hero-block.module.css';
-
-import { cn } from '@/lib/utils';
-
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
@@ -49,7 +45,7 @@ export default function HeroBlock({
         </div>
       )}
       <div className="bg-secondary text-foreground2 font-family absolute bottom-0 flex h-[clamp(42px,5vw,60px)] w-full items-center overflow-hidden text-[clamp(14px,1.6vw,20px)] font-bold whitespace-nowrap uppercase">
-        <div className={cn(styles.marqueeTrack, 'flex w-max')}>
+        <div className="marquee-track-35 flex w-max">
           <HeroBlockTrack />
           <HeroBlockTrack />
         </div>

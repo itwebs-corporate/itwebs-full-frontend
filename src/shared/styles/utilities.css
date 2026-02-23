@@ -1,4 +1,24 @@
 @layer utilities {
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .marquee-track-25 {
+    will-change: transform;
+    animation: marquee-right 25s linear infinite;
+  }
+  .marquee-track-30 {
+    will-change: transform;
+    animation: marquee-right 30s linear infinite;
+  }
+  .marquee-track-35 {
+    will-change: transform;
+    animation: marquee-right 35s linear infinite;
+  }
   .shadow-default {
     @apply shadow shadow-neutral-400;
   }

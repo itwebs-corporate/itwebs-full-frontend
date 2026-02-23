@@ -1,9 +1,5 @@
 import Link from 'next/link';
 
-import styles from './footer.module.css';
-
-import { cn } from '@/lib/utils';
-
 import FormForFooter from '@/components/ui/form/form-for-footer';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
@@ -33,7 +29,7 @@ export default async function Footer() {
       </div>
       {/* track */}
       <div className="xxs:flex mt-auto hidden h-[124px] w-dvw items-center overflow-hidden whitespace-nowrap opacity-10">
-        <div className={cn(styles.marqueeTrack, 'flex w-max')}>
+        <div className="marquee-track-30 flex w-max">
           <FooterTrack />
           <FooterTrack />
         </div>

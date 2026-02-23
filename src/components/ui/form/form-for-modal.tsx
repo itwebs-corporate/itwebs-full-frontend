@@ -74,10 +74,7 @@ export default function FormForModals({
   };
   return (
     <form
-      className={cn(
-        'flex flex-col items-center gap-[14px] lg:flex-row lg:items-start lg:gap-4',
-        className
-      )}
+      className={cn('flex flex-col items-center justify-center gap-[14px] lg:gap-4', className)}
       onSubmit={handleSubmit(onSubmit, onInvalid)}
     >
       <div className="xs:max-w-full relative w-full max-w-[275px] min-w-0 lg:min-w-0! lg:flex-1 lg:basis-0!">
