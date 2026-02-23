@@ -10,7 +10,7 @@ import { Post } from '@/shared/types/post-dto-types';
 
 export default function BlogCard({ card, className }: { card: Post; className?: string }) {
   return (
-    <div
+    <li
       className={cn(
         'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
         className
@@ -54,6 +54,6 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
           image={{ src: '/default/card-rect.png', alt: card.name }}
         />
       )}
-    </div>
+    </li>
   );
 }

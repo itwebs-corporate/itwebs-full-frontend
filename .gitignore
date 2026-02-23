@@ -2,8 +2,8 @@
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
+pnpm-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
@@ -36,8 +36,8 @@ cypress/downloads/*
 
 # debug
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+pnpm-debug.log*
+pnpm-error.log*
 
 # local env files
 *.env
@@ -51,7 +51,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-.yarn
+.pnpm
 *storybook.log
 storybook-static
 

@@ -13,7 +13,7 @@ export default function WhyChooseBlockCard({
   isRegion?: boolean;
 }) {
   return (
-    <div
+    <li
       className={cn(
         'z-10 flex min-h-[clamp(220px,18vw,287px)] w-full flex-col rounded-[clamp(12px,2vw,24px)] p-[clamp(16px,2vw,20px)]',
         isRegion ? 'bg-white/15' : 'bg-white'
@@ -38,6 +38,6 @@ export default function WhyChooseBlockCard({
       >
         {item.description}
       </Typography>
-    </div>
+    </li>
   );
 }

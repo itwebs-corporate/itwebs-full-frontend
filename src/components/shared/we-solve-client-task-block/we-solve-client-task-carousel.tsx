@@ -31,7 +31,9 @@ export async function WeSolceClientTaskCarousel() {
                   className="sm:max-full flex max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
                   key={item.id}
                 >
-                  <WeSolveClientTaskCard item={item} />
+                  <ul className="w-full">
+                    <WeSolveClientTaskCard item={item} />
+                  </ul>
                 </CarouselItem>
               ))
             ) : (

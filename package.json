@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prestart": "yarn & npx husky init",
+    "prestart": "pnpm & npx husky init",
     "start": "next start",
     "clean": "rimraf .next",
     "lint": "eslint src --max-warnings 0",

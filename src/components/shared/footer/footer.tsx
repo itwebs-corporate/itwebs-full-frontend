@@ -28,7 +28,7 @@ export default async function Footer() {
         <span className="opacity-50">Copyright ©2025 ITEWBS</span>
       </div>
       {/* track */}
-      <div className="xxs:flex mt-auto hidden h-[124px] w-dvw items-center overflow-hidden whitespace-nowrap opacity-10">
+      <div className="xxs:flex mt-auto hidden h-[124px] w-full items-center overflow-hidden whitespace-nowrap opacity-10">
         <div className="marquee-track-30 flex w-max">
           <FooterTrack />
           <FooterTrack />

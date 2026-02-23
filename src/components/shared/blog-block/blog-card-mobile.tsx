@@ -10,7 +10,7 @@ import { Post } from '@/shared/types/post-dto-types';
 
 export default function BlogCardMobile({ card, className }: { card: Post; className?: string }) {
   return (
-    <div
+    <li
       className={cn(
         'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
         className
@@ -42,6 +42,6 @@ export default function BlogCardMobile({ card, className }: { card: Post; classN
       <Typography className="line-clamp-3 leading-[140%] opacity-80" variant="p2">
         {card.description}
       </Typography>
-    </div>
+    </li>
   );
 }

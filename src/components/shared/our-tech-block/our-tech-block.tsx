@@ -8,7 +8,7 @@ export default function OurTechBlock() {
       <Typography className="text-foreground mb-[clamp(24px,4vw,46px)]" variant="h2">
         <b className="opacity-80">Какие технологии</b> мы используем
       </Typography>
-      <div className="flex w-dvw items-center overflow-hidden whitespace-nowrap">
+      <div className="flex w-full items-center overflow-hidden whitespace-nowrap">
         <div className="marquee-track-25 flex w-max">
           <OurTechTrack />
           <OurTechTrack />

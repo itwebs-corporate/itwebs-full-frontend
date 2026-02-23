@@ -15,7 +15,7 @@ export default function YouMaybeInterestingCard({
   className?: string;
 }) {
   return (
-    <div
+    <li
       className={cn(
         'z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)]! shrink-0 flex-col justify-between gap-3 rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]',
         className
@@ -56,6 +56,6 @@ export default function YouMaybeInterestingCard({
           image={{ src: '/default/card-rect.png', alt: card.title }}
         />
       )}
-    </div>
+    </li>
   );
 }

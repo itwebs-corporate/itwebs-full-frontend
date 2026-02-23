@@ -80,14 +80,15 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
               <ul className="flex flex-col gap-4 pl-2">
                 {filterGroup.length > 0 ? (
                   filterGroup.map((service) => (
-                    <Link
-                      className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
-                      href={`/services?q=${service.link}`}
-                      key={service.id}
-                      onClick={closeMobileMenu}
-                    >
-                      {service.name}
-                    </Link>
+                    <li key={service.id}>
+                      <Link
+                        className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
+                        href={`/services?q=${service.link}`}
+                        onClick={closeMobileMenu}
+                      >
+                        {service.name}
+                      </Link>
+                    </li>
                   ))
                 ) : (
                   <li className="text-foreground3/50 rounded-full border border-dashed border-gray-400 p-2 text-center text-base">

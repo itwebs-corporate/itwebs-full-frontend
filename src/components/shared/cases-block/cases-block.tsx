@@ -8,7 +8,7 @@ import WeSolveClientTaskCard from '../we-solve-client-task-block/we-solve-client
 
 export default async function CasesBlock() {
   const cases = await fetchAllCases();
-  const result = cases.length < 0 ? cases : CASES_MOCK;
+  const result = cases.length > 0 ? cases : CASES_MOCK;
   return (
     <Section className="mb-[clamp(86px,9vw,146px)] gap-[clamp(32px,5vw,64px)]">
       <Typography variant="h2">
