@@ -28,7 +28,8 @@
     transition: 1s;
   }
   .menuToggle:checked ~ .mobileMenu {
-    height: 100svh;
+    bottom: 0;
+    height: auto;
   }
   .menuToggle:checked ~ header .openMenuIcon {
     opacity: 0;
@@ -68,9 +69,15 @@
 }
 
 .screenMain {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   display: block;
 }
 .screen1c {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   display: none;
 }
 
