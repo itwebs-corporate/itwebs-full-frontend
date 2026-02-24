@@ -33,6 +33,7 @@ export default function ModalConsult({ triggerTitle = 'Записаться' }: 
       <DialogContent
         className="bg-background px-[clamp(14px,6vw,86px)] py-[clamp(64px,5vw,84px)]"
         outsideClose
+        showCloseButton={false}
       >
         <DialogHeader className="flex flex-col gap-[14px] sm:gap-[20px]">
           <DialogTitle className="font-family text-foreground3 text-center text-[clamp(24px,3vw,32px)] leading-[100%] font-bold uppercase">

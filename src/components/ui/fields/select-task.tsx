@@ -7,7 +7,7 @@ import { SELECT_ITEMS } from '../form/form-config';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../select';
 
 const selectVariants = cva(
-  'min-h-[48px] w-full min-w-0 rounded-full border-none py-4 pl-5 text-[16px] ',
+  'min-h-[48px] w-full min-w-0 rounded-full border-none py-4 pl-5 text-left text-[16px] ',
   {
     variants: {
       variant: {
@@ -53,7 +53,7 @@ export default function SelectTask<T extends FieldValues>({
               classNameWrapperImage={classNameWrapperImage}
             >
               <SelectValue
-                className="min-w-0! flex-1 overflow-hidden text-[16px] text-ellipsis whitespace-nowrap [&>span]:block [&>span]:overflow-hidden [&>span]:text-ellipsis [&>span]:whitespace-nowrap"
+                className="min-w-0! flex-1 overflow-hidden text-left text-[16px] text-ellipsis whitespace-nowrap [&>span]:block [&>span]:overflow-hidden [&>span]:text-left [&>span]:text-ellipsis [&>span]:whitespace-nowrap"
                 placeholder="Тип задачи"
               />
             </SelectTrigger>
