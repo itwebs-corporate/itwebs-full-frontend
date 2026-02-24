@@ -10,7 +10,7 @@ import FooterTrack from './footer-track';
 
 export default async function Footer() {
   return (
-    <Section className="bg-foreground3 flex flex-col rounded-t-[24px]">
+    <Section className="bg-foreground3 xxs:pb-[124px] relative flex flex-col rounded-t-[24px] pb-0">
       <Typography className="mt-[86px] text-[clamp(24px,2vw,48px)]" variant="h1">
         Берём IT-задачи на себя — понятно и надёжно
       </Typography>
@@ -28,7 +28,7 @@ export default async function Footer() {
         <span className="opacity-50">Copyright ©2025 ITEWBS</span>
       </div>
       {/* track */}
-      <div className="xxs:flex mt-auto hidden h-[124px] w-full items-center overflow-hidden whitespace-nowrap opacity-10">
+      <div className="xxs:flex absolute bottom-0 hidden h-[124px] w-full items-center overflow-hidden whitespace-nowrap opacity-10">
         <div className="marquee-track-30 flex w-max">
           <FooterTrack />
           <FooterTrack />
