@@ -27,7 +27,9 @@ export default function WhyChooseBlock() {
             image={{ src: '/emoji/main-goal.png', alt: 'goal' }}
           />
 
-          <Typography variant="h3">Думаем как клиент</Typography>
+          <Typography className="mt-[36px]" variant="h3">
+            Думаем как клиент
+          </Typography>
           <Typography className="mt-[clamp(12px,1vw,16px)]" variant="p2">
             Смотрим на задачу с вашей стороны и предлагаем удобное решение, а не просто «технически
             правильное».

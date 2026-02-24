@@ -87,7 +87,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
             <Typography
               className={cn(
                 'overflow-hidden transition-all',
-                isOpen ? 'max-h-[1000px]' : 'max-h-[3em]',
+                isOpen ? 'max-h-[1000px]' : 'line-clamp-2 max-h-[3em]',
                 'wrap:anywhere opacity-80'
               )}
               ref={taskRef}
@@ -107,7 +107,7 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
             <Typography
               className={cn(
                 'overflow-hidden transition-all',
-                isOpen ? 'max-h-[500px]' : 'max-h-[44px]',
+                isOpen ? 'max-h-[500px]' : 'line-clamp-2 max-h-[44px]',
                 'wrap:anywhere opacity-80'
               )}
               ref={decisionRef}

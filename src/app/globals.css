@@ -13,7 +13,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground relative flex h-dvh min-h-screen w-full flex-col;
+    @apply bg-background text-foreground relative flex min-h-screen w-full flex-col;
   }
   button,
   input[type='checkbox'] {
