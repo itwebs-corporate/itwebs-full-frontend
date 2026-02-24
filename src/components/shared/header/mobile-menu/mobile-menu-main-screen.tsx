@@ -29,12 +29,10 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   : 'bg-background text-primary'
               )}
             >
-              <Link
-                className="flex cursor-pointer items-center justify-between gap-3"
-                href={el.link}
-                onClick={closeMobileMenu}
-              >
-                <div className="block">{el.title}</div>
+              <div className="flex items-center justify-between gap-3">
+                <Link className="block min-w-0 flex-1" href={el.link} onClick={closeMobileMenu}>
+                  <div className="block">{el.title}</div>
+                </Link>
 
                 {isServices && (
                   <button
@@ -42,11 +40,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                       isOpenServices ? 'Свернуть список услуг' : 'Развернуть список услуг'
                     }
                     className="z-10 shrink-0"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setIsOpenServices((v) => !v);
-                    }}
+                    onClick={() => setIsOpenServices((v) => !v)}
                     type="button"
                   >
                     <Media
@@ -60,11 +54,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   </button>
                 )}
                 {is1CServices && (
-                  <label
-                    className="z-50 shrink-0 cursor-pointer"
-                    htmlFor={SCREEN_1C_ID}
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <label className="z-50 shrink-0 cursor-pointer" htmlFor={SCREEN_1C_ID}>
                     <Media
                       className="h-[13px] w-[13px]"
                       image={{
@@ -74,7 +64,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                     />
                   </label>
                 )}
-              </Link>
+              </div>
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex flex-col gap-4 pl-2">
