@@ -32,7 +32,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       className={cn(
         "group border-input data-[placeholder]:text-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus:border-ring focus:ring-ring/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex w-full items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] transition-all outline-none focus:ring-[3px] focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        '[&_[data-slot=select-value]]:flex [&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:items-center [&_[data-slot=select-value]]:gap-2 [&_[data-slot=select-value]]:truncate',
+        '[&_[data-slot=select-value]]:min-w-0 [&_[data-slot=select-value]]:flex-1 [&_[data-slot=select-value]]:overflow-hidden [&_[data-slot=select-value]]:text-ellipsis [&_[data-slot=select-value]]:whitespace-nowrap [&_[data-slot=select-value]>span]:block [&_[data-slot=select-value]>span]:overflow-hidden [&_[data-slot=select-value]>span]:text-ellipsis [&_[data-slot=select-value]>span]:whitespace-nowrap',
         className
       )}
       data-size={size}

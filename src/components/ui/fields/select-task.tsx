@@ -48,12 +48,12 @@ export default function SelectTask<T extends FieldValues>({
           <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger
               aria-label="Тип задачи"
-              className={cn(selectVariants({ variant }), 'w-full max-w-full min-w-0! truncate!')}
+              className={cn(selectVariants({ variant }), 'w-full max-w-full min-w-0!')}
               classNameImage={classNameImage}
               classNameWrapperImage={classNameWrapperImage}
             >
               <SelectValue
-                className="min-w-0! flex-1 truncate text-[16px] [&>span]:block [&>span]:min-w-0! [&>span]:truncate"
+                className="min-w-0! flex-1 overflow-hidden text-[16px] text-ellipsis whitespace-nowrap [&>span]:block [&>span]:overflow-hidden [&>span]:text-ellipsis [&>span]:whitespace-nowrap"
                 placeholder="Тип задачи"
               />
             </SelectTrigger>
