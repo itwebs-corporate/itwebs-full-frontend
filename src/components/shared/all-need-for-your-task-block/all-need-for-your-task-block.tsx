@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { separationTypeForCard } from '@/lib/separation-type-for-card';
 import { cn } from '@/lib/utils';
 
@@ -11,7 +9,6 @@ import { Service } from '@/shared/types/service-dto-types';
 import { ServiceGroupDto } from '@/shared/types/service-group-dto-types';
 
 import AllNeedForYourTaskCard from './all-need-for-your-task-card';
-import AllNeedForYourTaskMobileCard from './all-need-for-your-task-mobile-card';
 import AllNeedForYourTaskSelect from './all-need-for-your-task-select';
 import AllNeedForYourTaskTabs from './all-need-for-your-task-tabs';
 
@@ -47,18 +44,7 @@ export default async function AllNeedForYourTaskBlock({
       >
         {uiCards.length > 0 ? (
           uiCards.map((card, index) => {
-            return index === 0 ? (
-              <AllNeedForYourTaskMobileCard card={card} isFirstCard key={card.id} />
-            ) : (
-              <Fragment key={card.id}>
-                <div className="hidden sm:block">
-                  <AllNeedForYourTaskCard card={card} />
-                </div>
-                <div className="block sm:hidden">
-                  <AllNeedForYourTaskMobileCard card={card} />
-                </div>
-              </Fragment>
-            );
+            return <AllNeedForYourTaskCard card={card} isFirstCard={index === 0} key={card.id} />;
           })
         ) : (
           <span className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
