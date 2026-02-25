@@ -3,15 +3,12 @@
 import { useEffect, useRef } from 'react';
 
 import WhatWeTasksSolveCard from './what-we-tasks-solve-card';
-import WhatWeTasksSolveMobileCard from './what-we-tasks-solve-mobile-card';
-import { useMediaQuery } from '../../../hooks/use-media-query';
 
 export default function ClientWrapper({
   desicions,
 }: {
   desicions: { id: number; title: string; description: string }[];
 }) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
   const ref = useRef<HTMLUListElement | null>(null);
 
   const drag = useRef({
@@ -136,11 +133,7 @@ export default function ClientWrapper({
         const index = i + 1;
         return (
           <li className="shrink-0 snap-start" data-snap-item="true" key={`${item.id}-${index}`}>
-            {isMobile ? (
-              <WhatWeTasksSolveMobileCard index={index} item={item} />
-            ) : (
-              <WhatWeTasksSolveCard index={index} item={item} />
-            )}
+            <WhatWeTasksSolveCard index={index} item={item} />
           </li>
         );
       })}

@@ -57,14 +57,13 @@ export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPos
 
           e.preventDefault();
           el.setPointerCapture(e.pointerId);
-
+          drag.current.left = el.scrollLeft;
           el.style.scrollSnapType = 'none';
           el.style.scrollBehavior = 'auto';
 
           drag.current.down = true;
           drag.current.moved = false;
           drag.current.x = e.clientX;
-          drag.current.left = el.scrollLeft;
         }}
         onPointerMove={(e) => {
           if (!drag.current.down) return;

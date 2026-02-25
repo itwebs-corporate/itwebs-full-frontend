@@ -4,7 +4,7 @@ import { useArticleParse } from '@/hooks/use-article-parse';
 
 import Typography from '@/components/ui/typography/typography';
 
-import { inter } from '@/shared/fonts';
+import { inter } from './font';
 
 export default function ArticleAside({ html }: { html: string }) {
   const { sections } = useArticleParse(html);
