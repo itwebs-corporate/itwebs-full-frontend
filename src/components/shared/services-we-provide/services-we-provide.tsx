@@ -9,8 +9,7 @@ import Typography from '@/components/ui/typography/typography';
 import { fetchAllServices } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
-import ServicesWeProvideCard from './services-we-provide-card';
-import ServicesWeProvideMobileCard from './services-we-provide-mobile-card';
+import ServiceWeProvideList from './service-we-provide-list';
 
 export default async function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
   const services = await fetchAllServices();
@@ -32,14 +31,7 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
         <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Услуги</b> которые мы оказываем
       </Typography>
 
-      <div className="flex-center mt-[clamp(24px,3vw,48px)] flex-col flex-wrap gap-[clamp(14px,1.5vw,20px)]! sm:flex-row">
-        {filterServices.map((item) => (
-          <ServicesWeProvideCard isRegion={isRegion} item={item} key={item.title} />
-        ))}
-        {filterServices.map((item) => (
-          <ServicesWeProvideMobileCard isRegion={isRegion} item={item} key={item.title} />
-        ))}
-      </div>
+      <ServiceWeProvideList filterServices={filterServices} isRegion={isRegion} />
       {filterServices.length > 0 ? (
         <Button asChild variant={isRegion ? 'outline' : 'gray'}>
           <Link href={PAGES_CONFIG.SERVICES}>Все услуги</Link>

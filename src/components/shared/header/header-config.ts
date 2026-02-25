@@ -10,13 +10,13 @@ export const HEADER_NAV = [
   { title: 'Блог', link: PAGES_CONFIG.BLOG },
   { title: 'Контакты', link: PAGES_CONFIG.CONTACTS },
 ];
-
+// ссылки на MAX пока нет
 export const HEADER_LINKS = [
   { link: TELEGRAM, icon: '/links/telegramm.svg', label: 'Telegram' },
-  { link: INSTAGRAM, icon: '/links/instagram.svg', label: 'Instagram' },
+  { link: INSTAGRAM, icon: '/links/max.svg', label: 'Max' },
 ];
 
 export const HEADER_MOBILE_LINKS = [
   { link: TELEGRAM, icon: '/links/telegram-mobile-menu.svg', label: 'Telegram' },
-  { link: INSTAGRAM, icon: '/links/instagram-mobile-menu.svg', label: 'Instagram' },
+  { link: INSTAGRAM, icon: '/links/max-mobile-menu.svg', label: 'Max' },
 ];

@@ -28,6 +28,7 @@ export default function NavigationServices({
     <div className="relative" onMouseEnter={() => setIsOpenServices(true)} onMouseLeave={close}>
       <Link
         className={cn(
+          'uppercase',
           headerGroups.length > 0 && 'rounded-full px-[12px] py-[2px] transition-all',
           headerGroups.length > 0
             ? isOpenServices
