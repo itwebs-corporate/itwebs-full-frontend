@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import WhatWeTasksSolveCard from './what-we-tasks-solve-card';
 
@@ -9,6 +9,8 @@ export default function ClientWrapper({
 }: {
   desicions: { id: number; title: string; description: string }[];
 }) {
+  const [activeIndex, setActiveIndex] = useState(1);
+
   const ref = useRef<HTMLUListElement | null>(null);
 
   const drag = useRef({
@@ -133,7 +135,12 @@ export default function ClientWrapper({
         const index = i + 1;
         return (
           <li className="shrink-0 snap-start" data-snap-item="true" key={`${item.id}-${index}`}>
-            <WhatWeTasksSolveCard index={index} item={item} />
+            <WhatWeTasksSolveCard
+              index={index}
+              isActive={activeIndex === index}
+              item={item}
+              onHover={() => setActiveIndex(index)}
+            />
           </li>
         );
       })}
