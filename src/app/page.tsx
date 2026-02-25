@@ -1,14 +1,14 @@
 import Link from 'next/link';
 
-import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
 import ModalConsult from '@/components/shared/modal-consult';
-import OurTechBlock from '@/components/shared/our-tech-block/our-tech-block';
-import SeoTextBlock from '@/components/shared/seo-text-block/seo-text-block';
+import OurTechBlock from '@/components/shared/our-tech/our-tech-block';
+import SeoTextBlock from '@/components/shared/seo-text/seo-text-block';
 import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
-import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
-import WhyChooseBlock from '@/components/shared/why-choose-block/why-choose-block';
+import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task/we-solve-client-task-block';
+import WhyChooseBlock from '@/components/shared/why-choose/why-choose-block';
 import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 

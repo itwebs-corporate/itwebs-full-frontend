@@ -20,7 +20,7 @@ const RUSSIAN_NAME: Record<string, string> = {
   about: 'О компании',
   cases: 'Кейсы',
   blog: 'Блог',
-  'services-1c': '1с услуги',
+  'services-1c': '1C услуги',
   contacts: 'Контакты',
 };
 

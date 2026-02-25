@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import CasesBlock from '@/components/shared/cases-block/cases-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import CasesBlock from '@/components/shared/cases/cases-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 
 import { SITE_IMAGES } from '@/constants/seo-constants';
 

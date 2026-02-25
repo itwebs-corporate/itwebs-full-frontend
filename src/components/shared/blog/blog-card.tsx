@@ -8,7 +8,13 @@ import Typography from '@/components/ui/typography/typography';
 import { PAGES_CONFIG } from '@/config/pages-config';
 import { Post } from '@/shared/types/post-dto-types';
 
-export default function BlogCard({ card, className }: { card: Post; className?: string }) {
+type BlogCardProps = {
+  card: Post;
+  className?: string;
+  isFirstCard?: boolean;
+};
+
+export default function BlogCard({ card, className, isFirstCard = false }: BlogCardProps) {
   return (
     <li
       className={cn(
@@ -18,7 +24,10 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
     >
       {card.image && (
         <Media
-          className="block h-[clamp(129px,20vw,165px)] w-full max-w-full sm:hidden"
+          className={cn(
+            'h-[clamp(129px,20vw,165px)] w-full max-w-full',
+            isFirstCard ? 'block' : 'block sm:hidden'
+          )}
           image={{ src: '/default/card-rect.png', alt: card.name }}
         />
       )}
@@ -28,19 +37,32 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
         </Typography>
         <Link
           aria-label={`Открыть статью ${card.name}`}
-          className="sm:bg-secondary flex-center bg-primary h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
+          className={cn(
+            'flex-center h-[clamp(36px,3vw,42px)] w-[clamp(36px,3vw,42px)] shrink-0 rounded-full',
+            isFirstCard ? 'bg-primary' : 'bg-primary sm:bg-secondary'
+          )}
           href={`${PAGES_CONFIG.BLOG}/${card.link}`}
         >
-          <Media
-            ariaHidden
-            className="hidden h-[15px] w-[20px] sm:block"
-            image={{ src: '/arrow/arrow-up-right-black.svg', alt: '' }}
-          />
-          <Media
-            ariaHidden
-            className="block h-[15px] w-[20px] sm:hidden"
-            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
-          />
+          {isFirstCard ? (
+            <Media
+              ariaHidden
+              className="h-[15px] w-[20px]"
+              image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
+            />
+          ) : (
+            <>
+              <Media
+                ariaHidden
+                className="hidden h-[15px] w-[20px] sm:block"
+                image={{ src: '/arrow/arrow-up-right-black.svg', alt: '' }}
+              />
+              <Media
+                ariaHidden
+                className="block h-[15px] w-[20px] sm:hidden"
+                image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
+              />
+            </>
+          )}
         </Link>
       </div>
 
@@ -48,7 +70,7 @@ export default function BlogCard({ card, className }: { card: Post; className?: 
         {card.description}
       </Typography>
 
-      {card.image && (
+      {!isFirstCard && card.image && (
         <Media
           className="hidden h-[clamp(129px,20vw,165px)] w-full max-w-full sm:block"
           image={{ src: '/default/card-rect.png', alt: card.name }}

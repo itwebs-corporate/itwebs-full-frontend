@@ -28,6 +28,7 @@ export default function ArticleCard({ article }: { article: BlogPostDto }) {
               image={{
                 src: '/default/article-section.png',
                 alt: 'article png',
+                className: 'object-cover object-center',
               }}
             />
             <div className="flex flex-col gap-[clamp(24px,2.5vw,36px)] px-[clamp(14px,2.5vw,24px)] pt-[clamp(14px,3vw,36px)] pb-[clamp(24px,2vw,32px)]">

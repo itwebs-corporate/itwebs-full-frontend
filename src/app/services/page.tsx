@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task-block/all-need-for-your-task-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task/all-need-for-your-task-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 
 import { fetchAllServices } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';

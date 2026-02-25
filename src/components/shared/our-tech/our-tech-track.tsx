@@ -11,7 +11,7 @@ export default function OurTechTrack() {
           className="flex-center h-[clamp(68px,10vw,100px)] w-[clamp(90px,14vw,131px)] shrink-0 rounded-[12px] bg-white text-black"
           key={item.title}
         >
-          {item.title === '1c' ? (
+          {item.title === '1C' ? (
             <Media
               className="h-[clamp(52px,8vw,74px)] w-[clamp(52px,8vw,74px)]"
               image={{ src: item.icon, alt: item.title }}

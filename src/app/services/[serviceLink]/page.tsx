@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 import HowWeWork1cBlock from '@/components/shared/how-we-work-service/how-we-work-service-block';
 import ModalConsult from '@/components/shared/modal-consult';
-import QuestionsBlock from '@/components/shared/questions-block/questions-block';
+import QuestionsBlock from '@/components/shared/questions/questions-block';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { BackButton } from '@/components/shared/back-button';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 import { Button } from '@/components/ui/button';
 
 export default function NotFound() {

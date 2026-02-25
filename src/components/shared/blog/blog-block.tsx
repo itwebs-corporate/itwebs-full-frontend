@@ -10,7 +10,6 @@ import Section from '@/components/ui/section/section';
 import { Post } from '@/shared/types/post-dto-types';
 
 import BlogCard from './blog-card';
-import BlogCardMobile from './blog-card-mobile';
 import BlogPagination from './blog-pagination';
 
 export default function BlogBlock({ posts }: { posts: Post[] }) {
@@ -43,13 +42,9 @@ export default function BlogBlock({ posts }: { posts: Post[] }) {
         )}
       >
         {data.length > 0 ? (
-          data.map((card, index) => {
-            return index === 0 ? (
-              <BlogCardMobile card={card} key={card.name} />
-            ) : (
-              <BlogCard card={card} key={card.name} />
-            );
-          })
+          data.map((card, index) => (
+            <BlogCard card={card} isFirstCard={index === 0} key={card.name} />
+          ))
         ) : (
           <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
             Посты не найдены

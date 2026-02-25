@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import BlogBlock from '@/components/shared/blog-block/blog-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import BlogBlock from '@/components/shared/blog/blog-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 
 import { fetchAllPosts } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';

@@ -19,7 +19,7 @@ export default function ServicesWeProvideCard({
     <>
       <div
         className={cn(
-          'group relative z-10 hidden h-[clamp(260px,28vw,380px)] w-full max-w-[435px] min-w-[280px] shrink-0 flex-col justify-between overflow-hidden rounded-[24px] px-[clamp(14px,2.2vw,24px)] py-[clamp(20px,2.6vw,24px)] sm:flex',
+          'group relative z-10 hidden h-[clamp(260px,28vw,380px)] w-full max-w-[435px] min-w-[280px] shrink-0 cursor-pointer flex-col justify-between overflow-hidden rounded-[24px] px-[clamp(14px,2.2vw,24px)] py-[clamp(20px,2.6vw,24px)] sm:flex',
           isRegion ? 'bg-white' : 'bg-white/15'
         )}
       >
@@ -27,7 +27,7 @@ export default function ServicesWeProvideCard({
           aria-label={`Переход на услугу: ${item.title}`}
           className={cn(
             isRegion ? 'bg-primary' : 'bg-secondary',
-            'flex-center absolute top-[clamp(20px,2.6vw,24px)] right-[clamp(14px,2.2vw,24px)] z-20 h-[42px] w-[42px] !shrink-0 rounded-full transition-[top,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-clamp(20px,2.6vw,24px)-42px)] group-hover:rotate-45'
+            'flex-center absolute top-[clamp(20px,2.6vw,24px)] right-[clamp(14px,2.2vw,24px)] z-20 h-[42px] w-[42px] shrink-0! rounded-full transition-[top,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-clamp(20px,2.6vw,24px)-42px)] group-hover:rotate-45'
           )}
           href={`/services/${item.link}`}
         >
@@ -44,7 +44,10 @@ export default function ServicesWeProvideCard({
         {/* card header: */}
         <div className="flex flex-nowrap items-center pr-[54px]">
           <Typography
-            className={cn(isRegion ? 'text-foreground3!' : 'text-white', 'lowercase')}
+            className={cn(
+              isRegion ? 'text-foreground3!' : 'text-white',
+              '[overflow-wrap:anywhere] lowercase'
+            )}
             variant="h3"
           >
             {item.title}
@@ -55,7 +58,7 @@ export default function ServicesWeProvideCard({
           <Typography
             className={cn(
               isRegion ? 'text-foreground2/80' : 'text-foreground/80',
-              'min-h-0 transition-[margin,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mb-2 group-hover:[display:-webkit-box] group-hover:overflow-hidden group-hover:text-ellipsis group-hover:[-webkit-box-orient:vertical] group-hover:[-webkit-line-clamp:5]'
+              '[display:-webkit-box] min-h-0 overflow-hidden text-ellipsis transition-[margin,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] [-webkit-line-clamp:6] group-hover:mb-2 group-hover:[-webkit-line-clamp:5]'
             )}
             variant="p2"
           >
@@ -112,14 +115,17 @@ export default function ServicesWeProvideCard({
           <Typography
             className={cn(
               isRegion ? 'text-foreground3' : 'text-white',
-              'text-left text-[clamp(24px,3.5vw,72px)] lowercase'
+              'text-left text-[clamp(24px,3.5vw,72px)] [overflow-wrap:anywhere] lowercase'
             )}
             variant="h2"
           >
             {item.title}
           </Typography>
           <Typography
-            className={cn(isRegion ? 'text-foreground2/80' : 'text-foreground/80')}
+            className={cn(
+              isRegion ? 'text-foreground2/80' : 'text-foreground/80',
+              '[display:-webkit-box] overflow-hidden text-ellipsis [-webkit-box-orient:vertical] [-webkit-line-clamp:5]'
+            )}
             variant="p2"
           >
             {item.description}

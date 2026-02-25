@@ -14,7 +14,7 @@ export const TECH_STACK: TechItem[] = [
   { title: 'NestJS', icon: 'logos:nestjs' },
   { title: 'Express', icon: 'logos:express' },
 
-  { title: '1c', icon: '/tech/1c.svg' },
+  { title: '1C', icon: '/tech/1c.svg' },
 
   { title: 'React Native', icon: 'logos:react' },
   { title: 'Flutter', icon: 'logos:flutter' },

@@ -4,7 +4,7 @@ import Typography from '@/components/ui/typography/typography';
 import { fetchAllCases } from '@/app/api/server';
 
 import { CASES_MOCK } from './case-mock-config';
-import WeSolveClientTaskCard from '../we-solve-client-task-block/we-solve-client-task-card';
+import WeSolveClientTaskCard from '../we-solve-client-task/we-solve-client-task-card';
 
 export default async function CasesBlock() {
   const cases = await fetchAllCases();

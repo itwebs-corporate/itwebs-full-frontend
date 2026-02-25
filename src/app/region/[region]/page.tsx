@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work-block/for-who-we-work-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
 // import QuestionsBlock from '@/components/shared/questions-block/questions-block';
 import ServicesWeProvide from '@/components/shared/services-we-provide/services-we-provide';
-import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task-block/we-solve-client-task-block';
+import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task/we-solve-client-task-block';
 import WhatWeTaskSolveRegionBlock from '@/components/shared/what-we-tasks-solve/what-we-task-solve-region-block';
-import WhyChooseUsRegionBlock from '@/components/shared/why-choose-block/why-choose-us-region-block';
+import WhyChooseUsRegionBlock from '@/components/shared/why-choose/why-choose-us-region-block';
 import { Button } from '@/components/ui/button';
 
 import { PAGES_CONFIG } from '@/config/pages-config';

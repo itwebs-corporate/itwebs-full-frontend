@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import YouMaybeInterestingBlock from '@/components/shared/you-maybe-interesting-block/you-maybe-interesting-block';
+import YouMaybeInterestingBlock from '@/components/shared/you-maybe-interesting/you-maybe-interesting-block';
 
 import { fetchPostByLink } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';

@@ -9,7 +9,7 @@ import {
 import { fetchAllCases } from '@/app/api/server';
 
 import WeSolveClientTaskCard from './we-solve-client-task-card';
-import { CASES_MOCK } from '../cases-block/case-mock-config';
+import { CASES_MOCK } from '../cases/case-mock-config';
 
 export async function WeSolceClientTaskCarousel() {
   const cases = await fetchAllCases();

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import ContactsBlock from '@/components/shared/contacts-block/contacts-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import ContactsBlock from '@/components/shared/contacts/contacts-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 
 import { SITE_IMAGES } from '@/constants/seo-constants';
 

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import PolicyBlock from '@/components/shared/policy-block/policy-block';
+import PolicyBlock from '@/components/shared/policy/policy-block';
 
 import { SITE_IMAGES } from '@/constants/seo-constants';
 export const metadata: Metadata = {
