@@ -17,7 +17,7 @@ export default async function NavigationByPages() {
               <NavigationServices headerGroups={headerGroups} title={el.title} />
             ) : (
               <Link
-                className="hover:text-foreground/70 whitespace-nowrap transition-colors"
+                className="hover:text-foreground/70 whitespace-nowrap uppercase transition-colors"
                 href={el.link}
               >
                 {el.title}
