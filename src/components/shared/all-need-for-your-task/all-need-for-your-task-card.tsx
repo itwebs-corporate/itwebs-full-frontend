@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { formattedPrice } from '@/lib/number-format';
 import { ServiceCardUI } from '@/lib/separation-type-for-card';
 import { cn } from '@/lib/utils';
 
@@ -14,6 +15,8 @@ export default function AllNeedForYourTaskCard({
   card: ServiceCardUI;
   isFirstCard?: boolean;
 }) {
+  const formatedPrice = formattedPrice(card.price);
+  const price = card.price < 10000 ? `${formatedPrice} ₽ в час` : `${formatedPrice} ₽`;
   const mobileCard = (
     <div
       className={cn(
@@ -21,12 +24,12 @@ export default function AllNeedForYourTaskCard({
         isFirstCard && 'h-[clamp(293px,28vw,380px)]'
       )}
     >
-      <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden">
+      <div className="flex min-h-0 flex-1 flex-col gap-4">
         <Typography className="text-left [overflow-wrap:anywhere] lowercase" variant="h3">
           {card.title}
         </Typography>
         <Typography
-          className="text-foreground2/80 [display:-webkit-box] min-h-0 overflow-hidden [-webkit-box-orient:vertical] [-webkit-line-clamp:5]"
+          className="text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]"
           variant="p2"
         >
           {card.desc}
@@ -39,7 +42,7 @@ export default function AllNeedForYourTaskCard({
             Стоимость от:
           </Typography>
           <Typography className="text-left" variant="h3">
-            {card.price} ₽
+            {price}
           </Typography>
         </div>
         <div className="flex items-center gap-0 sm:gap-[8px]">
@@ -82,21 +85,21 @@ export default function AllNeedForYourTaskCard({
           />
         </Link>
 
-        <div className="flex max-h-[55px] flex-nowrap items-center justify-between gap-[10px] overflow-hidden pr-[54px]">
+        <div className="flex flex-nowrap items-start justify-between gap-[10px] pr-[54px]">
           <Typography className="[overflow-wrap:anywhere] lowercase" variant="h3">
             {card.title}
           </Typography>
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col justify-end">
+        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1fr)_auto]">
           <Typography
-            className="leading-[140%] opacity-80 transition-[margin,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mb-2 group-hover:[display:-webkit-box] group-hover:overflow-hidden group-hover:text-ellipsis group-hover:[-webkit-box-orient:vertical] group-hover:[-webkit-line-clamp:5]"
+            className="[display:-webkit-box] min-h-0 overflow-hidden pr-[52px] leading-[140%] [overflow-wrap:anywhere] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] [-webkit-line-clamp:6] group-hover:mb-2 group-hover:[-webkit-line-clamp:4]"
             variant="p2"
           >
             {card.desc}
           </Typography>
 
-          <div className="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-2 group-hover:grid-rows-[1fr] group-hover:opacity-100 motion-reduce:transition-none">
+          <div className="grid shrink-0 grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:mt-2 group-hover:grid-rows-[1fr] group-hover:opacity-100 motion-reduce:transition-none">
             <div className="min-h-0 overflow-hidden pr-[52px]">
               <div className="flex min-h-0 flex-col">
                 <div className="flex flex-col gap-2">
@@ -104,7 +107,7 @@ export default function AllNeedForYourTaskCard({
                     Стоимость от:
                   </Typography>
                   <Typography className="text-left text-[26px]" variant="h3">
-                    {card.price} ₽
+                    {price}
                   </Typography>
                 </div>
 

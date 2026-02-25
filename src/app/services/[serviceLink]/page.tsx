@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
 import HowWeWork1cBlock from '@/components/shared/how-we-work-service/how-we-work-service-block';
+import { HOW_WE_WORK_SERVICE_CONFIG } from '@/components/shared/how-we-work-service/how-we-work-service-config';
 import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions/questions-block';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
@@ -53,6 +54,7 @@ export default async function ServiceLinkPage({ params }: Props) {
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
   const desicions = service.decisions ?? [];
+  const howWeWorkCards = HOW_WE_WORK_SERVICE_CONFIG ?? [];
   return (
     <>
       <HeroBlock
@@ -69,7 +71,7 @@ export default async function ServiceLinkPage({ params }: Props) {
 
       <ForWhoWeWorkBlock data={ways} />
       <WhatWeTasksSolveBlock desicions={desicions} />
-      <HowWeWork1cBlock />
+      <HowWeWork1cBlock data={howWeWorkCards} />
       <QuestionsBlock faqs={faqs} />
     </>
   );

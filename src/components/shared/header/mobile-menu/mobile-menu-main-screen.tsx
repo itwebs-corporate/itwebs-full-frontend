@@ -15,7 +15,7 @@ import { HEADER_NAV } from '../header-config';
 export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: FilterGroup[] }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (
-    <ul className="flex flex-col gap-[17px] pt-[22px] pr-[14px] pb-[24px] pl-[28px]">
+    <ul className="flex flex-col gap-[17px] px-[14px] pt-[22px] pb-[24px]">
       {HEADER_NAV.map((el) => {
         const isServices = el.title.includes('Услуги');
         const is1CServices = el.title.includes('1с услуги');
@@ -67,7 +67,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
               </div>
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
-              <ul className="flex flex-col gap-4 pl-2">
+              <ul className="flex flex-col gap-4 pr-[5px] pl-[20px]">
                 {filterGroup.length > 0 ? (
                   filterGroup.map((service) => (
                     <li key={service.id}>

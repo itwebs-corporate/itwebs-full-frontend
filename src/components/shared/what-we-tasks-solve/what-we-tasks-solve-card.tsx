@@ -22,8 +22,8 @@ export default function WhatWeTasksSolveCard({
     >
       <div
         className={cn(
-          'font-second-family flex-center mb-[32px] max-h-[38px] rounded-full border border-white bg-transparent px-[24px] py-[12px] text-[14px] font-bold whitespace-nowrap text-white sm:mb-0 sm:max-h-[clamp(38px,4vh,52px)] sm:w-[177px] sm:px-[clamp(16px,3vw,32px)] sm:py-[clamp(12px,2vw,16px)] sm:text-[clamp(14px,2vw,20px)]',
-          isActive ? 'sm:text-primary sm:bg-secondary sm:border-none' : ''
+          'font-second-family flex-center mb-[32px] max-h-[38px] rounded-full border border-white bg-transparent px-[24px] py-[12px] text-[14px] font-bold whitespace-nowrap text-white transition-all sm:mb-0 sm:max-h-[clamp(38px,4vh,52px)] sm:w-[177px] sm:px-[clamp(16px,3vw,32px)] sm:py-[clamp(12px,2vw,16px)] sm:text-[clamp(14px,2vw,20px)]',
+          isActive ? 'text-primary bg-secondary border-none' : ''
         )}
       >
         Решение {index < 10 && '0'}

@@ -29,7 +29,7 @@ export default function HeroBlock({
 }: HeroBlockProps) {
   return (
     <Section
-      className="relative pt-[calc(150px+env(safe-area-inset-top))] pb-[clamp(115px,10vw,208px)]"
+      className="relative pt-[calc(150px+env(safe-area-inset-top))] pb-[clamp(175px,10vw,208px)]"
       fullScreen={fullScreen}
     >
       <div className="absolute inset-0 -z-10">

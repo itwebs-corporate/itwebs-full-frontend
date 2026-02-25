@@ -24,13 +24,72 @@ export default function ClientWrapper({
   const rafId = useRef<number | null>(null);
   const pendingLeft = useRef<number | null>(null);
 
+  const scrollRaf = useRef<number | null>(null);
+
   useEffect(() => {
     return () => {
-      if (rafId.current !== null) {
-        window.cancelAnimationFrame(rafId.current);
-      }
+      if (rafId.current !== null) window.cancelAnimationFrame(rafId.current);
+      if (scrollRaf.current !== null) window.cancelAnimationFrame(scrollRaf.current);
     };
   }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const updateActiveFromViewport = () => {
+      const node = ref.current;
+      if (!node) return;
+
+      const isScrollableX = node.scrollWidth > node.clientWidth + 1;
+      if (!isScrollableX) return;
+
+      const items = Array.from(node.querySelectorAll<HTMLLIElement>('li[data-index]'));
+
+      if (items.length === 0) return;
+
+      const rootRect = node.getBoundingClientRect();
+      const centerX = rootRect.left + rootRect.width / 2;
+
+      let bestIndex = 1;
+      let bestDist = Number.POSITIVE_INFINITY;
+
+      for (const li of items) {
+        const idx = Number(li.dataset.index);
+        if (!Number.isFinite(idx)) continue;
+
+        const r = li.getBoundingClientRect();
+        const itemCenter = r.left + r.width / 2;
+        const dist = Math.abs(itemCenter - centerX);
+
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIndex = idx;
+        }
+      }
+
+      setActiveIndex((prev) => (prev === bestIndex ? prev : bestIndex));
+    };
+
+    const onScroll = () => {
+      if (scrollRaf.current !== null) return;
+      scrollRaf.current = window.requestAnimationFrame(() => {
+        scrollRaf.current = null;
+        updateActiveFromViewport();
+      });
+    };
+
+    const initId = window.requestAnimationFrame(updateActiveFromViewport);
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(initId);
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [desicions.length]);
 
   return (
     <ul
@@ -134,7 +193,12 @@ export default function ClientWrapper({
       {desicions.map((item, i) => {
         const index = i + 1;
         return (
-          <li className="shrink-0 snap-start" data-snap-item="true" key={`${item.id}-${index}`}>
+          <li
+            className="shrink-0 snap-start"
+            data-index={index}
+            data-snap-item="true"
+            key={`${item.id}-${index}`}
+          >
             <WhatWeTasksSolveCard
               index={index}
               isActive={activeIndex === index}

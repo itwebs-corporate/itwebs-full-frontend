@@ -24,7 +24,7 @@ export default async function MobileMenu() {
         <MobileMenu1CScreen />
       </div>
       {/* mobile menu footer: */}
-      <div className="bg-background h-[163px] w-full shrink-0 rounded-t-[12px] pt-[24px] pr-[14px] pb-[30px] pl-[28px] shadow shadow-neutral-400">
+      <div className="bg-background h-[163px] w-full shrink-0 rounded-t-[12px] px-[14px] pt-[24px] pb-[30px] shadow shadow-neutral-400">
         <Button asChild className="mb-[13px] w-full">
           <Link href={TEL}>+ 375 (25) 991-93-79</Link>
         </Button>
