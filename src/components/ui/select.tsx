@@ -6,8 +6,16 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
+const SelectIdsContext = React.createContext<{ contentId: string } | null>(null);
+
 function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
+  const contentId = React.useId();
+
+  return (
+    <SelectIdsContext.Provider value={{ contentId }}>
+      <SelectPrimitive.Root data-slot="select" {...props} />
+    </SelectIdsContext.Provider>
+  );
 }
 
 function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {
@@ -28,6 +36,9 @@ function SelectTrigger({
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: 'sm' | 'default';
 } & { classNameWrapperImage?: string; classNameImage?: string }) {
+  const selectIds = React.useContext(SelectIdsContext);
+  const { ['aria-controls']: ariaControls, ...triggerProps } = props;
+
   return (
     <SelectPrimitive.Trigger
       className={cn(
@@ -38,7 +49,8 @@ function SelectTrigger({
       data-size={size}
       data-slot="select-trigger"
       type="button"
-      {...props}
+      {...triggerProps}
+      aria-controls={ariaControls ?? selectIds?.contentId}
     >
       {children}
       <SelectPrimitive.Icon asChild>
@@ -63,6 +75,9 @@ function SelectContent({
   portal = true,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content> & { portal?: boolean }) {
+  const selectIds = React.useContext(SelectIdsContext);
+  const { id, ...contentProps } = props;
+
   const content = (
     <SelectPrimitive.Content
       align={align}
@@ -74,7 +89,8 @@ function SelectContent({
       )}
       data-slot="select-content"
       position={position}
-      {...props}
+      {...contentProps}
+      id={id ?? selectIds?.contentId}
     >
       <SelectScrollUpButton />
       <SelectPrimitive.Viewport

@@ -24,7 +24,11 @@ export default function ArticleCard({ article }: { article: BlogPostDto }) {
           <div className="w-full max-w-[clamp(332px,80vw,890px)] rounded-[20px] bg-white">
             <div className="flex flex-col gap-[clamp(24px,2.5vw,36px)] px-[clamp(14px,2.5vw,24px)] pt-[clamp(14px,3vw,36px)] pb-[clamp(24px,2vw,32px)]">
               <div className="flex flex-col gap-[clamp(8px,1.5vw,16px)]">
-                <Typography className="text-foreground3 scroll-mt-[120px]" id="title" variant="h3">
+                <Typography
+                  className="text-foreground3 cursor-default scroll-mt-[120px]"
+                  id="title"
+                  variant="h3"
+                >
                   {article.h1}
                 </Typography>
                 <Typography id="subtitle" variant="p2">

@@ -17,6 +17,7 @@ export default function AllNeedForYourTaskCard({
 }) {
   const formatedPrice = formattedPrice(card.price);
   const price = card.price < 10000 ? `${formatedPrice} ₽ в час` : `${formatedPrice} ₽`;
+  const title = card.title.toLowerCase().replace('1с', '1C');
   const mobileCard = (
     <div
       className={cn(
@@ -25,11 +26,18 @@ export default function AllNeedForYourTaskCard({
       )}
     >
       <div className="flex min-h-0 flex-1 flex-col gap-4">
-        <Typography className="text-left [overflow-wrap:anywhere] lowercase" variant="h3">
-          {card.title}
+        <Typography
+          className="cursor-default text-left break-normal [overflow-wrap:normal] [word-break:normal]"
+          variant="h3"
+        >
+          {title}
         </Typography>
         <Typography
-          className="text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]"
+          className={cn(
+            'text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]',
+            isFirstCard &&
+              'sm:[-webkit-line-clamp:6] md:[-webkit-line-clamp:3] xl:[-webkit-line-clamp:4] 2xl:[-webkit-line-clamp:6]'
+          )}
           variant="p2"
         >
           {card.desc}
@@ -64,13 +72,14 @@ export default function AllNeedForYourTaskCard({
     </div>
   );
 
-  if (isFirstCard) {
-    return mobileCard;
-  }
-
   return (
     <>
-      <div className="group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] sm:flex">
+      <div
+        className={cn(
+          'group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] sm:flex',
+          isFirstCard && 'sm:hidden'
+        )}
+      >
         <Link
           className="bg-secondary flex-center group-hover:bg-primary absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] !shrink-0 rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)]"
           href={`/services/${card.link}`}
@@ -86,14 +95,19 @@ export default function AllNeedForYourTaskCard({
         </Link>
 
         <div className="flex flex-nowrap items-start justify-between gap-[10px] pr-[54px]">
-          <Typography className="[overflow-wrap:anywhere] lowercase" variant="h3">
-            {card.title}
+          <Typography
+            className="line-clamp-3 cursor-default py-1 break-normal [overflow-wrap:normal] [word-break:normal]"
+            variant="h3"
+          >
+            {title}
           </Typography>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-rows-[minmax(0,1fr)_auto]">
+        <div className="flex min-h-0 flex-1 flex-col">
+          <div className="flex-1" />
+
           <Typography
-            className="[display:-webkit-box] min-h-0 overflow-hidden pr-[52px] leading-[140%] [overflow-wrap:anywhere] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] [-webkit-line-clamp:6] group-hover:mb-2 group-hover:[-webkit-line-clamp:4]"
+            className="[display:-webkit-box] min-h-0 overflow-hidden pr-[52px] leading-[140%] [overflow-wrap:anywhere] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:sm:[-webkit-line-clamp:6] group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
             variant="p2"
           >
             {card.desc}
@@ -122,7 +136,7 @@ export default function AllNeedForYourTaskCard({
         </div>
       </div>
 
-      <div className="block sm:hidden">{mobileCard}</div>
+      <div className={cn('block sm:hidden', isFirstCard && 'sm:block')}>{mobileCard}</div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Fragment } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -38,6 +38,8 @@ export function BreadcrumbWithCustomSeparator({
   isNotFound,
 }: Props) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const hasServicesQuery = pathname === '/services' && searchParams.has('q');
   const segments = pathname.split('/').filter(Boolean);
   if (!segments.length) return null;
 
@@ -62,17 +64,21 @@ export function BreadcrumbWithCustomSeparator({
           const href = '/' + baseSegments.slice(0, idx + 1).join('/');
           const label = RUSSIAN_NAME[seg] ?? decodeURIComponent(seg);
           const isLast = idx === baseSegments.length - 1 && !lastBreadcrumb;
+          const shouldLinkServicesRoot = isLast && seg === 'services' && hasServicesQuery;
 
           return (
             <Fragment key={href}>
               <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
 
               <BreadcrumbItem className={cn(isLast ? 'min-w-0 flex-1' : 'shrink-0', color)}>
-                {isLast ? (
+                {isLast && !shouldLinkServicesRoot ? (
                   <BreadcrumbPage className={cn('min-w-0 truncate', color)}>{label}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
-                    <Link className="shrink-0" href={href}>
+                    <Link
+                      className="shrink-0 cursor-pointer"
+                      href={shouldLinkServicesRoot ? '/services' : href}
+                    >
                       {label}
                     </Link>
                   </BreadcrumbLink>

@@ -46,7 +46,7 @@ export default function ServicesWeProvideCard({
           <Typography
             className={cn(
               isRegion ? 'text-foreground3!' : 'text-white',
-              '[overflow-wrap:anywhere] lowercase'
+              'cursor-default [overflow-wrap:anywhere] lowercase'
             )}
             variant="h3"
           >
@@ -115,7 +115,7 @@ export default function ServicesWeProvideCard({
           <Typography
             className={cn(
               isRegion ? 'text-foreground3' : 'text-white',
-              'text-left text-[clamp(24px,3.5vw,72px)] [overflow-wrap:anywhere] lowercase'
+              'cursor-default text-left text-[clamp(24px,3.5vw,72px)] [overflow-wrap:anywhere] lowercase'
             )}
             variant="h2"
           >

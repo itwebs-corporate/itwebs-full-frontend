@@ -119,7 +119,7 @@ export default function CaseCard({ item }: { item: Case }) {
         </div>
 
         {canToggle && (
-          <div className="text-center">
+          <div className="text-center sm:text-left">
             <Button
               className="h-[46px] w-full max-w-[272px] sm:h-[60px] sm:max-w-[283px]"
               onClick={() => setIsOpen((prev) => !prev)}

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
@@ -44,7 +44,9 @@ export default function HeroBlock({
           src="/hero/bg-hero.png"
         />
       </div>
-      <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
+      <Suspense fallback={null}>
+        <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
+      </Suspense>
       <HeroHeading disabled={disabledAssets}>{heading}</HeroHeading>
       {description && (
         <Typography className="pt-[clamp(14px,5vw,36px)]" variant="p1">
