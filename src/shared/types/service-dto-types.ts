@@ -6,7 +6,10 @@ export type Case = {
   decision: string;
   image: string;
 };
-
+export type ServiceStages = {
+  title: string;
+  description: string;
+};
 export type Service = {
   id: number;
   title: string;
@@ -40,6 +43,7 @@ export type ServiceDto = {
   h2: string;
   link: string;
   price: string;
+  stages: ServiceStages[];
   metaTitle: string;
   metaDescription: string;
   decisions: { id: number; title: string; description: string }[];

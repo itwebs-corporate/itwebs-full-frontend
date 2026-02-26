@@ -54,7 +54,7 @@ export default async function ServiceLinkPage({ params }: Props) {
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
   const desicions = service.decisions ?? [];
-  const howWeWorkCards = HOW_WE_WORK_SERVICE_CONFIG ?? [];
+  const stages = service.stages ?? HOW_WE_WORK_SERVICE_CONFIG;
   return (
     <>
       <HeroBlock
@@ -71,7 +71,7 @@ export default async function ServiceLinkPage({ params }: Props) {
 
       <ForWhoWeWorkBlock data={ways} />
       <WhatWeTasksSolveBlock desicions={desicions} />
-      <HowWeWork1cBlock data={howWeWorkCards} />
+      <HowWeWork1cBlock stages={stages} />
       <QuestionsBlock faqs={faqs} />
     </>
   );

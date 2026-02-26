@@ -6,9 +6,11 @@ import { HowWeWorkServiceCardType } from './how-we-work-service-config';
 
 export default function HowWeWorkServiceCard({
   item,
+  index,
   className,
 }: {
   item: HowWeWorkServiceCardType;
+  index: number;
   className?: string;
 }) {
   return (
@@ -24,11 +26,11 @@ export default function HowWeWorkServiceCard({
           'size-16! min-h-16! min-w-16!'
         )}
       >
-        0{item.id}
+        0{index + 1}
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col">
-        <Typography variant="h3">{item.name}</Typography>
+        <Typography variant="h3">{item.title}</Typography>
 
         <Typography
           className={cn('mt-[clamp(12px,1vw,16px)] min-h-0 flex-1 pr-2 wrap-break-word')}

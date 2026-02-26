@@ -7,10 +7,11 @@ import { cn } from '@/lib/utils';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import HowWeWorkServiceCard from './how-we-work-service-card';
-import { HowWeWorkServiceCardType } from './how-we-work-service-config';
+import { ServiceStages } from '@/shared/types/service-dto-types';
 
-export default function HowWeWork1cBlock({ data }: { data: HowWeWorkServiceCardType[] }) {
+import HowWeWorkServiceCard from './how-we-work-service-card';
+
+export default function HowWeWork1cBlock({ stages }: { stages: ServiceStages[] }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLUListElement | null>(null);
 
@@ -51,7 +52,7 @@ export default function HowWeWork1cBlock({ data }: { data: HowWeWorkServiceCardT
       <Typography variant="h2">
         <b className="text-primary">Как</b> мы работаем в этом напровлении
       </Typography>
-      {data.length > 0 ? (
+      {stages.length > 0 ? (
         <div className="relative w-full">
           {/* buttons: */}
           <div
@@ -75,14 +76,15 @@ export default function HowWeWork1cBlock({ data }: { data: HowWeWorkServiceCardT
               className="flex w-max flex-col flex-nowrap gap-[clamp(8px,1.5vw,20px)] sm:flex-row"
               ref={listRef}
             >
-              {data.map((item, index) => (
+              {stages.map((item, index) => (
                 <HowWeWorkServiceCard
                   className={cn(
                     'min-h-[240px] w-[332px] shrink-0 sm:h-[359px] sm:w-[435px]',
                     (index + 1) % 2 === 0 ? 'bg-background border-4 border-white' : ''
                   )}
+                  index={index}
                   item={item}
-                  key={item.id}
+                  key={`${item.title} - ${index}`}
                 />
               ))}
             </ul>
