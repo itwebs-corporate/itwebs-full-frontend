@@ -16,7 +16,7 @@ import { HEADER_NAV } from '../header-config';
 export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: FilterGroup[] }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   return (
-    <ul className="flex flex-col gap-[17px] px-[14px] pt-[22px] pb-[24px]">
+    <div className="flex flex-col gap-[17px] px-[14px] pt-[22px] pb-[24px]">
       {HEADER_NAV.map((el) => {
         const isServices = el.link === PAGES_CONFIG.SERVICES;
         const is1CServices = el.link === PAGES_CONFIG.SERVICES_1C;
@@ -95,6 +95,6 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
           </Fragment>
         );
       })}
-    </ul>
+    </div>
   );
 }

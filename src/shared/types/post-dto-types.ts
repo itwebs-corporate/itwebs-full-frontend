@@ -28,8 +28,8 @@ export type BlogPostSimilarDto = {
 
 export type BlogPostDto = {
   id: number;
-  name: string;
-  description: string;
+  h1: string;
+  h2: string;
   content: string;
   services: BlogPostServiceDto[];
   faqs: BlogPostFaqDto[];
