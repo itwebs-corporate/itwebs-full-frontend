@@ -11,6 +11,7 @@ import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 type HeroBlockProps = {
   heading: ReactNode;
   description?: string;
+  pathname?: string;
   fullScreen?: boolean;
   lastBreadcrumb?: string;
   disabledAssets?: boolean;
@@ -21,12 +22,16 @@ type HeroBlockProps = {
 export default function HeroBlock({
   heading,
   description,
+  pathname = '/default',
   fullScreen = false,
   lastBreadcrumb,
   disabledAssets = false,
   isNotFound = false,
   children,
 }: HeroBlockProps) {
+  const isHomePage = pathname === '/';
+  const isServicesLink = pathname.startsWith('/services');
+
   return (
     <Section
       className="relative pt-[calc(150px+env(safe-area-inset-top))] pb-[clamp(175px,10vw,208px)]"
@@ -47,7 +52,14 @@ export default function HeroBlock({
       <Suspense fallback={null}>
         <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
       </Suspense>
-      <HeroHeading disabled={disabledAssets}>{heading}</HeroHeading>
+      <HeroHeading
+        assetsPreset={pathname}
+        disabled={disabledAssets}
+        isHomePage={isHomePage}
+        isServicesLink={isServicesLink}
+      >
+        {heading}
+      </HeroHeading>
       {description && (
         <Typography className="pt-[clamp(14px,5vw,36px)]" variant="p1">
           {description}

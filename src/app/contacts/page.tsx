@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function ContactsPage() {
   return (
     <>
-      <HeroBlock heading="Наши контакты" />
+      <HeroBlock heading="Наши контакты" pathname="/contacts" />
       <ContactsBlock />
     </>
   );

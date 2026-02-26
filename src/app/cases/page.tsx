@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function CasesPage() {
   return (
     <>
-      <HeroBlock heading="Наши кейсы" />
+      <HeroBlock heading="Наши кейсы" pathname="/cases" />
       <CasesBlock />
     </>
   );

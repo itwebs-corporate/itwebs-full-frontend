@@ -27,7 +27,7 @@ export default async function ServicesPage({ searchParams }: Props) {
   const allServices = await fetchAllServices();
   return (
     <>
-      <HeroBlock heading="Услуги ITWEBS" />
+      <HeroBlock heading="Услуги ITWEBS" pathname="/services" />
       <AllNeedForYourTaskBlock cards={allServices} searchParams={key} />
     </>
   );

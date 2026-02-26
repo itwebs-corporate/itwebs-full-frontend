@@ -26,6 +26,7 @@ export default function HomePage() {
             <br />р<span className="relative z-10">a</span>зработки ITWEBS.
           </>
         }
+        pathname="/"
       >
         <ModalConsult triggerTitle="Консультация 1С" />
         <Button asChild variant="gray">

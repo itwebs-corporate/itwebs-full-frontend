@@ -59,10 +59,12 @@ export default function AllNeedForYourTaskCard({
           </Button>
 
           <Link
+            aria-label={`Переход на страницу услуги: ${card.title}`}
             className="bg-primary flex-center size-[42px] shrink-0 rounded-full"
             href={`/services/${card.link}`}
           >
             <Media
+              ariaHidden
               className="size-[24px]"
               image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
             />
@@ -81,14 +83,17 @@ export default function AllNeedForYourTaskCard({
         )}
       >
         <Link
+          aria-label={`Переход на страницу услуги: ${card.title}`}
           className="bg-secondary flex-center group-hover:bg-primary absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] !shrink-0 rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)]"
           href={`/services/${card.link}`}
         >
           <Media
+            ariaHidden
             className="absolute h-[24px] w-[24px] transition-opacity duration-300 group-hover:opacity-0"
             image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
           />
           <Media
+            ariaHidden
             className="absolute h-[24px] w-[24px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
           />

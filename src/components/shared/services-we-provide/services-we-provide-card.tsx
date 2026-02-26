@@ -163,6 +163,7 @@ export default function ServicesWeProvideCard({
           </Button>
 
           <Link
+            aria-label={`Переход на страницу услуги: ${item.title}`}
             className={cn(
               isRegion ? 'bg-primary' : 'bg-secondary',
               'flex-center h-[42px] w-[42px] shrink-0 rounded-full'
@@ -170,6 +171,7 @@ export default function ServicesWeProvideCard({
             href={`/services/${item.link}`}
           >
             <Media
+              ariaHidden
               className="h-[24px] w-[24px]"
               image={{
                 src: isRegion ? '/arrow/arrow-right-white.svg' : '/arrow/arrow-right.svg',

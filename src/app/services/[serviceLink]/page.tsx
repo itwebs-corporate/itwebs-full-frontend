@@ -62,6 +62,7 @@ export default async function ServiceLinkPage({ params }: Props) {
         fullScreen
         heading={service.h1}
         lastBreadcrumb={service.name}
+        pathname={`/services/${serviceLink}`}
       >
         <ModalConsult />
         <Button asChild variant="gray">

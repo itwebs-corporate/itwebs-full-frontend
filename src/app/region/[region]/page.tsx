@@ -30,6 +30,7 @@ export default async function RegionPage({ params }: Props) {
             <br />р<span className="relative z-10">a</span>зработки ITWEBS.
           </>
         }
+        pathname={`/region/${region}`}
       >
         <Button asChild variant="secondary">
           <Link href={PAGES_CONFIG.SERVICES_1C}>Консультация 1С</Link>

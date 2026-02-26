@@ -1,17 +1,12 @@
-'use client';
-
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 
 import { HERO_ASSETS_CONFIG } from './hero-assets-config';
 
-export default function HeroAssets({ disabled }: { disabled?: boolean }) {
-  const pathname = usePathname();
-
+export default function HeroAssets({ disabled, preset }: { disabled?: boolean; preset?: string }) {
   if (disabled) return null;
-  const assets = HERO_ASSETS_CONFIG[pathname] ?? HERO_ASSETS_CONFIG['/default'];
+  const assets = HERO_ASSETS_CONFIG[preset ?? '/default'] ?? HERO_ASSETS_CONFIG['/default'];
   if (!assets?.length) return null;
 
   return (

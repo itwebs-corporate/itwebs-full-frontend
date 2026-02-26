@@ -12,6 +12,7 @@ export default function NotFound() {
       fullScreen
       heading="404"
       isNotFound
+      pathname="/not-found"
     >
       <Button asChild variant="secondary">
         <Link href="/">Вернуться домой</Link>

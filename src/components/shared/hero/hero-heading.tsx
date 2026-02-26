@@ -1,5 +1,3 @@
-'use client';
-import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -11,14 +9,16 @@ import HeroAssets from './hero-assets';
 export default function HeroHeading({
   children,
   disabled,
+  isHomePage,
+  isServicesLink,
+  assetsPreset,
 }: {
   children: ReactNode;
   disabled?: boolean;
+  isHomePage: boolean;
+  isServicesLink: boolean;
+  assetsPreset?: string;
 }) {
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
-  const isServicesLink = pathname.startsWith('/services');
-
   return (
     <Typography
       asChild
@@ -31,7 +31,7 @@ export default function HeroHeading({
       variant="h1"
     >
       <h1>
-        <HeroAssets disabled={disabled} />
+        <HeroAssets disabled={disabled} preset={assetsPreset} />
         {children}
       </h1>
     </Typography>

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <HeroBlock heading="Немного о ITWEBS">
+      <HeroBlock heading="Немного о ITWEBS" pathname="/about">
         <ModalConsult triggerTitle="Обсудить задачу" />
       </HeroBlock>
       <AboutTextBlock />

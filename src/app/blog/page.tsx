@@ -21,7 +21,7 @@ export default async function BlogPage() {
   const posts = await fetchAllPosts();
   return (
     <>
-      <HeroBlock heading="Полезные материалы" />
+      <HeroBlock heading="Полезные материалы" pathname="/blog" />
       <BlogBlock posts={posts} />
     </>
   );
