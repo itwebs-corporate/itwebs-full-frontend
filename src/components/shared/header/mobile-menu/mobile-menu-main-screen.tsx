@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
+import { PAGES_CONFIG } from '@/config/pages-config';
 import { SCREEN_1C_ID } from '@/constants/header-constants';
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
@@ -17,20 +18,21 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
   return (
     <ul className="flex flex-col gap-[17px] px-[14px] pt-[22px] pb-[24px]">
       {HEADER_NAV.map((el) => {
-        const isServices = el.title.includes('Услуги');
-        const is1CServices = el.title.includes('1с услуги');
+        const isServices = el.link === PAGES_CONFIG.SERVICES;
+        const is1CServices = el.link === PAGES_CONFIG.SERVICES_1C;
         return (
           <Fragment key={el.title}>
             <li
               className={cn(
                 'font-second-family rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors',
                 isServices && isOpenServices
-                  ? 'bg-primary text-white'
-                  : 'bg-background text-primary'
+                  ? 'bg-primary hover:bg-primary/90 text-white'
+                  : 'bg-background text-primary hover:bg-background/10'
               )}
             >
               <div className="flex items-center justify-between gap-3">
-                <Link className="block min-w-0 flex-1" href={el.link} onClick={closeMobileMenu}>
+                <Link className="block min-w-0" href={el.link} onClick={closeMobileMenu}>
+                  {/* текст ссылки */}
                   <div className="block">{el.title}</div>
                 </Link>
 
@@ -39,7 +41,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                     aria-label={
                       isOpenServices ? 'Свернуть список услуг' : 'Развернуть список услуг'
                     }
-                    className="z-10 shrink-0"
+                    className="z-10 flex flex-1 justify-end"
                     onClick={() => setIsOpenServices((v) => !v)}
                     type="button"
                   >
@@ -54,7 +56,10 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   </button>
                 )}
                 {is1CServices && (
-                  <label className="z-50 shrink-0 cursor-pointer" htmlFor={SCREEN_1C_ID}>
+                  <label
+                    className="z-50 flex flex-1 cursor-pointer justify-end"
+                    htmlFor={SCREEN_1C_ID}
+                  >
                     <Media
                       className="h-[13px] w-[13px]"
                       image={{
@@ -67,12 +72,12 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
               </div>
             </li>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
-              <ul className="flex flex-col gap-4 pr-[5px] pl-[20px]">
+              <ul className="flex w-full flex-col gap-2 pr-[8px] pl-[20px]">
                 {filterGroup.length > 0 ? (
                   filterGroup.map((service) => (
-                    <li key={service.id}>
+                    <li className="w-full" key={service.id}>
                       <Link
-                        className="text-foreground2 font-second-family cursor-pointer text-base leading-[100%] font-normal hover:underline"
+                        className="font-second-family bg-background hover:bg-background/10 text-primary hover:text-primary/70 block w-full cursor-pointer rounded-[12px] px-[14px] py-[8px] text-base leading-[100%] font-normal shadow shadow-neutral-400 transition-colors"
                         href={`/services?q=${service.link}`}
                         onClick={closeMobileMenu}
                       >

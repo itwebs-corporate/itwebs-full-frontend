@@ -4,7 +4,7 @@ import Typography from '@/components/ui/typography/typography';
 import { fetchAllCases } from '@/app/api/server';
 
 import { CASES_MOCK } from './case-mock-config';
-import WeSolveClientTaskCard from '../we-solve-client-task/we-solve-client-task-card';
+import CaseCard from '../we-solve-client-task/case-card';
 
 export default async function CasesBlock() {
   const cases = await fetchAllCases();
@@ -17,7 +17,7 @@ export default async function CasesBlock() {
       </Typography>
       <ul className="flex max-w-[1800px] flex-col gap-[clamp(14px,6vw,48px)]">
         {result.length > 0 ? (
-          result.map((card) => <WeSolveClientTaskCard item={card} key={card.id} />)
+          result.map((card) => <CaseCard item={card} key={card.id} />)
         ) : (
           <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
             Кейсы не найдены

@@ -8,7 +8,7 @@ import {
 
 import { fetchAllCases } from '@/app/api/server';
 
-import WeSolveClientTaskCard from './we-solve-client-task-card';
+import CaseCard from './case-card';
 import { CASES_MOCK } from '../cases/case-mock-config';
 
 export async function WeSolceClientTaskCarousel() {
@@ -32,7 +32,7 @@ export async function WeSolceClientTaskCarousel() {
                   key={item.id}
                 >
                   <ul className="w-full">
-                    <WeSolveClientTaskCard item={item} />
+                    <CaseCard item={item} />
                   </ul>
                 </CarouselItem>
               ))

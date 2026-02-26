@@ -10,7 +10,7 @@ import Typography from '@/components/ui/typography/typography';
 
 import { Case } from '@/shared/types/service-dto-types';
 
-export default function WeSolveClientTaskCard({ item }: { item: Case }) {
+export default function CaseCard({ item }: { item: Case }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [canToggle, setCanToggle] = useState<boolean>(false);
 
@@ -119,12 +119,14 @@ export default function WeSolveClientTaskCard({ item }: { item: Case }) {
         </div>
 
         {canToggle && (
-          <Button
-            className="h-[46px] w-full max-w-[272px] sm:h-[60px] sm:max-w-[283px]"
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            {isOpen ? 'Скрыть' : 'Показать полностью'}
-          </Button>
+          <div className="text-center">
+            <Button
+              className="h-[46px] w-full max-w-[272px] sm:h-[60px] sm:max-w-[283px]"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              {isOpen ? 'Скрыть' : 'Показать полностью'}
+            </Button>
+          </div>
         )}
       </div>
     </li>
