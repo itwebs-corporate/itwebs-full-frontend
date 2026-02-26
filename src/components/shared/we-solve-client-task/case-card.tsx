@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-import { hasMoreTwoLines } from '@/lib/has-more-two-lines';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
@@ -25,8 +24,23 @@ export default function CaseCard({ item }: { item: Case }) {
 
     let rafId: number | null = null;
 
+    const hasCollapsedOverflow = (el: HTMLElement) => {
+      const styles = window.getComputedStyle(el);
+      const parsedLineHeight = Number.parseFloat(styles.lineHeight);
+      const parsedFontSize = Number.parseFloat(styles.fontSize);
+      const lineHeight = Number.isNaN(parsedLineHeight)
+        ? Number.isNaN(parsedFontSize)
+          ? 0
+          : parsedFontSize * 1.2
+        : parsedLineHeight;
+
+      if (lineHeight <= 0) return false;
+
+      return el.scrollHeight > lineHeight * 2 + 1;
+    };
+
     const recalcOverflow = () => {
-      const overflow = hasMoreTwoLines(el1) || hasMoreTwoLines(el2);
+      const overflow = hasCollapsedOverflow(el1) || hasCollapsedOverflow(el2);
 
       setCanToggle(overflow);
       setIsOpen((prev) => (overflow ? prev : false));
