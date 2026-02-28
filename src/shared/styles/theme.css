@@ -36,7 +36,6 @@
 }
 
 @theme inline {
-  --font-third-family: var(--font-inter);
   --font-second-family: var(--font-roboto);
   --font-family: var(--font-roboto-condensed);
   --radius-sm: calc(var(--radius) - 4px);

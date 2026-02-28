@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-import HowWeWorkBlockCard from './how-we-work-block-card';
+import HowWeWorkBlockCard from './how-we-work-card';
 import { WORK_STEPS_CONFIG } from './how-we-work-config';
 
 export default function HowWeWorkBlock() {
@@ -14,7 +14,7 @@ export default function HowWeWorkBlock() {
       <Typography className="z-20 text-white" variant="h2">
         <b className="opacity-80">Как</b> мы работаем
       </Typography>
-      <div className="mt-[clamp(32px,3vw,46px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] sm:grid-cols-[1fr_1fr_1fr_1fr]">
+      <div className="mt-[clamp(32px,3vw,46px)] grid grid-cols-1 gap-[clamp(14px,1.5vw,20px)] md:grid-cols-2 2xl:grid-cols-4">
         {WORK_STEPS_CONFIG.map((item) => (
           <HowWeWorkBlockCard item={item} key={item.id} />
         ))}

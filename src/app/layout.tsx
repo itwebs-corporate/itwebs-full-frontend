@@ -8,7 +8,7 @@ import Header from '@/components/shared/header/header';
 
 import { SITE_DESCRIPTION, SITE_ICON, SITE_IMAGES, SITE_NAME } from '@/constants/seo-constants';
 import Provider from '@/providers/provider';
-import { inter, roboto, robotoCondensed } from '@/shared/fonts';
+import { roboto, robotoCondensed } from '@/shared/fonts';
 
 export const metadata: Metadata = {
   title: {
@@ -33,10 +33,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html
-      className={`${inter.variable} ${roboto.variable} ${robotoCondensed.variable} antialiased`}
-      lang="en"
-    >
+    <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="en">
       <body>
         <Header />
         <Provider>

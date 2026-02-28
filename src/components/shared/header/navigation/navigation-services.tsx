@@ -1,58 +1,53 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import { useClickOutside } from '@/hooks/use-click-outside';
 
-import { ServiceTabSlug } from '@/config/services-mock-config';
+import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
-import NavigationServicesItem from './navigation-services-item';
+import NavigationServicesItems from './navigation-services-items';
 
-export default function NavigationServices({ title }: { title: string }) {
+export default function NavigationServices({
+  title,
+  headerGroups,
+}: {
+  title: string;
+  headerGroups: HeaderGroups | [];
+}) {
   const [isOpenServices, setIsOpenServices] = useState(false);
-  const [activeServiceItem, setActiveServiceItem] = useState<ServiceTabSlug | null>(null);
-
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [activeServiceItem, setActiveServiceItem] = useState<string | null>(null);
 
   const close = () => {
     setIsOpenServices(false);
     setActiveServiceItem(null);
   };
 
-  const { ref: menuRef } = useClickOutside<HTMLDivElement>(() => {
-    if (!isOpenServices) return;
-    close();
-  }, [buttonRef]);
-
   return (
-    <div className="relative">
-      <button
+    <div className="relative" onMouseEnter={() => setIsOpenServices(true)} onMouseLeave={close}>
+      <Link
         className={cn(
-          'rounded-full px-[12px] py-[2px] transition-all',
-          isOpenServices ? 'text-primary bg-white' : 'bg-transparent text-white'
+          'uppercase',
+          headerGroups.length > 0 && 'rounded-full px-[12px] py-[2px] transition-all',
+          headerGroups.length > 0
+            ? isOpenServices
+              ? 'text-primary bg-white'
+              : 'bg-transparent text-white'
+            : 'hover:text-foreground/70 whitespace-nowrap transition-colors'
         )}
-        onClick={() => {
-          setIsOpenServices((v) => {
-            const next = !v;
-            if (!next) setActiveServiceItem(null);
-            return next;
-          });
-        }}
-        ref={buttonRef}
-        type="button"
+        href="/services"
       >
         {title}
-      </button>
+      </Link>
 
-      {isOpenServices && (
-        <div ref={menuRef}>
-          <NavigationServicesItem
-            activeServiceItem={activeServiceItem}
-            close={close}
-            setActiveServiceItem={setActiveServiceItem}
-          />
-        </div>
+      {isOpenServices && headerGroups.length > 0 && (
+        <NavigationServicesItems
+          activeServiceItem={activeServiceItem}
+          close={close}
+          headerGroups={headerGroups}
+          setActiveServiceItem={setActiveServiceItem}
+        />
       )}
     </div>
   );

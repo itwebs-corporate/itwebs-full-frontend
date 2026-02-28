@@ -1,4 +1,4 @@
-import { CardTypes } from '@/shared/types/global-types';
+import { CardTypes } from '@/shared/types/card-types';
 
 export const WORK_STEPS_CONFIG: CardTypes[] = [
   {

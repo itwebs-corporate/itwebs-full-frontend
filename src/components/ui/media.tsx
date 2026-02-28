@@ -14,11 +14,12 @@ type MediaImage = {
 type MediaProps = {
   className: string;
   image: MediaImage;
+  ariaHidden?: boolean;
 };
-export function Media({ className, image }: MediaProps) {
+export function Media({ className, image, ariaHidden = false }: MediaProps) {
   return (
-    <div className={cn('relative overflow-hidden', className)}>
-      <Image {...image} className={cn('', image.className)} fill />
+    <div aria-hidden={ariaHidden} className={cn('relative overflow-hidden', className)}>
+      <Image {...image} className={cn(image.className)} fill />
     </div>
   );
 }

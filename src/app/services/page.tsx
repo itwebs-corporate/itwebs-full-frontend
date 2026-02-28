@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
-import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task-block/all-need-for-your-task-block';
-import HeroBlock from '@/components/shared/hero-block/hero-block';
+import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task/all-need-for-your-task-block';
+import HeroBlock from '@/components/shared/hero/hero-block';
 
-import { SERVICES_CARDS } from '@/config/services-mock-config';
+import { fetchAllServices } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 export const metadata: Metadata = {
@@ -21,16 +21,14 @@ type Props = {
   searchParams?: Promise<{ q?: string }>;
 };
 
-type CardsKey = keyof typeof SERVICES_CARDS;
-
 export default async function ServicesPage({ searchParams }: Props) {
   const sp = await searchParams;
   const key = sp?.q;
-  const cards = SERVICES_CARDS[key as CardsKey] ?? SERVICES_CARDS['services-1c'];
+  const allServices = await fetchAllServices();
   return (
     <>
-      <HeroBlock heading="Услуги ITWEBS" />
-      <AllNeedForYourTaskBlock cards={cards} searchParams={key} />
+      <HeroBlock heading="Услуги ITWEBS" pathname="/services" />
+      <AllNeedForYourTaskBlock cards={allServices} searchParams={key} />
     </>
   );
 }

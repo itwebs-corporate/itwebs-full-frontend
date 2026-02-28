@@ -1,14 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import WhatWeTasksSolveCard from './what-we-tasks-solve-card';
-import { WHAT_WE_TASKS_SOLVE_CARDS } from './what-we-tasks-solve-config';
-import WhatWeTasksSolveMobileCard from './what-we-tasks-solve-mobile-card';
-import { useMediaQuery } from '../../../hooks/use-media-query';
 
-export default function ClientWrapper() {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+export default function ClientWrapper({
+  desicions,
+}: {
+  desicions: { id: number; title: string; description: string }[];
+}) {
+  const [activeIndex, setActiveIndex] = useState(1);
+
   const ref = useRef<HTMLUListElement | null>(null);
 
   const drag = useRef({
@@ -19,33 +21,79 @@ export default function ClientWrapper() {
     pointerId: -1,
   });
 
-  const snapToClosest = () => {
+  const rafId = useRef<number | null>(null);
+  const pendingLeft = useRef<number | null>(null);
+
+  const scrollRaf = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (rafId.current !== null) window.cancelAnimationFrame(rafId.current);
+      if (scrollRaf.current !== null) window.cancelAnimationFrame(scrollRaf.current);
+    };
+  }, []);
+
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    const items = Array.from(el.querySelectorAll<HTMLElement>('li[data-snap-item="true"]'));
-    if (!items.length) return;
+    const updateActiveFromViewport = () => {
+      const node = ref.current;
+      if (!node) return;
 
-    const current = el.scrollLeft;
+      const isScrollableX = node.scrollWidth > node.clientWidth + 1;
+      if (!isScrollableX) return;
 
-    let bestLeft = 0;
-    let bestDist = Number.POSITIVE_INFINITY;
+      const items = Array.from(node.querySelectorAll<HTMLLIElement>('li[data-index]'));
 
-    for (const it of items) {
-      const left = it.offsetLeft;
-      const d = Math.abs(left - current);
-      if (d < bestDist) {
-        bestDist = d;
-        bestLeft = left;
+      if (items.length === 0) return;
+
+      const rootRect = node.getBoundingClientRect();
+      const centerX = rootRect.left + rootRect.width / 2;
+
+      let bestIndex = 1;
+      let bestDist = Number.POSITIVE_INFINITY;
+
+      for (const li of items) {
+        const idx = Number(li.dataset.index);
+        if (!Number.isFinite(idx)) continue;
+
+        const r = li.getBoundingClientRect();
+        const itemCenter = r.left + r.width / 2;
+        const dist = Math.abs(itemCenter - centerX);
+
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIndex = idx;
+        }
       }
-    }
 
-    el.scrollTo({ left: bestLeft, behavior: 'smooth' });
-  };
+      setActiveIndex((prev) => (prev === bestIndex ? prev : bestIndex));
+    };
+
+    const onScroll = () => {
+      if (scrollRaf.current !== null) return;
+      scrollRaf.current = window.requestAnimationFrame(() => {
+        scrollRaf.current = null;
+        updateActiveFromViewport();
+      });
+    };
+
+    const initId = window.requestAnimationFrame(updateActiveFromViewport);
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(initId);
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [desicions.length]);
 
   return (
     <ul
-      className="no-scrollbar flex w-full cursor-grab touch-pan-x snap-x snap-mandatory scroll-px-4 gap-[8px] overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:snap-none sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
+      className="no-scrollbar flex w-full cursor-grab touch-pan-x snap-x snap-mandatory scroll-px-4 items-stretch gap-[8px] overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth px-4 select-none active:cursor-grabbing sm:max-w-[1800px] sm:cursor-auto sm:snap-none sm:flex-col sm:gap-[24px] sm:overflow-hidden sm:px-0 sm:active:cursor-auto"
       onClickCapture={(e) => {
         if (drag.current.moved) {
           e.preventDefault();
@@ -59,6 +107,12 @@ export default function ClientWrapper() {
         drag.current.down = false;
         el.style.scrollSnapType = '';
         el.style.scrollBehavior = '';
+
+        if (rafId.current !== null) {
+          window.cancelAnimationFrame(rafId.current);
+          rafId.current = null;
+        }
+        pendingLeft.current = null;
       }}
       onPointerDown={(e) => {
         if (e.pointerType !== 'mouse') return;
@@ -88,7 +142,23 @@ export default function ClientWrapper() {
         }
 
         e.preventDefault();
-        el.scrollLeft = drag.current.startLeft - dx;
+
+        pendingLeft.current = drag.current.startLeft - dx;
+
+        if (rafId.current !== null) return;
+
+        rafId.current = window.requestAnimationFrame(() => {
+          const node = ref.current;
+          if (!node) {
+            rafId.current = null;
+            return;
+          }
+
+          if (pendingLeft.current !== null) {
+            node.scrollLeft = pendingLeft.current;
+          }
+          rafId.current = null;
+        });
       }}
       onPointerUp={(e) => {
         if (e.pointerType !== 'mouse') return;
@@ -103,10 +173,14 @@ export default function ClientWrapper() {
         }
         drag.current.pointerId = -1;
 
+        if (rafId.current !== null) {
+          window.cancelAnimationFrame(rafId.current);
+          rafId.current = null;
+        }
+        pendingLeft.current = null;
+
         el.style.scrollSnapType = '';
         el.style.scrollBehavior = 'smooth';
-
-        if (drag.current.moved) snapToClosest();
 
         window.setTimeout(() => {
           const node = ref.current;
@@ -116,15 +190,24 @@ export default function ClientWrapper() {
       }}
       ref={ref}
     >
-      {WHAT_WE_TASKS_SOLVE_CARDS.map((item) => (
-        <li className="shrink-0 snap-start" data-snap-item="true" key={item.id}>
-          {isMobile ? (
-            <WhatWeTasksSolveMobileCard item={item} />
-          ) : (
-            <WhatWeTasksSolveCard item={item} />
-          )}
-        </li>
-      ))}
+      {desicions.map((item, i) => {
+        const index = i + 1;
+        return (
+          <li
+            className="shrink-0 snap-start"
+            data-index={index}
+            data-snap-item="true"
+            key={`${item.id}-${index}`}
+          >
+            <WhatWeTasksSolveCard
+              index={index}
+              isActive={activeIndex === index}
+              item={item}
+              onHover={() => setActiveIndex(index)}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 }
