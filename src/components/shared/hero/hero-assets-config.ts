@@ -15,24 +15,6 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       className:
         'absolute right-[5vw] top-[-40px] hidden sm:block  w-[clamp(82px,6vw,161px)] h-[clamp(66px,4.8vw,128px)]',
     },
-    {
-      src: '/hero/arrow-zig-zag.svg',
-      alt: 'arrow-zig-zag',
-      className:
-        'absolute left-[6vw] 3xl:left-[4vw] top-[10vw] lg:top-[10.3vw] hidden sm:block w-[clamp(86px,10vw,304px)] h-[clamp(116px,7.5vw,231px)]',
-    },
-    {
-      src: '/hero/arrow-left-start.svg',
-      alt: 'arrow-left-start',
-      className:
-        'absolute  top-[10vw] 3xl:top-[8.5vw] right-[3.5vw] hidden sm:block w-[clamp(58px,4.8vw,141px)] h-[clamp(86px,6.8vw,211px)]',
-    },
-    {
-      src: '/hero/arrow-left-end.svg',
-      alt: 'arrow-left-end',
-      className:
-        'absolute  top-[10vw] 3xl:top-[8.4vw] right-[3.7vw] hidden sm:block z-[-1] w-[clamp(64px,5vw,155.1px)] h-[clamp(92px,7.4vw,225px)]',
-    },
 
     {
       src: '/hero/mobile/empty-star.svg',

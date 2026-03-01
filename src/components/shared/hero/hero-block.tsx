@@ -10,7 +10,7 @@ import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 
 type HeroBlockProps = {
   heading: ReactNode;
-  description?: string;
+  description?: ReactNode;
   pathname?: string;
   fullScreen?: boolean;
   lastBreadcrumb?: string;
