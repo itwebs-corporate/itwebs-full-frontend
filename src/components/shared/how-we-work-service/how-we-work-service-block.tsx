@@ -50,7 +50,7 @@ export default function HowWeWork1cBlock({ stages }: { stages: ServiceStages[] }
   return (
     <Section className="gap-[48px]">
       <Typography variant="h2">
-        <b className="text-primary">Как</b> мы работаем в этом напровлении
+        <b className="text-primary">Наши</b> этапы для достижения результата
       </Typography>
       {stages.length > 0 ? (
         <div className="relative w-full">

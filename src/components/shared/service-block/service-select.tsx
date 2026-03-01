@@ -11,7 +11,7 @@ import {
 
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
-export default function AllNeedForYourTaskSelect({
+export default function ServiceSelect({
   filters,
   activeTab,
 }: {

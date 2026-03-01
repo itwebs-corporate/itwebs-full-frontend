@@ -64,13 +64,20 @@ export default async function ServiceLinkPage({ params }: Props) {
         lastBreadcrumb={service.name}
         pathname={`/services/${serviceLink}`}
       >
-        <ModalConsult />
+        <ModalConsult triggerTitle="Обсудить проект" />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>
         </Button>
       </HeroBlock>
 
-      <ForWhoWeWorkBlock data={ways} />
+      <ForWhoWeWorkBlock
+        data={ways}
+        heading={
+          <>
+            <b className="text-primary">Кому</b> больше подойдет данная услуга
+          </>
+        }
+      />
       <WhatWeTasksSolveBlock desicions={desicions} />
       <HowWeWork1cBlock stages={stages} />
       <QuestionsBlock faqs={faqs} />

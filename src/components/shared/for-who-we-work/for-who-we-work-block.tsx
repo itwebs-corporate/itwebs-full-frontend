@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
@@ -9,14 +11,22 @@ import { FOR_WE_WORK_CONFIG } from './for-who-we-work-config';
 export default function ForWhoWeWorkBlock({
   data = FOR_WE_WORK_CONFIG,
   isShowMedia = false,
+  heading,
 }: {
   data?: ServiceWay[];
   isShowMedia?: boolean;
+  heading?: ReactNode;
 }) {
   return (
     <Section className="bg-background">
       <Typography variant="h2">
-        <b className="text-primary">Для кого</b> мы работаем
+        {heading ? (
+          heading
+        ) : (
+          <>
+            <b className="text-primary">Кто</b> чаще всего к нам обращается
+          </>
+        )}
       </Typography>
 
       {data.length > 0 ? (

@@ -8,11 +8,11 @@ import { fetchFilterGroups, fetchServicesByGroup } from '@/app/api/server';
 import { Service } from '@/shared/types/service-dto-types';
 import { ServiceGroupDto } from '@/shared/types/service-group-dto-types';
 
-import AllNeedForYourTaskCard from './all-need-for-your-task-card';
-import AllNeedForYourTaskSelect from './all-need-for-your-task-select';
-import AllNeedForYourTaskTabs from './all-need-for-your-task-tabs';
+import ServiceCard from './service-card';
+import ServiceSelect from './service-select';
+import ServiceTabs from './service-tabs';
 
-export default async function AllNeedForYourTaskBlock({
+export default async function ServiceBlock({
   searchParams,
   cards,
 }: {
@@ -33,8 +33,8 @@ export default async function AllNeedForYourTaskBlock({
         Всё, что нужно <br className="block sm:hidden" /> для
         <b className="text-primary"> вашей задачи</b>
       </Typography>
-      <AllNeedForYourTaskTabs activeTab={activeTab} filters={filters} />
-      <AllNeedForYourTaskSelect activeTab={activeTab} filters={filters} />
+      <ServiceTabs activeTab={activeTab} filters={filters} />
+      <ServiceSelect activeTab={activeTab} filters={filters} />
       <div
         className={cn(
           uiCards.length
@@ -43,8 +43,8 @@ export default async function AllNeedForYourTaskBlock({
         )}
       >
         {uiCards.length > 0 ? (
-          uiCards.map((card, index) => {
-            return <AllNeedForYourTaskCard card={card} isFirstCard={index === 0} key={card.id} />;
+          uiCards.map((card) => {
+            return <ServiceCard card={card} key={card.id} />;
           })
         ) : (
           <span className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-import AllNeedForYourTaskBlock from '@/components/shared/all-need-for-your-task/all-need-for-your-task-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
+import ServiceBlock from '@/components/shared/service-block/service-block';
 
 import { fetchAllServices } from '@/app/api/server';
 import { SITE_IMAGES } from '@/constants/seo-constants';
@@ -28,7 +28,7 @@ export default async function ServicesPage({ searchParams }: Props) {
   return (
     <>
       <HeroBlock heading="Услуги ITWEBS" pathname="/services" />
-      <AllNeedForYourTaskBlock cards={allServices} searchParams={key} />
+      <ServiceBlock cards={allServices} searchParams={key} />
     </>
   );
 }

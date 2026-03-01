@@ -28,7 +28,7 @@ export default function HomePage() {
         }
         pathname="/"
       >
-        <ModalConsult triggerTitle="Консультация 1С" />
+        <ModalConsult triggerTitle="Обсудить проект" />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>

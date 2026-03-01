@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
+import { PAGES_CONFIG } from '@/config/pages-config';
 import { BlogPostSimilarDto } from '@/shared/types/post-dto-types';
 
 export default function YouMaybeInterestingCard({
@@ -14,6 +15,7 @@ export default function YouMaybeInterestingCard({
   card: BlogPostSimilarDto;
   className?: string;
 }) {
+  console.log(card);
   return (
     <li
       className={cn(
@@ -32,16 +34,19 @@ export default function YouMaybeInterestingCard({
           {card.title}
         </Typography>
         <Link
+          aria-label={`Переход на статью: ${card.title}`}
           className="sm:bg-secondary flex-center bg-primary size-[clamp(36px,3vw,42px)] shrink-0 rounded-full"
-          href={card.link}
+          href={`${PAGES_CONFIG.BLOG}/${card.link}`}
         >
           <Media
+            ariaHidden
             className="hidden h-[15px] w-[20px] sm:block"
-            image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-up-right-black.svg', alt: '' }}
           />
           <Media
+            ariaHidden
             className="block h-[15px] w-[20px] sm:hidden"
-            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: 'arrow' }}
+            image={{ src: '/arrow/arrow-right-white-mobile.svg', alt: '' }}
           />
         </Link>
       </div>

@@ -77,7 +77,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   filterGroup.map((service) => (
                     <li className="w-full" key={service.id}>
                       <Link
-                        className="font-second-family bg-background hover:bg-background/10 text-primary hover:text-primary/70 block w-full cursor-pointer rounded-[12px] px-[14px] py-[8px] text-base leading-[100%] font-normal shadow shadow-neutral-400 transition-colors"
+                        className="font-second-family bg-background hover:bg-background/10 text-primary hover:text-primary/70 block w-full min-w-0 cursor-pointer truncate rounded-[12px] px-[14px] py-[8px] text-base leading-[100%] font-normal shadow shadow-neutral-400 transition-colors"
                         href={`/services?q=${service.link}`}
                         onClick={closeMobileMenu}
                       >
