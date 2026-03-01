@@ -29,6 +29,10 @@ type Props = {
   color?: string;
   lastBreadcrumb?: string;
   isNotFound?: boolean;
+  categoryBreadcrumb?: {
+    label: string;
+    href: string;
+  };
 };
 
 export function BreadcrumbWithCustomSeparator({
@@ -36,6 +40,7 @@ export function BreadcrumbWithCustomSeparator({
   color,
   lastBreadcrumb,
   isNotFound,
+  categoryBreadcrumb,
 }: Props) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -51,7 +56,7 @@ export function BreadcrumbWithCustomSeparator({
 
   return (
     <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
-      <BreadcrumbList className="max-w-[clamp(200px,60vw,780px)] min-w-0 flex-nowrap overflow-hidden">
+      <BreadcrumbList className="w-[300px] min-w-0 flex-nowrap overflow-hidden sm:w-[500px] md:w-[600px] lg:w-full">
         <BreadcrumbItem className={cn('shrink-0', color)}>
           <BreadcrumbLink asChild>
             <Link className="shrink-0" href="/">
@@ -63,7 +68,7 @@ export function BreadcrumbWithCustomSeparator({
         {baseSegments.map((seg, idx) => {
           const href = '/' + baseSegments.slice(0, idx + 1).join('/');
           const label = RUSSIAN_NAME[seg] ?? decodeURIComponent(seg);
-          const isLast = idx === baseSegments.length - 1 && !lastBreadcrumb;
+          const isLast = idx === baseSegments.length - 1 && !lastBreadcrumb && !isNotFound;
           const shouldLinkServicesRoot = isLast && seg === 'services' && hasServicesQuery;
 
           return (
@@ -88,15 +93,35 @@ export function BreadcrumbWithCustomSeparator({
           );
         })}
 
+        {categoryBreadcrumb && !isNotFound && (
+          <BreadcrumbItem className={cn('flex min-w-0 shrink items-center overflow-hidden', color)}>
+            <span aria-hidden="true" className={cn('mx-2 shrink truncate', color)}>
+              /
+            </span>
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <BreadcrumbLink asChild>
+                <Link
+                  className="block min-w-0 cursor-pointer truncate"
+                  href={categoryBreadcrumb.href}
+                >
+                  {categoryBreadcrumb.label}
+                </Link>
+              </BreadcrumbLink>
+            </div>
+          </BreadcrumbItem>
+        )}
+
         {lastBreadcrumb && !isNotFound && (
-          <>
-            <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
-            <BreadcrumbItem className={cn('min-w-0 flex-1', color)}>
+          <BreadcrumbItem className={cn('flex min-w-0 flex-1 items-center overflow-hidden', color)}>
+            <span aria-hidden="true" className={cn('mx-2 shrink truncate', color)}>
+              /
+            </span>
+            <div className="min-w-0 flex-1 overflow-hidden">
               <BreadcrumbPage className={cn('min-w-0 truncate', color)}>
                 {lastBreadcrumb}
               </BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
+            </div>
+          </BreadcrumbItem>
         )}
 
         {isNotFound && (

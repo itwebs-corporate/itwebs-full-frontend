@@ -6,27 +6,24 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-import { fetchAllCases } from '@/app/api/server';
+import { Case } from '@/shared/types/service-dto-types';
 
 import CaseCard from './case-card';
-import { CASES_MOCK } from '../cases/case-mock-config';
 
-export async function WeSolceClientTaskCarousel() {
-  const cases = await fetchAllCases();
-  const result = cases.length > 0 ? cases : CASES_MOCK;
+export function WeSolceClientTaskCarousel({ result }: { result: Case[] | [] }) {
   return (
     <div className="w-full">
       <div className="px-4 sm:px-0">
-        <Carousel
-          className="w-full"
-          opts={{
-            align: 'start',
-            containScroll: 'trimSnaps',
-          }}
-        >
-          <CarouselContent className="items-stretch">
-            {result.length > 0 ? (
-              result.map((item) => (
+        {result.length > 0 ? (
+          <Carousel
+            className="w-full"
+            opts={{
+              align: 'start',
+              containScroll: 'trimSnaps',
+            }}
+          >
+            <CarouselContent className="items-stretch">
+              {result.map((item) => (
                 <CarouselItem
                   className="sm:max-full flex max-w-[88%] min-w-0 grow-0 basis-[88%] sm:basis-full"
                   key={item.id}
@@ -35,16 +32,16 @@ export async function WeSolceClientTaskCarousel() {
                     <CaseCard item={item} />
                   </ul>
                 </CarouselItem>
-              ))
-            ) : (
-              <div className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
-                Кейсы не найдены
-              </div>
-            )}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        ) : (
+          <div className="text-foreground3/50 mx-auto w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
+            Мы добавим наши кейсы чуть позже
+          </div>
+        )}
       </div>
     </div>
   );

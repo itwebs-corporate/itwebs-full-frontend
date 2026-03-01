@@ -23,8 +23,10 @@ export default function HeroHeading({
     <Typography
       asChild
       className={cn(
-        'relative isolate block w-fit! max-w-[clamp(320px,70vw,1500px)] hyphens-auto',
-        isHomePage ? 'text-[clamp(36px,9vw,201px)]' : 'text-[clamp(36px,6vw,124px)]',
+        'relative isolate block w-fit! hyphens-auto',
+        isHomePage
+          ? 'max-w-full text-[clamp(36px,9vw,201px)]'
+          : 'max-w-[clamp(320px,70vw,1500px)] text-[clamp(36px,6vw,124px)]',
         isServicesLink && 'text-[clamp(24px,6vw,124px)]'
       )}
       lang="ru"

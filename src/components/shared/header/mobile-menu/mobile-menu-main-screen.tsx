@@ -22,7 +22,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
         const is1CServices = el.link === PAGES_CONFIG.SERVICES_1C;
         return (
           <Fragment key={el.title}>
-            <li
+            <div
               className={cn(
                 'font-second-family rounded-[12px] px-[14px] py-[12px] text-left font-bold shadow shadow-neutral-400 transition-colors',
                 isServices && isOpenServices
@@ -32,7 +32,6 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
             >
               <div className="flex items-center justify-between gap-3">
                 <Link className="block min-w-0" href={el.link} onClick={closeMobileMenu}>
-                  {/* текст ссылки */}
                   <div className="block">{el.title}</div>
                 </Link>
 
@@ -47,7 +46,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   >
                     <Media
                       ariaHidden
-                      className="h-[13px] w-[13px]"
+                      className="size-[13px]"
                       image={{
                         src: isOpenServices ? '/links/arrow-down.svg' : '/links/arrow-right.svg',
                         alt: '',
@@ -61,7 +60,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                     htmlFor={SCREEN_1C_ID}
                   >
                     <Media
-                      className="h-[13px] w-[13px]"
+                      className="size-[13px]"
                       image={{
                         src: '/links/arrow-right.svg',
                         alt: 'arrow',
@@ -70,7 +69,7 @@ export default function MobileMenuMainScreen({ filterGroup }: { filterGroup: Fil
                   </label>
                 )}
               </div>
-            </li>
+            </div>
             <Activity mode={isServices && isOpenServices ? 'visible' : 'hidden'}>
               <ul className="flex w-full flex-col gap-2 pr-[8px] pl-[20px]">
                 {filterGroup.length > 0 ? (

@@ -5,14 +5,14 @@ import { fetchHeaderGroups } from '@/app/api/server';
 import NavigationServices from './navigation-services';
 import { HEADER_NAV } from '../header-config';
 
-export default async function NavigationByPages() {
+export default async function NavigationPages() {
   const headerGroups = (await fetchHeaderGroups()) ?? [];
   return (
-    <ul className="hidden items-center gap-[clamp(8px,2vw,24px)] sm:flex">
+    <ul className="mx-1 ml-[0px] hidden items-center gap-[clamp(4px,1.5vw,24px)] sm:flex lg:ml-[146px]">
       {HEADER_NAV.map((el) => {
         const isServices = el.title === 'Услуги';
         return (
-          <li className="whitespace-nowrap" key={el.title}>
+          <li className="text-[10px] whitespace-nowrap md:text-[12px] lg:text-base" key={el.title}>
             {isServices ? (
               <NavigationServices headerGroups={headerGroups} title={el.title} />
             ) : (

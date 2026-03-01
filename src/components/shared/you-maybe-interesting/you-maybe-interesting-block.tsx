@@ -52,6 +52,10 @@ export default function YouMaybeInterestingBlock({ similar }: { similar: BlogPos
         }}
         onPointerDown={(e) => {
           if (e.pointerType !== 'mouse') return;
+
+          const target = e.target as HTMLElement;
+          if (target.closest('a, button, input, textarea, select, label')) return;
+
           const el = ref.current;
           if (!el) return;
 

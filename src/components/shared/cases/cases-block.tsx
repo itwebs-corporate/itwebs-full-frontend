@@ -3,12 +3,11 @@ import Typography from '@/components/ui/typography/typography';
 
 import { fetchAllCases } from '@/app/api/server';
 
-import { CASES_MOCK } from './case-mock-config';
 import CaseCard from '../we-solve-client-task/case-card';
 
 export default async function CasesBlock() {
   const cases = await fetchAllCases();
-  const result = cases.length > 0 ? cases : CASES_MOCK;
+  const result = cases.length > 0 ? cases : [];
   return (
     <Section className="mb-[clamp(86px,9vw,146px)] gap-[clamp(32px,5vw,64px)]">
       <Typography variant="h2">
@@ -20,7 +19,7 @@ export default async function CasesBlock() {
           result.map((card) => <CaseCard item={card} key={card.id} />)
         ) : (
           <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
-            Кейсы не найдены
+            Мы добавим наши кейсы чуть позже
           </li>
         )}
       </ul>

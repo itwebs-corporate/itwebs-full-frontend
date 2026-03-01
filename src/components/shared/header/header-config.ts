@@ -12,11 +12,16 @@ export const HEADER_NAV = [
 ];
 // ссылки на MAX пока нет
 export const HEADER_LINKS = [
-  { link: TELEGRAM, icon: '/links/telegramm.svg', label: 'Telegram' },
-  { link: '/', icon: '/links/max.svg', label: 'Max' },
-];
-
-export const HEADER_MOBILE_LINKS = [
-  { link: TELEGRAM, icon: '/links/telegram-mobile-menu.svg', label: 'Telegram' },
-  { link: '/', icon: '/links/max-mobile-menu.svg', label: 'Max' },
+  {
+    link: TELEGRAM,
+    label: 'Telegram',
+    icon: '/links/telegramm.svg',
+    mobileIcon: '/links/telegram-mobile-menu.svg',
+  },
+  {
+    link: '/',
+    label: 'Max',
+    icon: '/links/max.svg',
+    mobileIcon: '/links/max-mobile-menu.svg',
+  },
 ];

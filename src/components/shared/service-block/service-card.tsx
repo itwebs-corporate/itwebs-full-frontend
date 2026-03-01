@@ -15,7 +15,8 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
     <div className="z-10 flex w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]">
       <div className="flex min-h-0 flex-1 flex-col gap-4">
         <Typography
-          className="cursor-default text-left break-normal [overflow-wrap:normal] [word-break:normal]"
+          className="cursor-default text-left wrap-break-word [hyphens:auto]"
+          lang="ru"
           variant="h3"
         >
           {title}
@@ -77,10 +78,10 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
             image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
           />
         </Link>
-
-        <div className="flex flex-nowrap items-start justify-between gap-[10px] pr-[54px]">
+        <div className="flex w-full items-start pr-[52px] group-hover:pr-0">
           <Typography
-            className="line-clamp-3 cursor-default py-1 break-normal [overflow-wrap:normal] [word-break:normal]"
+            className="w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto]"
+            lang="ru"
             variant="h3"
           >
             {title}
@@ -91,7 +92,8 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
           <div className="flex-1" />
 
           <Typography
-            className="[display:-webkit-box] min-h-0 overflow-hidden pr-[52px] leading-[140%] [overflow-wrap:anywhere] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:sm:[-webkit-line-clamp:6] group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
+            className="[display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
+            lang="ru"
             variant="p2"
           >
             {card.desc}
