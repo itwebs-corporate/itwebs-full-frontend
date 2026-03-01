@@ -25,7 +25,6 @@ const RUSSIAN_NAME: Record<string, string> = {
 };
 
 type Props = {
-  className?: string;
   color?: string;
   lastBreadcrumb?: string;
   isNotFound?: boolean;
@@ -36,7 +35,6 @@ type Props = {
 };
 
 export function BreadcrumbWithCustomSeparator({
-  className,
   color,
   lastBreadcrumb,
   isNotFound,
@@ -55,8 +53,8 @@ export function BreadcrumbWithCustomSeparator({
       : segments;
 
   return (
-    <Breadcrumb className={cn('pb-[clamp(16px,2vw,32px)]', className)}>
-      <BreadcrumbList className="w-[300px] min-w-0 flex-nowrap overflow-hidden sm:w-[500px] md:w-[600px] lg:w-full">
+    <Breadcrumb className="pb-[clamp(16px,2vw,32px)]">
+      <BreadcrumbList className="mx-auto max-w-[300px] min-w-0 flex-nowrap justify-center overflow-hidden sm:max-w-[500px] md:max-w-[600px] lg:max-w-full">
         <BreadcrumbItem className={cn('shrink-0', color)}>
           <BreadcrumbLink asChild>
             <Link className="shrink-0" href="/">
@@ -75,7 +73,7 @@ export function BreadcrumbWithCustomSeparator({
             <Fragment key={href}>
               <BreadcrumbSeparator className={cn('shrink-0', color)}>/</BreadcrumbSeparator>
 
-              <BreadcrumbItem className={cn(isLast ? 'min-w-0 flex-1' : 'shrink-0', color)}>
+              <BreadcrumbItem className={cn(isLast ? 'min-w-0 shrink-0' : 'shrink-0', color)}>
                 {isLast && !shouldLinkServicesRoot ? (
                   <BreadcrumbPage className={cn('min-w-0 truncate', color)}>{label}</BreadcrumbPage>
                 ) : (
