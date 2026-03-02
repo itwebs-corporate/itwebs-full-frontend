@@ -41,8 +41,12 @@ export default function YouMaybeInterestingCard({
         </div>
       )}
       <div className="flex flex-nowrap items-center justify-between gap-[10px]">
-        <Typography className="line-clamp-2 lowercase sm:line-clamp-3 xl:line-clamp-3" variant="h3">
-          {card.title}
+        <Typography
+          asChild
+          className="line-clamp-2 lowercase sm:line-clamp-3 xl:line-clamp-3"
+          variant="h3"
+        >
+          <Link href={`${PAGES_CONFIG.BLOG}/${card.link}`}>{card.title}</Link>
         </Typography>
         <Link
           aria-label={`Переход на статью: ${card.title}`}

@@ -39,8 +39,12 @@ export default function BlogCard({ card }: BlogCardProps) {
           card.image && 'xl:mt-[10px]'
         )}
       >
-        <Typography className="line-clamp-3 cursor-default lowercase xl:pt-[10px]" variant="h3">
-          {card.name}
+        <Typography
+          asChild
+          className="line-clamp-3 cursor-default lowercase xl:pt-[10px]"
+          variant="h3"
+        >
+          <Link href={`${PAGES_CONFIG.BLOG}/${card.link}`}>{card.name}</Link>
         </Typography>
         <Link
           aria-label={`Открыть статью ${card.name}`}

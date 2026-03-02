@@ -52,7 +52,7 @@ export default function ServicesWeProvideCard({
             lang="ru"
             variant="h3"
           >
-            {title}
+            <Link href={`/services/${item.link}`}> {title}</Link>
           </Typography>
         </div>
 
@@ -116,13 +116,14 @@ export default function ServicesWeProvideCard({
         {/* description (mobile): */}
         <div className="flex flex-col gap-4">
           <Typography
+            asChild
             className={cn(
               isRegion ? 'text-foreground3' : 'text-white',
               'cursor-default text-left text-[clamp(24px,3.5vw,72px)] [overflow-wrap:anywhere] lowercase'
             )}
             variant="h2"
           >
-            {item.title}
+            <Link href={`/services/${item.link}`}> {title}</Link>
           </Typography>
           <Typography
             className={cn(

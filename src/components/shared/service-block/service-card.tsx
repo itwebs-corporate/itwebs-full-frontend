@@ -15,11 +15,12 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
     <div className="z-10 flex w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]">
       <div className="flex min-h-0 flex-1 flex-col gap-4">
         <Typography
+          asChild
           className="cursor-default text-left wrap-break-word [hyphens:auto]"
           lang="ru"
           variant="h3"
         >
-          {title}
+          <Link href={`/services/${card.link}`}> {title}</Link>
         </Typography>
         <Typography
           className="text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]"
@@ -80,11 +81,12 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
         </Link>
         <div className="flex w-full items-start pr-[52px] group-hover:pr-0">
           <Typography
+            asChild
             className="w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto]"
             lang="ru"
             variant="h3"
           >
-            {title}
+            <Link href={`/services/${card.link}`}> {title}</Link>
           </Typography>
         </div>
 
