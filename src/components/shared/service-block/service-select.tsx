@@ -19,20 +19,23 @@ export default function ServiceSelect({
   activeTab: string | undefined;
 }) {
   const router = useRouter();
-  const selectValue = filters.find((item) => item.link === activeTab)?.name;
+  const value = filters.some((item) => item.link === activeTab) ? activeTab : undefined;
+
   return (
     <Select
       onValueChange={(slug) => {
         router.push(`/services?q=${slug}`);
       }}
+      value={value}
     >
       <SelectTrigger
         className="text-primary! border-primary font-second-family my-[24px] flex h-[52px]! w-[332px] items-center rounded-full text-[20px] font-bold shadow-none sm:hidden"
         classNameImage="text-white"
         classNameWrapperImage="w-[42px] h-[42px] bg-primary"
       >
-        <SelectValue placeholder={selectValue ?? 'Выберите группу услуг'} />
+        <SelectValue placeholder="Выберите группу услуг" />
       </SelectTrigger>
+
       <SelectContent align="start" position="popper" side="bottom">
         {filters.map((item) => (
           <SelectItem key={item.id} value={item.link}>
