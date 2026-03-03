@@ -10,7 +10,7 @@ import QuestionsBlock from '@/components/shared/questions/questions-block';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
-import { fetchServicesByLink } from '@/app/api/server';
+import { fetchHeaderGroups, fetchServicesByLink } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
@@ -49,7 +49,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceLinkPage({ params }: Props) {
   const serviceLink = (await params).serviceLink;
-  const service = await fetchServicesByLink(serviceLink);
+  const [service, headerGroups] = await Promise.all([
+    fetchServicesByLink(serviceLink),
+    fetchHeaderGroups(),
+  ]);
+  const serviceCategory = headerGroups?.find((group) =>
+    group.services.some((groupService) => groupService.link === serviceLink)
+  );
 
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
@@ -58,19 +64,34 @@ export default async function ServiceLinkPage({ params }: Props) {
   return (
     <>
       <HeroBlock
+        categoryBreadcrumb={
+          serviceCategory
+            ? {
+                label: serviceCategory.groupName,
+                href: `/services?q=${serviceCategory.groupLink}`,
+              }
+            : undefined
+        }
         description={service.h2}
         fullScreen
         heading={service.h1}
         lastBreadcrumb={service.name}
         pathname={`/services/${serviceLink}`}
       >
-        <ModalConsult />
+        <ModalConsult triggerTitle="Обсудить проект" />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.ABOUT}>О компании</Link>
         </Button>
       </HeroBlock>
 
-      <ForWhoWeWorkBlock data={ways} />
+      <ForWhoWeWorkBlock
+        data={ways}
+        heading={
+          <>
+            <b className="text-primary">Кому</b> больше подойдет данная услуга
+          </>
+        }
+      />
       <WhatWeTasksSolveBlock desicions={desicions} />
       <HowWeWork1cBlock stages={stages} />
       <QuestionsBlock faqs={faqs} />

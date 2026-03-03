@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -23,15 +23,29 @@ type Props = {
 };
 
 export default function ModalConsult({ triggerTitle = 'Записаться' }: Props) {
-  const [open, setOpen] = useState<boolean>();
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-        <Button variant="secondary">{triggerTitle}</Button>
+        <Button ref={triggerRef} type="button" variant="secondary">
+          {triggerTitle}
+        </Button>
       </DialogTrigger>
 
       <DialogContent
         className="bg-background px-[clamp(14px,6vw,86px)] py-[clamp(64px,5vw,84px)]"
+        onCloseAutoFocus={(e) => {
+          e.preventDefault();
+
+          requestAnimationFrame(() => {
+            triggerRef.current?.focus({ preventScroll: true });
+          });
+        }}
+        onOpenAutoFocus={(e) => {
+          e.preventDefault();
+        }}
         outsideClose
         showCloseButton={false}
       >
@@ -44,6 +58,7 @@ export default function ModalConsult({ triggerTitle = 'Записаться' }: 
             Ответим в течение 15 минут
           </DialogDescription>
         </DialogHeader>
+
         {open ? (
           <FormForModalsLazy
             className="mt-[24px] flex flex-col! sm:mt-[32px]"

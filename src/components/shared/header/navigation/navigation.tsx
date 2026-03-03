@@ -9,8 +9,10 @@ import { Media } from '@/components/ui/media';
 
 import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
 
-import NavigationByPages from './navigation-page';
-import { HEADER_LINKS, HEADER_MOBILE_LINKS } from '../header-config';
+import NavigationPages from './navigation-pages';
+import NavigationSocialLink from './navigation-social-link';
+import NavigationTel from './navigation-tel';
+import { HEADER_LINKS } from '../header-config';
 
 export default function Navigation() {
   return (
@@ -27,53 +29,41 @@ export default function Navigation() {
         />
       </Link>
       {/*  */}
-      <NavigationByPages />
+      <NavigationPages />
       {/*  */}
       <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
+        <NavigationTel />
         {HEADER_LINKS.map((el) => (
-          <Link
-            aria-label={`Откроется в новой вкладке ${el.label}`}
+          <NavigationSocialLink
             className={cn(
-              'flex-center h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border bg-white/10',
+              'flex-center size-[clamp(35px,3.2vw,57px)] shrink-0 rounded-full border bg-white/10',
               styles.headerLink
             )}
-            href={el.link}
-            key={el.link}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Media
-              ariaHidden
-              className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
-              image={{ src: el.icon, alt: '' }}
-            />
-          </Link>
+            icon={el.icon}
+            key={`${el.link}-desktop`}
+            label={el.label}
+            link={el.link}
+          />
         ))}
         {/* links by open mobile menu: */}
-        {HEADER_MOBILE_LINKS.map((el) => (
-          <Link
-            aria-label={`Откроется в новой вкладке ${el.label}`}
+        {HEADER_LINKS.map((el) => (
+          <NavigationSocialLink
             className={cn(
-              'flex-center bg-primary/10 h-[clamp(38px,3.2vw,60px)] w-[clamp(38px,3.2vw,60px)] rounded-full border',
+              'flex-center bg-primary/10 size-[clamp(35px,3.2vw,57px)] shrink-0 rounded-full border',
               styles.headerLinkMobileMenu
             )}
-            href={el.link}
-            key={el.link}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Media
-              ariaHidden
-              className="relative h-[clamp(18px,1.6vw,26px)] w-[clamp(18px,1.6vw,26px)]"
-              image={{ src: el.icon, alt: '' }}
-            />
-          </Link>
+            icon={el.mobileIcon}
+            key={`${el.link}-mobile`}
+            label={el.label}
+            link={el.link}
+          />
         ))}
+
         {/* burger: */}
         <label
           className={cn(
-            'flex h-9.5 w-9.5 cursor-pointer items-center justify-center rounded-full sm:hidden',
+            'flex h-9.5 w-9.5 shrink-0 cursor-pointer items-center justify-center rounded-full sm:hidden',
             styles.burgerMenuToggle
           )}
           htmlFor={MOBILE_MENU_TOGGLE_ID}

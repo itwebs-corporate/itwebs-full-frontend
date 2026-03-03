@@ -42,9 +42,7 @@ export default function BlogBlock({ posts }: { posts: Post[] }) {
         )}
       >
         {data.length > 0 ? (
-          data.map((card, index) => (
-            <BlogCard card={card} isFirstCard={index === 0} key={card.name} />
-          ))
+          data.map((card) => <BlogCard card={card} key={card.name} />)
         ) : (
           <li className="text-foreground3/50 w-[40vw] rounded-full border border-dashed border-gray-400 p-4 text-center text-lg">
             Посты не найдены

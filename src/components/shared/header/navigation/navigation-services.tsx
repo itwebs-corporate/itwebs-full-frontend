@@ -29,12 +29,13 @@ export default function NavigationServices({
       <Link
         className={cn(
           'uppercase',
-          headerGroups.length > 0 && 'rounded-full px-[12px] py-[2px] transition-all',
+          headerGroups.length > 0 &&
+            'mx-[-8px] rounded-full px-[8px] py-[2px] transition-all md:mx-[-12px] md:px-[12px]',
           headerGroups.length > 0
             ? isOpenServices
               ? 'text-primary bg-white'
               : 'bg-transparent text-white'
-            : 'hover:text-foreground/70 whitespace-nowrap transition-colors'
+            : 'hover:text-foreground/70 text-[10px] whitespace-nowrap transition-colors md:text-[12px] lg:text-base'
         )}
         href="/services"
       >

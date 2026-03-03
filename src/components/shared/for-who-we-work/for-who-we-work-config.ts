@@ -11,7 +11,7 @@ export const FOR_WE_WORK_CONFIG: ServiceWay[] = [
   {
     id: 2,
     iconName: '/emoji/business-center.png',
-    name: 'Малый и средний бизнес',
+    name: 'Инвесторы и инноваторы',
     description:
       'Разрабатываем и поддерживаем сайты и сервисы для бизнеса. Обеспечиваем стабильную работу и быстро реагируем на задачи.',
   },
@@ -25,7 +25,7 @@ export const FOR_WE_WORK_CONFIG: ServiceWay[] = [
   {
     id: 4,
     iconName: '/emoji/heart.png',
-    name: 'Тем, кому важна надёжность',
+    name: 'Те, кому важна надёжность',
     description:
       'Подходим к работе внимательно и ответственно. Вы получаете поддержку, спокойствие и уверенность в результате.',
   },

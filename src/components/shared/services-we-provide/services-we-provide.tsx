@@ -28,13 +28,13 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
       )}
     >
       <Typography className={cn(isRegion ? 'text-foreground2' : 'text-foreground')} variant="h2">
-        <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Услуги</b> которые мы оказываем
+        <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Наши</b> услуги
       </Typography>
 
       <ServiceWeProvideList filterServices={filterServices} isRegion={isRegion} />
       {filterServices.length > 0 ? (
         <Button asChild variant={isRegion ? 'outline' : 'gray'}>
-          <Link href={PAGES_CONFIG.SERVICES}>Все услуги</Link>
+          <Link href={PAGES_CONFIG.SERVICES}>Посмотреть все</Link>
         </Button>
       ) : (
         <span className="w-[40vw] rounded-full border border-dashed border-white/50 p-4 text-center text-lg text-white/80">

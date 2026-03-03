@@ -10,10 +10,14 @@ import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
 
 type HeroBlockProps = {
   heading: ReactNode;
-  description?: string;
+  description?: ReactNode;
   pathname?: string;
   fullScreen?: boolean;
   lastBreadcrumb?: string;
+  categoryBreadcrumb?: {
+    label: string;
+    href: string;
+  };
   disabledAssets?: boolean;
   isNotFound?: boolean;
   children?: ReactNode;
@@ -25,6 +29,7 @@ export default function HeroBlock({
   pathname = '/default',
   fullScreen = false,
   lastBreadcrumb,
+  categoryBreadcrumb,
   disabledAssets = false,
   isNotFound = false,
   children,
@@ -50,7 +55,11 @@ export default function HeroBlock({
         />
       </div>
       <Suspense fallback={null}>
-        <BreadcrumbWithCustomSeparator isNotFound={isNotFound} lastBreadcrumb={lastBreadcrumb} />
+        <BreadcrumbWithCustomSeparator
+          categoryBreadcrumb={categoryBreadcrumb}
+          isNotFound={isNotFound}
+          lastBreadcrumb={lastBreadcrumb}
+        />
       </Suspense>
       <HeroHeading
         assetsPreset={pathname}

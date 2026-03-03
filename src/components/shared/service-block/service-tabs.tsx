@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 import { FilterGroup } from '@/shared/types/service-dto-types';
 
-export default function AllNeedForYourTaskTabs({
+export default function ServiceTabs({
   activeTab,
   filters,
 }: {

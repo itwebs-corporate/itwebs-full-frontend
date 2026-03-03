@@ -72,6 +72,12 @@ function DialogContent({
         )}
         data-slot="dialog-content"
         {...props}
+        onCloseAutoFocus={(event) => {
+          event.preventDefault();
+        }}
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+        }}
       >
         {children}
         {showCloseButton && (

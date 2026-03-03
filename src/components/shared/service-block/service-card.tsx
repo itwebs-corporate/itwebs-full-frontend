@@ -2,42 +2,28 @@ import Link from 'next/link';
 
 import { formattedPrice } from '@/lib/number-format';
 import { ServiceCardUI } from '@/lib/separation-type-for-card';
-import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
 import { Media } from '@/components/ui/media';
 import Typography from '@/components/ui/typography/typography';
 
-export default function AllNeedForYourTaskCard({
-  card,
-  isFirstCard = false,
-}: {
-  card: ServiceCardUI;
-  isFirstCard?: boolean;
-}) {
+export default function ServiceCard({ card }: { card: ServiceCardUI }) {
   const formatedPrice = formattedPrice(card.price);
-  const price = card.price < 10000 ? `${formatedPrice} ₽ в час` : `${formatedPrice} ₽`;
+  const price = card.price < 10000 ? `${formatedPrice} ₽/ч` : `${formatedPrice} ₽`;
   const title = card.title.toLowerCase().replace('1с', '1C');
   const mobileCard = (
-    <div
-      className={cn(
-        'z-10 flex w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]',
-        isFirstCard && 'h-[clamp(293px,28vw,380px)]'
-      )}
-    >
+    <div className="z-10 flex w-[clamp(332px,30vw,435px)] flex-col justify-between rounded-[12px] bg-white pt-[20px] pr-[16px] pb-[16px] pl-[14px] sm:rounded-[24px] sm:p-[24px]">
       <div className="flex min-h-0 flex-1 flex-col gap-4">
         <Typography
-          className="cursor-default text-left break-normal [overflow-wrap:normal] [word-break:normal]"
+          asChild
+          className="cursor-default text-left wrap-break-word [hyphens:auto]"
+          lang="ru"
           variant="h3"
         >
-          {title}
+          <Link href={`/services/${card.link}`}> {title}</Link>
         </Typography>
         <Typography
-          className={cn(
-            'text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]',
-            isFirstCard &&
-              'sm:[-webkit-line-clamp:6] md:[-webkit-line-clamp:3] xl:[-webkit-line-clamp:4] 2xl:[-webkit-line-clamp:6]'
-          )}
+          className="text-foreground2/80 [display:-webkit-box] overflow-hidden break-normal [overflow-wrap:normal] [word-break:normal] text-ellipsis [-webkit-box-orient:vertical]"
           variant="p2"
         >
           {card.desc}
@@ -76,12 +62,7 @@ export default function AllNeedForYourTaskCard({
 
   return (
     <>
-      <div
-        className={cn(
-          'group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] sm:flex',
-          isFirstCard && 'sm:hidden'
-        )}
-      >
+      <div className="group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] sm:flex">
         <Link
           aria-label={`Переход на страницу услуги: ${card.title}`}
           className="bg-secondary flex-center group-hover:bg-primary absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] !shrink-0 rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)]"
@@ -98,13 +79,14 @@ export default function AllNeedForYourTaskCard({
             image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
           />
         </Link>
-
-        <div className="flex flex-nowrap items-start justify-between gap-[10px] pr-[54px]">
+        <div className="flex w-full items-start pr-[52px] group-hover:pr-0">
           <Typography
-            className="line-clamp-3 cursor-default py-1 break-normal [overflow-wrap:normal] [word-break:normal]"
+            asChild
+            className="w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto]"
+            lang="ru"
             variant="h3"
           >
-            {title}
+            <Link href={`/services/${card.link}`}> {title}</Link>
           </Typography>
         </div>
 
@@ -112,7 +94,8 @@ export default function AllNeedForYourTaskCard({
           <div className="flex-1" />
 
           <Typography
-            className="[display:-webkit-box] min-h-0 overflow-hidden pr-[52px] leading-[140%] [overflow-wrap:anywhere] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:sm:[-webkit-line-clamp:6] group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
+            className="[display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
+            lang="ru"
             variant="p2"
           >
             {card.desc}
@@ -141,7 +124,7 @@ export default function AllNeedForYourTaskCard({
         </div>
       </div>
 
-      <div className={cn('block sm:hidden', isFirstCard && 'sm:block')}>{mobileCard}</div>
+      <div className="block sm:hidden">{mobileCard}</div>
     </>
   );
 }

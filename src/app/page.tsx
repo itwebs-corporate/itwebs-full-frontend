@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
+import { IMAGES } from '@/components/shared/hero/hero-assets-main-page-config';
 import HeroBlock from '@/components/shared/hero/hero-block';
 import HowWeWorkBlock from '@/components/shared/how-we-work/how-we-work-block';
 import ModalConsult from '@/components/shared/modal-consult';
@@ -18,17 +20,49 @@ export default function HomePage() {
   return (
     <>
       <HeroBlock
-        description="Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-приложения, SEO, telegram-apps"
+        description={
+          <>
+            Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-
+            <br />
+            приложения, SEO, telegram-apps
+          </>
+        }
         fullScreen
         heading={
           <>
             Компания веб-
-            <br />р<span className="relative z-10">a</span>зработки ITWEBS.
+            <br />р
+            <span className="relative inline-block">
+              <span className="pointer-events-none absolute top-[0.3em] left-[-0.34em] hidden h-[1.2em] w-[1.8em] sm:block">
+                <Image
+                  alt="zig-zag image"
+                  className="object-contain"
+                  fill
+                  src="/hero/arrow-zig-zag.svg"
+                />
+              </span>
+              <span className="relative z-10">а</span>
+            </span>
+            зработки ITWE
+            <span className="relative inline-block">
+              {IMAGES.map((item) => (
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute hidden sm:block ${item.className}`}
+                  key={item.src}
+                >
+                  <Image alt={item.alt} className="object-contain" fill src={item.src} />
+                </span>
+              ))}
+
+              <span className="relative z-10">B</span>
+            </span>
+            S.
           </>
         }
         pathname="/"
       >
-        <ModalConsult triggerTitle="Консультация 1С" />
+        <ModalConsult triggerTitle="Обсудить проект" />
         <Button asChild variant="gray">
           <Link href={PAGES_CONFIG.CASES}>Наши кейсы</Link>
         </Button>

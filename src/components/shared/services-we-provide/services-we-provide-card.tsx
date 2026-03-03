@@ -1,5 +1,6 @@
 ﻿import Link from 'next/link';
 
+import { formattedPrice } from '@/lib/number-format';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,9 @@ export default function ServicesWeProvideCard({
   item: Service;
   isRegion?: boolean;
 }) {
+  const title = item.title.toLowerCase().replace('1с', '1C');
+  const formatedPrice = formattedPrice(item.price);
+  const price = item.price < 10000 ? `${formatedPrice} ₽/ч` : `${formatedPrice} ₽`;
   return (
     <>
       <div
@@ -27,7 +31,7 @@ export default function ServicesWeProvideCard({
           aria-label={`Переход на услугу: ${item.title}`}
           className={cn(
             isRegion ? 'bg-primary' : 'bg-secondary',
-            'flex-center absolute top-[clamp(20px,2.6vw,24px)] right-[clamp(14px,2.2vw,24px)] z-20 h-[42px] w-[42px] shrink-0! rounded-full transition-[top,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-clamp(20px,2.6vw,24px)-42px)] group-hover:rotate-45'
+            'flex-center absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] shrink-0! rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)] group-hover:rotate-45'
           )}
           href={`/services/${item.link}`}
         >
@@ -42,15 +46,13 @@ export default function ServicesWeProvideCard({
         </Link>
 
         {/* card header: */}
-        <div className="flex flex-nowrap items-center pr-[54px]">
+        <div className="flex w-full items-start pr-[52px] group-hover:pr-0">
           <Typography
-            className={cn(
-              isRegion ? 'text-foreground3!' : 'text-white',
-              'cursor-default [overflow-wrap:anywhere] lowercase'
-            )}
+            className="w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto] text-white"
+            lang="ru"
             variant="h3"
           >
-            {item.title}
+            <Link href={`/services/${item.link}`}> {title}</Link>
           </Typography>
         </div>
 
@@ -58,7 +60,8 @@ export default function ServicesWeProvideCard({
           <Typography
             className={cn(
               isRegion ? 'text-foreground2/80' : 'text-foreground/80',
-              '[display:-webkit-box] min-h-0 overflow-hidden text-ellipsis transition-[margin,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] [-webkit-line-clamp:6] group-hover:mb-2 group-hover:[-webkit-line-clamp:5]'
+
+              '[display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]'
             )}
             variant="p2"
           >
@@ -82,7 +85,7 @@ export default function ServicesWeProvideCard({
                     )}
                     variant="h2"
                   >
-                    {item.price} ₽
+                    {price}
                   </Typography>
                 </div>
 
@@ -113,13 +116,14 @@ export default function ServicesWeProvideCard({
         {/* description (mobile): */}
         <div className="flex flex-col gap-4">
           <Typography
+            asChild
             className={cn(
               isRegion ? 'text-foreground3' : 'text-white',
               'cursor-default text-left text-[clamp(24px,3.5vw,72px)] [overflow-wrap:anywhere] lowercase'
             )}
             variant="h2"
           >
-            {item.title}
+            <Link href={`/services/${item.link}`}> {title}</Link>
           </Typography>
           <Typography
             className={cn(
