@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
-import HowWeWork1cBlock from '@/components/shared/how-we-work-service/how-we-work-service-block';
 import { HOW_WE_WORK_SERVICE_CONFIG } from '@/components/shared/how-we-work-service/how-we-work-service-config';
 import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions/questions-block';
+import ServiceStages from '@/components/shared/service-stages/service-stages';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
@@ -56,7 +56,6 @@ export default async function ServiceLinkPage({ params }: Props) {
   const serviceCategory = headerGroups?.find((group) =>
     group.services.some((groupService) => groupService.link === serviceLink)
   );
-
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
   const desicions = service.decisions ?? [];
@@ -93,7 +92,7 @@ export default async function ServiceLinkPage({ params }: Props) {
         }
       />
       <WhatWeTasksSolveBlock desicions={desicions} />
-      <HowWeWork1cBlock stages={stages} />
+      <ServiceStages stages={stages} />
       <QuestionsBlock faqs={faqs} />
     </>
   );

@@ -14,7 +14,7 @@ type BlogCardProps = {
 
 export default function BlogCard({ card }: BlogCardProps) {
   return (
-    <li className="group relative z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 overflow-hidden rounded-[24px] bg-white p-[clamp(14px,3vw,24px)]">
+    <li className="group relative z-10 flex min-h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between gap-3 overflow-hidden rounded-[24px] bg-white p-[clamp(14px,3vw,24px)] hover:shadow hover:shadow-neutral-200">
       {card.image && (
         <div
           className={cn(
@@ -76,7 +76,7 @@ export default function BlogCard({ card }: BlogCardProps) {
       </div>
 
       <Typography
-        className="line-clamp-3 leading-[140%] opacity-80 sm:mt-1 xl:pt-[10px]"
+        className="group-hover:text-foreground2 line-clamp-3 leading-[140%] opacity-80 sm:mt-1 xl:pt-[10px]"
         variant="p2"
       >
         {card.description}

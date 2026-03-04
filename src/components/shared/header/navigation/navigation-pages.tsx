@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import { fetchHeaderGroups } from '@/app/api/server';
 
+import NavigationPagesItem from './navigation-pages-item';
 import NavigationServices from './navigation-services';
 import { HEADER_NAV } from '../header-config';
 
@@ -14,14 +13,9 @@ export default async function NavigationPages() {
         return (
           <li className="text-[10px] whitespace-nowrap md:text-[12px] lg:text-base" key={el.title}>
             {isServices ? (
-              <NavigationServices headerGroups={headerGroups} title={el.title} />
+              <NavigationServices headerGroups={headerGroups} link={el.link} title={el.title} />
             ) : (
-              <Link
-                className="hover:text-foreground/70 whitespace-nowrap uppercase transition-colors"
-                href={el.link}
-              >
-                {el.title}
-              </Link>
+              <NavigationPagesItem el={el} />
             )}
           </li>
         );

@@ -77,7 +77,7 @@ export default function NavigationServicesItems({
             })}
           </ul>
 
-          <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-[20px]">
+          <ul className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] content-start gap-[20px] self-start">
             {headerGroups
               .find((item) => item.groupLink === activeServiceItem)
               ?.services.map((card) => (
