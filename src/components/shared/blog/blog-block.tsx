@@ -49,7 +49,9 @@ export default function BlogBlock({ posts }: { posts: Post[] }) {
           </li>
         )}
       </ul>
-      {data.length > 0 && <BlogPagination page={page} setPage={setPage} totalPage={totalPage} />}
+      {data.length > 0 && totalPage > 1 && (
+        <BlogPagination page={page} setPage={setPage} totalPage={totalPage} />
+      )}
     </Section>
   );
 }

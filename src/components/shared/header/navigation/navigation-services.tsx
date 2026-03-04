@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -12,12 +13,16 @@ import NavigationServicesItems from './navigation-services-items';
 export default function NavigationServices({
   title,
   headerGroups,
+  link,
 }: {
   title: string;
   headerGroups: HeaderGroups | [];
+  link: string;
 }) {
   const [isOpenServices, setIsOpenServices] = useState(false);
   const [activeServiceItem, setActiveServiceItem] = useState<string | null>(null);
+  const pathname = usePathname();
+  const isActive = pathname === link;
 
   const close = () => {
     setIsOpenServices(false);
@@ -28,6 +33,7 @@ export default function NavigationServices({
     <div className="relative" onMouseEnter={() => setIsOpenServices(true)} onMouseLeave={close}>
       <Link
         className={cn(
+          isActive && 'underline underline-offset-3',
           'uppercase',
           headerGroups.length > 0 &&
             'mx-[-8px] rounded-full px-[8px] py-[2px] transition-all md:mx-[-12px] md:px-[12px]',

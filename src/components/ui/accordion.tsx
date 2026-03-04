@@ -40,7 +40,7 @@ function AccordionTrigger({
       >
         {children}
         <div className="flex-center border-primary h-[28px] w-[28px] shrink-0 rounded-full border sm:h-[42px] sm:w-[42px]">
-          <ChevronDownIcon className="text-primary pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
+          <ChevronDownIcon className="text-primary pointer-events-none size-5 shrink-0 transition-transform duration-200 sm:size-7" />
         </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

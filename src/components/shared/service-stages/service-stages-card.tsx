@@ -2,14 +2,14 @@ import { cn } from '@/lib/utils';
 
 import Typography from '@/components/ui/typography/typography';
 
-import { HowWeWorkServiceCardType } from './how-we-work-service-config';
+import { ServiceStages } from '@/shared/types/service-dto-types';
 
-export default function HowWeWorkServiceCard({
+export default function ServiceStagesCard({
   item,
   index,
   className,
 }: {
-  item: HowWeWorkServiceCardType;
+  item: ServiceStages;
   index: number;
   className?: string;
 }) {

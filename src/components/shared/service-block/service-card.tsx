@@ -62,7 +62,7 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
 
   return (
     <>
-      <div className="group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] sm:flex">
+      <div className="group relative z-10 hidden h-[clamp(293px,28vw,380px)] w-[clamp(332px,30vw,435px)] flex-col justify-between overflow-hidden rounded-[24px] bg-white p-[24px] hover:shadow hover:shadow-neutral-200 sm:flex">
         <Link
           aria-label={`Переход на страницу услуги: ${card.title}`}
           className="bg-secondary flex-center group-hover:bg-primary absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] !shrink-0 rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)]"
@@ -94,7 +94,7 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
           <div className="flex-1" />
 
           <Typography
-            className="[display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
+            className="group-hover:text-foreground2 [display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]"
             lang="ru"
             variant="p2"
           >

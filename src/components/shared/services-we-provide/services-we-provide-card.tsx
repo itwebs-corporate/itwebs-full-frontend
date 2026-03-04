@@ -59,7 +59,9 @@ export default function ServicesWeProvideCard({
         <div className="flex min-h-0 flex-1 flex-col justify-end pt-2">
           <Typography
             className={cn(
-              isRegion ? 'text-foreground2/80' : 'text-foreground/80',
+              isRegion
+                ? 'text-foreground2/80 group-hover:text-foreground2'
+                : 'text-foreground/80 group-hover:text-foreground',
 
               '[display:-webkit-box] min-h-0 overflow-hidden leading-[140%] [overflow-wrap:anywhere] [hyphens:auto] opacity-80 transition-[margin] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [-webkit-box-orient:vertical] group-hover:mb-2 group-hover:line-clamp-3 group-hover:md:[-webkit-line-clamp:3] group-hover:xl:[-webkit-line-clamp:4] group-hover:2xl:[-webkit-line-clamp:6]'
             )}
