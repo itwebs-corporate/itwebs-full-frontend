@@ -15,7 +15,7 @@ export const zodContactSchema = z.object({
       if (s.includes('@')) return z.string().email().safeParse(s).success;
       return phoneLike(s);
     }, 'Введите корректный email или телефон!'),
-  service: z.string().min(1, 'Выберите тип задачи!'),
+  service: z.string().optional(),
   policy: z.boolean().refine((v) => v === true, {
     message: 'Необходимо принять политику обработки персональных данных!',
   }),

@@ -55,7 +55,7 @@ export default function FormForModals({
         email,
         phone,
         section: pathname,
-        service: data.service,
+        service: data.service ?? '',
       };
 
       await postClientRequest(payload);
