@@ -12,7 +12,7 @@ export default async function Footer() {
   return (
     <Section className="bg-foreground3 xxs:pb-[124px] relative flex flex-col rounded-t-[24px] pb-0">
       <Typography className="mt-[86px] text-[clamp(24px,2vw,48px)]" variant="h1">
-        Берём IT-задачи на себя — понятно и надёжно
+        Готовы поболтать про it?
       </Typography>
       {/* form */}
       <div className="bg-primary xxs:p-8 xxs:mt-[32px] mt-[24px] rounded-[24px] px-[14px] pt-8 pb-6">

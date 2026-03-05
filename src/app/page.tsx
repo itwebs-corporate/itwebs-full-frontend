@@ -22,16 +22,16 @@ export default function HomePage() {
       <HeroBlock
         description={
           <>
-            Помогаем вашему бизнесу расти и развиваться быстрее: сайты, CRM-системы, веб-
+            Помогаем вашему бизнесу расти и развиваться быстрее
             <br />
-            приложения, SEO, telegram-apps
+            превращая ваши задумки в решения
           </>
         }
         fullScreen
         heading={
           <>
-            Компания веб-
-            <br />р
+            ВАШ БИЗНЕС
+            <br /> Н
             <span className="relative inline-block">
               <span className="pointer-events-none absolute top-[0.3em] left-[-0.34em] hidden h-[1.2em] w-[1.8em] sm:block">
                 <Image
@@ -41,9 +41,9 @@ export default function HomePage() {
                   src="/hero/arrow-zig-zag.svg"
                 />
               </span>
-              <span className="relative z-10">а</span>
+              <span className="relative z-10">А</span>
             </span>
-            зработки ITWE
+            ШИ ТЕХНОЛОГ
             <span className="relative inline-block">
               {IMAGES.map((item) => (
                 <span
@@ -55,9 +55,9 @@ export default function HomePage() {
                 </span>
               ))}
 
-              <span className="relative z-10">B</span>
+              <span className="relative z-10">И</span>
             </span>
-            S.
+            И
           </>
         }
         pathname="/"

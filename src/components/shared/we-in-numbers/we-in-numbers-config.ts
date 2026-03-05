@@ -12,17 +12,17 @@ export const STAT_CARDS: StatCard[] = [
   },
   {
     id: 'return-rate',
-    value: '89%',
-    description: 'клиентов возвращаются и рекомендуют',
+    value: '6',
+    description: 'областей профессиональной экспертизы',
   },
   {
     id: 'manager',
-    value: '1',
-    description: 'менеджер на всем пути проекта',
+    value: '50+',
+    description: 'разработчиков в рядах нашей компании',
   },
   {
     id: 'experience',
-    value: '2+',
-    description: 'лет работаем в IT с любыми задачами',
+    value: '5+',
+    description: 'лет средний опыт работы наших сотрудников',
   },
 ];

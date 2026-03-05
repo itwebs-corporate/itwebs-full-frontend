@@ -8,7 +8,7 @@ import { WHY_CHOOSE_CONFIG } from './why-choose-block-config';
 export default function WhyChooseBlock() {
   return (
     <Section className="bg-background relative">
-      <div className="absolute top-1/2 left-1/3 z-20 hidden -translate-x-1/4 translate-y-[40%] xl:block">
+      <div className="absolute top-1/2 left-1/3 z-20 hidden -translate-x-1/4 translate-y-[55%] xl:block">
         <Media
           className="pointer-events-none h-[65px] w-[65px]"
           image={{ src: '/why-choose/green-star.svg', alt: 'green-star' }}
@@ -28,11 +28,12 @@ export default function WhyChooseBlock() {
           />
 
           <Typography className="mt-[36px]" variant="h3">
-            Думаем как клиент
+            Оптимизация решений под бизнес
           </Typography>
           <Typography className="mt-[clamp(12px,1vw,16px)]" variant="p2">
-            Смотрим на задачу с вашей стороны и предлагаем удобное решение, а не просто «технически
-            правильное».
+            Не только реализуем техническую часть, но и вникаем в ваши потребности и анализируем
+            бизнес-процессы. Разработанный нами продукт будет для вас не статьей расходов, а
+            инструментом, внедренным в ваши процессы и приносящим прибыль
           </Typography>
         </li>
       </ul>

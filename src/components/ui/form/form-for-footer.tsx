@@ -43,7 +43,7 @@ export default function FormForFooter({ className }: { className?: string }) {
         email,
         phone,
         section: pathname,
-        service: data.service,
+        service: data.service ?? '',
       };
 
       await postClientRequest(payload);
