@@ -7,13 +7,13 @@ export const HERO_ASSETS_CONFIG: AssetsConfig = {
       src: '/hero/sharp.svg',
       alt: 'Sharp',
       className:
-        'absolute left-[5.5vw] top-[-15px] hidden sm:block w-[clamp(52px,4vw,109px)] h-[clamp(60px,4.8vw,124px)]',
+        'absolute left-[8vw] md:left-[9vw] lg:left-[10vw] top-[-15px] hidden sm:block w-[clamp(52px,4vw,109px)] h-[clamp(60px,4.8vw,124px)]',
     },
     {
       src: '/hero/stars-group.svg',
       alt: 'Group-star',
       className:
-        'absolute right-[5vw] top-[-40px] hidden sm:block  w-[clamp(82px,6vw,161px)] h-[clamp(66px,4.8vw,128px)]',
+        'absolute right-[6vw] lg:right-[8vw] top-[-40px] hidden sm:block  w-[clamp(82px,6vw,161px)] h-[clamp(66px,4.8vw,128px)]',
     },
 
     {
