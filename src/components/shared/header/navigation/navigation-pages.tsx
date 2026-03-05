@@ -7,7 +7,7 @@ import { HEADER_NAV } from '../header-config';
 export default async function NavigationPages() {
   const headerGroups = (await fetchHeaderGroups()) ?? [];
   return (
-    <ul className="mx-1 ml-[0px] hidden items-center gap-[clamp(4px,1.5vw,24px)] sm:flex lg:ml-[146px]">
+    <ul className="mr-1 hidden items-center gap-[clamp(4px,1.5vw,24px)] sm:flex lg:ml-[146px]">
       {HEADER_NAV.map((el) => {
         const isServices = el.title === 'Услуги';
         return (

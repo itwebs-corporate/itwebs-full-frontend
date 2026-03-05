@@ -1,4 +1,4 @@
-import { Media } from '@/components/ui/media';
+import IconifyIcon from '@/components/ui/iconify-icon';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
@@ -16,8 +16,8 @@ export default function WhatHighlightOnBackground() {
             className="flex min-h-[244px] w-full max-w-[332px] flex-col rounded-[12px] bg-white px-[14px] py-[20px] sm:min-h-[236px] sm:max-w-[587px] sm:rounded-[24px] sm:p-[20px]"
             key={card.id}
           >
-            <div className="flex-center bg-background mb-5 h-[86px] w-[86px] rounded-full">
-              <Media className="h-[48px] w-[48px]" image={{ src: card.image, alt: card.id }} />
+            <div className="flex-center bg-background mb-5 size-[86px] rounded-full">
+              <IconifyIcon className="size-[48px]" icon={card.image} />
             </div>
 
             <Typography className="pb-[12px] sm:pb-[14px]" variant="h3">
