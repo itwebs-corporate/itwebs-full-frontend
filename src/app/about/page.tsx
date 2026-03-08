@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+import { buildPageMetadata } from '@/lib/seo';
+
 import AboutTextBlock from '@/components/shared/about-text/about-text-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
 import ModalConsult from '@/components/shared/modal-consult';
@@ -10,19 +12,24 @@ import WeSolveClientTaskBlock from '@/components/shared/we-solve-client-task/we-
 import WhatHighlightOnBackground from '@/components/shared/what-highlight-on-background/what-highlight-on-background';
 import Section from '@/components/ui/section/section';
 
-import { SITE_IMAGES } from '@/constants/seo-constants';
+import { PAGES_CONFIG } from '@/config/pages-config';
 
-export const metadata: Metadata = {
-  title: 'О компании',
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
+    path: PAGES_CONFIG.ABOUT,
+    ru: {
+      title: 'О компании: разработка интернет-магазинов, CRM, ERP, приложений и IT поддержка',
+      description:
+        'Мы — компания-разработчик веб и мобильных приложений (iOS/Android). Создаем интернет-магазины, CRM (в т.ч. amoCRM), ERP системы под ключ. Выполняем анализ и оптимизацию веб-приложений, SEO продвижение, IT поддержку организаций. Опыт, надежность, масштабируемые решения.',
+    },
+    by: {
+      title: 'ITWEBS — Эксперты в UI/UX, 1С, Мобильной, Веб-разработке',
+      description:
+        'Создаем мобильные и веб приложения, проектируем UI/UX Дизайн для бизнеса. Следим за трендами в технологиях, чтобы создавать продукты быстрее. Профессионально интегрируем 1С в бизнес.',
+    },
+  });
+}
 
-  description: 'Немного о ITWEBS',
-  openGraph: {
-    title: 'О компании',
-    description: 'Немного о ITWEBS',
-    images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
-  },
-  robots: { index: true, follow: true },
-};
 export default function AboutPage() {
   return (
     <>

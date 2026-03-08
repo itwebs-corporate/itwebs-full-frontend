@@ -1,11 +1,9 @@
 import type { MetadataRoute } from 'next';
 
-function getBaseUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, '') ?? 'http://localhost:3000';
-}
+import { getBaseUrl } from '@/lib/seo';
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = getBaseUrl();
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const baseUrl = await getBaseUrl();
 
   return {
     rules: {
