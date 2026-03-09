@@ -7,7 +7,7 @@ import { CONTACT_CARDS, CONTACT_RU_CARDS, LINKS_CONFIG, LINKS_RU_CONFIG } from '
 import ContactsLinkCard from './contacts-link-card';
 
 export default async function ContactsBlock() {
-  const domain = await getDomain();
+  const domain = getDomain();
 
   const cards = domain === 'ru' ? CONTACT_RU_CARDS : CONTACT_CARDS;
   const links = domain === 'ru' ? LINKS_RU_CONFIG : LINKS_CONFIG;

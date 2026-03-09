@@ -5,7 +5,6 @@ import { buildPageMetadata } from '@/lib/seo';
 
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
-import { HOW_WE_WORK_SERVICE_CONFIG } from '@/components/shared/how-we-work-service/how-we-work-service-config';
 import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions/questions-block';
 import ServiceStages from '@/components/shared/service-stages/service-stages';
@@ -53,7 +52,7 @@ export default async function ServiceLinkPage({ params }: Props) {
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
   const desicions = service.decisions ?? [];
-  const stages = service.stages ?? HOW_WE_WORK_SERVICE_CONFIG;
+  const stages = service.stages ?? [];
   return (
     <>
       <HeroBlock

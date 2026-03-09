@@ -8,7 +8,7 @@ import { HEADER_NAV } from '../header-config';
 
 export default async function NavigationPages() {
   const headerGroups = (await fetchHeaderGroups()) ?? [];
-  const domain = await getDomain();
+  const domain = getDomain();
   const config =
     domain === 'by' ? HEADER_NAV : HEADER_NAV.filter((item) => item.title !== '1с услуги');
   return (

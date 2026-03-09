@@ -3,7 +3,7 @@ import { getDomain } from '@/lib/get-domain';
 import { TEL, TEL_DISPLAY, TEL_DISPLAY_RU, TEL_RU } from '@/constants/links-constants';
 
 export default async function NavigationTel() {
-  const domain = await getDomain();
+  const domain = getDomain();
   const tel = domain === 'by' ? TEL : TEL_RU;
   const telDisplay = domain === 'by' ? TEL_DISPLAY : TEL_DISPLAY_RU;
 

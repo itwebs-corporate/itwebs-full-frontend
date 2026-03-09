@@ -1,6 +1,11 @@
-import { headers } from 'next/headers';
+export type Domain = 'ru' | 'by';
 
-export async function getDomain() {
-  const host = (await headers()).get('host') ?? '';
-  return host.includes('itwebs.by') ? 'by' : 'ru';
+export function getDomain(): Domain {
+  const domain = process.env.DOMAIN;
+
+  if (domain !== 'ru' && domain !== 'by') {
+    throw new Error('DOMAIN must be "ru" or "by"');
+  }
+
+  return domain;
 }

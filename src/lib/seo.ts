@@ -18,7 +18,7 @@ type BuildPageMetadataArgs = {
 };
 
 export async function getBaseUrl() {
-  const domain = await getDomain();
+  const domain = getDomain();
   return domain === 'by' ? SITE_URL_BY : SITE_URL;
 }
 
@@ -29,7 +29,7 @@ export async function buildPageMetadata({
   type = 'website',
   images,
 }: BuildPageMetadataArgs): Promise<Metadata> {
-  const domain = await getDomain();
+  const domain = getDomain();
   const baseUrl = await getBaseUrl();
 
   const seo = domain === 'by' && by ? by : ru;

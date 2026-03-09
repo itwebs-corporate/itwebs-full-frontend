@@ -16,7 +16,7 @@ import NavigationTel from './navigation-tel';
 import { HEADER_LINKS, RU_HEADER_LINKS } from '../header-config';
 
 export default async function Navigation() {
-  const domain = await getDomain();
+  const domain = getDomain();
   const config = domain === 'by' ? HEADER_LINKS : RU_HEADER_LINKS;
   return (
     <header
