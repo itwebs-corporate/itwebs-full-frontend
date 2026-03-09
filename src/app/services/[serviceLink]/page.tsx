@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { buildPageMetadata } from '@/lib/seo';
+
 import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-work-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
-import { HOW_WE_WORK_SERVICE_CONFIG } from '@/components/shared/how-we-work-service/how-we-work-service-config';
 import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions/questions-block';
 import ServiceStages from '@/components/shared/service-stages/service-stages';
@@ -23,22 +24,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   try {
     const service = await fetchServicesByLink(serviceLink);
-    const title = service.metaTitle;
-    const description = service.metaDescription;
-    return {
-      title,
-      description,
-      alternates: {
-        canonical: `/${serviceLink}`,
-      },
-      openGraph: {
-        title,
-        description,
-        images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
-        type: 'website',
-        url: `/${serviceLink}`,
-      },
-    };
+    const title = service.metaTitle ?? '';
+    const description = service.metaDescription ?? '';
+    return buildPageMetadata({
+      path: `${PAGES_CONFIG.SERVICES}/${serviceLink}`,
+      ru: { title, description },
+      type: 'website',
+      images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
+    });
   } catch {
     return {
       title: 'Услуга',
@@ -59,7 +52,7 @@ export default async function ServiceLinkPage({ params }: Props) {
   const faqs = service.faqs ?? [];
   const ways = service.ways ?? [];
   const desicions = service.decisions ?? [];
-  const stages = service.stages ?? HOW_WE_WORK_SERVICE_CONFIG;
+  const stages = service.stages ?? [];
   return (
     <>
       <HeroBlock

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { getDomain } from '@/lib/get-domain';
 import { cn } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
@@ -9,16 +10,13 @@ import Typography from '@/components/ui/typography/typography';
 import { fetchAllServices } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
+import { SERVICE_WE_PROVIDE } from './service-we-provide-config';
 import ServiceWeProvideList from './service-we-provide-list';
 
 export default async function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
   const services = await fetchAllServices();
-  const namesForFilter = [
-    'Разработка интернет-магазина',
-    'Разработка мобильного приложения (ios + android)',
-    'Разработка многостраничных сайтов',
-    'Интеграция, настройка и подключение Битрикс24',
-  ];
+  const domain = getDomain();
+  const namesForFilter = SERVICE_WE_PROVIDE[domain];
   const filterServices = services.filter((item) => namesForFilter.includes(item.title));
   return (
     <Section

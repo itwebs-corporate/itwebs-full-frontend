@@ -1,21 +1,28 @@
 import { Metadata } from 'next';
 
+import { buildPageMetadata } from '@/lib/seo';
+
 import ContactsBlock from '@/components/shared/contacts/contacts-block';
 import HeroBlock from '@/components/shared/hero/hero-block';
 
-import { SITE_IMAGES } from '@/constants/seo-constants';
+import { PAGES_CONFIG } from '@/config/pages-config';
 
-export const metadata: Metadata = {
-  title: 'Контакты',
+export async function generateMetadata(): Promise<Metadata> {
+  return buildPageMetadata({
+    path: PAGES_CONFIG.CONTACTS,
+    ru: {
+      title: 'Контакты: интеграция CRM, amoCRM, ERP | Разработка и IT поддержка',
+      description:
+        'Нужна интеграция CRM системы (amoCRM) или внедрение ERP? Мы также разрабатываем интернет-магазины, веб и мобильные приложения (iOS/Android), выполняем SEO продвижение и IT поддержку организаций.',
+    },
+    by: {
+      title: 'Контакты IT компании: услуги 1С и разработка веб/мобильных приложений',
+      description:
+        'Актуальные контакты IT компании, специализирующейся на 1С (услуги, проверка, конфигуратор, управление, бухгалтерия, ЗУП, ИТС для вашего предприятия) и разработке веб и мобильных приложений. Получите консультацию, закажите внедрение 1С или создание сайта/приложения. Свяжитесь с нами!',
+    },
+  });
+}
 
-  description: 'Наши контакты',
-  openGraph: {
-    title: 'Контакты',
-    description: 'Наши контакты',
-    images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
-  },
-  robots: { index: true, follow: true },
-};
 export default function ContactsPage() {
   return (
     <>

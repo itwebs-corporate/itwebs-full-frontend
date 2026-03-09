@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import styles from '../header.module.css';
 
+import { getDomain } from '@/lib/get-domain';
 import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
@@ -12,9 +13,11 @@ import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
 import NavigationPages from './navigation-pages';
 import NavigationSocialLink from './navigation-social-link';
 import NavigationTel from './navigation-tel';
-import { HEADER_LINKS } from '../header-config';
+import { HEADER_LINKS, RU_HEADER_LINKS } from '../header-config';
 
-export default function Navigation() {
+export default async function Navigation() {
+  const domain = getDomain();
+  const config = domain === 'by' ? HEADER_LINKS : RU_HEADER_LINKS;
   return (
     <header
       className={cn(
@@ -34,7 +37,7 @@ export default function Navigation() {
       <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
         <NavigationTel />
-        {HEADER_LINKS.map((el) => (
+        {config.map((el) => (
           <NavigationSocialLink
             className={cn(
               'flex-center size-[clamp(35px,3.2vw,57px)] shrink-0 rounded-full border bg-white/10',
@@ -47,7 +50,7 @@ export default function Navigation() {
           />
         ))}
         {/* links by open mobile menu: */}
-        {HEADER_LINKS.map((el) => (
+        {config.map((el) => (
           <NavigationSocialLink
             className={cn(
               'flex-center bg-primary/10 size-[clamp(35px,3.2vw,57px)] shrink-0 rounded-full border',

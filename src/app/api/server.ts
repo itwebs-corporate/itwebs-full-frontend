@@ -10,9 +10,7 @@ const jsonInit: RequestInit = {
   headers: { Accept: 'application/json' },
   next: { revalidate: 60 },
 };
-
-const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, '');
-
+const BACKEND_URL = process.env.BACKEND_URL;
 type FetchErr = { code?: string; cause?: { code?: string } };
 
 export async function fetchAllServices(): Promise<Service[]> {

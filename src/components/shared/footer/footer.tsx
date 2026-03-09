@@ -11,7 +11,7 @@ import FooterTrack from './footer-track';
 export default async function Footer() {
   return (
     <Section className="bg-foreground3 xxs:pb-[124px] relative flex flex-col rounded-t-[24px] pb-0">
-      <Typography className="mt-[86px] text-[clamp(24px,2vw,48px)]" variant="h1">
+      <Typography className="mt-[86px] text-[clamp(24px,2vw,48px)] whitespace-nowrap!" variant="h1">
         Готовы поболтать про it?
       </Typography>
       {/* form */}
@@ -25,7 +25,7 @@ export default async function Footer() {
         >
           Политика обработки персональных данных
         </Link>
-        <span className="opacity-50">Copyright ©2025 ITEWBS</span>
+        <span className="opacity-50">Copyright ©2026 ITEWBS</span>
       </div>
       {/* track */}
       <div className="xxs:flex absolute bottom-0 hidden h-[124px] w-full items-center overflow-hidden whitespace-nowrap opacity-10">

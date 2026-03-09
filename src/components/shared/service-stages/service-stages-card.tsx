@@ -13,6 +13,7 @@ export default function ServiceStagesCard({
   index: number;
   className?: string;
 }) {
+  const perfectIndex = index + 1;
   return (
     <li
       className={cn(
@@ -26,7 +27,8 @@ export default function ServiceStagesCard({
           'size-16! min-h-16! min-w-16!'
         )}
       >
-        0{index + 1}
+        {perfectIndex < 10 && 0}
+        {perfectIndex}
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col">

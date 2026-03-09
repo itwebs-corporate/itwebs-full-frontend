@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 
+import { buildPageMetadata } from '@/lib/seo';
+
 import YouMaybeInterestingBlock from '@/components/shared/you-maybe-interesting/you-maybe-interesting-block';
 
 import { fetchPostByLink } from '@/app/api/server';
+import { PAGES_CONFIG } from '@/config/pages-config';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 import ArticleCard from '../../../components/shared/article-card/article-card';
@@ -17,23 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const post = await fetchPostByLink(name);
 
-    const title = post?.metaTitle;
-    const description = post?.metaDescription;
+    const title = post?.metaTitle ?? '';
+    const description = post?.metaDescription ?? '';
 
-    return {
-      title,
-      description,
-      alternates: {
-        canonical: `/blog/${name}`,
-      },
-      openGraph: {
-        title,
-        description,
-        images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
-        type: 'article',
-        url: `/blog/${name}`,
-      },
-    };
+    return buildPageMetadata({
+      path: `${PAGES_CONFIG.BLOG}/${name}`,
+      ru: { title, description },
+      images: [{ url: SITE_IMAGES, width: 1200, height: 630, alt: 'ITWEBS' }],
+    });
   } catch {
     return {
       title: 'Статья',
