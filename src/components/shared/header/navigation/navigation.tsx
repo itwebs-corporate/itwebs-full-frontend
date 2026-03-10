@@ -3,21 +3,26 @@ import Link from 'next/link';
 
 import styles from '../header.module.css';
 
-import { getDomain } from '@/lib/get-domain';
+import { Domain } from '@/lib/get-domain';
 import { cn } from '@/lib/utils';
 
 import { Media } from '@/components/ui/media';
 
 import { MOBILE_MENU_TOGGLE_ID } from '@/constants/header-constants';
+import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
 import NavigationPages from './navigation-pages';
 import NavigationSocialLink from './navigation-social-link';
 import NavigationTel from './navigation-tel';
-import { HEADER_LINKS, RU_HEADER_LINKS } from '../header-config';
-
-export default async function Navigation() {
-  const domain = getDomain();
-  const config = domain === 'by' ? HEADER_LINKS : RU_HEADER_LINKS;
+export default function Navigation({
+  config,
+  domain,
+  headerGroups,
+}: {
+  config: { link: string; label: string; icon: string; mobileIcon: string }[];
+  domain: Domain;
+  headerGroups: HeaderGroups | [];
+}) {
   return (
     <header
       className={cn(
@@ -32,11 +37,11 @@ export default async function Navigation() {
         />
       </Link>
       {/*  */}
-      <NavigationPages />
+      <NavigationPages domain={domain} headerGroups={headerGroups} />
       {/*  */}
       <div className="flex-center gap-[clamp(8px,1.2vw,20px)]">
         {/* links: */}
-        <NavigationTel />
+        <NavigationTel domain={domain} />
         {config.map((el) => (
           <NavigationSocialLink
             className={cn(

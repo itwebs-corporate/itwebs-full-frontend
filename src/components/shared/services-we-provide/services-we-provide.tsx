@@ -16,7 +16,7 @@ import ServiceWeProvideList from './service-we-provide-list';
 export default async function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
   const services = await fetchAllServices();
   const domain = getDomain();
-  const namesForFilter = isRegion ? SERVICE_WE_PROVIDE_REGION : SERVICE_WE_PROVIDE[domain];
+  const namesForFilter = isRegion ? SERVICE_WE_PROVIDE_REGION[domain] : SERVICE_WE_PROVIDE[domain];
   const filterServices = services.filter((item) => namesForFilter.includes(item.title));
   return (
     <Section

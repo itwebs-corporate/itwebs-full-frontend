@@ -4,7 +4,6 @@ import Typography from '@/components/ui/typography/typography';
 import WhatWeTaskSolveRegionCard from './what-we-task-solve-region-card';
 
 export default async function WhatWeTaskSolveRegionBlock() {
-  // ru:
   const filterGroups = [
     { title: 'Услуги в области 1С', link: '/services?q=1с' },
     { title: 'Сервера и поддержка', link: '/services?q=support' },
