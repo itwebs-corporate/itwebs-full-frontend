@@ -22,6 +22,10 @@ const RUSSIAN_NAME: Record<string, string> = {
   blog: 'Блог',
   'services-1c': '1C услуги',
   contacts: 'Контакты',
+  moscow: 'Москва',
+  'saint-petersburg': 'Санкт-Петербург',
+  novosibirsk: 'Новосибирск',
+  ekaterinburg: 'Екатеринбург',
 };
 
 type Props = {

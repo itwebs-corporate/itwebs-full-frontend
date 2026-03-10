@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -7,36 +7,28 @@ import { Button } from '@/components/ui/button';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
-export default function SeoTextBlock() {
+export default function SeoTextBlock({
+  title,
+  description,
+}: {
+  title: ReactNode;
+  description: ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <Section align="start" className="mb-[clamp(86px,6vw,124px)] gap-[clamp(24px,1.6vw,32px)]">
-      <Typography variant="h2">
-        <b className="text-primary">Ваш</b> единый IT партнер
+      <Typography className="text-left" variant="h2">
+        {title}
       </Typography>
       <Typography
+        asChild
         className={cn(
           'leading-[160%] transition-[max-height] duration-300',
           isOpen ? 'line-clamp-none' : 'line-clamp-4'
         )}
         variant="p2"
       >
-        Наша главная ценность — не просто выполнить проект, а стать для клиента долгосрочным и
-        надежным партнером в цифровой трансформации. Мы часто начинаем с решения одной задачи, будь
-        то <b>заказать разработку сайта</b> или <b>заказать разработку мобильного приложения</b>.
-        Клиенты ценят наш глубокий подход, профессионализм и стремление вникнуть в суть их бизнеса,
-        что естественным образом ведет к расширению сотрудничества. Универсальность нашей экспертизы
-        позволяет закрывать все IT-потребности компании в одном месте. После успешного запуска сайта
-        или приложения клиенты обращаются к нам для его развития: заказывают комплексное
-        <b>SEO продвижение</b> и глубинную <b>SEO оптимизацию</b> для роста трафика и конверсий.
-        Наша <b>разработка интернет-магазина</b> логично дополняется последующей
-        <b>заказной интеграцией CRM системы</b> для автоматизации продаж и повышения лояльности.
-        Таким образом, мы эволюционируем от исполнителя конкретного технического задания в единого
-        подрядчика, который обеспечивает полный цикл <b>IT поддержки бизнеса</b>. Это стратегическая{' '}
-        <b>помощь бизнесу</b>, где мы берем на себя всю цифровую инфраструктуру: от технической
-        надежности и безопасности до маркетинговой эффективности. Доверие, построенное на
-        результатах, — вот почему наши клиенты возвращаются снова, зная, что в ITWEBS они найдут
-        решение любой технологической задачи.
+        <div>{description}</div>
       </Typography>
       <Button onClick={() => setIsOpen((prev) => !prev)}>
         {isOpen ? 'Скрыть' : 'Показать полностью'}

@@ -70,12 +70,12 @@ export default function ServiceCard({ card }: { card: ServiceCardUI }) {
         >
           <Media
             ariaHidden
-            className="absolute h-[24px] w-[24px] transition-opacity duration-300 group-hover:opacity-0"
+            className="absolute size-[24px] transition-opacity duration-300 group-hover:opacity-0"
             image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
           />
           <Media
             ariaHidden
-            className="absolute h-[24px] w-[24px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="absolute size-[24px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
           />
         </Link>
