@@ -17,7 +17,7 @@ import { PAGES_CONFIG } from '@/config/pages-config';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
-    path: ' https://itwebs.by/minsk',
+    path: PAGES_CONFIG.BREST,
     by: {
       title: 'IT-компания в Бресте: разработка сайтов, приложений, ПО, SEO и поддержка | ITWEBS',
       description:

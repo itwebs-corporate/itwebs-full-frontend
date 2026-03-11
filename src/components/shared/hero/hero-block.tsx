@@ -6,7 +6,7 @@ import Typography from '@/components/ui/typography/typography';
 
 import HeroBlockTrack from './hero-block-track';
 import HeroHeading from './hero-heading';
-import { BreadcrumbWithCustomSeparator } from '../breadcrumb-custom';
+import { BreadcrumbWithCustomSeparator } from '../breadcrumb/breadcrumb-custom';
 
 type HeroBlockProps = {
   heading: ReactNode;

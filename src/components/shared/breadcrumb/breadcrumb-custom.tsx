@@ -15,26 +15,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 
-const RUSSIAN_NAME: Record<string, string> = {
-  services: 'Услуги',
-  about: 'О компании',
-  cases: 'Кейсы',
-  blog: 'Блог',
-  'services-1c': '1C услуги',
-  contacts: 'Контакты',
-  policy: 'Политика конфиденциальности',
-  minsk: 'Минск',
-  brest: 'Брест',
-  mohilev: 'Могилев',
-  grodno: 'Гродно',
-  homel: 'Гомель',
-  vitebsk: 'Витебск',
-  krasnoyarsk: 'Красноярск',
-  moscow: 'Москва',
-  'saint-petersburg': 'Санкт-Петербург',
-  novosibirsk: 'Новосибирск',
-  ekaterinburg: 'Екатеринбург',
-};
+import { RUSSIAN_NAME } from './russian-name-config';
 
 type Props = {
   color?: string;

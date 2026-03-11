@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { Suspense } from 'react';
 
 import '@/app/globals.css';
 
@@ -7,6 +8,8 @@ import { getBaseUrl } from '@/lib/seo';
 
 import Footer from '@/components/shared/footer/footer';
 import Header from '@/components/shared/header/header';
+import YandexMetrika from '@/components/shared/yandex-metrika/yandex-metrika';
+import YandexMetrikaHit from '@/components/shared/yandex-metrika/yandex-metrika-hit';
 
 import { SITE_ICON, SITE_IMAGES, SITE_NAME } from '@/constants/seo-constants';
 import Provider from '@/providers/provider';
@@ -37,6 +40,10 @@ export default function RootLayout({
   return (
     <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="en">
       <body>
+        <YandexMetrika />
+        <Suspense fallback={null}>
+          <YandexMetrikaHit />
+        </Suspense>
         <Header />
         <Provider>
           <main className="flex flex-1 flex-col gap-[clamp(86px,6vw,124px)]">{children}</main>

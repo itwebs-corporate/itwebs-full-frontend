@@ -17,7 +17,7 @@ import { PAGES_CONFIG } from '@/config/pages-config';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
-    path: 'https://itwebs.ru/krasnoyarsk',
+    path: PAGES_CONFIG.KRASNOYARSK,
     ru: {
       title:
         'IT-компания в Красноярске: разработка сайтов, приложений, ПО, SEO и поддержка | ITWEBS',

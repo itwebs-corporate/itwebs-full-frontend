@@ -17,7 +17,7 @@ import { PAGES_CONFIG } from '@/config/pages-config';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
-    path: 'https://itwebs.ru/saint-petersburg',
+    path: PAGES_CONFIG.SAINT_PETERSBURG,
     ru: {
       title:
         'IT-компания в Санкт-Петербурге: разработка сайтов, приложений, ПО, SEO и поддержка | ITWEBS',

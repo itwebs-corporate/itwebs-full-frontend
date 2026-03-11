@@ -1,5 +1,5 @@
 import { TextParsed } from '@/components/shared/article-card/text-parsed';
-import { BreadcrumbWithCustomSeparator } from '@/components/shared/breadcrumb-custom';
+import { BreadcrumbWithCustomSeparator } from '@/components/shared/breadcrumb/breadcrumb-custom';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 

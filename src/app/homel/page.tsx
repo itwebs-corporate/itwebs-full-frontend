@@ -17,7 +17,7 @@ import { PAGES_CONFIG } from '@/config/pages-config';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
-    path: ' https://itwebs.by/homel',
+    path: PAGES_CONFIG.HOMEL,
     by: {
       title: 'IT-компания в Гомеле: разработка сайтов, приложений, ПО, SEO и поддержка | ITWEBS',
       description:
