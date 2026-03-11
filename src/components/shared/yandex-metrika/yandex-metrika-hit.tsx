@@ -9,9 +9,10 @@ export default function YandexMetrikaHit() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const isFirstRender = useRef(true);
+  const lastTrackedUrl = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!METRIKA_ID) return;
+    if (!METRIKA_ID || process.env.NODE_ENV !== 'production') return;
 
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -20,8 +21,10 @@ export default function YandexMetrikaHit() {
 
     const url = pathname + (searchParams?.toString() ? `?${searchParams}` : '');
 
-    if (typeof window !== 'undefined' && 'ym' in window) {
-      // @ts-ignore
+    if (lastTrackedUrl.current === url) return;
+    lastTrackedUrl.current = url;
+
+    if (typeof window !== 'undefined' && typeof window.ym === 'function') {
       window.ym(METRIKA_ID, 'hit', url);
     }
   }, [pathname, searchParams]);

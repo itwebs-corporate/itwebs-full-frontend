@@ -38,7 +38,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="en">
+    <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="ru">
       <body>
         <YandexMetrika />
         <Suspense fallback={null}>
