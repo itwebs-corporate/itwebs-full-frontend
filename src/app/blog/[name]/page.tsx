@@ -4,7 +4,7 @@ import { buildPageMetadata } from '@/lib/seo';
 
 import YouMaybeInterestingBlock from '@/components/shared/you-maybe-interesting/you-maybe-interesting-block';
 
-import { fetchPostByLink } from '@/app/api/server';
+import { fetchAllPosts, fetchPostByLink } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
@@ -13,6 +13,12 @@ import ArticleCard from '../../../components/shared/article-card/article-card';
 type Props = {
   params: Promise<{ name: string }>;
 };
+
+export async function generateStaticParams() {
+  const posts = await fetchAllPosts();
+
+  return posts.filter((post) => Boolean(post.link)).map((post) => ({ name: post.link }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { name } = await params;

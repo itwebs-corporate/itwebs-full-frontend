@@ -12,13 +12,21 @@ import ServiceStages from '@/components/shared/service-stages/service-stages';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
-import { fetchHeaderGroups, fetchServicesByLink } from '@/app/api/server';
+import { fetchAllServices, fetchHeaderGroups, fetchServicesByLink } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 type Props = {
   params: Promise<{ serviceLink: string }>;
 };
+
+export async function generateStaticParams() {
+  const services = await fetchAllServices();
+
+  return services
+    .filter((service) => Boolean(service.link))
+    .map((service) => ({ serviceLink: service.link }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { serviceLink } = await params;

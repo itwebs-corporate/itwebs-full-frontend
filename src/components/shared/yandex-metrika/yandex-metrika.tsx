@@ -20,7 +20,7 @@ export default function YandexMetrika() {
 
         ym(${METRIKA_ID}, "init", {
           ssr:true, 
-          webvisor:true
+          webvisor:true,
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true
