@@ -15,14 +15,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 
-const RUSSIAN_NAME: Record<string, string> = {
-  services: 'Услуги',
-  about: 'О компании',
-  cases: 'Кейсы',
-  blog: 'Блог',
-  'services-1c': '1C услуги',
-  contacts: 'Контакты',
-};
+import { RUSSIAN_NAME } from './russian-name-config';
 
 type Props = {
   color?: string;

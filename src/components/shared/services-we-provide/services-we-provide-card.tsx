@@ -30,25 +30,44 @@ export default function ServicesWeProvideCard({
         <Link
           aria-label={`Переход на услугу: ${item.title}`}
           className={cn(
-            isRegion ? 'bg-primary' : 'bg-secondary',
+            isRegion && 'group-hover:bg-primary',
+            'bg-secondary',
             'flex-center absolute top-[24px] right-[24px] z-20 h-[42px] w-[42px] shrink-0! rounded-full transition-[top,transform,background] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:top-[calc(100%-24px-42px)] group-hover:rotate-45'
           )}
           href={`/services/${item.link}`}
         >
-          <Media
-            ariaHidden
-            className="size-[24px]"
-            image={{
-              src: '/arrow/arrow-up-right-blue.svg',
-              alt: '',
-            }}
-          />
+          {!isRegion ? (
+            <Media
+              ariaHidden
+              className="size-[24px]"
+              image={{
+                src: '/arrow/arrow-up-right-blue.svg',
+                alt: '',
+              }}
+            />
+          ) : (
+            <>
+              <Media
+                ariaHidden
+                className="absolute size-[24px] transition-opacity duration-300 group-hover:opacity-0"
+                image={{ src: '/arrow/arrow-up-right-black.svg', alt: 'arrow' }}
+              />
+              <Media
+                ariaHidden
+                className="absolute size-[24px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                image={{ src: '/arrow/arrow-right-white.svg', alt: 'arrow' }}
+              />
+            </>
+          )}
         </Link>
 
         {/* card header: */}
         <div className="flex w-full items-start pr-[52px] group-hover:pr-0">
           <Typography
-            className="w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto] text-white"
+            className={cn(
+              'w-full min-w-0 flex-1 cursor-default py-1 wrap-break-word [hyphens:auto]',
+              isRegion ? 'text-foreground2' : 'text-white'
+            )}
             lang="ru"
             variant="h3"
           >
@@ -95,8 +114,8 @@ export default function ServicesWeProvideCard({
                   <Button
                     asChild
                     className={cn(
-                      !isRegion &&
-                        'border-secondary text-secondary max-h-[42px] w-full border bg-[#3a5cf7]'
+                      'max-h-[42px] w-full',
+                      !isRegion && 'border-secondary text-secondary border bg-[#3a5cf7]'
                     )}
                     variant={isRegion ? 'outline' : 'default'}
                   >
@@ -172,7 +191,7 @@ export default function ServicesWeProvideCard({
             aria-label={`Переход на страницу услуги: ${item.title}`}
             className={cn(
               isRegion ? 'bg-primary' : 'bg-secondary',
-              'flex-center h-[42px] w-[42px] shrink-0 rounded-full'
+              'flex-center size-[42px] shrink-0 rounded-full'
             )}
             href={`/services/${item.link}`}
           >

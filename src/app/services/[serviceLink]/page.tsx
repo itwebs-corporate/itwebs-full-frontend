@@ -7,17 +7,26 @@ import ForWhoWeWorkBlock from '@/components/shared/for-who-we-work/for-who-we-wo
 import HeroBlock from '@/components/shared/hero/hero-block';
 import ModalConsult from '@/components/shared/modal-consult';
 import QuestionsBlock from '@/components/shared/questions/questions-block';
+import SeoTextBlock from '@/components/shared/seo-text/seo-text-block';
 import ServiceStages from '@/components/shared/service-stages/service-stages';
 import WhatWeTasksSolveBlock from '@/components/shared/what-we-tasks-solve/what-we-tasks-solve-block';
 import { Button } from '@/components/ui/button';
 
-import { fetchHeaderGroups, fetchServicesByLink } from '@/app/api/server';
+import { fetchAllServices, fetchHeaderGroups, fetchServicesByLink } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 import { SITE_IMAGES } from '@/constants/seo-constants';
 
 type Props = {
   params: Promise<{ serviceLink: string }>;
 };
+
+export async function generateStaticParams() {
+  const services = await fetchAllServices();
+
+  return services
+    .filter((service) => Boolean(service.link))
+    .map((service) => ({ serviceLink: service.link }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { serviceLink } = await params;
@@ -87,6 +96,35 @@ export default async function ServiceLinkPage({ params }: Props) {
       <WhatWeTasksSolveBlock desicions={desicions} />
       <ServiceStages stages={stages} />
       <QuestionsBlock faqs={faqs} />
+      <SeoTextBlock
+        description={
+          <>
+            Наша главная ценность — не просто выполнить проект, а стать для клиента долгосрочным и
+            надежным партнером в цифровой трансформации. Мы часто начинаем с решения одной задачи,
+            будь то <b>заказать разработку сайта</b> или
+            <b> заказать разработку мобильного приложения</b>. Клиенты ценят наш глубокий подход,
+            профессионализм и стремление вникнуть в суть их бизнеса, что естественным образом ведет
+            к расширению сотрудничества. Универсальность нашей экспертизы позволяет закрывать все
+            IT-потребности компании в одном месте. После успешного запуска сайта или приложения
+            клиенты обращаются к нам для его развития: заказывают комплексное
+            <b> SEO продвижение</b> и глубинную <b> SEO оптимизацию</b> для роста трафика и
+            конверсий. Наша <b>разработка интернет-магазина</b> логично дополняется последующей
+            <b> заказной интеграцией CRM системы</b> для автоматизации продаж и повышения
+            лояльности. Таким образом, мы эволюционируем от исполнителя конкретного технического
+            задания в единого подрядчика, который обеспечивает полный цикл{' '}
+            <b>IT поддержки бизнеса</b>. Это стратегическая <b>помощь бизнесу</b>, где мы берем на
+            себя всю цифровую инфраструктуру: от технической надежности и безопасности до
+            маркетинговой эффективности. Доверие, построенное на результатах, — вот почему наши
+            клиенты возвращаются снова, зная, что в ITWEBS они найдут решение любой технологической
+            задачи.
+          </>
+        }
+        title={
+          <>
+            <b className="text-primary">Ваш</b> единый IT партнер
+          </>
+        }
+      />
     </>
   );
 }

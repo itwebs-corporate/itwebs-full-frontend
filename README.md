@@ -1,4 +1,6 @@
-## Переменные окружения
+# ITWEBS
+
+### Переменные окружения
 
 Проект использует **два отдельных деплоя** для разных доменов:
 
@@ -12,6 +14,7 @@
 ```env
 DOMAIN=ru | by
 BACKEND_URL=<backend url>
+NEXT_PUBLIC_YANDEX_METRIKA=<id yandex counter>
 ```
 
 ### node.js

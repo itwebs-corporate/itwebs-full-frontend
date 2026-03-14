@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
+
 import { TextParsed } from '@/components/shared/article-card/text-parsed';
-import { BreadcrumbWithCustomSeparator } from '@/components/shared/breadcrumb-custom';
+import { BreadcrumbWithCustomSeparator } from '@/components/shared/breadcrumb/breadcrumb-custom';
 import Section from '@/components/ui/section/section';
 import Typography from '@/components/ui/typography/typography';
 
@@ -12,10 +14,12 @@ export default function ArticleCard({ article }: { article: BlogPostDto }) {
     <Section className="text-foreground3! sm:mt-[clamp(60px,10vw,182px)]">
       <div className="bg-primary block h-[120px] w-screen sm:hidden" />
       <div className="absolute top-[76px] left-[14px] w-full max-w-[clamp(332px,80vw,890px)] sm:static">
-        <BreadcrumbWithCustomSeparator
-          color="text-white sm:text-foreground3"
-          lastBreadcrumb={article?.metaTitle}
-        />
+        <Suspense fallback={null}>
+          <BreadcrumbWithCustomSeparator
+            color="text-white sm:text-foreground3"
+            lastBreadcrumb={article?.metaTitle}
+          />
+        </Suspense>
       </div>
 
       <div className="relative mx-auto mt-[24px] w-full sm:mt-0">

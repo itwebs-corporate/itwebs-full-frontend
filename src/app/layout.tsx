@@ -5,6 +5,7 @@ import '@/app/globals.css';
 
 import { getBaseUrl } from '@/lib/seo';
 
+import CookieConsent from '@/components/shared/cookie-consent/cookie-consent';
 import Footer from '@/components/shared/footer/footer';
 import Header from '@/components/shared/header/header';
 
@@ -35,12 +36,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="en">
+    <html className={` ${roboto.variable} ${robotoCondensed.variable} antialiased`} lang="ru">
       <body>
         <Header />
         <Provider>
           <main className="flex flex-1 flex-col gap-[clamp(86px,6vw,124px)]">{children}</main>
         </Provider>
+        <CookieConsent />
         <Footer />
       </body>
     </html>

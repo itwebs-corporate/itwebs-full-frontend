@@ -11,10 +11,11 @@ type SeoText = {
 
 type BuildPageMetadataArgs = {
   path: string;
-  ru: SeoText;
+  ru?: SeoText;
   by?: SeoText;
   type?: 'website';
   images?: NonNullable<Metadata['openGraph']>['images'];
+  'key-words'?: Metadata['keywords'];
 };
 
 export async function getBaseUrl() {
@@ -28,6 +29,7 @@ export async function buildPageMetadata({
   by,
   type = 'website',
   images,
+  'key-words': keywords,
 }: BuildPageMetadataArgs): Promise<Metadata> {
   const domain = getDomain();
   const baseUrl = await getBaseUrl();
@@ -39,14 +41,15 @@ export async function buildPageMetadata({
 
   return {
     metadataBase: new URL(baseUrl),
-    title: seo.title,
-    description: seo.description,
+    title: seo?.title,
+    description: seo?.description,
+    keywords,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: seo.title,
-      description: seo.description,
+      title: seo?.title,
+      description: seo?.description,
       type,
       url,
       images,

@@ -10,13 +10,13 @@ import Typography from '@/components/ui/typography/typography';
 import { fetchAllServices } from '@/app/api/server';
 import { PAGES_CONFIG } from '@/config/pages-config';
 
-import { SERVICE_WE_PROVIDE } from './service-we-provide-config';
+import { SERVICE_WE_PROVIDE, SERVICE_WE_PROVIDE_REGION } from './service-we-provide-config';
 import ServiceWeProvideList from './service-we-provide-list';
 
 export default async function ServicesWeProvide({ isRegion = false }: { isRegion?: boolean }) {
   const services = await fetchAllServices();
   const domain = getDomain();
-  const namesForFilter = SERVICE_WE_PROVIDE[domain];
+  const namesForFilter = isRegion ? SERVICE_WE_PROVIDE_REGION[domain] : SERVICE_WE_PROVIDE[domain];
   const filterServices = services.filter((item) => namesForFilter.includes(item.title));
   return (
     <Section
@@ -26,7 +26,15 @@ export default async function ServicesWeProvide({ isRegion = false }: { isRegion
       )}
     >
       <Typography className={cn(isRegion ? 'text-foreground2' : 'text-foreground')} variant="h2">
-        <b className={cn(isRegion ? 'text-primary' : 'opacity-80')}>Наши</b> услуги
+        {isRegion ? (
+          <>
+            <b className="text-primary">Самые</b> частые обращения к нам
+          </>
+        ) : (
+          <>
+            <b className="opacity-80">Наши</b> услуги
+          </>
+        )}
       </Typography>
 
       <ServiceWeProvideList filterServices={filterServices} isRegion={isRegion} />

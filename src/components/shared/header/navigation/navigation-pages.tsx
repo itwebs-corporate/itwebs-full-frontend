@@ -1,14 +1,18 @@
-import { getDomain } from '@/lib/get-domain';
+import { Domain } from '@/lib/get-domain';
 
-import { fetchHeaderGroups } from '@/app/api/server';
+import { HeaderGroups } from '@/shared/types/header-groups-dto-types';
 
 import NavigationPagesItem from './navigation-pages-item';
 import NavigationServices from './navigation-services';
 import { HEADER_NAV } from '../header-config';
 
-export default async function NavigationPages() {
-  const headerGroups = (await fetchHeaderGroups()) ?? [];
-  const domain = getDomain();
+export default function NavigationPages({
+  domain,
+  headerGroups,
+}: {
+  domain: Domain;
+  headerGroups: HeaderGroups | [];
+}) {
   const config =
     domain === 'by' ? HEADER_NAV : HEADER_NAV.filter((item) => item.title !== '1с услуги');
   return (
